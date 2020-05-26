@@ -8,30 +8,34 @@ public class Move : MonoBehaviour
     public bool CanJump;
     private bool FaceRight = true;
     public float SpeedRun;
-    float speedX;
+    float SpeedX;
     public Rigidbody2D rb;
     public void Rigt()
     {
         if(!FaceRight)
+        {
             flip();
-        speedX = SpeedRun;
+        }
+        SpeedX = SpeedRun;
     }
 
     public void Left()
     {
         if(FaceRight)
+        {
             flip();
-        speedX = -SpeedRun;
+        }
+        SpeedX = -SpeedRun;
     }
 
     public void Stop()
     {
-        speedX = 0;
+        SpeedX = 0;
     }
 
     void Update()
     {
-        rb.MovePosition(rb.position + Vector2.right * speedX * Time.deltaTime);
+        rb.MovePosition(rb.position + Vector2.right * SpeedX * Time.deltaTime);
     }
     void flip()
 	{

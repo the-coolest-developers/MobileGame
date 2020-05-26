@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CampMove : MonoBehaviour
 {
-	public GameObject player;
+	public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +14,7 @@ public class CampMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player!=null)
-            transform.position = new Vector3 (player.transform.position.x, player.transform.position.y, -10f);
+        if(Player!=null)
+            transform.position = new Vector3 (Player.transform.position.x, Player.transform.position.y, -10f);
     }
 }

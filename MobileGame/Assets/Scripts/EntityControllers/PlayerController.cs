@@ -5,98 +5,98 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	private bool IsFighting = true;
-	public int Damage;
-	public float JumpPover= 100;
-	private bool FaceRight = true;
-    public float SpeedRun;
-    float speedX = 0;
-	public bool CanJump = true;
-	public Rigidbody2D rb;
-	public double health = 5;
-	public GameObject player;
-	private Animator anim;
-	
-	//Start is called before the first frame update
+    private bool IsFighting = true;
+    public int Damage;
+    public float JumpPower = 100;
+    private bool FaceRight = true;
+    public float RunningSpeed;
+    float SpeedX = 0;
+    public bool CanJump = true;
+    public Rigidbody2D Rb;
+    public double Health = 5;
+    public GameObject Player;
+    private Animator Anim;
+
+    //Start is called before the first frame update
     void Start()
     {
-
-		anim = 	GetComponent<Animator>();
-        rb = GetComponent <Rigidbody2D>();
+        Anim = GetComponent<Animator>();
+        Rb = GetComponent<Rigidbody2D>();
     }
 
-	void flip()
-	{
-		FaceRight = !FaceRight;
-		rb.transform.Rotate(0f, 180f, 0f);
-	}
-	
-	public void Rigt()
-    {	
-		
-		if(!FaceRight)
-			flip();
-		speedX = SpeedRun;
-		
-	}
+    void flip()
+    {
+        FaceRight = !FaceRight;
+        Rb.transform.Rotate(0f, 180f, 0f);
+    }
+
+    public void Rigt()
+    {
+        if (!FaceRight)
+        {
+            flip();
+        }
+        SpeedX = RunningSpeed;
+    }
 
     public void Left()
     {
-		anim.SetBool("IsRunning", true);
-		if(FaceRight)
-			flip();
-        
-		speedX = -SpeedRun;
-		
-	}
-	public void Jump()
-	{
-		if(CanJump)
-		{
-			rb.AddForce(Vector2.up*JumpPover);
-			CanJump = false;
-		}
-	}
-	public void Figth()
-	{
-		IsFighting = false;
-		speedX = 0;
-		anim.SetBool("Fight", true);
-	}
+        Anim.SetBool("IsRunning", true);
+        if (FaceRight)
+        {
+            flip();
+        }
 
-	public void StopFight()
-	{
-		IsFighting = true;
-		anim.SetBool("Fight", false);
-	}
+        SpeedX = -RunningSpeed;
+    }
+    public void Jump()
+    {
+        if (CanJump)
+        {
+            Rb.AddForce(Vector2.up * JumpPower);
+            CanJump = false;
+        }
+    }
+    public void Figth()
+    {
+        IsFighting = false;
+        SpeedX = 0;
+        Anim.SetBool("Fight", true);
+    }
+
+    public void StopFight()
+    {
+        IsFighting = true;
+        Anim.SetBool("Fight", false);
+    }
 
     public void Stop()
     {
-		anim.SetBool("IsRunning", false);
-        speedX = 0;
+        Anim.SetBool("IsRunning", false);
+        SpeedX = 0;
     }
     // Update is called once per frame
     void Update()
     {
-		if(speedX != 0 & CanJump & IsFighting)
-		{
-			rb.MovePosition(rb.position + Vector2.right * speedX * Time.deltaTime);
-			anim.SetBool("IsRunning", true);
-		}
-		if(health <= 0)
-		{
-			Destroy(player);
-		}
-	}
+        if (SpeedX != 0 & CanJump & IsFighting)
+        {
+            Rb.MovePosition(Rb.position + Vector2.right * SpeedX * Time.deltaTime);
+            Anim.SetBool("IsRunning", true);
+        }
+        if (Health <= 0)
+        {
+            Destroy(Player);
+        }
+    }
 
 
-	void OnTriggerEnter2D(Collider2D collider)
-	{	
-		switch(collider.gameObject.tag)
-		{
-			case "Ground":
-				CanJump = true;
-			break;
-		}
-	}
-}		
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        switch (collider.gameObject.tag)
+        {
+            case "Ground":
+                CanJump = true;
+                break;
+        }
+    }
+}
