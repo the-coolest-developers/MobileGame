@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SwordPoint: {fileID: 0}
-  PlayerRb: {fileID: 0}
+  PlayerRb: {fileID: 9221108216692168715}
   HP: 10
   Speed: 10
   Enemy: {fileID: 9221108216692168712}

@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
         {
             flip();
         }
-
         SpeedX = -RunningSpeed;
     }
     public void Jump()
@@ -79,6 +78,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(SpeedX);
+        Debug.Log(CanJump);
+        Debug.Log(IsFighting);
         if (SpeedX != 0 & CanJump & IsFighting)
         {
             Rb.MovePosition(Rb.position + Vector2.right * SpeedX * Time.deltaTime);
