@@ -1264,7 +1264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 0
-  JumpPower: 100
+  JumpPower: 2000
   RunningSpeed: 5
   CanJump: 1
   Rb: {fileID: 1871109605}
