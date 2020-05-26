@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36cbc9e1ada8f0a4fbb2c5f8c4b5c8ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SwordPoint: {fileID: 0}
+  PlayerRb: {fileID: 0}
   HP: 10
-  speed: 10
-  enemy: {fileID: 9221108216692168712}
+  Speed: 10
+  Enemy: {fileID: 9221108216692168712}

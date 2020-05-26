@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     public void Rigt()
     {
+        Anim.SetBool("IsRunning", true);
         if (!FaceRight)
         {
             flip();
