@@ -14,7 +14,7 @@ public class Move : MonoBehaviour
     {
         if(!FaceRight)
         {
-            flip();
+            Flip();
         }
         SpeedX = SpeedRun;
     }
@@ -23,7 +23,7 @@ public class Move : MonoBehaviour
     {
         if(FaceRight)
         {
-            flip();
+            Flip();
         }
         SpeedX = -SpeedRun;
     }
@@ -37,7 +37,7 @@ public class Move : MonoBehaviour
     {
         rb.MovePosition(rb.position + Vector2.right * SpeedX * Time.deltaTime);
     }
-    void flip()
+    void Flip()
 	{
 		FaceRight = !FaceRight;
 		transform.Rotate(0f, 180f, 0f);

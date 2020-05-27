@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
     }
 
-    void flip()
+    void Flip()
     {
         FaceRight = !FaceRight;
         Rb.transform.Rotate(0f, 180f, 0f);
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         Anim.SetBool("IsRunning", true);
         if (!FaceRight)
         {
-            flip();
+            Flip();
         }
         SpeedX = RunningSpeed;
     }
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         Anim.SetBool("IsRunning", true);
         if (FaceRight)
         {
-            flip();
+            Flip();
         }
         SpeedX = -RunningSpeed;
     }
