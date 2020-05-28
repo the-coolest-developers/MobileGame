@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     //Те, которые указываются в редакторе Unity
-    public GameObject SwordPoint;
     public Rigidbody2D PlayerRb;
     public GameObject Enemy;
     public float HP;
@@ -40,12 +39,8 @@ public class EnemyController : MonoBehaviour
         }
 
     }
-    public void GetDamage()
+    public void GetDamage(float damage)
     {
-        float distance = Vector2.Distance(Rb.position, SwordPoint.transform.position);
-        if (distance < 1)
-        {
-            HP -= 5;
-        }
+        HP -= damage;
     }
 }

@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
+    List<Collider2D> Colliders;
+
     //Те, которые указываются в редакторе Unity
     public GameObject Player;
     public int Damage;
@@ -13,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public double Health;
 
     //Всякие boolean-ы
-    private bool IsFighting = true;
+    private bool IsFighting = false;
     private bool FaceRight = true;
     public bool IsOnTheGround = true;
 
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         Anim = GetComponent<Animator>();
         Rb = GetComponent<Rigidbody2D>();
+        Colliders = new List<Collider2D>();
     }
 
     void Flip()
@@ -62,16 +66,22 @@ public class PlayerController : MonoBehaviour
             IsOnTheGround = false;
         }
     }
-    public void Figth()
+    public void Strike()
     {
-        IsFighting = false;
+        IsFighting = true;
         SpeedX = 0;
         Anim.SetBool("Fight", true);
+
+        var enemyCollider = Colliders.FirstOrDefault(c => c.gameObject.tag == "Enemy");
+        if (enemyCollider != null)
+        {
+            HitEnemy(enemyCollider.gameObject);
+        }
     }
 
     public void StopFight()
     {
-        IsFighting = true;
+        IsFighting = false;
         Anim.SetBool("Fight", false);
     }
 
@@ -83,7 +93,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SpeedX != 0 & IsOnTheGround & IsFighting)
+        if (SpeedX != 0 & IsOnTheGround & !IsFighting)
         {
             Rb.MovePosition(Rb.position + Vector2.right * SpeedX * Time.deltaTime);
             Anim.SetBool("IsRunning", true);
@@ -94,14 +104,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    void OnTriggerEnter2D(Collider2D collider)
+    void HitEnemy(GameObject enemy)
     {
-        switch (collider.gameObject.tag)
+        var controllerScript = enemy.GetComponent<EnemyController>();
+        controllerScript.GetDamage(Damage);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Colliders.Add(collision);
+        switch (collision.gameObject.tag)
         {
             case "Ground":
                 IsOnTheGround = true;
                 break;
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        Colliders.Remove(collision);
     }
 }
