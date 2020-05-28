@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CampMove : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
+    //Те, которые указываются в редакторе Unity
     public GameObject Player;
+
     // Start is called before the first frame update
     void Start()
     {

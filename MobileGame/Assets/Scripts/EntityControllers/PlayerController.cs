@@ -5,16 +5,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool IsFighting = true;
-    public int Damage;
-    public float JumpPower = 100;
-    private bool FaceRight = true;
-    public float RunningSpeed;
-    float SpeedX = 0;
-    public bool CanJump = true;
-    public Rigidbody2D Rb;
-    public double Health = 5;
+    //Те, которые указываются в редакторе Unity
     public GameObject Player;
+    public int Damage;
+    public float JumpPower;
+    public float RunningSpeed;
+    public double Health;
+
+    //Всякие boolean-ы
+    private bool IsFighting = true;
+    private bool FaceRight = true;
+    public bool IsOnTheGround = true;
+
+    //Остальное
+    float SpeedX = 0;
+    public Rigidbody2D Rb;
     private Animator Anim;
 
     //Start is called before the first frame update
@@ -30,7 +35,7 @@ public class PlayerController : MonoBehaviour
         Rb.transform.Rotate(0f, 180f, 0f);
     }
 
-    public void Rigt()
+    public void Right()
     {
         Anim.SetBool("IsRunning", true);
         if (!FaceRight)
@@ -51,10 +56,10 @@ public class PlayerController : MonoBehaviour
     }
     public void Jump()
     {
-        if (CanJump)
+        if (IsOnTheGround)
         {
             Rb.AddForce(Vector2.up * JumpPower);
-            CanJump = false;
+            IsOnTheGround = false;
         }
     }
     public void Figth()
@@ -78,10 +83,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(SpeedX);
-        Debug.Log(CanJump);
-        Debug.Log(IsFighting);
-        if (SpeedX != 0 & CanJump & IsFighting)
+        if (SpeedX != 0 & IsOnTheGround & IsFighting)
         {
             Rb.MovePosition(Rb.position + Vector2.right * SpeedX * Time.deltaTime);
             Anim.SetBool("IsRunning", true);
@@ -98,7 +100,7 @@ public class PlayerController : MonoBehaviour
         switch (collider.gameObject.tag)
         {
             case "Ground":
-                CanJump = true;
+                IsOnTheGround = true;
                 break;
         }
     }
