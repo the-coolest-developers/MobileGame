@@ -178,7 +178,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1871109602}
+        - m_Target: {fileID: 1871109606}
           m_MethodName: Jump
           m_Mode: 1
           m_Arguments:
@@ -231,18 +231,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 62882484}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1871109602}
-        m_MethodName: Step
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &62882484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,7 +706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645772142}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.55, z: -10}
+  m_LocalPosition: {x: -399.6, y: -0.55, z: -10}
   m_LocalScale: {x: 0.10000001, y: 0.06666667, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1008,7 +997,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1871109602}
+        - m_Target: {fileID: 1871109604}
           m_MethodName: Strike
           m_Mode: 1
           m_Arguments:
@@ -1022,18 +1011,7 @@ MonoBehaviour:
   - eventID: 3
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1871109602}
-          m_MethodName: StopFight
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &1055152460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,8 +1069,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1871109602}
-          m_MethodName: Right
+        - m_Target: {fileID: 1871109606}
+          m_MethodName: RunRight
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1106,8 +1084,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1871109602}
-          m_MethodName: Stop
+        - m_Target: {fileID: 1871109606}
+          m_MethodName: StopRunning
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1160,7 +1138,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1871109602}
+      - m_Target: {fileID: 0}
         m_MethodName: Step
         m_Mode: 1
         m_Arguments:
@@ -1294,24 +1272,54 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5067891295581514181}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1871109602 stripped
+--- !u!114 &1871109603
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5067891295270794279, guid: fe0348ba35896af4b8bd6dc0b87152e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 5067891295581514181}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871109601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f39fe2674b076c4082659bbb76621bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e17eb274f8e1c546bd7ee0997a3ce67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1871109604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871109601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc64632300b45349887e9e3ffbe9059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerObject: {fileID: 1871109601}
+  Damage: 5
+  Health: 5
+  HitDelay: 5
 --- !u!50 &1871109605 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 5067891295270794272, guid: fe0348ba35896af4b8bd6dc0b87152e9,
     type: 3}
   m_PrefabInstance: {fileID: 5067891295581514181}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1871109606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871109601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ede491bf387c2a478448f84b78d96f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpPower: 2000
+  RunningSpeed: 25
 --- !u!61 &1871109607
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1619,8 +1627,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1871109602}
-          m_MethodName: Left
+        - m_Target: {fileID: 1871109606}
+          m_MethodName: RunLeft
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1634,8 +1642,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1871109602}
-          m_MethodName: Stop
+        - m_Target: {fileID: 1871109606}
+          m_MethodName: StopRunning
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1720,9 +1728,20 @@ PrefabInstance:
     - target: {fileID: 5067891295270794279, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: HitDelay
-      value: 0.45
+      value: 0.4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5067891295270794279, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: IsOnTheGround
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067891295270794279, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5067891295270794279, guid: fe0348ba35896af4b8bd6dc0b87152e9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fe0348ba35896af4b8bd6dc0b87152e9, type: 3}
 --- !u!1001 &9221108216238070884
 PrefabInstance:
