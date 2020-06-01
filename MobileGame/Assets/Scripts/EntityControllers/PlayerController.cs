@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float JumpPower;
     public float RunningSpeed;
     public double Health;
+    public float HitDelay;
 
     //Всякие boolean-ы
     private bool IsFighting = false;
@@ -72,10 +73,16 @@ public class PlayerController : MonoBehaviour
         SpeedX = 0;
         Anim.SetBool("Fight", true);
 
+        StartCoroutine(HitEnemy());
+    }
+    IEnumerator HitEnemy()
+    {
+        yield return new WaitForSeconds(HitDelay);
         var enemyCollider = Colliders.FirstOrDefault(c => c.gameObject.tag == "Enemy");
         if (enemyCollider != null)
         {
-            HitEnemy(enemyCollider.gameObject);
+            var controllerScript = enemyCollider.gameObject.GetComponent<EnemyController>();
+            controllerScript.GetDamage(Damage);
         }
     }
 
@@ -102,12 +109,6 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(Player);
         }
-    }
-
-    void HitEnemy(GameObject enemy)
-    {
-        var controllerScript = enemy.GetComponent<EnemyController>();
-        controllerScript.GetDamage(Damage);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
