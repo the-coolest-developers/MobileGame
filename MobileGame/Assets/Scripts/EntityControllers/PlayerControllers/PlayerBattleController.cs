@@ -16,7 +16,7 @@ public class PlayerBattleController : MonoBehaviour
     public float HitDelay;
 
     //Всякие boolean-ы
-    public bool IsFighting { get; private set; }
+    public bool IsFighting;// { get; private set; }
 
     void Start()
     {
@@ -33,9 +33,10 @@ public class PlayerBattleController : MonoBehaviour
 
     public void Strike()
     {
-        //Debug.Log(IsFighting);
+        
         if (!IsFighting)
         {
+            Debug.Log(IsFighting);
             IsFighting = true;
 
             MovementController.StopRunning();
@@ -47,9 +48,11 @@ public class PlayerBattleController : MonoBehaviour
     }
     IEnumerator HitEnemyCoroutine()
     {
-        yield return new WaitForSeconds(HitDelay);
+        float AnimationDuration = 0.41f;
+        yield return new WaitForSeconds(AnimationDuration);
         AnimationController.SetIsNotStriking();
-        Debug.Log("Strike!");
+        yield return new WaitForSeconds(HitDelay - AnimationDuration);
+       //Debug.Log("Strike!");
 
         var enemyCollider = Colliders.FirstOrDefault(c => c.gameObject.tag == "Enemy");
         if (enemyCollider != null)
