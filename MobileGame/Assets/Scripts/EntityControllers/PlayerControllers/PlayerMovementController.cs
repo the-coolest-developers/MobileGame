@@ -35,7 +35,7 @@ public class PlayerMovementController : MonoBehaviour
             Destroy(PlayerObject);
         }
 
-        if (SpeedX != 0 & IsOnTheGround & !BattleController.IsFighting)
+        if (SpeedX != 0 & IsOnTheGround & BattleController.CanStrike)
         {
             PlayerRb.MovePosition(PlayerRb.position + Vector2.right * SpeedX * Time.deltaTime);
             AnimationController.SetIsRunning();

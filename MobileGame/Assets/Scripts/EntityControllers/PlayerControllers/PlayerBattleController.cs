@@ -14,9 +14,10 @@ public class PlayerBattleController : MonoBehaviour
     public int Damage;
     public double Health;
     public float HitDelay;
+    public float StrikePeriod;
 
     //Всякие boolean-ы
-    public bool IsFighting { get; private set; }
+    public bool CanStrike { get; private set; }
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class PlayerBattleController : MonoBehaviour
         MovementController = GetComponent<PlayerMovementController>();
         AnimationController = GetComponent<PlayerAnimationController>();
 
-        IsFighting = false;
+        CanStrike = true;
     }
     void Update()
     {
@@ -33,14 +34,12 @@ public class PlayerBattleController : MonoBehaviour
 
     public void Strike()
     {
-        //Debug.Log(IsFighting);
-        if (!IsFighting)
+        if (CanStrike)
         {
-            IsFighting = true;
+            StartCoroutine(StrikePeriodCoroutine());
 
             MovementController.StopRunning();
-            //AnimationController.RunFullStrikeAnimation();
-            AnimationController.SetIsStriking();
+            AnimationController.PlayStrikeAnimation();
 
             StartCoroutine(HitEnemyCoroutine());
         }
@@ -48,8 +47,6 @@ public class PlayerBattleController : MonoBehaviour
     IEnumerator HitEnemyCoroutine()
     {
         yield return new WaitForSeconds(HitDelay);
-        AnimationController.SetIsNotStriking();
-        Debug.Log("Strike!");
 
         var enemyCollider = Colliders.FirstOrDefault(c => c.gameObject.tag == "Enemy");
         if (enemyCollider != null)
@@ -57,8 +54,14 @@ public class PlayerBattleController : MonoBehaviour
             var controllerScript = enemyCollider.gameObject.GetComponent<EnemyController>();
             controllerScript.GetDamage(Damage);
         }
+    }
+    IEnumerator StrikePeriodCoroutine()
+    {
+        CanStrike = false;
 
-        IsFighting = false;
+        yield return new WaitForSeconds(StrikePeriod);
+
+        CanStrike = true;
     }
 
     void OnTriggerEnter2D(Collider2D collision) => Colliders.Add(collision);

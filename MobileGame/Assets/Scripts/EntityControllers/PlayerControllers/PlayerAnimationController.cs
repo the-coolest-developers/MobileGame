@@ -20,18 +20,9 @@ public class PlayerAnimationController : MonoBehaviour
     public void SetIsRunning() => PlayerAnimator.SetBool("IsRunning", true);
     public void SetIsNotRunning() => PlayerAnimator.SetBool("IsRunning", false);
 
-    public void RunFullStrikeAnimation()
+    public void PlayStrikeAnimation()
     {
-
-        Task.Run(() =>
-        {
-            Invoke("SetIsStriking", 0);
-            //SetIsStriking();
-            Thread.Sleep(5);
-            SetIsNotStriking();
-        });
+        PlayerAnimator.Play("Fight");
     }
-    public void SetIsStriking() => PlayerAnimator.SetBool("Fight", true);
-    public void SetIsNotStriking() => PlayerAnimator.SetBool("Fight", false);
 
 }
