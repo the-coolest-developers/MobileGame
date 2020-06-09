@@ -17,12 +17,17 @@ public class PlayerAnimationController : MonoBehaviour
     {
     }
 
-    public void SetIsRunning() => PlayerAnimator.SetBool("IsRunning", true);
+    //public void SetIsRunning() => PlayerAnimator.SetBool("IsRunning", true);
+    public void SetIsRunning()
+    {
+        PlayerAnimator.SetBool("IsRunning", true);
+        Debug.Log("IsRunning");
+    }
     public void SetIsNotRunning() => PlayerAnimator.SetBool("IsRunning", false);
 
     public void PlayStrikeAnimation()
     {
-        PlayerAnimator.Play("Fight");
+        PlayerAnimator.Play("Strike");
     }
 
 }

@@ -40,6 +40,7 @@ public class PlayerBattleController : MonoBehaviour
 
             MovementController.StopRunning();
             AnimationController.PlayStrikeAnimation();
+            Debug.Log("Play animation");
 
             StartCoroutine(HitEnemyCoroutine());
         }
@@ -47,7 +48,6 @@ public class PlayerBattleController : MonoBehaviour
     IEnumerator HitEnemyCoroutine()
     {
         yield return new WaitForSeconds(HitDelay);
-
         var enemyCollider = Colliders.FirstOrDefault(c => c.gameObject.tag == "Enemy");
         if (enemyCollider != null)
         {
