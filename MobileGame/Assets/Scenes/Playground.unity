@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ede491bf387c2a478448f84b78d96f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 2000
+  JumpPower: 1500
   RunningSpeed: 25
 --- !u!61 &1871109607
 BoxCollider2D:
