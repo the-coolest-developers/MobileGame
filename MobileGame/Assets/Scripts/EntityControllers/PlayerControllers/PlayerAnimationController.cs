@@ -13,7 +13,7 @@ public class PlayerAnimationController : MonoBehaviour
         PlayerAnimator = GetComponent<Animator>();
     }
 
-    void Update()//Update method(Bogdan's first commit)
+    void Update()
     {
     }
 
