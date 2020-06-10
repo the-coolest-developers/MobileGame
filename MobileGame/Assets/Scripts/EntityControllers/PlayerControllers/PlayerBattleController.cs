@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBattleController : MonoBehaviour
 {
@@ -11,10 +12,46 @@ public class PlayerBattleController : MonoBehaviour
 
     //Те, которые указываются в редакторе Unity
     public GameObject PlayerObject;
+
+    public GameObject HealthBarLine;
+    public GameObject HealthBarTip;
+
+    private Image HealthBarLineImage;
+    private RectTransform HealthBarRect;
+    private RectTransform HealthBarTipRect;
+    private float HealthBarMaxWidth;
+    private float HealthBarTipDefaultX;
+
+    float currentHealth;
+    public float CurrentHealth
+    {
+        get => currentHealth;
+        set
+        {
+            currentHealth = value > MaxHealth ? MaxHealth : value;
+
+            float healthPercent = currentHealth / MaxHealth;
+
+            HealthBarLineImage.fillAmount = healthPercent;
+
+            if (healthPercent > 0)
+            {
+                var tipPosX = healthPercent * HealthBarMaxWidth * 0.795522f;
+                HealthBarTipRect.anchoredPosition = new Vector2(HealthBarTipDefaultX + tipPosX, HealthBarTipRect.anchoredPosition.y);
+            }
+            else
+            {
+                HealthBarTip.SetActive(false);
+            }
+        }
+    }
+    public float MaxHealth;
+
     public int Damage;
-    public double Health;
     public float HitDelay;
     public float StrikePeriod;
+
+    public float testHealth;
 
     //Всякие boolean-ы
     public bool CanStrike { get; private set; }
@@ -26,13 +63,26 @@ public class PlayerBattleController : MonoBehaviour
         AnimationController = GetComponent<PlayerAnimationController>();
 
         CanStrike = true;
+
+
+        HealthBarLineImage = HealthBarLine.GetComponent<Image>();
+
+        HealthBarRect = HealthBarLine.GetComponent<RectTransform>();
+        HealthBarMaxWidth = HealthBarRect.rect.width;
+
+        HealthBarTipRect = HealthBarTip.GetComponent<RectTransform>();
+        HealthBarTipDefaultX = HealthBarTipRect.anchoredPosition.x;
+
+        CurrentHealth = MaxHealth;
     }
     void Update()
     {
-        if (Health <= 0)
+        if (CurrentHealth <= 0)
         {
             Destroy(PlayerObject);
         }
+
+        CurrentHealth = testHealth;
     }
 
     public void Strike()
@@ -50,6 +100,7 @@ public class PlayerBattleController : MonoBehaviour
     IEnumerator HitEnemyCoroutine()
     {
         yield return new WaitForSeconds(HitDelay);
+
         var enemyCollider = Colliders.FirstOrDefault(c => c.gameObject.tag == "Enemy");
         if (enemyCollider != null)
         {
