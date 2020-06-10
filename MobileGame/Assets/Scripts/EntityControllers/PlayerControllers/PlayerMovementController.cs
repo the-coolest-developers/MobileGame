@@ -30,11 +30,6 @@ public class PlayerMovementController : MonoBehaviour
     }
     void Update()
     {
-        if (BattleController.Health <= 0)
-        {
-            Destroy(PlayerObject);
-        }
-
         if (SpeedX != 0 & IsOnTheGround & BattleController.CanStrike)
         {
             PlayerRb.MovePosition(PlayerRb.position + Vector2.right * SpeedX * Time.deltaTime);
