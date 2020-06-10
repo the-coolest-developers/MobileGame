@@ -29,7 +29,10 @@ public class PlayerBattleController : MonoBehaviour
     }
     void Update()
     {
-
+        if (Health <= 0)
+        {
+            Destroy(PlayerObject);
+        }
     }
 
     public void Strike()
@@ -40,7 +43,6 @@ public class PlayerBattleController : MonoBehaviour
 
             MovementController.StopRunning();
             AnimationController.PlayStrikeAnimation();
-            Debug.Log("Play animation");
 
             StartCoroutine(HitEnemyCoroutine());
         }

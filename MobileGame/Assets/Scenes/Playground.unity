@@ -1299,7 +1299,7 @@ MonoBehaviour:
   PlayerObject: {fileID: 1871109601}
   Damage: 5
   Health: 5
-  HitDelay: 0.25
+  HitDelay: 0.35
   StrikePeriod: 0.5
 --- !u!50 &1871109605 stripped
 Rigidbody2D:
