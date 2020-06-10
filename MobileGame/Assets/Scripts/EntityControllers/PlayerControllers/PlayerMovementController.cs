@@ -32,8 +32,8 @@ public class PlayerMovementController : MonoBehaviour
     {
         if (SpeedX != 0 & IsOnTheGround & BattleController.CanStrike)
         {
-            PlayerRb.MovePosition(PlayerRb.position + Vector2.right * SpeedX * Time.deltaTime);
-            AnimationController.SetIsRunning();
+            PlayerRb.MovePosition(PlayerRb.position + Vector2.right * SpeedX /* Time.deltaTime*/);
+            AnimationController.SetIsRunning();//make speed 0.25 for normal running speed
         }
     }
 
