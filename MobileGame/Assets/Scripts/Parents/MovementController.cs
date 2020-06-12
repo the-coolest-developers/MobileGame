@@ -11,21 +11,20 @@ namespace Parents
         public float RunningSpeed;
 
         //Внутренние переменные
-        protected Rigidbody2D rigidbody;
+        protected Rigidbody2D rigidbody2d;
         public AnimationController AnimationController { get; set; }
-        protected BattleController BattleController { get; set; }
+        public BattleController BattleController { get; set; }
         protected float SpeedX { get; set; } = 0;
         protected bool FaceRight { get; set; }
 
         protected void Flip()
         {
             FaceRight = !FaceRight;
-            rigidbody.transform.Rotate(0f, 180f, 0f);
+            rigidbody2d.transform.Rotate(0f, 180f, 0f);
         }
 
         public void RunRight()
         {
-            AnimationController.SetIsRunning();
             if (!FaceRight)
             {
                 Flip();
@@ -34,7 +33,6 @@ namespace Parents
         }
         public void RunLeft()
         {
-            AnimationController.SetIsRunning();
             if (FaceRight)
             {   
                 Flip();
@@ -43,7 +41,6 @@ namespace Parents
         }
         public void StopRunning()
         {
-            AnimationController.SetIsNotRunning();
             SpeedX = 0;
         }
     }

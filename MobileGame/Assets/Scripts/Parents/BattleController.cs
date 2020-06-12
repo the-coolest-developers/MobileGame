@@ -7,13 +7,12 @@ namespace Parents
     public class BattleController : MonoBehaviour
     {
         //Переменные из Editor
-        public int MaxHealth = 10;
+        public int MaxHealth;
         public int Damage;
         public float HitDelay;
-    
-        //Всякие boolean-ы
         public float StrikePeriod;
-
+        public GameObject ThisObject;
+        //Всякие boolean-ы
         public bool CanStrike ;//{ get; private set; }
     
         protected float currentHealth;
@@ -25,6 +24,7 @@ namespace Parents
         public void SetHealth(float value) => currentHealth = value > MaxHealth ? MaxHealth : value;
 
         public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
+        
         
     }
 

@@ -290,6 +290,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9221108216692168712, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -345,16 +350,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9221108216692168724, guid: 7d88b84ef08d47d40a78f75204d69800,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9221108216692168724, guid: 7d88b84ef08d47d40a78f75204d69800,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168726, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_Enabled
@@ -365,7 +360,8 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 7d88b84ef08d47d40a78f75204d69800, type: 3}
 --- !u!1 &333083143
 GameObject:
@@ -1213,6 +1209,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101362545}
   m_CullTransparentMesh: 0
+--- !u!1 &1314526952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9221108216692168712, guid: 7d88b84ef08d47d40a78f75204d69800,
+    type: 3}
+  m_PrefabInstance: {fileID: 9221108216238070884}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1445237326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,9 +1324,9 @@ MonoBehaviour:
   MaxHealth: 10
   Damage: 5
   HitDelay: 0.35
-  StrikePeriod: 0.5
+  StrikePeriod: 6
+  ThisObject: {fileID: 1871109601}
   CanStrike: 0
-  PlayerObject: {fileID: 1871109601}
   HealthBarLine: {fileID: 333083143}
   HealthBarTip: {fileID: 1445237326}
   testHealth: 10
@@ -1794,6 +1796,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: Damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: HitDelay
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: CanStrike
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: ThisObject
+      value: 
+      objectReference: {fileID: 1314526952}
     - target: {fileID: 1898279740093995177, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: PlayerRb
@@ -1804,6 +1826,16 @@ PrefabInstance:
       propertyPath: SwordPoint
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1898279740093995177, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: PlayerRB
+      value: 
+      objectReference: {fileID: 1871109605}
     - target: {fileID: 9221108216692168712, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_Name
@@ -1812,7 +1844,7 @@ PrefabInstance:
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -397.43
+      value: -411.27
       objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
@@ -1864,16 +1896,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9221108216692168724, guid: 7d88b84ef08d47d40a78f75204d69800,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9221108216692168724, guid: 7d88b84ef08d47d40a78f75204d69800,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168726, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_Enabled
@@ -1884,5 +1906,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1898279740093995177, guid: 7d88b84ef08d47d40a78f75204d69800, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7d88b84ef08d47d40a78f75204d69800, type: 3}

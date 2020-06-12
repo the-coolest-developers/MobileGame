@@ -12,19 +12,20 @@ public class PlayerMovementController : MovementController
 
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
         AnimationController = GetComponent<PlayerAnimationController>();
         BattleController = GetComponent<PlayerBattleController>();
 
         FaceRight = true;
         IsOnTheGround = true;
     }
-    void Update()
+    void FixedUpdate()
     {
         if (SpeedX != 0 & IsOnTheGround & BattleController.CanStrike)
         {
-            rigidbody.MovePosition(rigidbody.position + Vector2.right * SpeedX /* Time.deltaTime*/);
-            AnimationController.SetIsRunning();//make speed 0.25 for normal running speed
+            Debug.Log("logs");
+            rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
+            AnimationController.SetIsRunning();
         }
     }
 
@@ -32,7 +33,7 @@ public class PlayerMovementController : MovementController
     {
         if (IsOnTheGround)
         {
-            rigidbody.AddForce(Vector2.up * JumpPower);
+            rigidbody2d.AddForce(Vector2.up * JumpPower);
             IsOnTheGround = false;
         }
     }

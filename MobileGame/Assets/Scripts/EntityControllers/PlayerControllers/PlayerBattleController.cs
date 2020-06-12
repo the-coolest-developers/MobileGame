@@ -11,7 +11,7 @@ public class PlayerBattleController :  BattleController
     
 
     //Те, которые указываются в редакторе Unity
-    public GameObject PlayerObject;
+    
     public GameObject HealthBarLine;
     public GameObject HealthBarTip;
     public float testHealth;
@@ -47,7 +47,7 @@ public class PlayerBattleController :  BattleController
     {
         if (CurrentHealth <= 0)
         {
-            Destroy(PlayerObject);
+            Destroy(ThisObject);
         }
 
         SetHealth(testHealth);
@@ -91,7 +91,7 @@ public class PlayerBattleController :  BattleController
         var enemyCollider = Colliders.FirstOrDefault(c => c.gameObject.tag == "Enemy");
         if (enemyCollider != null)
         {
-            var controllerScript = enemyCollider.gameObject.GetComponent<EnemyController>();
+            var controllerScript = enemyCollider.gameObject.GetComponent<EnemyBattleController>();
             controllerScript.GetDamage(Damage);
         }
     }

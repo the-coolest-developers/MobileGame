@@ -1,27 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Parents;
 using UnityEngine;
 
-public class EnemyBattleController : MonoBehaviour
+public class EnemyBattleController : BattleController
 {
     //Те, что указываются в Editor'е
-    GameObject Enemy;
-    public float HP;
+    public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
+        
+        SetHealth(MaxHealth);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (HP <= 0)
+        if(CurrentHealth <= 0)
         {
-            Destroy(Enemy);
+            Destroy(ThisObject);
         }
-    }
-    public void GetDamage(float damage)
-    {
-        HP -= damage;
     }
 }
