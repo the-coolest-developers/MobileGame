@@ -19,8 +19,8 @@ namespace Parents
         protected float currentHealth;
         public float CurrentHealth => currentHealth;
         //Внитренние переменные
-        public PlayerMovementController MovementController { get; set; }
-        public PlayerAnimationController AnimationController { get; set; }
+        public MovementController MovementController { get; set; }
+        public AnimationController AnimationController { get; set; }
 
         public void SetHealth(float value) => currentHealth = value > MaxHealth ? MaxHealth : value;
 

@@ -8,6 +8,7 @@ public class PlayerMovementController : MovementController
     //Из Unity едитора
     public GameObject PlayerObject { get; set; }
     public bool IsOnTheGround { get; set; }
+    
 
     void Start()
     {
@@ -27,35 +28,6 @@ public class PlayerMovementController : MovementController
         }
     }
 
-    public void StopRunning()
-    {
-        AnimationController.SetIsNotRunning();
-        SpeedX = 0;
-    }
-
-    void Flip()
-    {
-        FaceRight = !FaceRight;
-        rigidbody.transform.Rotate(0f, 180f, 0f);
-    }
-    public void RunRight()
-    {
-        AnimationController.SetIsRunning();
-        if (!FaceRight)
-        {
-            Flip();
-        }
-        SpeedX = RunningSpeed;
-    }
-    public void RunLeft()
-    {
-        AnimationController.SetIsRunning();
-        if (FaceRight)
-        {
-            Flip();
-        }
-        SpeedX = -RunningSpeed;
-    }
     public void Jump()
     {
         if (IsOnTheGround)

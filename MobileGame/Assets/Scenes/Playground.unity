@@ -1305,6 +1305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e17eb274f8e1c546bd7ee0997a3ce67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StrikeBoolName: IsRunning
+  RunningBoolName: Strike
 --- !u!114 &1871109604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1317,13 +1319,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc64632300b45349887e9e3ffbe9059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 10
+  Damage: 5
+  HitDelay: 0.35
+  StrikePeriod: 0.5
+  CanStrike: 0
   PlayerObject: {fileID: 1871109601}
   HealthBarLine: {fileID: 333083143}
   HealthBarTip: {fileID: 1445237326}
-  MaxHealth: 10
-  Damage: 5
-  HitDelay: 0.3
-  StrikePeriod: 0.5
   testHealth: 10
 --- !u!50 &1871109605 stripped
 Rigidbody2D:
@@ -1864,12 +1867,12 @@ PrefabInstance:
     - target: {fileID: 9221108216692168724, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168724, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168726, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
