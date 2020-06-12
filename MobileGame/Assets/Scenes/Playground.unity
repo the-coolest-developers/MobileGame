@@ -1322,7 +1322,7 @@ MonoBehaviour:
   HealthBarTip: {fileID: 1445237326}
   MaxHealth: 10
   Damage: 5
-  HitDelay: 0.25
+  HitDelay: 0.3
   StrikePeriod: 0.5
   testHealth: 10
 --- !u!50 &1871109605 stripped
@@ -1344,7 +1344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpPower: 2000
-  RunningSpeed: 25
+  RunningSpeed: 0.1
 --- !u!61 &1871109607
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1358,11 +1358,11 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.18, y: -0.165}
+  m_Offset: {x: 0.18, y: -0.24}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1683,12 +1683,12 @@ PrefabInstance:
     - target: {fileID: 5067891295270794273, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -400.31
+      value: -401.426
       objectReference: {fileID: 0}
     - target: {fileID: 5067891295270794273, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.17
+      value: 0.565
       objectReference: {fileID: 0}
     - target: {fileID: 5067891295270794273, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
@@ -1735,11 +1735,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5067891295270794275, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067891295270794275, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067891295270794275, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.179
+      objectReference: {fileID: 0}
     - target: {fileID: 5067891295270794276, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5067891295270794278, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bb59cb1dd0b88204682c64847f9bd49d,
+        type: 3}
     - target: {fileID: 5067891295270794279, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: Damage
