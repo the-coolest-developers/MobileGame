@@ -3,37 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Parents;
 
-public class PlayerBattleController : MonoBehaviour
+public class PlayerBattleController :  BattleController
 {
     List<Collider2D> Colliders { get; set; }
-    PlayerMovementController MovementController { get; set; }
-    PlayerAnimationController AnimationController { get; set; }
+    
 
     //Те, которые указываются в редакторе Unity
     public GameObject PlayerObject;
-
     public GameObject HealthBarLine;
     public GameObject HealthBarTip;
+    public float testHealth;
 
+    //Внутренние переменные
     private Image HealthBarLineImage;
     private RectTransform HealthBarRect;
     private RectTransform HealthBarTipRect;
     private float HealthBarMaxWidth;
     private float HealthBarTipDefaultX;
-
-    float currentHealth;
-    public float CurrentHealth => currentHealth;
-
-    public float MaxHealth;
-    public int Damage;
-    public float HitDelay;
-    public float StrikePeriod;
-
-    public float testHealth;
-
-    //Всякие boolean-ы
-    public bool CanStrike { get; private set; }
+    
 
     void Start()
     {
@@ -42,7 +31,6 @@ public class PlayerBattleController : MonoBehaviour
         AnimationController = GetComponent<PlayerAnimationController>();
 
         CanStrike = true;
-
 
         HealthBarLineImage = HealthBarLine.GetComponent<Image>();
 
@@ -64,6 +52,10 @@ public class PlayerBattleController : MonoBehaviour
         SetHealth(testHealth);
     }
 
+    public void GetDamage(float damageAmount)
+    {
+        SetHealth(CurrentHealth - damageAmount);
+    }
     void SetHealth(float value)
     {
         currentHealth = value > MaxHealth ? MaxHealth : value;
@@ -82,11 +74,6 @@ public class PlayerBattleController : MonoBehaviour
             HealthBarTip.SetActive(false);
         }
     }
-    public void GetDamage(float damageAmount)
-    {
-        SetHealth(CurrentHealth - damageAmount);
-    }
-
     public void Strike()
     {
         if (CanStrike)
