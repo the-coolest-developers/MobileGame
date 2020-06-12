@@ -13,8 +13,8 @@ namespace Parents
         public float StrikePeriod;
         public GameObject ThisObject;
         //Всякие boolean-ы
-        public bool CanStrike ;//{ get; private set; }
-    
+        public bool CanStrike;//{ get; private set; }
+
         protected float currentHealth;
         public float CurrentHealth => currentHealth;
         //Внитренние переменные
@@ -24,8 +24,6 @@ namespace Parents
         public void SetHealth(float value) => currentHealth = value > MaxHealth ? MaxHealth : value;
 
         public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
-        
-        
     }
 
 }

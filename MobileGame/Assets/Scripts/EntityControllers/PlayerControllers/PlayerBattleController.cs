@@ -5,13 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using Parents;
 
-public class PlayerBattleController :  BattleController
+public class PlayerBattleController : BattleController
 {
     List<Collider2D> Colliders { get; set; }
-    
 
     //Те, которые указываются в редакторе Unity
-    
+
     public GameObject HealthBarLine;
     public GameObject HealthBarTip;
     public float testHealth;
@@ -22,7 +21,7 @@ public class PlayerBattleController :  BattleController
     private RectTransform HealthBarTipRect;
     private float HealthBarMaxWidth;
     private float HealthBarTipDefaultX;
-    
+
 
     void Start()
     {
@@ -54,8 +53,8 @@ public class PlayerBattleController :  BattleController
         HealthBarLineChanging();
     }
 
-    
-    
+
+
     void HealthBarLineChanging()
     {
         float healthPercent = currentHealth / MaxHealth;

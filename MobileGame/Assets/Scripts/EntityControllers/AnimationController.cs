@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {   //Внутренние переменные
-    
-    protected Animator PlayerAnimator { get; set; }
-    
+
+    protected Animator EntityAnimator { get; set; }
+
     //Внешние переменные
-    
+
     public string StrikeBoolName;
 
     public string RunningBoolName;
@@ -17,13 +17,11 @@ public class AnimationController : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-        PlayerAnimator = GetComponent<Animator>();
+        EntityAnimator = GetComponent<Animator>();
     }
     // Update is called once per frame
-    public void SetIsRunning() => PlayerAnimator.SetBool(StrikeBoolName, true);
-    
-    public void SetIsNotRunning() => PlayerAnimator.SetBool(StrikeBoolName, false);
+    public void SetIsRunning() => EntityAnimator.SetBool(StrikeBoolName, true);
+    public void SetIsNotRunning() => EntityAnimator.SetBool(StrikeBoolName, false);
+    public void PlayStrikeAnimation() => EntityAnimator.Play(RunningBoolName);
 
-    public void PlayStrikeAnimation() => PlayerAnimator.Play(RunningBoolName);
-    
 }
