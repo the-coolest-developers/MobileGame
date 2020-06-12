@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     //Те, которые указываются в редакторе Unity
-    public Rigidbody2D PlayerRb;
+    public Rigidbody2D rigidbody;
     public GameObject Enemy;
     public float HP;
     public float Speed;
