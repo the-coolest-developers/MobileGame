@@ -41,6 +41,7 @@ public class PlayerBattleController :  BattleController
         HealthBarTipDefaultX = HealthBarTipRect.anchoredPosition.x;
 
         SetHealth(MaxHealth);
+        HealthBarLineChanging();
     }
     void Update()
     {
@@ -50,16 +51,13 @@ public class PlayerBattleController :  BattleController
         }
 
         SetHealth(testHealth);
+        HealthBarLineChanging();
     }
 
-    public void GetDamage(float damageAmount)
+    
+    
+    void HealthBarLineChanging()
     {
-        SetHealth(CurrentHealth - damageAmount);
-    }
-    void SetHealth(float value)
-    {
-        currentHealth = value > MaxHealth ? MaxHealth : value;
-
         float healthPercent = currentHealth / MaxHealth;
 
         HealthBarLineImage.fillAmount = healthPercent;
