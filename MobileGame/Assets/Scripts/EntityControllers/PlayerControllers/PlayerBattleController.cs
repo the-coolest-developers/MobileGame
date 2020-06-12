@@ -23,30 +23,9 @@ public class PlayerBattleController : MonoBehaviour
     private float HealthBarTipDefaultX;
 
     float currentHealth;
-    public float CurrentHealth
-    {
-        get => currentHealth;
-        set
-        {
-            currentHealth = value > MaxHealth ? MaxHealth : value;
+    public float CurrentHealth => currentHealth;
 
-            float healthPercent = currentHealth / MaxHealth;
-
-            HealthBarLineImage.fillAmount = healthPercent;
-
-            if (healthPercent > 0)
-            {
-                var tipPosX = healthPercent * HealthBarMaxWidth * 0.795522f;
-                HealthBarTipRect.anchoredPosition = new Vector2(HealthBarTipDefaultX + tipPosX, HealthBarTipRect.anchoredPosition.y);
-            }
-            else
-            {
-                HealthBarTip.SetActive(false);
-            }
-        }
-    }
     public float MaxHealth;
-
     public int Damage;
     public float HitDelay;
     public float StrikePeriod;
@@ -73,7 +52,7 @@ public class PlayerBattleController : MonoBehaviour
         HealthBarTipRect = HealthBarTip.GetComponent<RectTransform>();
         HealthBarTipDefaultX = HealthBarTipRect.anchoredPosition.x;
 
-        CurrentHealth = MaxHealth;
+        SetHealth(MaxHealth);
     }
     void Update()
     {
@@ -82,7 +61,30 @@ public class PlayerBattleController : MonoBehaviour
             Destroy(PlayerObject);
         }
 
-        CurrentHealth = testHealth;
+        SetHealth(testHealth);
+    }
+
+    void SetHealth(float value)
+    {
+        currentHealth = value > MaxHealth ? MaxHealth : value;
+
+        float healthPercent = currentHealth / MaxHealth;
+
+        HealthBarLineImage.fillAmount = healthPercent;
+
+        if (healthPercent > 0)
+        {
+            var tipPosX = healthPercent * HealthBarMaxWidth * 0.795522f;
+            HealthBarTipRect.anchoredPosition = new Vector2(HealthBarTipDefaultX + tipPosX, HealthBarTipRect.anchoredPosition.y);
+        }
+        else
+        {
+            HealthBarTip.SetActive(false);
+        }
+    }
+    public void GetDamage(float damageAmount)
+    {
+        SetHealth(CurrentHealth - damageAmount);
     }
 
     public void Strike()

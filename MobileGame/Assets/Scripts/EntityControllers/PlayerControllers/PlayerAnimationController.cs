@@ -17,7 +17,6 @@ public class PlayerAnimationController : MonoBehaviour
     {
     }
 
-    //public void SetIsRunning() => PlayerAnimator.SetBool("IsRunning", true);
     public void SetIsRunning()
     {
         PlayerAnimator.SetBool("IsRunning", true);
