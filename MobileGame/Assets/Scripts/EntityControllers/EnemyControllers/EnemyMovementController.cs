@@ -7,24 +7,26 @@ using UnityEngine;
 public class EnemyMovementController : MovementController
 {
     //Переменные из Unity Editor
-    public Rigidbody2D PlayerRB;
+    public GameObject Player;
     public int MinDistance;
-    public int StrikeMinimalDistance;
+    public int StrikeDistance;
+
     //Внутренние переменные
-    private bool SawThePlayer = false;
+    Rigidbody2D PlayerRb;
     double RoundedDistance;
     delegate void CurrentMovemingState();
     public delegate void CurrentSeacrchingState();
     CurrentMovemingState currentMovemingState;
     public CurrentSeacrchingState currentSeacrchingState;
-    EnemyBattleController battleController { get; set; }
+    EnemyBattleController enemybattleController { get; set; }
     
     // Start is called before the first frame update
     void Start()
     {
-        battleController = GetComponent<EnemyBattleController>();
+        enemybattleController = GetComponent<EnemyBattleController>();
 
         rigidbody2d = GetComponent<Rigidbody2D>();
+        PlayerRb = Player.GetComponent<Rigidbody2D>();
 
         currentMovemingState = Idle;
         currentSeacrchingState = SearchThePlayer;
@@ -33,6 +35,8 @@ public class EnemyMovementController : MovementController
     // Update is called once per frame
     void FixedUpdate()
     {
+        float FullDistance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
+        RoundedDistance = Math.Round(FullDistance);
         currentSeacrchingState();
         currentMovemingState();
     }
@@ -40,29 +44,26 @@ public class EnemyMovementController : MovementController
     
     public void SearchThePlayer()
     {
-        float FullDistance = rigidbody2d.transform.position.x - PlayerRB.transform.position.x;
-        RoundedDistance = Math.Round(FullDistance);
-        if(RoundedDistance > MinDistance | -RoundedDistance < MinDistance)
+        if(RoundedDistance >= MinDistance | -RoundedDistance <= MinDistance)
         {
-            SawThePlayer = false;
             currentMovemingState = RunToPlayer;
+            currentSeacrchingState = Idle;
         }
     }
     void RunToPlayer()
     {
-        if(RoundedDistance > StrikeMinimalDistance)
+        if(RoundedDistance >= StrikeDistance)
         {
             RunLeft();
         }
-        else if(RoundedDistance < -StrikeMinimalDistance)
+        else if(RoundedDistance <= -StrikeDistance)
         {
             RunRight();
         }
         else
         {
-            //currentMovemingState = battleController.Strike;
+            enemybattleController.Strike(Player);
         }
-        
         rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
     }
 }

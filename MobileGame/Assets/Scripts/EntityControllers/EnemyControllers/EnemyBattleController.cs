@@ -21,18 +21,5 @@ public class EnemyBattleController : BattleController
         {
             Destroy(ThisObject);
         }
-        
     }
-  /*public void Strike()
-    {
-        if(Player != null)
-        {
-            PlayerBattleController battleController = Player.GetComponent<PlayerBattleController>();
-            battleController.GetDamage(Damage);
-        }
-        else
-        {
-            enemyMovementController.currentSeacrchingState = Idle;
-        }
-    }*/
 }

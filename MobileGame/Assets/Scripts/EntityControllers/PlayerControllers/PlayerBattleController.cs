@@ -26,8 +26,8 @@ public class PlayerBattleController : BattleController
     void Start()
     {
         Colliders = new List<Collider2D>();
-        MovementController = GetComponent<PlayerMovementController>();
-        AnimationController = GetComponent<PlayerAnimationController>();
+        movementController = GetComponent<PlayerMovementController>();
+        animationController = GetComponent<PlayerAnimationController>();
 
         CanStrike = true;
 
@@ -44,12 +44,13 @@ public class PlayerBattleController : BattleController
     }
     void Update()
     {
+        Debug.Log(currentHealth);
         if (CurrentHealth <= 0)
         {
             Destroy(ThisObject);
         }
 
-        SetHealth(testHealth);
+        //fSetHealth(testHealth);
         HealthBarLineChanging();
     }
 
@@ -77,21 +78,21 @@ public class PlayerBattleController : BattleController
         {
             StartCoroutine(StrikePeriodCoroutine());
 
-            MovementController.StopRunning();
-            AnimationController.PlayStrikeAnimation();
+            movementController.StopRunning();
+            animationController.PlayStrikeAnimation();
 
             StartCoroutine(HitEnemyCoroutine());
         }
     }
 
-    IEnumerator HitEnemyCoroutine()
+    new IEnumerator HitEnemyCoroutine()
     {
         yield return new WaitForSeconds(HitDelay);
 
         var enemyCollider = Colliders.FirstOrDefault(c => c.gameObject.tag == "Enemy");
         if (enemyCollider != null)
         {
-            var controllerScript = enemyCollider.gameObject.GetComponent<EnemyBattleController>();
+            var controllerScript = enemyCollider.gameObject.GetComponent<BattleController>();
             controllerScript.GetDamage(Damage);
         }
     }

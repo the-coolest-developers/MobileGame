@@ -18,8 +18,8 @@ namespace Parents
         protected float currentHealth;
         public float CurrentHealth => currentHealth;
         //Внитренние переменные
-        public MovementController MovementController { get; set; }
-        public AnimationController AnimationController { get; set; }
+        public MovementController movementController { get; set; }
+        public AnimationController animationController { get; set; }
 
         public void SetHealth(float value) => currentHealth = value > MaxHealth ? MaxHealth : value;
 
@@ -32,6 +32,27 @@ namespace Parents
             yield return new WaitForSeconds(StrikePeriod);
 
             CanStrike = true;
+        }
+
+        public void Strike(GameObject enemy)
+        {
+            if(CanStrike)
+            {
+                StartCoroutine(StrikePeriodCoroutine());
+                
+               // movementController.StopRunning();
+               // animationController.PlayStrikeAnimation();
+
+                StartCoroutine(HitEnemyCouritine(enemy));
+            }
+        }
+        
+        IEnumerator HitEnemyCouritine(GameObject enemy)
+        {
+            yield return new WaitForSeconds(HitDelay);
+
+            var enemyBattleController = enemy.GetComponent<BattleController>();
+            enemyBattleController.GetDamage(Damage);
         }
     }
 }
