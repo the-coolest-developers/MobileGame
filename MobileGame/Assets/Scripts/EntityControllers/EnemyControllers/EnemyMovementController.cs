@@ -8,8 +8,8 @@ public class EnemyMovementController : MovementController
 {
     //Переменные из Unity Editor
     public GameObject Player;
-    public int MinDistance;
-    public int StrikeDistance;
+    public float MinDistance;
+    public float StrikeDistance;
 
     //Внутренние переменные
     Rigidbody2D PlayerRb;

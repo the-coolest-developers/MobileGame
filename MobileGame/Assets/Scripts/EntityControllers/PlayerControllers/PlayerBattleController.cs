@@ -50,7 +50,7 @@ public class PlayerBattleController : BattleController
             Destroy(ThisObject);
         }
 
-        SetHealth(testHealth);
+        //SetHealth(testHealth);
         HealthBarLineChanging();
     }
 
