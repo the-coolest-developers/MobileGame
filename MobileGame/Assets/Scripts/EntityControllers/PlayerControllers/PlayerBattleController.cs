@@ -97,6 +97,6 @@ public class PlayerBattleController : BattleController
         }
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision) => Colliders.Add(collision);
     protected void OnTriggerExit2D(Collider2D collision) => Colliders.Remove(collision);
+    protected void OnTriggerEnter2D(Collider2D collision) => Colliders.Add(collision);
 }
