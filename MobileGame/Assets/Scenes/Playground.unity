@@ -472,6 +472,11 @@ PrefabInstance:
       propertyPath: ThisObject
       value: 
       objectReference: {fileID: 617845046}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1871109601}
     - target: {fileID: 1898279740093995177, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: PlayerRb
@@ -492,10 +497,30 @@ PrefabInstance:
       propertyPath: PlayerRB
       value: 
       objectReference: {fileID: 1871109605}
+    - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: MinDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: StrikeMinimalDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: RunningSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168712, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221108216692168712, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
@@ -935,7 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 3
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -950,10 +975,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!1 &854746213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,12 +1081,34 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1871109603}
+          m_MethodName: SetIsRunning
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 3
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1871109606}
           m_MethodName: StopRunning
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1871109603}
+          m_MethodName: SetIsNotRunning
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1338,8 +1381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e17eb274f8e1c546bd7ee0997a3ce67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StrikeBoolName: IsRunning
-  RunningBoolName: Strike
+  StrikeBoolName: Strike
+  RunningBoolName: IsRunning
 --- !u!114 &1871109604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1355,7 +1398,7 @@ MonoBehaviour:
   MaxHealth: 10
   Damage: 5
   HitDelay: 0.35
-  StrikePeriod: 6
+  StrikePeriod: 1
   ThisObject: {fileID: 1871109601}
   CanStrike: 0
   HealthBarLine: {fileID: 333083143}
@@ -1379,7 +1422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ede491bf387c2a478448f84b78d96f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 2000
+  JumpPower: 1500
   RunningSpeed: 0.1
 --- !u!61 &1871109607
 BoxCollider2D:
@@ -1620,12 +1663,34 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1871109603}
+          m_MethodName: SetIsRunning
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 3
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1871109606}
           m_MethodName: StopRunning
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1871109603}
+          m_MethodName: SetIsNotRunning
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1847,6 +1912,11 @@ PrefabInstance:
       propertyPath: ThisObject
       value: 
       objectReference: {fileID: 1314526952}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1871109601}
     - target: {fileID: 1898279740093995177, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: PlayerRb
@@ -1867,15 +1937,35 @@ PrefabInstance:
       propertyPath: PlayerRB
       value: 
       objectReference: {fileID: 1871109605}
+    - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: RunningSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: MinDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: StrikeMinimalDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168712, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 9221108216692168712, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -411.27
+      value: -405.8
       objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}

@@ -13,7 +13,7 @@ namespace Parents
         public float StrikePeriod;
         public GameObject ThisObject;
         //Всякие boolean-ы
-        public bool CanStrike;//{ get; private set; }
+        public bool CanStrike;
 
         protected float currentHealth;
         public float CurrentHealth => currentHealth;
@@ -24,6 +24,14 @@ namespace Parents
         public void SetHealth(float value) => currentHealth = value > MaxHealth ? MaxHealth : value;
 
         public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
-    }
+    
+        protected IEnumerator StrikePeriodCoroutine()
+        {
+            CanStrike = false;
 
+            yield return new WaitForSeconds(StrikePeriod);
+
+            CanStrike = true;
+        }
+    }
 }

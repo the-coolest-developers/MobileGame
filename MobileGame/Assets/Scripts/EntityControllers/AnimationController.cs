@@ -20,8 +20,8 @@ public class AnimationController : MonoBehaviour
         EntityAnimator = GetComponent<Animator>();
     }
     // Update is called once per frame
-    public void SetIsRunning() => EntityAnimator.SetBool(StrikeBoolName, true);
-    public void SetIsNotRunning() => EntityAnimator.SetBool(StrikeBoolName, false);
-    public void PlayStrikeAnimation() => EntityAnimator.Play(RunningBoolName);
+    public void SetIsRunning() => EntityAnimator.SetBool(RunningBoolName, true);
+    public void SetIsNotRunning() => EntityAnimator.SetBool(RunningBoolName, false);
+    public void PlayStrikeAnimation() => EntityAnimator.Play(StrikeBoolName);
 
 }

@@ -71,7 +71,7 @@ public class PlayerBattleController : BattleController
             HealthBarTip.SetActive(false);
         }
     }
-    public void Strike()
+    public new void Strike()
     {
         if (CanStrike)
         {
@@ -83,6 +83,7 @@ public class PlayerBattleController : BattleController
             StartCoroutine(HitEnemyCoroutine());
         }
     }
+
     IEnumerator HitEnemyCoroutine()
     {
         yield return new WaitForSeconds(HitDelay);
@@ -93,14 +94,6 @@ public class PlayerBattleController : BattleController
             var controllerScript = enemyCollider.gameObject.GetComponent<EnemyBattleController>();
             controllerScript.GetDamage(Damage);
         }
-    }
-    IEnumerator StrikePeriodCoroutine()
-    {
-        CanStrike = false;
-
-        yield return new WaitForSeconds(StrikePeriod);
-
-        CanStrike = true;
     }
 
     protected void OnTriggerEnter2D(Collider2D collision) => Colliders.Add(collision);

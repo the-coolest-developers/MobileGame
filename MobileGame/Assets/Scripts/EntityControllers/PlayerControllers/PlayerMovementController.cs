@@ -14,16 +14,15 @@ public class PlayerMovementController : MovementController
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         AnimationController = GetComponent<PlayerAnimationController>();
-        BattleController = GetComponent<PlayerBattleController>();
+        battleController = GetComponent<PlayerBattleController>();
 
         FaceRight = true;
         IsOnTheGround = true;
     }
     void FixedUpdate()
     {
-        if (SpeedX != 0 & IsOnTheGround & BattleController.CanStrike)
+        if (SpeedX != 0 & IsOnTheGround & battleController.CanStrike)
         {
-            Debug.Log("logs");
             rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
             AnimationController.SetIsRunning();
         }
