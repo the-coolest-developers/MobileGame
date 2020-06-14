@@ -50,11 +50,11 @@ public class EnemyMovementController : MovementController
     {
         if (distance > 0)
         {
-            RunLeft();
+            TurnLeft();
         }
         else
         {
-            RunRight();
+            TurnRight();
         }
 
         rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
