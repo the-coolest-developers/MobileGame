@@ -40,8 +40,7 @@ namespace Parents
             {
                 StartCoroutine(StrikePeriodCoroutine());
                 
-               // movementController.StopRunning();
-               // animationController.PlayStrikeAnimation();
+                //Animation part
 
                 StartCoroutine(HitEnemyCouritine(enemy));
             }
@@ -51,8 +50,12 @@ namespace Parents
         {
             yield return new WaitForSeconds(HitDelay);
 
-            var enemyBattleController = enemy.GetComponent<BattleController>();
-            enemyBattleController.GetDamage(Damage);
+            if(enemy != null)
+            {
+                var enemyBattleController = enemy.GetComponent<BattleController>();
+                enemyBattleController.GetDamage(Damage);
+            }
+            
         }
     }
 }

@@ -35,8 +35,6 @@ public class EnemyMovementController : MovementController
     // Update is called once per frame
     void FixedUpdate()
     {
-        float FullDistance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
-        RoundedDistance = Math.Round(FullDistance);
         currentSeacrchingState();
         currentMovemingState();
     }
@@ -44,11 +42,22 @@ public class EnemyMovementController : MovementController
     
     public void SearchThePlayer()
     {
-        if(RoundedDistance >= MinDistance | -RoundedDistance <= MinDistance)
+        if(Player != null)
         {
-            currentMovemingState = RunToPlayer;
-            currentSeacrchingState = Idle;
+            float FullDistance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
+            RoundedDistance = Math.Round(FullDistance);
+            if(RoundedDistance >= MinDistance | -RoundedDistance <= MinDistance)
+            {
+                currentMovemingState = RunToPlayer;
+            }
         }
+        else
+        {
+            currentSeacrchingState = Idle;
+            currentMovemingState = Idle;
+            
+        }
+        
     }
     void RunToPlayer()
     {
