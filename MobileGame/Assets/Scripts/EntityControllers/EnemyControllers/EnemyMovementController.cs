@@ -7,28 +7,20 @@ using Unity.Mathematics;
 
 public class EnemyMovementController : MovementController
 {
-    EnemyBattleController enemybattleController { get; set; }
+    public override BattleController battleController { get; set; }
+    public override AnimationController animationController { get; set; }
 
     //Переменные из Unity Editor
-    public GameObject Player;
+    
     public float MinDistance;
     public float StrikeDistance;
-
+    
     //Внутренние переменные
-    Rigidbody2D PlayerRb;
     double distance;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        enemybattleController = GetComponent<EnemyBattleController>();
-
-        rigidbody2d = GetComponent<Rigidbody2D>();
-        PlayerRb = Player.GetComponent<Rigidbody2D>();
-    }
 
     // Update is called once per frame
-    void FixedUpdate()
+    protected new void FixedUpdate()
     {
         if (Player != null)
         {
@@ -42,7 +34,7 @@ public class EnemyMovementController : MovementController
 
             if (absoluteDistance <= StrikeDistance)
             {
-                enemybattleController.Strike(Player);
+                battleController.Strike(Player);
             }
         }
     }

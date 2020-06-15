@@ -14,12 +14,4 @@ public class EnemyBattleController : BattleController
         enemyMovementController = GetComponent<EnemyMovementController>();
         SetHealth(MaxHealth);
     }
-
-    void Update()
-    {
-        if(CurrentHealth <= 0)
-        {
-            Destroy(ThisObject);
-        }
-    }
 }

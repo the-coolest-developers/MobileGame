@@ -9,30 +9,35 @@ namespace Parents
         //Внешние переменные
         public float JumpPower;
         public float RunningSpeed;
-
+        public bool IsOnTheGround { get; set; }
+        public GameObject Player;
         //Внутренние переменные
         protected Rigidbody2D rigidbody2d;
-
-        public abstract AnimationController AnimationController { get; set; }
+        protected Rigidbody2D PlayerRb;
+        public abstract AnimationController animationController { get; set; }
         public abstract BattleController battleController { get; set; }
 
         protected float SpeedX { get; set; } = 0;
         protected bool FaceRight { get; set; }
-        public bool IsOnTheGround { get; set; }
+        
 
-        private void Start()
+        protected void Start()
         {
+            PlayerRb = Player.GetComponent<Rigidbody2D>();
+
+            battleController = GetComponent<BattleController>();
+            animationController = GetComponent<AnimationController>();
             rigidbody2d = GetComponent<Rigidbody2D>();
 
             FaceRight = true;
             IsOnTheGround = true;
         }
-        private void FixedUpdate()
+        public void FixedUpdate()
         {
             if (SpeedX != 0 & battleController.CanStrike)
             {
                 rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
-                AnimationController.SetIsRunning();
+                animationController.SetIsRunning();
             }
         }
 

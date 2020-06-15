@@ -13,7 +13,6 @@ public class PlayerBattleController : BattleController
 
     public GameObject HealthBarLine;
     public GameObject HealthBarTip;
-    public float testHealth;
 
     //Внутренние переменные
     private Image HealthBarLineImage;
@@ -42,19 +41,11 @@ public class PlayerBattleController : BattleController
         SetHealth(MaxHealth);
         HealthBarLineChanging();
     }
+
     void Update()
     {
-        Debug.Log(currentHealth);
-        if (CurrentHealth <= 0)
-        {
-            Destroy(ThisObject);
-        }
-
-        //SetHealth(testHealth);
         HealthBarLineChanging();
     }
-
-
 
     void HealthBarLineChanging()
     {
@@ -72,7 +63,7 @@ public class PlayerBattleController : BattleController
             HealthBarTip.SetActive(false);
         }
     }
-    public new void Strike()
+    public void Strike()
     {
         if (CanStrike)
         {
@@ -85,7 +76,7 @@ public class PlayerBattleController : BattleController
         }
     }
 
-    new IEnumerator HitEnemyCoroutine()
+    IEnumerator HitEnemyCoroutine()
     {
         yield return new WaitForSeconds(HitDelay);
 

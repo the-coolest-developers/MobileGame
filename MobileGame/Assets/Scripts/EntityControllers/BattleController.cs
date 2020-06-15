@@ -33,6 +33,14 @@ namespace Parents
 
             CanStrike = true;
         }
+        protected void FixedUpdate()
+        {
+            if (CurrentHealth <= 0)
+            {
+                Destroy(ThisObject);
+            }
+            
+        }
 
         public void Strike(GameObject enemy)
         {
