@@ -2,26 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationController : MonoBehaviour
-{   //Внутренние переменные
-
-    protected Animator EntityAnimator { get; set; }
-
-    //Внешние переменные
-
-    public string StrikeBoolName;
-
-    public string RunningBoolName;
-
-
-    // Start is called before the first frame update
-    protected void Start()
+namespace EntityControllers
+{
+    public class AnimationController : MonoBehaviour
     {
-        EntityAnimator = GetComponent<Animator>();
-    }
-    // Update is called once per frame
-    public void SetIsRunning() => EntityAnimator.SetBool(RunningBoolName, true);
-    public void SetIsNotRunning() => EntityAnimator.SetBool(RunningBoolName, false);
-    public void PlayStrikeAnimation() => EntityAnimator.Play(StrikeBoolName);
+        //Внутренние переменные
+        protected Animator EntityAnimator { get; set; }
 
+        //Внешние переменные
+
+        public string StrikeBoolName;
+
+        public string RunningBoolName;
+
+
+        // Start is called before the first frame update
+        protected virtual void Start()
+        {
+            EntityAnimator = GetComponent<Animator>();
+        }
+        // Update is called once per frame
+        public void SetIsRunning()
+        {
+            if (EntityAnimator != null)
+            {
+                EntityAnimator.SetBool(RunningBoolName, true);
+            }
+        }
+        public void SetIsNotRunning()
+        {
+            if (EntityAnimator != null)
+            {
+                EntityAnimator.SetBool(RunningBoolName, false);
+            }
+        }
+        public void PlayStrikeAnimation()
+        {
+            if (EntityAnimator != null)
+            {
+                EntityAnimator.Play(StrikeBoolName);
+            }
+        }
+    }
 }

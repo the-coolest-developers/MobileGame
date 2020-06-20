@@ -4,28 +4,31 @@ using System;
 using Parents;
 using UnityEngine;
 using Unity.Mathematics;
+using EntityControllers;
 
 public class EnemyMovementController : MovementController
 {
     public override BattleController battleController { get; set; }
-    public override AnimationController animationController { get; set; }
- 
+    public override AnimationController AnimationController { get; set; }
+
     //Переменные из Unity Editor
-    
+
     public float MinDistance;
     public float StrikeDistance;
-    
+
     //Внутренние переменные
     double distance;
- 
+
     // Update is called once per frame
-    new void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         if (Player != null)
         {
             distance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
             var absoluteDistance = math.abs(distance);
- 
+
             if (absoluteDistance <= MinDistance)
             {
                 RunToPlayer();

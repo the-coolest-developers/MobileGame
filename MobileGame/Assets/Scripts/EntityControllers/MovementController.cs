@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EntityControllers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,31 +15,35 @@ namespace Parents
         //Внутренние переменные
         protected Rigidbody2D rigidbody2d;
         protected Rigidbody2D PlayerRb;
-        public abstract AnimationController animationController { get; set; }
+        public abstract AnimationController AnimationController { get; set; }
         public abstract BattleController battleController { get; set; }
 
         protected float SpeedX { get; set; } = 0;
         protected bool FaceRight { get; set; }
-        
 
-        protected void Start()
+
+        protected virtual void Start()
         {
-            RunningSpeed = RunningSpeed/100;
+            RunningSpeed = RunningSpeed / 100;
             PlayerRb = Player.GetComponent<Rigidbody2D>();
 
             battleController = GetComponent<BattleController>();
-            animationController = GetComponent<AnimationController>();
+            AnimationController = GetComponent<AnimationController>();
             rigidbody2d = GetComponent<Rigidbody2D>();
 
             FaceRight = true;
             IsOnTheGround = true;
         }
-        public void FixedUpdate()
+        protected virtual void FixedUpdate()
         {
             if (SpeedX != 0 & battleController.CanStrike)
             {
                 rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
-                animationController.SetIsRunning();
+
+                if (AnimationController != null)
+                {
+                    AnimationController.SetIsRunning();
+                }
             }
         }
 
@@ -76,7 +81,7 @@ namespace Parents
             }
         }
 
-        void OnTriggerEnter2D(Collider2D collision)
+        protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
             switch (collision.gameObject.tag)
             {

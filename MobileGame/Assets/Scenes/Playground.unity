@@ -465,7 +465,7 @@ PrefabInstance:
     - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: CanStrike
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
@@ -481,6 +481,16 @@ PrefabInstance:
         type: 3}
       propertyPath: StrikePeriod
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: EnemyTag
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1898279740093995177, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
@@ -873,7 +883,7 @@ GameObject:
   - component: {fileID: 736300828}
   - component: {fileID: 736300831}
   m_Layer: 5
-  m_Name: Fight!
+  m_Name: Strike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -997,10 +1007,10 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1871109604}
           m_MethodName: Strike
-          m_Mode: 1
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 1871109601}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -1501,12 +1511,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc64632300b45349887e9e3ffbe9059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanStrike: 0
   MaxHealth: 10
   Damage: 5
   HitDelay: 0.35
   StrikePeriod: 1
   ThisObject: {fileID: 1871109601}
-  CanStrike: 0
+  EnemyTag: Enemy
   HealthBarLine: {fileID: 333083143}
   HealthBarTip: {fileID: 1445237326}
 --- !u!50 &1871109605 stripped

@@ -7,10 +7,7 @@ using Parents;
 
 public class PlayerBattleController : BattleController
 {
-    List<Collider2D> Colliders { get; set; }
-
     //Те, которые указываются в редакторе Unity
-
     public GameObject HealthBarLine;
     public GameObject HealthBarTip;
 
@@ -25,9 +22,8 @@ public class PlayerBattleController : BattleController
     {
         base.Start();
 
-        Colliders = new List<Collider2D>();
-        movementController = GetComponent<PlayerMovementController>();
-        animationController = GetComponent<PlayerAnimationController>();
+        MovementController = GetComponent<PlayerMovementController>();
+        AnimationController = GetComponent<PlayerAnimationController>();
 
         HealthBarLineImage = HealthBarLine.GetComponent<Image>();
 
@@ -42,7 +38,7 @@ public class PlayerBattleController : BattleController
 
     void Update()
     {
-        //SetHealthBarLine();
+        UpdateHealthBarLine();
     }
 
     void UpdateHealthBarLine()
@@ -61,19 +57,4 @@ public class PlayerBattleController : BattleController
             HealthBarTip.SetActive(false);
         }
     }
-
-    IEnumerator HitEnemyCoroutine()
-    {
-        yield return new WaitForSeconds(HitDelay);
-
-        var enemyCollider = Colliders.FirstOrDefault(c => c.gameObject.tag == "Enemy");
-        if (enemyCollider != null)
-        {
-            var controllerScript = enemyCollider.gameObject.GetComponent<BattleController>();
-            controllerScript.GetDamage(Damage);
-        }
-    }
-
-    protected void OnTriggerExit2D(Collider2D collision) => Colliders.Remove(collision);
-    protected void OnTriggerEnter2D(Collider2D collision) => Colliders.Add(collision);
 }

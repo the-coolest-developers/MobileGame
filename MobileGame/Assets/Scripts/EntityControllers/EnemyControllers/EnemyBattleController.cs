@@ -7,12 +7,14 @@ public class EnemyBattleController : BattleController
 {
     //Те, что указываются в Editor'е
     public GameObject Player;
-    // Start is called before the first frame update
-    EnemyMovementController enemyMovementController;
+
     protected override void Start()
     {
         base.Start();
-        enemyMovementController = GetComponent<EnemyMovementController>();
+
+        MovementController = GetComponent<EnemyMovementController>();
+        //AnimationController = GetComponent<EnemyAnimationController>();
+
         SetHealth(MaxHealth);
     }
 }
