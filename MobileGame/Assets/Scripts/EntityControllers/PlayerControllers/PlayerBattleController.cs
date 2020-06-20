@@ -21,14 +21,13 @@ public class PlayerBattleController : BattleController
     private float HealthBarMaxWidth;
     private float HealthBarTipDefaultX;
 
-
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         Colliders = new List<Collider2D>();
         movementController = GetComponent<PlayerMovementController>();
         animationController = GetComponent<PlayerAnimationController>();
-
-        CanStrike = true;
 
         HealthBarLineImage = HealthBarLine.GetComponent<Image>();
 
@@ -38,16 +37,15 @@ public class PlayerBattleController : BattleController
         HealthBarTipRect = HealthBarTip.GetComponent<RectTransform>();
         HealthBarTipDefaultX = HealthBarTipRect.anchoredPosition.x;
 
-        SetHealth(MaxHealth);
-        HealthBarLineChanging();
+        UpdateHealthBarLine();
     }
 
     void Update()
     {
-        HealthBarLineChanging();
+        //SetHealthBarLine();
     }
 
-    void HealthBarLineChanging()
+    void UpdateHealthBarLine()
     {
         float healthPercent = currentHealth / MaxHealth;
 
@@ -61,18 +59,6 @@ public class PlayerBattleController : BattleController
         else
         {
             HealthBarTip.SetActive(false);
-        }
-    }
-    public void Strike()
-    {
-        if (CanStrike)
-        {
-            StartCoroutine(StrikePeriodCoroutine());
-
-            movementController.StopRunning();
-            animationController.PlayStrikeAnimation();
-
-            StartCoroutine(HitEnemyCoroutine());
         }
     }
 
