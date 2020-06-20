@@ -23,6 +23,7 @@ namespace Parents
 
         protected void Start()
         {
+            RunningSpeed = RunningSpeed/100;
             PlayerRb = Player.GetComponent<Rigidbody2D>();
 
             battleController = GetComponent<BattleController>();

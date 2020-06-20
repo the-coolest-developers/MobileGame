@@ -57,7 +57,6 @@ namespace Parents
         IEnumerator HitEnemyCouritine(GameObject enemy)
         {
             yield return new WaitForSeconds(HitDelay);
-
             if(enemy != null)
             {
                 var enemyBattleController = enemy.GetComponent<BattleController>();

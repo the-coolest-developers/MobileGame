@@ -505,7 +505,7 @@ PrefabInstance:
     - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: MinDistance
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
@@ -515,7 +515,7 @@ PrefabInstance:
     - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: RunningSpeed
-      value: 0.05
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
@@ -550,7 +550,7 @@ PrefabInstance:
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -404.82
+      value: -406.43
       objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
@@ -1339,7 +1339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168834137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.094, y: 0, z: 0}
+  m_LocalPosition: {x: 0.096, y: 0.013, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 617845053}
@@ -1528,7 +1528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpPower: 1500
-  RunningSpeed: 0.1
+  RunningSpeed: 10
   Player: {fileID: 1871109601}
 --- !u!61 &1871109607
 BoxCollider2D:

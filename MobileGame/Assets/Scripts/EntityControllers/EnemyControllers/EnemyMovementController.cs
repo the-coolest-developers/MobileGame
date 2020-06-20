@@ -9,7 +9,7 @@ public class EnemyMovementController : MovementController
 {
     public override BattleController battleController { get; set; }
     public override AnimationController animationController { get; set; }
-
+ 
     //Переменные из Unity Editor
     
     public float MinDistance;
@@ -17,21 +17,19 @@ public class EnemyMovementController : MovementController
     
     //Внутренние переменные
     double distance;
-
-
+ 
     // Update is called once per frame
-    protected new void FixedUpdate()
+    new void FixedUpdate()
     {
         if (Player != null)
         {
             distance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
             var absoluteDistance = math.abs(distance);
-
+ 
             if (absoluteDistance <= MinDistance)
             {
                 RunToPlayer();
             }
-
             if (absoluteDistance <= StrikeDistance)
             {
                 battleController.Strike(Player);
