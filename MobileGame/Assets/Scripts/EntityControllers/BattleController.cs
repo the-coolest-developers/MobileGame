@@ -1,22 +1,27 @@
-﻿using EntityControllers;
+﻿using Assets.Scripts.UI_Controllers;
+using EntityControllers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Parents
+namespace EntityControllers
 {
-    public class BattleController : MonoBehaviour
+    public abstract class BattleController : MonoBehaviour
     {
         //Внутренние переменные
-        public MovementController MovementController { get; set; }
-        public AnimationController AnimationController { get; set; }
+        public abstract HealthBarController HealthBarController { get; protected set; }
+
+        public MovementController MovementController { get; protected set; }
+        public AnimationController AnimationController { get; protected set; }
+
+        public event Action HealthChanged;
 
         List<GameObject> Enemies { get; set; }
 
         public bool CanStrike;
-        protected float currentHealth;
-        public float CurrentHealth => currentHealth;
+        public float CurrentHealth { get; private set; }
 
         //Переменные из Editor
         public int MaxHealth;
@@ -26,7 +31,12 @@ namespace Parents
         public GameObject ThisObject;
         public string EnemyTag;
 
-        public void SetHealth(float value) => currentHealth = value > MaxHealth ? MaxHealth : value;
+        public void SetHealth(float value)
+        {
+            CurrentHealth = value > MaxHealth ? MaxHealth : value;
+
+            HealthChanged();
+        }
         public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
 
         public void Strike()
@@ -50,11 +60,11 @@ namespace Parents
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
-                if(MovementController != null)
+                if (MovementController != null)
                 {
                     MovementController.StopRunning();
                 }
-                if(AnimationController != null)
+                if (AnimationController != null)
                 {
                     AnimationController.PlayStrikeAnimation();
                 }
@@ -83,11 +93,20 @@ namespace Parents
 
         protected virtual void Start()
         {
+            Enemies = new List<GameObject>();
+
+            if (HealthBarController != null)
+            {
+                HealthChanged = new Action(HealthBarController.UpdateHealthBarLine);
+            }
+            else
+            {
+                HealthChanged = new Action(() => { });
+            }
+
             CanStrike = true;
 
             SetHealth(MaxHealth);
-
-            Enemies = new List<GameObject>();
         }
         protected virtual void FixedUpdate()
         {

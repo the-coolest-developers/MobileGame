@@ -3,58 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using Parents;
+using Assets.Scripts.UI_Controllers.PlayerControllers;
+using EntityControllers;
+using Assets.Scripts.UI_Controllers;
 
-public class PlayerBattleController : BattleController
+namespace EntityControllers.PlayerControllers
 {
-    //Те, которые указываются в редакторе Unity
-    public GameObject HealthBarLine;
-    public GameObject HealthBarTip;
-
-    //Внутренние переменные
-    private Image HealthBarLineImage;
-    private RectTransform HealthBarRect;
-    private RectTransform HealthBarTipRect;
-    private float HealthBarMaxWidth;
-    private float HealthBarTipDefaultX;
-
-    protected override void Start()
+    public class PlayerBattleController : BattleController
     {
-        base.Start();
+        //Те, которые указываются в редакторе Unity
+        public GameObject HealthBarLine;
+        public GameObject HealthBarTip;
 
-        MovementController = GetComponent<PlayerMovementController>();
-        AnimationController = GetComponent<PlayerAnimationController>();
+        public override HealthBarController HealthBarController { get; protected set; }
 
-        HealthBarLineImage = HealthBarLine.GetComponent<Image>();
-
-        HealthBarRect = HealthBarLine.GetComponent<RectTransform>();
-        HealthBarMaxWidth = HealthBarRect.rect.width;
-
-        HealthBarTipRect = HealthBarTip.GetComponent<RectTransform>();
-        HealthBarTipDefaultX = HealthBarTipRect.anchoredPosition.x;
-
-        UpdateHealthBarLine();
-    }
-
-    void Update()
-    {
-        UpdateHealthBarLine();
-    }
-
-    void UpdateHealthBarLine()
-    {
-        float healthPercent = currentHealth / MaxHealth;
-
-        HealthBarLineImage.fillAmount = healthPercent;
-
-        if (healthPercent > 0)
+        protected override void Start()
         {
-            var tipPosX = healthPercent * HealthBarMaxWidth * 0.795522f;
-            HealthBarTipRect.anchoredPosition = new Vector2(HealthBarTipDefaultX + tipPosX, HealthBarTipRect.anchoredPosition.y);
+            MovementController = GetComponent<PlayerMovementController>();
+            AnimationController = GetComponent<PlayerAnimationController>();
+            HealthBarController = GetComponent<PlayerHealthBarController>();
+
+            base.Start();
         }
-        else
+
+        void Update()
         {
-            HealthBarTip.SetActive(false);
         }
     }
 }

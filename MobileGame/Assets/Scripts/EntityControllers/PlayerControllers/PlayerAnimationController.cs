@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using EntityControllers;
-using Parents;
 using UnityEngine;
 
-public class PlayerAnimationController : AnimationController
+namespace EntityControllers.PlayerControllers
 {
-    
+    public class PlayerAnimationController : AnimationController
+    {
+
+    }
 }

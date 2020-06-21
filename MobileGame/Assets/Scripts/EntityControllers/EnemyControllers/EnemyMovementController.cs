@@ -1,55 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
-using Parents;
 using UnityEngine;
 using Unity.Mathematics;
 using EntityControllers;
 
-public class EnemyMovementController : MovementController
+namespace EntityControllers.EnemyControllers
 {
-    public override BattleController battleController { get; set; }
-    public override AnimationController AnimationController { get; set; }
-
-    //Переменные из Unity Editor
-
-    public float MinDistance;
-    public float StrikeDistance;
-
-    //Внутренние переменные
-    double distance;
-
-    // Update is called once per frame
-    protected override void FixedUpdate()
+    public class EnemyMovementController : MovementController
     {
-        base.FixedUpdate();
+        public override BattleController battleController { get; set; }
+        public override AnimationController AnimationController { get; set; }
 
-        if (Player != null)
+        //Переменные из Unity Editor
+
+        public float MinDistance;
+        public float StrikeDistance;
+
+        //Внутренние переменные
+        double distance;
+
+        // Update is called once per frame
+        protected override void FixedUpdate()
         {
-            distance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
-            var absoluteDistance = math.abs(distance);
+            base.FixedUpdate();
 
-            if (absoluteDistance <= MinDistance)
+            if (Player != null)
             {
-                RunToPlayer();
-            }
-            if (absoluteDistance <= StrikeDistance)
-            {
-                battleController.Strike(Player);
-            }
-        }
-    }
-    void RunToPlayer()
-    {
-        if (distance > 0)
-        {
-            TurnLeft();
-        }
-        else
-        {
-            TurnRight();
-        }
+                distance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
+                var absoluteDistance = math.abs(distance);
 
-        rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
+                if (absoluteDistance <= MinDistance)
+                {
+                    RunToPlayer();
+                }
+                if (absoluteDistance <= StrikeDistance)
+                {
+                    battleController.Strike(Player);
+                }
+            }
+        }
+        void RunToPlayer()
+        {
+            if (distance > 0)
+            {
+                TurnLeft();
+            }
+            else
+            {
+                TurnRight();
+            }
+
+            rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
+        }
     }
 }

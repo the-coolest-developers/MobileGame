@@ -1,20 +1,26 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.UI_Controllers;
+using EntityControllers;
+using System.Collections;
 using System.Collections.Generic;
-using Parents;
 using UnityEngine;
 
-public class EnemyBattleController : BattleController
+namespace EntityControllers.EnemyControllers
 {
-    //Те, что указываются в Editor'е
-    public GameObject Player;
-
-    protected override void Start()
+    public class EnemyBattleController : BattleController
     {
-        base.Start();
+        //Те, что указываются в Editor'е
+        public GameObject Player;
 
-        MovementController = GetComponent<EnemyMovementController>();
-        //AnimationController = GetComponent<EnemyAnimationController>();
+        public override HealthBarController HealthBarController { get; protected set; }
 
-        SetHealth(MaxHealth);
+        protected override void Start()
+        {
+            base.Start();
+
+            MovementController = GetComponent<EnemyMovementController>();
+            //AnimationController = GetComponent<EnemyAnimationController>();
+
+            SetHealth(MaxHealth);
+        }
     }
 }
