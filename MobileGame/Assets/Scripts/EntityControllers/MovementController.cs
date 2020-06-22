@@ -15,8 +15,8 @@ namespace EntityControllers
         //Внутренние переменные
         protected Rigidbody2D rigidbody2d;
         protected Rigidbody2D PlayerRb;
-        public abstract AnimationController AnimationController { get; set; }
-        public abstract BattleController battleController { get; set; }
+        public AnimationController AnimationController { get; set; }
+        public BattleController BattleController { get; set; }
 
         protected float SpeedX { get; set; } = 0;
         protected bool FaceRight { get; set; }
@@ -26,17 +26,18 @@ namespace EntityControllers
         {
             RunningSpeed = RunningSpeed / 100;
             PlayerRb = Player.GetComponent<Rigidbody2D>();
-
-            battleController = GetComponent<BattleController>();
-            AnimationController = GetComponent<AnimationController>();
             rigidbody2d = GetComponent<Rigidbody2D>();
+
+            BattleController = GetComponent<BattleController>();
+            AnimationController = GetComponent<AnimationController>();
+            
 
             FaceRight = true;
             IsOnTheGround = true;
         }
         protected virtual void FixedUpdate()
         {
-            if (SpeedX != 0 & battleController.CanStrike)
+            if (SpeedX != 0 & BattleController.CanStrike)
             {
                 rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
 

@@ -10,19 +10,13 @@ namespace EntityControllers
 {
     public abstract class BattleController : MonoBehaviour
     {
-<<<<<<< Updated upstream
-        //Внутренние переменные
-        public abstract HealthBarController HealthBarController { get; protected set; }
-
-=======
         public HealthBarController HealthBarController { get; protected set; }
->>>>>>> Stashed changes
         public MovementController MovementController { get; protected set; }
         public AnimationController AnimationController { get; protected set; }
 
         public event Action HealthChanged;
 
-        List<GameObject> Enemies { get; set; }
+        List<GameObject> TriggeredEnemies { get; set; }
 
         public bool CanStrike;
         public float CurrentHealth { get; private set; }
@@ -52,7 +46,7 @@ namespace EntityControllers
                 MovementController.StopRunning();
                 AnimationController.PlayStrikeAnimation();
 
-                var enemy = Enemies.FirstOrDefault(c => c.gameObject.tag == EnemyTag);
+                var enemy = TriggeredEnemies.FirstOrDefault(c => c.gameObject.tag == EnemyTag);
 
                 StartCoroutine(HitEnemyCoroutine(enemy));
             }
@@ -95,8 +89,6 @@ namespace EntityControllers
             }
         }
 
-<<<<<<< Updated upstream
-=======
         public void AddTriggeredEnemy(GameObject enemy)
         {
             TriggeredEnemies.Add(enemy);
@@ -106,10 +98,13 @@ namespace EntityControllers
             TriggeredEnemies.Remove(enemy);
         }
 
->>>>>>> Stashed changes
         protected virtual void Start()
         {
-            Enemies = new List<GameObject>();
+            TriggeredEnemies = new List<GameObject>();
+
+            AnimationController = GetComponent<AnimationController>();
+            HealthBarController = GetComponent<HealthBarController>();
+            MovementController = GetComponent<MovementController>();
 
             if (HealthBarController != null)
             {
@@ -131,11 +126,5 @@ namespace EntityControllers
                 Destroy(ThisObject);
             }
         }
-<<<<<<< Updated upstream
-
-        protected virtual void OnTriggerExit2D(Collider2D collision) => Enemies.Remove(collision.gameObject);
-        protected virtual void OnTriggerEnter2D(Collider2D collision) => Enemies.Add(collision.gameObject);
-=======
->>>>>>> Stashed changes
     }
 }
