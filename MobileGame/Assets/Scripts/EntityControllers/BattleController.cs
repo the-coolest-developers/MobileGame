@@ -10,9 +10,13 @@ namespace EntityControllers
 {
     public abstract class BattleController : MonoBehaviour
     {
+<<<<<<< Updated upstream
         //Внутренние переменные
         public abstract HealthBarController HealthBarController { get; protected set; }
 
+=======
+        public HealthBarController HealthBarController { get; protected set; }
+>>>>>>> Stashed changes
         public MovementController MovementController { get; protected set; }
         public AnimationController AnimationController { get; protected set; }
 
@@ -91,6 +95,18 @@ namespace EntityControllers
             }
         }
 
+<<<<<<< Updated upstream
+=======
+        public void AddTriggeredEnemy(GameObject enemy)
+        {
+            TriggeredEnemies.Add(enemy);
+        }
+        public void RemoveTriggeredEnemy(GameObject enemy)
+        {
+            TriggeredEnemies.Remove(enemy);
+        }
+
+>>>>>>> Stashed changes
         protected virtual void Start()
         {
             Enemies = new List<GameObject>();
@@ -115,8 +131,11 @@ namespace EntityControllers
                 Destroy(ThisObject);
             }
         }
+<<<<<<< Updated upstream
 
         protected virtual void OnTriggerExit2D(Collider2D collision) => Enemies.Remove(collision.gameObject);
         protected virtual void OnTriggerEnter2D(Collider2D collision) => Enemies.Add(collision.gameObject);
+=======
+>>>>>>> Stashed changes
     }
 }
