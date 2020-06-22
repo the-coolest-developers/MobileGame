@@ -8,6 +8,12 @@ namespace EntityControllers.EnemyControllers
 {
     public class EnemyBattleController : BattleController
     {
-
+        protected override void FixedUpdate()
+        {
+            if (TriggeredEnemies.Count > 0)
+            {
+                Strike();
+            }
+        }
     }
 }

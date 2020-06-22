@@ -16,7 +16,7 @@ namespace EntityControllers
 
         public event Action HealthChanged;
 
-        List<GameObject> TriggeredEnemies { get; set; }
+        protected List<GameObject> TriggeredEnemies { get; set; }
 
         public bool CanStrike;
         public float CurrentHealth { get; private set; }
