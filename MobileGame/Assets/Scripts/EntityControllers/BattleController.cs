@@ -74,10 +74,7 @@ namespace EntityControllers
         }
 
         public void AddTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Add(enemy);
-        public void RemoveTriggeredEnemy(GameObject enemy)
-        {
-            TriggeredEnemies.Remove(enemy);
-        }
+        public void RemoveTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Remove(enemy);
 
         protected virtual void Start()
         {
