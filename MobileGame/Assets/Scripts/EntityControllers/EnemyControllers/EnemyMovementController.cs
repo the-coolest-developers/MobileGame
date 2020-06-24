@@ -43,7 +43,7 @@ namespace EntityControllers.EnemyControllers
                 TurnRight();
             }
 
-            rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
+            Move();
         }
     }
 }

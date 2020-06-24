@@ -22,11 +22,14 @@ namespace EntityControllers
         protected List<GameObject> TriggeredEnemies { get; set; }
 
         public bool CanStrike;
+        public bool IsStriking { get; set; }
         public float CurrentHealth { get; private set; }
 
         //Переменные из Editor
         public int MaxHealth;
         public int Damage;
+        public int AttackedEnemiesAmount;
+        public float SplashDamageLossPercent;
         public float HitDelay;
         public float StrikePeriod;
         public GameObject ThisObject;
@@ -42,7 +45,7 @@ namespace EntityControllers
 
         public void Strike()
         {
-            if (CanStrike && MovementController.IsOnTheGround)
+            if (CanStrike && !IsStriking && MovementController.IsOnTheGround)
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
@@ -54,22 +57,34 @@ namespace EntityControllers
         }
         protected IEnumerator StrikePeriodCoroutine()
         {
-            CanStrike = false;
+            IsStriking = true;
 
             yield return new WaitForSeconds(StrikePeriod);
 
-            CanStrike = true;
+            IsStriking = false;
         }
         protected IEnumerator HitEnemyCoroutine()
         {
             yield return new WaitForSeconds(HitDelay);
 
-            var enemy = TriggeredEnemies.FirstOrDefault(c => c.gameObject.tag == EnemyTag);
+            HitEnemy();
+        }
+        void HitEnemy()
+        {
+            var attackedEnemies = TriggeredEnemies.Take(AttackedEnemiesAmount);
 
-            if (enemy != null)
+            float damageLoss = SplashDamageLossPercent;
+            float multiplier = 0;
+
+            foreach (var enemy in attackedEnemies)
             {
+                float lostDamage = Damage * damageLoss * multiplier / 100;
+                float finalDamage = Damage - lostDamage;
+
+                multiplier++;
+
                 var enemyBattleController = enemy.GetComponent<BattleController>();
-                enemyBattleController.GetDamage(Damage);
+                enemyBattleController.GetDamage(finalDamage);
             }
         }
 
@@ -93,7 +108,7 @@ namespace EntityControllers
                 HealthChanged = new Action(() => { });
             }
 
-            CanStrike = true;
+            IsStriking = false;
 
             SetHealth(MaxHealth);
         }

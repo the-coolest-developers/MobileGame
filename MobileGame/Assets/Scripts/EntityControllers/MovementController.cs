@@ -10,7 +10,7 @@ namespace EntityControllers
         //Внешние переменные
         public float JumpPower;
         public float RunningSpeed;
-        public bool IsOnTheGround { get; set; }
+        public bool CanMove;
         public GameObject Player;
 
 
@@ -20,7 +20,8 @@ namespace EntityControllers
         public AnimationController AnimationController { get; set; }
         public BattleController BattleController { get; set; }
 
-        protected float SpeedX { get; set; } = 0;
+        public bool IsOnTheGround { get; set; }
+        protected float SpeedX { get; set; }
         protected bool FaceRight { get; set; }
 
 
@@ -32,12 +33,12 @@ namespace EntityControllers
 
             BattleController = GetComponent<BattleController>();
             AnimationController = GetComponent<AnimationController>();
-            
+
             FaceRight = true;
         }
         protected virtual void FixedUpdate()
         {
-            if (SpeedX != 0 & BattleController.CanStrike)
+            if (SpeedX != 0 & CanMove)
             {
                 rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
 
@@ -48,7 +49,9 @@ namespace EntityControllers
             }
         }
 
-        protected void Flip()
+
+
+        void Flip()
         {
             FaceRight = !FaceRight;
             rigidbody2d.transform.Rotate(0f, 180f, 0f);
@@ -64,7 +67,7 @@ namespace EntityControllers
         public void TurnLeft()
         {
             if (FaceRight)
-            { 
+            {
                 Flip();
             }
             SpeedX = -RunningSpeed;
@@ -78,6 +81,18 @@ namespace EntityControllers
             if (IsOnTheGround)
             {
                 rigidbody2d.AddForce(Vector2.up * JumpPower);
+            }
+        }
+
+        public void Move()
+        {
+            if (CanMove && !BattleController.IsStriking)
+            {
+                rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
+                if(SpeedX == 0)
+                {
+                    print("It is 0!");
+                }
             }
         }
 

@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &311963745
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -784,7 +784,7 @@ RectTransform:
   - {fileID: 854746214}
   - {fileID: 1445047786}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -806,7 +806,7 @@ PrefabInstance:
     - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: HitDelay
-      value: 0.35
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
@@ -843,6 +843,31 @@ PrefabInstance:
       propertyPath: AttackZone
       value: 
       objectReference: {fileID: 1095147507}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: AttacedEnemiesAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: SplashDamageLossPercentMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: SplashDamageLossPercent
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: IsStriking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 861992267542312390, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: AttackedEnemiesAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1655757531745387606, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_Enabled
@@ -903,6 +928,11 @@ PrefabInstance:
       propertyPath: PlayerRb
       value: 
       objectReference: {fileID: 1871109605}
+    - target: {fileID: 6722182876873200889, guid: 7d88b84ef08d47d40a78f75204d69800,
+        type: 3}
+      propertyPath: CanMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168712, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_Name
@@ -977,7 +1007,7 @@ PrefabInstance:
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
@@ -1190,7 +1220,7 @@ Transform:
   m_LocalScale: {x: 0.10000001, y: 0.06666667, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &645772146
 MonoBehaviour:
@@ -2210,7 +2240,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1908188549
 GameObject:
@@ -2577,6 +2607,16 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7893843603588445497, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893843603588445497, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: CanMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7893843603588445499, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: HealthBarLine
@@ -2602,6 +2642,31 @@ PrefabInstance:
       propertyPath: RespawnButton
       value: 
       objectReference: {fileID: 1445047787}
+    - target: {fileID: 7893843603588445499, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: AttacedEnemiesAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893843603588445499, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: SplashDamageLossPercentMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893843603588445499, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: SplashDamageLossPercent
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893843603588445499, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: CanStrike
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893843603588445499, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: AttackedEnemiesAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7893843603588445502, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: m_Name
