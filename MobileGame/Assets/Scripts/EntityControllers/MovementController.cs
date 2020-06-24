@@ -31,9 +31,7 @@ namespace EntityControllers
             BattleController = GetComponent<BattleController>();
             AnimationController = GetComponent<AnimationController>();
             
-
             FaceRight = true;
-            IsOnTheGround = true;
         }
         protected virtual void FixedUpdate()
         {
@@ -64,7 +62,7 @@ namespace EntityControllers
         public void TurnLeft()
         {
             if (FaceRight)
-            {
+            { 
                 Flip();
             }
             SpeedX = -RunningSpeed;
@@ -78,7 +76,6 @@ namespace EntityControllers
             if (IsOnTheGround)
             {
                 rigidbody2d.AddForce(Vector2.up * JumpPower);
-                IsOnTheGround = false;
             }
         }
 
@@ -88,6 +85,15 @@ namespace EntityControllers
             {
                 case "Ground":
                     IsOnTheGround = true;
+                    break;
+            }
+        }
+        protected virtual void OnTriggerExit2D(Collider2D collision)
+        {
+            switch (collision.gameObject.tag)
+            {
+                case "Ground":
+                    IsOnTheGround = false;
                     break;
             }
         }
