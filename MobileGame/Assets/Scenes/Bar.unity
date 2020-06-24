@@ -533,7 +533,7 @@ Transform:
   m_LocalScale: {x: 0.10000001, y: 0.06666667, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &470319581
 GameObject:
@@ -662,7 +662,7 @@ Transform:
   - {fileID: 848636794}
   - {fileID: 196135658}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &524219765
 GameObject:
@@ -797,7 +797,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &545385910
 PrefabInstance:
@@ -912,90 +912,19 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7893843603588445493, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -391.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893843603588445494, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5067891295270794279, guid: fe0348ba35896af4b8bd6dc0b87152e9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fe0348ba35896af4b8bd6dc0b87152e9, type: 3}
---- !u!1 &545385911 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5067891295270794276, guid: fe0348ba35896af4b8bd6dc0b87152e9,
-    type: 3}
-  m_PrefabInstance: {fileID: 545385910}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &545385912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545385911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ede491bf387c2a478448f84b78d96f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JumpPower: 2000
-  RunningSpeed: 0.1
---- !u!114 &545385913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545385911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfc64632300b45349887e9e3ffbe9059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 10
-  Damage: 5
-  HitDelay: 0.35
-  StrikePeriod: 6
-  ThisObject: {fileID: 545385911}
-  CanStrike: 0
-  HealthBarLine: {fileID: 1485858316}
-  HealthBarTip: {fileID: 1747082473}
-  testHealth: 10
---- !u!114 &545385914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545385911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e17eb274f8e1c546bd7ee0997a3ce67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StrikeBoolName: IsRunning
-  RunningBoolName: Strike
---- !u!61 &545385915
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545385911}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.18, y: -0.24}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.37, y: 0.31}
-  m_EdgeRadius: 0
 --- !u!1 &556544331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,7 +1085,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &714934542
 GameObject:
@@ -1214,7 +1143,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 545385913}
+        - m_Target: {fileID: 0}
           m_MethodName: Strike
           m_Mode: 1
           m_Arguments:
@@ -1535,7 +1464,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &956936783
 GameObject:
@@ -1744,7 +1673,7 @@ Transform:
   m_LocalScale: {x: 1000, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019792700
 GameObject:
@@ -2063,7 +1992,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 545385912}
+        - m_Target: {fileID: 0}
           m_MethodName: RunLeft
           m_Mode: 1
           m_Arguments:
@@ -2078,7 +2007,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 545385912}
+        - m_Target: {fileID: 0}
           m_MethodName: StopRunning
           m_Mode: 1
           m_Arguments:
@@ -2306,7 +2235,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 545385912}
+        - m_Target: {fileID: 0}
           m_MethodName: RunRight
           m_Mode: 1
           m_Arguments:
@@ -2321,7 +2250,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 545385912}
+        - m_Target: {fileID: 0}
           m_MethodName: StopRunning
           m_Mode: 1
           m_Arguments:
@@ -2483,7 +2412,7 @@ PrefabInstance:
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9221108216692168714, guid: 7d88b84ef08d47d40a78f75204d69800,
         type: 3}
@@ -2720,7 +2649,7 @@ RectTransform:
   - {fileID: 714934543}
   - {fileID: 1586130455}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3436,7 +3365,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 545385912}
+        - m_Target: {fileID: 0}
           m_MethodName: Jump
           m_Mode: 1
           m_Arguments:
