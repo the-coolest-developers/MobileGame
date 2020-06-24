@@ -52,7 +52,7 @@ namespace EntityControllers
             }
         }
         //Надо будет убрать, но это не точно
-        public void Strike(GameObject enemy)
+        /*public void Strike(GameObject enemy)
         {
             if (CanStrike)
             {
@@ -69,7 +69,7 @@ namespace EntityControllers
 
                 StartCoroutine(HitEnemyCoroutine(enemy));
             }
-        }
+        }*/
         protected IEnumerator StrikePeriodCoroutine()
         {
             CanStrike = false;
@@ -84,6 +84,7 @@ namespace EntityControllers
 
             if (enemy != null)
             {
+                
                 var enemyBattleController = enemy.GetComponent<BattleController>();
                 enemyBattleController.GetDamage(Damage);
             }
@@ -121,6 +122,8 @@ namespace EntityControllers
         }
         protected virtual void FixedUpdate()
         {
+
+            
             if (CurrentHealth <= 0)
             {
                 Destroy(ThisObject);

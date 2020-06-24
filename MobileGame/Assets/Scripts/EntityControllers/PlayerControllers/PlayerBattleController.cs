@@ -11,6 +11,6 @@ namespace EntityControllers.PlayerControllers
 {
     public class PlayerBattleController : BattleController
     {
-
+        
     }
 }

@@ -11,7 +11,7 @@ namespace EntityControllers.EnemyControllers
     {
         //Переменные из Unity Editor
         public float MinDistance;
-        //public float StrikeDistance;
+        public float StrikeDistance;
 
         //Внутренние переменные
         double distance;
@@ -30,10 +30,6 @@ namespace EntityControllers.EnemyControllers
                 {
                     RunToPlayer();
                 }
-                /*if (absoluteDistance <= StrikeDistance)
-                {
-                    BattleController.Strike(Player);
-                }*/
             }
         }
         void RunToPlayer()

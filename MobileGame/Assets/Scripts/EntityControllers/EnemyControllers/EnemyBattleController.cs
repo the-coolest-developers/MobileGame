@@ -10,6 +10,9 @@ namespace EntityControllers.EnemyControllers
     {
         protected override void FixedUpdate()
         {
+            base.FixedUpdate();
+
+
             if (TriggeredEnemies.Count > 0)
             {
                 Strike();
