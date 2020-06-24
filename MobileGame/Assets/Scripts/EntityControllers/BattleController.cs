@@ -29,8 +29,6 @@ namespace EntityControllers
         public GameObject ThisObject;
         public string EnemyTag;
 
-
-
         public void SetHealth(float value)
         {
             CurrentHealth = value > MaxHealth ? MaxHealth : value;
@@ -41,7 +39,7 @@ namespace EntityControllers
 
         public void Strike()
         {
-            if (CanStrike)
+            if (CanStrike && MovementController.IsOnTheGround)
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
@@ -67,7 +65,7 @@ namespace EntityControllers
 
             if (enemy != null)
             {
-                
+
                 var enemyBattleController = enemy.GetComponent<BattleController>();
                 enemyBattleController.GetDamage(Damage);
             }
