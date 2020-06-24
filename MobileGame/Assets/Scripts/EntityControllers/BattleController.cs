@@ -29,6 +29,8 @@ namespace EntityControllers
         public GameObject ThisObject;
         public string EnemyTag;
 
+
+
         public void SetHealth(float value)
         {
             CurrentHealth = value > MaxHealth ? MaxHealth : value;
@@ -51,25 +53,6 @@ namespace EntityControllers
                 StartCoroutine(HitEnemyCoroutine(enemy));
             }
         }
-        //Надо будет убрать, но это не точно
-        /*public void Strike(GameObject enemy)
-        {
-            if (CanStrike)
-            {
-                StartCoroutine(StrikePeriodCoroutine());
-
-                if (MovementController != null)
-                {
-                    MovementController.StopRunning();
-                }
-                if (AnimationController != null)
-                {
-                    AnimationController.PlayStrikeAnimation();
-                }
-
-                StartCoroutine(HitEnemyCoroutine(enemy));
-            }
-        }*/
         protected IEnumerator StrikePeriodCoroutine()
         {
             CanStrike = false;

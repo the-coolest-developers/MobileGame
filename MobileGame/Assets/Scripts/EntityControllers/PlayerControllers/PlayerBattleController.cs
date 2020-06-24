@@ -11,6 +11,37 @@ namespace EntityControllers.PlayerControllers
 {
     public class PlayerBattleController : BattleController
     {
+        public GameObject RespawnPoint;
+        HealthBarController healthBarController;
+        public Button RespawnButton;
+
+
+        float normaltimescale;
+        protected override void Start()
+        {
+            base.Start();
         
+            healthBarController = GetComponent<HealthBarController>();
+            normaltimescale = 0f;
+        }
+        protected override void FixedUpdate()
+        {
+            if(CurrentHealth <= 0)
+            {
+                normaltimescale = Time.timeScale;
+                Time.timeScale = 0f;
+                RespawnButton.gameObject.SetActive(true);
+            }
+        }
+        public void Respawn()
+        {
+
+            healthBarController.HealthBarTip.SetActive(true);
+            SetHealth(MaxHealth);
+
+           ThisObject.transform.position = RespawnPoint.transform.position; 
+           Time.timeScale = normaltimescale;
+           RespawnButton.gameObject.SetActive(false);
+        }
     }
 }

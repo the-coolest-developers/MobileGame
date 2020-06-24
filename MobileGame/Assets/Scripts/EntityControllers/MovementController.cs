@@ -12,6 +12,8 @@ namespace EntityControllers
         public float RunningSpeed;
         public bool IsOnTheGround { get; set; }
         public GameObject Player;
+
+
         //Внутренние переменные
         protected Rigidbody2D rigidbody2d;
         protected Rigidbody2D PlayerRb;
