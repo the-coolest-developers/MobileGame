@@ -12,7 +12,6 @@ namespace EntityControllers.EnemyControllers
         {
             base.FixedUpdate();
 
-
             if (TriggeredEnemies.Count > 0)
             {
                 Strike();

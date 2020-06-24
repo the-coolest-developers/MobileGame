@@ -1,9 +1,12 @@
-﻿using Assets.Scripts.UI_Controllers;
+﻿using Assets.Scripts.Models;
+using Assets.Scripts.Singletones;
+using Assets.Scripts.UI_Controllers;
 using EntityControllers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace EntityControllers
@@ -46,9 +49,7 @@ namespace EntityControllers
                 MovementController.StopRunning();
                 AnimationController.PlayStrikeAnimation();
 
-                var enemy = TriggeredEnemies.FirstOrDefault(c => c.gameObject.tag == EnemyTag);
-
-                StartCoroutine(HitEnemyCoroutine(enemy));
+                StartCoroutine(HitEnemyCoroutine());
             }
         }
         protected IEnumerator StrikePeriodCoroutine()
@@ -59,22 +60,20 @@ namespace EntityControllers
 
             CanStrike = true;
         }
-        IEnumerator HitEnemyCoroutine(GameObject enemy)
+        protected IEnumerator HitEnemyCoroutine()
         {
             yield return new WaitForSeconds(HitDelay);
 
+            var enemy = TriggeredEnemies.FirstOrDefault(c => c.gameObject.tag == EnemyTag);
+
             if (enemy != null)
             {
-
                 var enemyBattleController = enemy.GetComponent<BattleController>();
                 enemyBattleController.GetDamage(Damage);
             }
         }
 
-        public void AddTriggeredEnemy(GameObject enemy)
-        {
-            TriggeredEnemies.Add(enemy);
-        }
+        public void AddTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Add(enemy);
         public void RemoveTriggeredEnemy(GameObject enemy)
         {
             TriggeredEnemies.Remove(enemy);
