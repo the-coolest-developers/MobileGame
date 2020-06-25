@@ -40117,6 +40117,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7893843603588445497, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: CanMove
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7893843603588445499, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: HealthBarLine
