@@ -43,7 +43,7 @@ namespace EntityControllers.EnemyControllers
                 TurnRight();
             }
 
-            Move();
+            MoveIfPossible();
         }
     }
 }

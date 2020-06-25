@@ -38,7 +38,9 @@ namespace EntityControllers
         }
         protected virtual void FixedUpdate()
         {
-            if (SpeedX != 0 & CanMove)
+            MoveIfPossible();
+
+            /*if (SpeedX != 0 & CanMove)
             {
                 rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
 
@@ -46,11 +48,8 @@ namespace EntityControllers
                 {
                     AnimationController.SetIsRunning();
                 }
-            }
+            }*/
         }
-
-
-
         void Flip()
         {
             FaceRight = !FaceRight;
@@ -84,14 +83,19 @@ namespace EntityControllers
             }
         }
 
-        public void Move()
+        public void MoveIfPossible()
         {
-            if (CanMove && !BattleController.IsStriking)
+            if (CanMove && !BattleController.IsStriking && SpeedX != 0)
             {
                 rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
                 if(SpeedX == 0)
                 {
                     print("It is 0!");
+                }
+
+                if (AnimationController != null)
+                {
+                    AnimationController.SetIsRunning();
                 }
             }
         }
