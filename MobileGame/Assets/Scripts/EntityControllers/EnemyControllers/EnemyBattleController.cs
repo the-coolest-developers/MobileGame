@@ -2,6 +2,7 @@
 using EntityControllers;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace EntityControllers.EnemyControllers
@@ -12,7 +13,10 @@ namespace EntityControllers.EnemyControllers
         {
             base.FixedUpdate();
 
-            if (TriggeredEnemies.Count > 0)
+            var movementController = (EnemyMovementController)MovementController;
+            var playerDistance = math.abs(movementController.PlayerDistance);
+
+            if (TriggeredEnemies.Count > 0 && playerDistance <= movementController.StrikeDistance)
             {
                 Strike();
             }

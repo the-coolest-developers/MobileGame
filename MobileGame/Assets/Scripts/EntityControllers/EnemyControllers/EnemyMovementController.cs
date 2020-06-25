@@ -14,7 +14,7 @@ namespace EntityControllers.EnemyControllers
         public float StrikeDistance;
 
         //Внутренние переменные
-        double distance;
+        public double PlayerDistance { get; set; }
 
         // Update is called once per frame
         protected override void FixedUpdate()
@@ -23,8 +23,8 @@ namespace EntityControllers.EnemyControllers
 
             if (Player != null)
             {
-                distance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
-                var absoluteDistance = math.abs(distance);
+                PlayerDistance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
+                var absoluteDistance = math.abs(PlayerDistance);
 
                 if (absoluteDistance <= MinDistance)
                 {
@@ -34,7 +34,7 @@ namespace EntityControllers.EnemyControllers
         }
         void RunToPlayer()
         {
-            if (distance > 0)
+            if (PlayerDistance > 0)
             {
                 TurnLeft();
             }
