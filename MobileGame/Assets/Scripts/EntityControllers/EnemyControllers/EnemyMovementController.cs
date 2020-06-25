@@ -28,7 +28,13 @@ namespace EntityControllers.EnemyControllers
 
                 if (absoluteDistance <= MinDistance)
                 {
+                    SpeedX = RunningSpeed;
+
                     RunToPlayer();
+                }
+                else
+                {
+                    StopRunning();
                 }
             }
         }

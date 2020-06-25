@@ -36,7 +36,7 @@ namespace EntityControllers.PlayerControllers
             healthBarController.HealthBarTip.SetActive(true);
             SetHealth(MaxHealth);
 
-           ThisObject.transform.position = RespawnPoint.transform.position; 
+           gameObject.transform.position = RespawnPoint.transform.position; 
            Time.timeScale = normaltimescale;
            RespawnButton.gameObject.SetActive(false);
         }

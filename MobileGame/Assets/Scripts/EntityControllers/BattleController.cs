@@ -23,7 +23,7 @@ namespace EntityControllers
 
         public bool CanStrike;
         public bool IsStriking { get; set; }
-        public float CurrentHealth { get; private set; }
+        public float CurrentHealth;
 
         //Переменные из Editor
         public int MaxHealth;
@@ -32,7 +32,6 @@ namespace EntityControllers
         public float SplashDamageLossPercent;
         public float HitDelay;
         public float StrikePeriod;
-        public GameObject ThisObject;
         public string EnemyTag;
 
         public void SetHealth(float value)
@@ -71,7 +70,7 @@ namespace EntityControllers
         }
         void HitEnemy()
         {
-            var attackedEnemies = TriggeredEnemies.Take(AttackedEnemiesAmount);
+            var attackedEnemies = TriggeredEnemies.Take(AttackedEnemiesAmount).ToList();
 
             float damageLoss = SplashDamageLossPercent;
             float multiplier = 0;
@@ -116,7 +115,7 @@ namespace EntityControllers
         {
             if (CurrentHealth <= 0)
             {
-                Destroy(ThisObject);
+                Destroy(gameObject);
             }
         }
     }
