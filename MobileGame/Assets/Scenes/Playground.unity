@@ -623,12 +623,12 @@ PrefabInstance:
     - target: {fileID: 3120000780175432544, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -416.81
+      value: -416.36
       objectReference: {fileID: 0}
     - target: {fileID: 3120000780175432544, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.71
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 3120000780175432544, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
         type: 3}
@@ -675,17 +675,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3120000780175432547, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3120000780175432547, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3120000780175432568, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435351618810009305, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435351618810009305, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4830883482512521847, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8340988111415385537, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
         type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 2059216359}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3120000780175432547, guid: b25215e76bfa1f24fb77a2d6ed1cf317, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b25215e76bfa1f24fb77a2d6ed1cf317, type: 3}
 --- !u!1001 &2059216358
 PrefabInstance:
@@ -759,6 +785,11 @@ PrefabInstance:
       propertyPath: RespawnButton
       value: 
       objectReference: {fileID: 1382151060}
+    - target: {fileID: 1301229106532819449, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1301229106532819453, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: m_Name
