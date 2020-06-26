@@ -547,6 +547,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Strike
       objectReference: {fileID: 0}
+    - target: {fileID: 2357852244638237372, guid: e6c66dfbcaf13674ab41dcdb342ab1ea,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357852244638237374, guid: e6c66dfbcaf13674ab41dcdb342ab1ea,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2059216361}
+    - target: {fileID: 2357852244638237374, guid: e6c66dfbcaf13674ab41dcdb342ab1ea,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Respawn
+      objectReference: {fileID: 0}
     - target: {fileID: 2357852245218298591, guid: e6c66dfbcaf13674ab41dcdb342ab1ea,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -794,6 +809,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670526085205449866, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: m_AutoTiling
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2755784659321052749, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}

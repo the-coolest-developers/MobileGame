@@ -2387,6 +2387,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Strike
       objectReference: {fileID: 0}
+    - target: {fileID: 2357852244638237374, guid: e6c66dfbcaf13674ab41dcdb342ab1ea,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1871109604}
+    - target: {fileID: 2357852244638237374, guid: e6c66dfbcaf13674ab41dcdb342ab1ea,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Respawn
+      objectReference: {fileID: 0}
     - target: {fileID: 2357852245218298591, guid: e6c66dfbcaf13674ab41dcdb342ab1ea,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
