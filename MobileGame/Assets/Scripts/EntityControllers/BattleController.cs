@@ -42,6 +42,18 @@ namespace EntityControllers
         }
         public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
 
+        public void AOEStrike()
+        {
+            if (CanStrike && !IsStriking && MovementController.IsOnTheGround)
+            {
+                StartCoroutine(StrikePeriodCoroutine());
+
+                MovementController.StopRunning();
+                AnimationController.PlayStrikeAnimation();
+
+                StartCoroutine(HitEnemyCoroutine(AOEHit));
+            }
+        }
         public void Strike()
         {
             if (CanStrike && !IsStriking && MovementController.IsOnTheGround)
@@ -51,7 +63,7 @@ namespace EntityControllers
                 MovementController.StopRunning();
                 AnimationController.PlayStrikeAnimation();
 
-                StartCoroutine(HitEnemyCoroutine());
+                StartCoroutine(HitEnemyCoroutine(HitEnemy));
             }
         }
         protected IEnumerator StrikePeriodCoroutine()
@@ -62,11 +74,11 @@ namespace EntityControllers
 
             IsStriking = false;
         }
-        protected IEnumerator HitEnemyCoroutine()
+        protected IEnumerator HitEnemyCoroutine(Action hitAction)
         {
             yield return new WaitForSeconds(HitDelay);
 
-            HitEnemy();
+            hitAction.Invoke();
         }
         void HitEnemy()
         {
@@ -84,6 +96,14 @@ namespace EntityControllers
 
                 var enemyBattleController = enemy.GetComponent<BattleController>();
                 enemyBattleController.GetDamage(finalDamage);
+            }
+        }
+        void AOEHit()
+        {
+            foreach (var enemy in TriggeredEnemies)
+            {
+                var enemyBattleController = enemy.GetComponent<BattleController>();
+                enemyBattleController.GetDamage(Damage);
             }
         }
 
