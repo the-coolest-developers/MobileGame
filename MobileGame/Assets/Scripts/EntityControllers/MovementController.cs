@@ -12,6 +12,7 @@ namespace EntityControllers
         public float RunningSpeed;
         public bool CanMove;
         public GameObject Player;
+        public float HorizontalPower;
 
 
         //Внутренние переменные
@@ -38,6 +39,7 @@ namespace EntityControllers
         }
         protected virtual void FixedUpdate()
         {
+            CanMove = !BattleController.IsStriking && SpeedX != 0 && IsOnTheGround;
             MoveIfPossible();
 
             /*if (SpeedX != 0 & CanMove)
@@ -80,12 +82,13 @@ namespace EntityControllers
             if (IsOnTheGround)
             {
                 rigidbody2d.AddForce(Vector2.up * JumpPower);
+                IsOnTheGround = false;
             }
         }
 
         public void MoveIfPossible()
         {
-            if (CanMove && !BattleController.IsStriking && SpeedX != 0)
+            if (CanMove)
             {
                 rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
                 if(SpeedX == 0)
@@ -109,7 +112,7 @@ namespace EntityControllers
                     break;
             }
         }
-        protected virtual void OnTriggerExit2D(Collider2D collision)
+        /*protected virtual void OnTriggerExit2D(Collider2D collision)
         {
             switch (collision.gameObject.tag)
             {
@@ -117,6 +120,6 @@ namespace EntityControllers
                     IsOnTheGround = false;
                     break;
             }
-        }
+        }*/
     }
 }
