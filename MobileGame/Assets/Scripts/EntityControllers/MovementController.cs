@@ -18,6 +18,7 @@ namespace EntityControllers
         //Внутренние переменные
         protected Rigidbody2D rigidbody2d;
         protected Rigidbody2D PlayerRb;
+        protected float LastSpeedX;
         public AnimationController AnimationController { get; set; }
         public BattleController BattleController { get; set; }
 
@@ -40,6 +41,7 @@ namespace EntityControllers
         protected virtual void FixedUpdate()
         {
             CanMove = !BattleController.IsStriking && SpeedX != 0 && IsOnTheGround;
+            Debug.Log(IsOnTheGround);
             MoveIfPossible();
 
             /*if (SpeedX != 0 & CanMove)
@@ -64,6 +66,7 @@ namespace EntityControllers
                 Flip();
             }
             SpeedX = RunningSpeed;
+            LastSpeedX = 0;
         }
         public void TurnLeft()
         {
@@ -72,9 +75,11 @@ namespace EntityControllers
                 Flip();
             }
             SpeedX = -RunningSpeed;
+            LastSpeedX = 0;
         }
         public void StopRunning()
         {
+            LastSpeedX = SpeedX;
             SpeedX = 0;
         }
         public void Jump()
@@ -109,6 +114,8 @@ namespace EntityControllers
             {
                 case "Ground":
                     IsOnTheGround = true;
+                    Debug.Log(IsOnTheGround);
+ 
                     break;
             }
         }
