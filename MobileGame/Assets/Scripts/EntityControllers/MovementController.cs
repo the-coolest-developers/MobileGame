@@ -41,7 +41,6 @@ namespace EntityControllers
         protected virtual void FixedUpdate()
         {
             CanMove = !BattleController.IsStriking && SpeedX != 0 && IsOnTheGround;
-            Debug.Log(IsOnTheGround);
             MoveIfPossible();
 
             /*if (SpeedX != 0 & CanMove)
@@ -87,7 +86,7 @@ namespace EntityControllers
             if (IsOnTheGround)
             {
                 rigidbody2d.AddForce(Vector2.up * JumpPower);
-                IsOnTheGround = false;
+                Debug.Log("SOMETHINK WRONG!!!");
             }
         }
 
@@ -114,12 +113,10 @@ namespace EntityControllers
             {
                 case "Ground":
                     IsOnTheGround = true;
-                    Debug.Log(IsOnTheGround);
- 
                     break;
             }
         }
-        /*protected virtual void OnTriggerExit2D(Collider2D collision)
+        protected virtual void OnTriggerExit2D(Collider2D collision)
         {
             switch (collision.gameObject.tag)
             {
@@ -127,6 +124,6 @@ namespace EntityControllers
                     IsOnTheGround = false;
                     break;
             }
-        }*/
+        }
     }
 }
