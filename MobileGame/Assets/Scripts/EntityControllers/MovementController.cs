@@ -11,14 +11,9 @@ namespace EntityControllers
         public float JumpPower;
         public float RunningSpeed;
         public bool CanMove;
-        public GameObject Player;
-        public float HorizontalPower;
-
 
         //Внутренние переменные
         protected Rigidbody2D rigidbody2d;
-        protected Rigidbody2D PlayerRb;
-        protected float LastSpeedX;
         public AnimationController AnimationController { get; set; }
         public BattleController BattleController { get; set; }
 
@@ -30,17 +25,16 @@ namespace EntityControllers
         protected virtual void Start()
         {
             RunningSpeed = RunningSpeed / 100;
-            PlayerRb = Player.GetComponent<Rigidbody2D>();
             rigidbody2d = GetComponent<Rigidbody2D>();
 
             BattleController = GetComponent<BattleController>();
             AnimationController = GetComponent<AnimationController>();
 
+            AnimationController.SetIsNotRunning();
             FaceRight = true;
         }
         protected virtual void FixedUpdate()
         {
-            CanMove = !BattleController.IsStriking && SpeedX != 0 && IsOnTheGround;
             MoveIfPossible();
         }
         void Flip()
@@ -55,7 +49,6 @@ namespace EntityControllers
                 Flip();
             }
             SpeedX = RunningSpeed;
-            LastSpeedX = 0;
         }
         public void TurnLeft()
         {
@@ -64,11 +57,10 @@ namespace EntityControllers
                 Flip();
             }
             SpeedX = -RunningSpeed;
-            LastSpeedX = 0;
         }
         public void StopRunning()
         {
-            LastSpeedX = SpeedX;
+            AnimationController.SetIsNotRunning();
             SpeedX = 0;
         }
         public void Jump()
@@ -81,10 +73,10 @@ namespace EntityControllers
 
         public void MoveIfPossible()
         {
-            if (CanMove)
-            {                
-                rigidbody2d.AddForce(Vector2.right * 30);
-                //rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
+            if (CanMove && SpeedX != 0)
+            {
+                //rigidbody2d.AddForce(Vector2.right * 30);
+                rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
 
                 if (AnimationController != null)
                 {

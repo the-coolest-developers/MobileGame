@@ -13,6 +13,8 @@ namespace EntityControllers.EnemyControllers
         public float MinDistance;
         public float StrikeDistance;
 
+        public Rigidbody2D PlayerRb;
+
         //Внутренние переменные
         public double PlayerDistance { get; set; }
 
@@ -21,7 +23,7 @@ namespace EntityControllers.EnemyControllers
         {
             base.FixedUpdate();
 
-            if (Player != null)
+            if (PlayerRb != null)
             {
                 PlayerDistance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
                 var absoluteDistance = math.abs(PlayerDistance);
