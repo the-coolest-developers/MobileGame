@@ -42,16 +42,6 @@ namespace EntityControllers
         {
             CanMove = !BattleController.IsStriking && SpeedX != 0 && IsOnTheGround;
             MoveIfPossible();
-
-            /*if (SpeedX != 0 & CanMove)
-            {
-                rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
-
-                if (AnimationController != null)
-                {
-                    AnimationController.SetIsRunning();
-                }
-            }*/
         }
         void Flip()
         {
@@ -86,19 +76,15 @@ namespace EntityControllers
             if (IsOnTheGround)
             {
                 rigidbody2d.AddForce(Vector2.up * JumpPower);
-                Debug.Log("SOMETHINK WRONG!!!");
             }
         }
 
         public void MoveIfPossible()
         {
             if (CanMove)
-            {
-                rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
-                if(SpeedX == 0)
-                {
-                    print("It is 0!");
-                }
+            {                
+                rigidbody2d.AddForce(Vector2.right * 30);
+                //rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
 
                 if (AnimationController != null)
                 {
