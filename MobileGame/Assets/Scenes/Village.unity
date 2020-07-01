@@ -12723,12 +12723,12 @@ PrefabInstance:
     - target: {fileID: 1301229106532819447, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -411.419
+      value: -410.12
       objectReference: {fileID: 0}
     - target: {fileID: 1301229106532819447, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.466
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 1301229106532819447, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
@@ -12891,12 +12891,12 @@ PrefabInstance:
     - target: {fileID: 3120000780175432544, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -416.81
+      value: -413.95
       objectReference: {fileID: 0}
     - target: {fileID: 3120000780175432544, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.71
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 3120000780175432544, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
         type: 3}
@@ -12947,6 +12947,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377885577169113278, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
+        type: 3}
+      propertyPath: StrikeBoolName
+      value: Strike
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377885577169113278, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
+        type: 3}
+      propertyPath: RunningBoolName
+      value: IsRunning
       objectReference: {fileID: 0}
     - target: {fileID: 8340988111415385537, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
         type: 3}
