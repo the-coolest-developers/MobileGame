@@ -28,7 +28,7 @@ namespace EntityControllers.EnemyControllers
                 PlayerDistance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
                 var absoluteDistance = math.abs(PlayerDistance);
 
-                if (absoluteDistance <= MinDistance)
+                if (absoluteDistance <= MinDistance && absoluteDistance >= StrikeDistance)
                 {
                     SpeedX = RunningSpeed;
 
