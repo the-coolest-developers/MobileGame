@@ -97,7 +97,6 @@ namespace EntityControllers
                 }
             }
         }
-
         protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
             switch (collision.gameObject.tag)
@@ -116,5 +115,22 @@ namespace EntityControllers
                     break;
             }
         }
+
+        protected void RunToGameObjetc(GameObject targetObject)
+        {
+            Rigidbody2D targetObjectRB = targetObject.GetComponent<Rigidbody2D>();
+            float distance = rigidbody2d.transform.position.x - targetObjectRB.transform.position.x;
+            if (distance > 0)
+            {
+                TurnLeft();
+            }
+            else
+            {
+                TurnRight();
+            }
+
+            MoveIfPossible();
+        }
+
     }
 }

@@ -13,12 +13,19 @@ namespace EntityControllers.EnemyControllers
         public float MinDistance;
         public float StrikeDistance;
 
-        public Rigidbody2D PlayerRb;
+        public GameObject Player;
 
+        Rigidbody2D PlayerRb;
         //Внутренние переменные
         public double PlayerDistance { get; set; }
 
         // Update is called once per frame
+        void Start()
+        {
+            base.Start();
+
+            PlayerRb = Player.GetComponent<Rigidbody2D>();
+        }
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -32,26 +39,13 @@ namespace EntityControllers.EnemyControllers
                 {
                     SpeedX = RunningSpeed;
 
-                    RunToPlayer();
+                    RunToGameObjetc(Player);
                 }
                 else
                 {
                     StopRunning();
                 }
             }
-        }
-        void RunToPlayer()
-        {
-            if (PlayerDistance > 0)
-            {
-                TurnLeft();
-            }
-            else
-            {
-                TurnRight();
-            }
-
-            MoveIfPossible();
         }
     }
 }
