@@ -12785,6 +12785,11 @@ PrefabInstance:
       propertyPath: RespawnButton
       value: 
       objectReference: {fileID: 1799983536}
+    - target: {fileID: 1301229106532819450, guid: fe0348ba35896af4b8bd6dc0b87152e9,
+        type: 3}
+      propertyPath: RunningSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1301229106532819453, guid: fe0348ba35896af4b8bd6dc0b87152e9,
         type: 3}
       propertyPath: m_Name
@@ -12953,6 +12958,11 @@ PrefabInstance:
       propertyPath: PlayerRb
       value: 
       objectReference: {fileID: 1871109608}
+    - target: {fileID: 8340988111415385537, guid: b25215e76bfa1f24fb77a2d6ed1cf317,
+        type: 3}
+      propertyPath: RunningSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b25215e76bfa1f24fb77a2d6ed1cf317, type: 3}
 --- !u!1001 &5770311725186036446
