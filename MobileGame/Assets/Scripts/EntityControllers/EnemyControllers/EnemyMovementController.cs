@@ -20,7 +20,7 @@ namespace EntityControllers.EnemyControllers
         public double PlayerDistance { get; set; }
 
         // Update is called once per frame
-        void Start()
+        protected override void Start()
         {
             base.Start();
 
