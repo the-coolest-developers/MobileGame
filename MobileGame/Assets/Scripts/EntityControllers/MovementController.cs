@@ -74,14 +74,8 @@ namespace EntityControllers
 
         public void MoveIfPossible()
         {
-            if (CanMove && SpeedX != 0)
+            if (CanMove && !BattleController.IsStriking && SpeedX != 0)
             {
-                //rigidbody2d.AddForce(Vector2.right * 30);
-                //rigidbody2d.MovePosition(rigidbody2d.position + Vector2.right * SpeedX);
-
-                //var finalVector = Vector2.right * SpeedX / 5;
-                //print("FinalVector: " + finalVector);
-
                 if (SpeedX < 0)
                 {
                     rigidbody2d.transform.Translate(Vector2.left * SpeedX);
