@@ -1,9 +1,6 @@
-﻿using EntityControllers;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace EntityControllers
+namespace Controllers.EntityControllers
 {
     public abstract class MovementController : MonoBehaviour
     {

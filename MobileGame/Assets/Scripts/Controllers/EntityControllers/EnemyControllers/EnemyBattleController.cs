@@ -1,11 +1,9 @@
-﻿using Assets.Scripts.UI_Controllers;
-using EntityControllers;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace EntityControllers.EnemyControllers
+namespace Controllers.EntityControllers.EnemyControllers
 {
     public class EnemyBattleController : BattleController
     {

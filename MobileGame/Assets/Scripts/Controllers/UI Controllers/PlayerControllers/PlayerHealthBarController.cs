@@ -1,12 +1,7 @@
-﻿using EntityControllers;
-using EntityControllers.PlayerControllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Controllers.EntityControllers;
+using Controllers.EntityControllers.PlayerControllers;
 
-namespace Assets.Scripts.UI_Controllers.PlayerControllers
+namespace Controllers.UI_Controllers.PlayerControllers
 {
     public class PlayerHealthBarController : HealthBarController
     {

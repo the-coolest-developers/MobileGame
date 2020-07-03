@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Unity.Mathematics;
-using EntityControllers;
 
-namespace EntityControllers.EnemyControllers
+namespace Controllers.EntityControllers.EnemyControllers
 {
     public class EnemyMovementController : MovementController
     {

@@ -1,10 +1,10 @@
-﻿using EntityControllers;
+﻿using Controllers.EntityControllers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.UI_Controllers
+namespace Controllers.UI_Controllers
 {
     public abstract class HealthBarController : MonoBehaviour
     {
