@@ -2255,6 +2255,16 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetIsNotRunning
       objectReference: {fileID: 0}
+    - target: {fileID: 2357852244425460608, guid: e6c66dfbcaf13674ab41dcdb342ab1ea,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357852244425460608, guid: e6c66dfbcaf13674ab41dcdb342ab1ea,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 2357852244425460610, guid: e6c66dfbcaf13674ab41dcdb342ab1ea,
         type: 3}
       propertyPath: m_LocalPosition.x
