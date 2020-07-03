@@ -30,6 +30,14 @@ namespace Controllers.EntityControllers
         public float StrikePeriod;
         public string EnemyTag;
 
+        public void SetHealthToMax()
+        {
+            SetHealth(MaxHealth);
+        }
+        public void SetHealthToZero()
+        {
+            SetHealth(0);
+        }
         public void SetHealth(float value)
         {
             CurrentHealth = value > MaxHealth ? MaxHealth : value;
