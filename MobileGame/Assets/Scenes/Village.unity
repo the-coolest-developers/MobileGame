@@ -12763,6 +12763,16 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1871109603}
+    - target: {fileID: 4798280051765241264, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -159.81013
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798280051765241264, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 110.04898
+      objectReference: {fileID: 0}
     - target: {fileID: 4798280052022339008, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
       propertyPath: m_LocalPosition.x
