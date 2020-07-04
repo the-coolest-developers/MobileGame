@@ -6,23 +6,30 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    GameObject NewGame;
-    GameObject MainCamera;
-    GameObject SecondCamera;
-    GameObject SecondCanvas;
-    // Start is called before the first frame update
+    public GameObject NewGame;
+    public GameObject MainCamera;
+    public GameObject SecondCamera;
+    public GameObject SecondCanvas;
+    public GameObject ThirdCamera;
+    public GameObject SettingsCanvas;
+    public GameObject FourthCamera;
+    public GameObject AutorsCanvas;
+
     void Start()
     {
-        NewGame = GameObject.FindWithTag("TextN");
         NewGame.gameObject.SetActive(false);
-        MainCamera = GameObject.Find("Main Camera");
-        SecondCamera = GameObject.Find("SecondCamera");
         SecondCamera.gameObject.SetActive(false);
-        SecondCanvas = GameObject.Find("SecCanvas");
         SecondCanvas.gameObject.SetActive(false);
+        ThirdCamera.gameObject.SetActive(false);
+        SettingsCanvas.gameObject.SetActive(false);
+        FourthCamera.gameObject.SetActive(false);
+        AutorsCanvas.gameObject.SetActive(false);
     }
     
-    // Update is called once per frame
+    public void doExitGame()
+    {
+        Application.Quit();
+    }
     
     public void OpenScene(int index)
     {
