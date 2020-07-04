@@ -1,15 +1,11 @@
-﻿using Assets.Scripts.Models;
-using Assets.Scripts.Singletones;
-using Assets.Scripts.UI_Controllers;
-using EntityControllers;
+﻿using Controllers.UI_Controllers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using UnityEngine;
 
-namespace EntityControllers
+namespace Controllers.EntityControllers
 {
     public abstract class BattleController : MonoBehaviour
     {
@@ -34,6 +30,14 @@ namespace EntityControllers
         public float StrikePeriod;
         public string EnemyTag;
 
+        public void SetHealthToMax()
+        {
+            SetHealth(MaxHealth);
+        }
+        public void SetHealthToZero()
+        {
+            SetHealth(0);
+        }
         public void SetHealth(float value)
         {
             CurrentHealth = value > MaxHealth ? MaxHealth : value;

@@ -1,33 +1,28 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Controllers.UI_Controllers;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Scripts.UI_Controllers.PlayerControllers;
-using EntityControllers;
-using Assets.Scripts.UI_Controllers;
 
-namespace EntityControllers.PlayerControllers
+namespace Controllers.EntityControllers.PlayerControllers
 {
     public class PlayerBattleController : BattleController
     {
+        public GameController GameController;
+
         public GameObject RespawnPoint;
         HealthBarController healthBarController;
         public Button RespawnButton;
 
-        float normaltimescale;
         protected override void Start()
         {
             base.Start();
-        
+
             healthBarController = GetComponent<HealthBarController>();
-            normaltimescale = Time.timeScale;
         }
         protected override void FixedUpdate()
         {
-            if(CurrentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
-                Time.timeScale = 0f;
+                GameController.PauseGame();
                 RespawnButton.gameObject.SetActive(true);
             }
         }
@@ -36,9 +31,11 @@ namespace EntityControllers.PlayerControllers
             healthBarController.HealthBarTip.SetActive(true);
             SetHealth(MaxHealth);
 
-           gameObject.transform.position = RespawnPoint.transform.position; 
-           Time.timeScale = normaltimescale;
-           RespawnButton.gameObject.SetActive(false);
+            gameObject.transform.position = RespawnPoint.transform.position;
+
+            GameController.ResumeGame();
+
+            RespawnButton.gameObject.SetActive(false);
         }
     }
 }
