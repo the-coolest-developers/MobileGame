@@ -32,7 +32,6 @@ namespace Controllers.EntityControllers
 
             AnimationController.SetIsNotRunning();
             FaceRight = true;
-            //BehaviorController = GetComponent<BehaviorController>();
         }
 
         void Flip()

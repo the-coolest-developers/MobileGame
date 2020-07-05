@@ -22,12 +22,17 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public bool IsStriking => BattleController.IsStriking;
         public bool CanStrike => BattleController.CanStrike;
         public float CurrentHealth => BattleController.CurrentHealth;
+        public float MaxHealth => BattleController.MaxHealth;
 
         protected virtual void FixedUpdate()
         {
             MovementController.MoveIfPossible();
         }
 
+        public void SetHealthbarValue()
+        {
+
+        }
         public void InitializeControllers()
         {
             BattleController = GetComponent<BattleController>();

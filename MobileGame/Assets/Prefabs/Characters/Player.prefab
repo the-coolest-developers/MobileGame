@@ -85,8 +85,9 @@ GameObject:
   - component: {fileID: 8307259235387874330}
   - component: {fileID: 6260731868312055976}
   - component: {fileID: 2229875668795152394}
-  - component: {fileID: 4370117225209581246}
   - component: {fileID: 7450236012979669622}
+  - component: {fileID: 3860756187577783763}
+  - component: {fileID: 4370117225209581246}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -237,8 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f106d836dd8f8a42a66db8b85b315ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StrikeBoolName: 
-  RunningBoolName: 
+  StrikeBoolName: Strike
+  RunningBoolName: IsRunning
 --- !u!114 &2229875668795152394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,23 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60395c73a0490f74b84be1e1f23198d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 0
-  RunningSpeed: 0
-  CanMove: 0
---- !u!114 &4370117225209581246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8307259235387874334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f36c7a0caba2ba145aacf89d3adc9847, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameController: {fileID: 0}
-  RespawnButton: {fileID: 0}
+  JumpPower: 1500
+  RunningSpeed: 5
+  CanMove: 1
 --- !u!114 &7450236012979669622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,3 +275,31 @@ MonoBehaviour:
   StrikePeriod: 1
   EnemyTag: Enemy
   CanStrike: 1
+--- !u!114 &3860756187577783763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307259235387874334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 998d194555059e74192556fcc61c6e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthBarLine: {fileID: 0}
+  HealthBarTip: {fileID: 0}
+--- !u!114 &4370117225209581246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307259235387874334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36c7a0caba2ba145aacf89d3adc9847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameController: {fileID: 0}
+  RespawnButton: {fileID: 0}

@@ -7,13 +7,11 @@ using Assets.Scripts.Controllers.BehaviorControllers;
 
 namespace Controllers.UI_Controllers
 {
-    public abstract class HealthBarController : MonoBehaviour
+    public class HealthBarController : MonoBehaviour
     {
         //Те, которые указываются в редакторе Unity
         public GameObject HealthBarLine;
         public GameObject HealthBarTip;
-
-        public BattleController BattleController { get; protected set; }
 
         //Внутренние
         private Image HealthBarLineImage;
@@ -22,8 +20,6 @@ namespace Controllers.UI_Controllers
         private float HealthBarMaxWidth;
         private float HealthBarTipDefaultX;
 
-        BehaviorController BehaviorController;
-
         protected virtual void Start()
         {
             HealthBarLineImage = HealthBarLine.GetComponent<Image>();
@@ -31,14 +27,11 @@ namespace Controllers.UI_Controllers
             HealthBarMaxWidth = HealthBarRect.rect.width;
             HealthBarTipRect = HealthBarTip.GetComponent<RectTransform>();
             HealthBarTipDefaultX = HealthBarTipRect.anchoredPosition.x;
-            
-            BehaviorController = GetComponent<BehaviorController>();
-            BattleController = GetComponent<BattleController>();
         }
 
-        public void UpdateHealthBarLine()
+        public void UpdateHealthBarLine(float currentHealth, float maxHealth)
         {
-            float healthPercent = BehaviorController.CurrentHealth / BattleController.MaxHealth;
+            float healthPercent = currentHealth / maxHealth;
 
             if (HealthBarLineImage != null)
             {

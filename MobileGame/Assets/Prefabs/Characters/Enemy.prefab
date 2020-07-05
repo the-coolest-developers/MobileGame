@@ -82,9 +82,6 @@ GameObject:
   - component: {fileID: 5166078315885113633}
   - component: {fileID: 5166078315885113634}
   - component: {fileID: 5166078315885113635}
-  - component: {fileID: 5166078315885113660}
-  - component: {fileID: 5166078315885113661}
-  - component: {fileID: 5166078315885113662}
   - component: {fileID: 5166078315885113663}
   - component: {fileID: 5166078315885113656}
   m_Layer: 0
@@ -206,60 +203,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.18, y: 0.64}
   m_EdgeRadius: 0
---- !u!114 &5166078315885113660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166078315885113657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d6f60ecd6faf1c45a46399a457673e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanStrike: 1
-  CurrentHealth: 0
-  MaxHealth: 10
-  Damage: 2
-  AttackedEnemiesAmount: 1
-  SplashDamageLossPercent: 25
-  HitDelay: 0.65
-  StrikePeriod: 3
-  EnemyTag: Player
---- !u!114 &5166078315885113661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166078315885113657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91f5c55db70e4524ca3403e76525828b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JumpPower: 0
-  RunningSpeed: 1.5
-  CanMove: 1
-  SpeedX: 0
-  MinDistance: 7
-  StrikeDistance: 1.2
-  Player: {fileID: 0}
---- !u!114 &5166078315885113662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166078315885113657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d93f23856fde1b43a026159a3d4dcbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StrikeBoolName: EnemyHammerStrike
-  RunningBoolName: IsRunning
 --- !u!61 &5166078315885113663
 BoxCollider2D:
   m_ObjectHideFlags: 0

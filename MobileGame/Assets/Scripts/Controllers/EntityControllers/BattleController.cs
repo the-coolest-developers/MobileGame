@@ -14,7 +14,6 @@ namespace Controllers.EntityControllers
         public HealthBarController HealthBarController { get; protected set; }
         public MovementController MovementController { get; protected set; }
         public AnimationController AnimationController { get; protected set; }
-        //BehaviorController BehaviorController;
 
         public event Action HealthChanged;
 
@@ -123,7 +122,6 @@ namespace Controllers.EntityControllers
 
         void Start()
         {
-            //BehaviorController = GetComponent<BehaviorController>();
             TriggeredEnemies = new List<GameObject>();
 
             AnimationController = GetComponent<AnimationController>();
@@ -132,7 +130,10 @@ namespace Controllers.EntityControllers
 
             if (HealthBarController != null)
             {
-                HealthChanged = new Action(HealthBarController.UpdateHealthBarLine);
+                HealthChanged = new Action(() =>
+                {
+                    HealthBarController.UpdateHealthBarLine(CurrentHealth, MaxHealth);
+                });
             }
             else
             {
