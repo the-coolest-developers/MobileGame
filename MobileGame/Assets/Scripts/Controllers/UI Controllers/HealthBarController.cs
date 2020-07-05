@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.Controllers.BehaviorControllers;
 
 namespace Controllers.UI_Controllers
 {
@@ -21,6 +22,8 @@ namespace Controllers.UI_Controllers
         private float HealthBarMaxWidth;
         private float HealthBarTipDefaultX;
 
+        BehaviorController BehaviorController;
+
         protected virtual void Start()
         {
             HealthBarLineImage = HealthBarLine.GetComponent<Image>();
@@ -28,11 +31,13 @@ namespace Controllers.UI_Controllers
             HealthBarMaxWidth = HealthBarRect.rect.width;
             HealthBarTipRect = HealthBarTip.GetComponent<RectTransform>();
             HealthBarTipDefaultX = HealthBarTipRect.anchoredPosition.x;
+            
+            BehaviorController = GetComponent<BehaviorController>();
         }
 
         public void UpdateHealthBarLine()
         {
-            float healthPercent = EntityBattleController.CurrentHealth / EntityBattleController.MaxHealth;
+            float healthPercent = BehaviorController.CurrentHealth / EntityBattleController.MaxHealth;
 
             if (HealthBarLineImage != null)
             {

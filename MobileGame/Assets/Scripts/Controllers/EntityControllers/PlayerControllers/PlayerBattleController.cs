@@ -6,7 +6,7 @@ namespace Controllers.EntityControllers.PlayerControllers
 {
     public class PlayerBattleController : BattleController
     {
-        public GameController GameController;
+      /*  public GameController GameController;
 
         public GameObject RespawnPoint;
         HealthBarController healthBarController;
@@ -16,17 +16,16 @@ namespace Controllers.EntityControllers.PlayerControllers
         {
             base.Start();
 
-            healthBarController = GetComponent<HealthBarController>();
         }
         protected override void FixedUpdate()
         {
-            /*if (CurrentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
                 GameController.PauseGame();
                 RespawnButton.gameObject.SetActive(true);
-            }*/
+            }
         }
-        /*public void Respawn()
+        public void Respawn()
         {
             healthBarController.HealthBarTip.SetActive(true);
             SetHealth(MaxHealth);

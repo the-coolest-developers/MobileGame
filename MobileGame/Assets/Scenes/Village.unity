@@ -6751,6 +6751,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1183602248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4798280052164557868, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4798280051811238340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1194913594
 GameObject:
   m_ObjectHideFlags: 0
@@ -10659,7 +10665,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4798280051811238340}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1183602248}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -10945,7 +10951,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 8307259234910093823}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871109601}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ede491bf387c2a478448f84b78d96f9, type: 3}
   m_Name: 
@@ -12570,6 +12576,16 @@ PrefabInstance:
       propertyPath: PlayerGameObject
       value: 
       objectReference: {fileID: 1871109601}
+    - target: {fileID: -5283282768875910361, guid: a8d4deff63ca83d47af1ee1f423d29d8,
+        type: 3}
+      propertyPath: RespawnButton
+      value: 
+      objectReference: {fileID: 1183602248}
+    - target: {fileID: -5283282768875910361, guid: a8d4deff63ca83d47af1ee1f423d29d8,
+        type: 3}
+      propertyPath: RespawnPoint
+      value: 
+      objectReference: {fileID: 323556563}
     - target: {fileID: 3609287875424614714, guid: a8d4deff63ca83d47af1ee1f423d29d8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12971,6 +12987,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: GameController
+      value: 
+      objectReference: {fileID: 159847510}
+    - target: {fileID: 7175117622728681442, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450236012979669622, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8307259235387874325, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13026,6 +13057,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8307259235387874329, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8307259235387874331, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}
       propertyPath: RespawnPoint
@@ -13041,6 +13077,11 @@ PrefabInstance:
       propertyPath: GameController
       value: 
       objectReference: {fileID: 159847510}
+    - target: {fileID: 8307259235387874331, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8307259235387874333, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}
       propertyPath: HealthBarLine

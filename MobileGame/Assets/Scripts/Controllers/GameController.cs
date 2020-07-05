@@ -3,6 +3,7 @@ using Controllers.UI_Controllers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Controllers.BehaviorControllers;
 
 namespace Controllers
 {
@@ -14,6 +15,8 @@ namespace Controllers
 
         BattleController PlayerBattleController { get; set; }
         HealthBarController PlayerHealthBarController { get; set; }
+        BehaviorController BehaviorController;
+
 
         float normaltimescale;
 
@@ -25,6 +28,8 @@ namespace Controllers
             PlayerHealthBarController = PlayerGameObject.GetComponent<HealthBarController>();
 
             PlayerBattleController.HealthChanged += HandlePlayerDeath;
+        
+            BehaviorController = GetComponent<BehaviorController>();
         }
 
         // Update is called once per frame
@@ -49,7 +54,7 @@ namespace Controllers
 
         public void HandlePlayerDeath()
         {
-            if (PlayerBattleController.CurrentHealth <= 0)
+            if (BehaviorController.CurrentHealth <= 0)
             {
                 PauseGame();
 

@@ -1,48 +1,43 @@
 ﻿using UnityEngine;
+using Assets.Scripts.Controllers;
+using Assets.Scripts.Controllers.BehaviorControllers;
 
 namespace Controllers.EntityControllers
 {
-    public abstract class MovementController : MonoBehaviour
+    public class MovementController : MonoBehaviour
     {
         //Внешние переменные
         public float JumpPower;
         public float RunningSpeed;
-        public bool CanMove;
 
         //Внутренние переменные
+        protected BehaviorController BehaviorController;
         protected Rigidbody2D rigidbody2d;
         public AnimationController AnimationController { get; set; }
-        public BattleController BattleController { get; set; }
-
-        public bool IsOnTheGround { get; set; }
+        
         //protected float SpeedX { get; set; }
         public float SpeedX;
-        protected bool FaceRight { get; set; }
 
-
-        protected virtual void Start()
+        void Start()
         {
             RunningSpeed = RunningSpeed / 100;
             rigidbody2d = GetComponent<Rigidbody2D>();
 
-            BattleController = GetComponent<BattleController>();
             AnimationController = GetComponent<AnimationController>();
 
             AnimationController.SetIsNotRunning();
-            FaceRight = true;
+            BehaviorController.FaceRight = true;
+            BehaviorController = GetComponent<BehaviorController>();
         }
-        protected virtual void FixedUpdate()
-        {
-            MoveIfPossible();
-        }
+
         void Flip()
         {
-            FaceRight = !FaceRight;
+            BehaviorController.FaceRight = !BehaviorController.FaceRight;
             rigidbody2d.transform.Rotate(0f, 180f, 0f);
         }
         public void TurnRight()
         {
-            if (!FaceRight)
+            if (!BehaviorController.FaceRight)
             {
                 Flip();
             }
@@ -50,7 +45,7 @@ namespace Controllers.EntityControllers
         }
         public void TurnLeft()
         {
-            if (FaceRight)
+            if (BehaviorController.FaceRight)
             {
                 Flip();
             }
@@ -63,7 +58,7 @@ namespace Controllers.EntityControllers
         }
         public void Jump()
         {
-            if (IsOnTheGround)
+            if (BehaviorController.IsOnTheGround)
             {
                 rigidbody2d.AddForce(Vector2.up * JumpPower);
             }
@@ -71,7 +66,8 @@ namespace Controllers.EntityControllers
 
         public void MoveIfPossible()
         {
-            if (CanMove && !BattleController.IsStriking && SpeedX != 0)
+            
+            if (BehaviorController.CanMove && !BehaviorController.IsStriking && SpeedX != 0)
             {
                 if (SpeedX < 0)
                 {
@@ -93,7 +89,7 @@ namespace Controllers.EntityControllers
             switch (collision.gameObject.tag)
             {
                 case "Ground":
-                    IsOnTheGround = true;
+                    BehaviorController.IsOnTheGround = true;
                     break;
             }
         }
@@ -102,7 +98,7 @@ namespace Controllers.EntityControllers
             switch (collision.gameObject.tag)
             {
                 case "Ground":
-                    IsOnTheGround = false;
+                    BehaviorController.IsOnTheGround = false;
                     break;
             }
         }

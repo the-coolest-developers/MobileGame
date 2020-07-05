@@ -1,25 +1,25 @@
-﻿using Controllers.UI_Controllers;
+﻿using System.IO;
+using Controllers.UI_Controllers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+using UnityEngine; 
+using Assets.Scripts.Controllers.BehaviorControllers;
 
 namespace Controllers.EntityControllers
 {
-    public abstract class BattleController : MonoBehaviour
+    public class BattleController : MonoBehaviour
     {
         public HealthBarController HealthBarController { get; protected set; }
         public MovementController MovementController { get; protected set; }
         public AnimationController AnimationController { get; protected set; }
+        BehaviorController BehaviorController;
 
         public event Action HealthChanged;
 
         protected List<GameObject> TriggeredEnemies { get; set; }
 
-        public bool CanStrike;
-        public bool IsStriking { get; set; }
-        public float CurrentHealth;
 
         //Переменные из Editor
         public int MaxHealth;
@@ -40,15 +40,15 @@ namespace Controllers.EntityControllers
         }
         public void SetHealth(float value)
         {
-            CurrentHealth = value > MaxHealth ? MaxHealth : value;
+            BehaviorController.CurrentHealth = value > MaxHealth ? MaxHealth : value;
 
             HealthChanged();
         }
-        public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
+        public void GetDamage(float damageAmount) => SetHealth(BehaviorController.CurrentHealth - damageAmount);
 
         public void AOEStrike()
         {
-            if (CanStrike && !IsStriking && MovementController.IsOnTheGround)
+            if (BehaviorController.CanStrike && !BehaviorController.IsStriking && BehaviorController.IsOnTheGround)
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
@@ -60,7 +60,7 @@ namespace Controllers.EntityControllers
         }
         public void Strike()
         {
-            if (CanStrike && !IsStriking && MovementController.IsOnTheGround)
+            if (BehaviorController.CanStrike && ! BehaviorController.IsStriking && BehaviorController.IsOnTheGround)
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
@@ -72,11 +72,11 @@ namespace Controllers.EntityControllers
         }
         protected IEnumerator StrikePeriodCoroutine()
         {
-            IsStriking = true;
+            BehaviorController.IsStriking = true;
 
             yield return new WaitForSeconds(StrikePeriod);
 
-            IsStriking = false;
+            BehaviorController.IsStriking = false;
         }
         protected IEnumerator HitEnemyCoroutine(Action hitAction)
         {
@@ -114,8 +114,9 @@ namespace Controllers.EntityControllers
         public void AddTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Add(enemy);
         public void RemoveTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Remove(enemy);
 
-        protected virtual void Start()
+        void Start()
         {
+            BehaviorController = GetComponent<BehaviorController>();
             TriggeredEnemies = new List<GameObject>();
 
             AnimationController = GetComponent<AnimationController>();
@@ -131,12 +132,9 @@ namespace Controllers.EntityControllers
                 HealthChanged = new Action(() => { });
             }
 
-            IsStriking = false;
+            BehaviorController.IsStriking = false;
 
             SetHealth(MaxHealth);
-        }
-        protected virtual void FixedUpdate()
-        {
         }
     }
 }

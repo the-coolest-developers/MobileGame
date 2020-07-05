@@ -7,7 +7,7 @@ namespace Controllers.EntityControllers.EnemyControllers
 {
     public class EnemyBattleController : BattleController
     {
-        protected override void FixedUpdate()
+        /*protected override void FixedUpdate()
         {
             base.FixedUpdate();
 
@@ -18,6 +18,6 @@ namespace Controllers.EntityControllers.EnemyControllers
             {
                 Strike();
             }
-        }
+        }*/
     }
 }
