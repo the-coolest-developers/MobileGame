@@ -14,6 +14,7 @@ public class Menu : MonoBehaviour
     public GameObject SettingsCanvas;
     public GameObject FourthCamera;
     public GameObject AutorsCanvas;
+    public GameObject ExitGame;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class Menu : MonoBehaviour
         SettingsCanvas.gameObject.SetActive(false);
         FourthCamera.gameObject.SetActive(false);
         AutorsCanvas.gameObject.SetActive(false);
+        ExitGame.gameObject.SetActive(false);
     }
     
     public void doExitGame()
