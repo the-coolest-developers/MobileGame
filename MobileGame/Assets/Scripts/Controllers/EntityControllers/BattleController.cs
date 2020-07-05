@@ -137,6 +137,10 @@ namespace Controllers.EntityControllers
         }
         protected virtual void FixedUpdate()
         {
+            if (CurrentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
