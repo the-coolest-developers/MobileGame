@@ -20,13 +20,13 @@ namespace Controllers.EntityControllers.PlayerControllers
         }
         protected override void FixedUpdate()
         {
-            if (CurrentHealth <= 0)
+            /*if (CurrentHealth <= 0)
             {
                 GameController.PauseGame();
                 RespawnButton.gameObject.SetActive(true);
-            }
+            }*/
         }
-        public void Respawn()
+        /*public void Respawn()
         {
             healthBarController.HealthBarTip.SetActive(true);
             SetHealth(MaxHealth);
@@ -36,6 +36,6 @@ namespace Controllers.EntityControllers.PlayerControllers
             GameController.ResumeGame();
 
             RespawnButton.gameObject.SetActive(false);
-        }
+        }*/
     }
 }
