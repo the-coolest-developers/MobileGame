@@ -11,36 +11,33 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 {
     public class BehaviorController : MonoBehaviour
     {
-        public bool FaceRight { get; set; }
-
-        public bool IsOnTheGround { get; set; }
-        public bool CanMove;
-        public bool IsStriking { get; set; }
         protected BattleController BattleController;
         protected AnimationController AnimationController;
         protected MovementController MovementController;
-        public GameController GameController;
-        public bool CanStrike;        
-        public float CurrentHealth;
 
-        protected void Start()
+        public bool FaceRight => MovementController.FaceRight;
+        public bool IsOnTheGround => MovementController.IsOnTheGround;
+        public bool CanMove => MovementController.CanMove;
+
+        public bool IsStriking => BattleController.IsStriking;
+        public bool CanStrike => BattleController.CanStrike;
+        public float CurrentHealth => BattleController.CurrentHealth;
+
+        protected virtual void FixedUpdate()
+        {
+            MovementController.MoveIfPossible();
+        }
+
+        public void InitializeControllers()
         {
             BattleController = GetComponent<BattleController>();
             AnimationController = GetComponent<AnimationController>();
             MovementController = GetComponent<MovementController>();
         }
-        
-        protected virtual void Update()
+        public void Die()
         {
-            if(CurrentHealth <= 0)
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        protected virtual void FixedUpdate()
-        {
-            MovementController.MoveIfPossible();
+            Destroy(gameObject);
+            //Анимация смерти
         }
     }
 }

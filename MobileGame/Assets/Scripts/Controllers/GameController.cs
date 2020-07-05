@@ -11,12 +11,6 @@ namespace Controllers
     {
         public GameObject PlayerGameObject;
         public GameObject RespawnPoint;
-        public GameObject RespawnButton;
-
-        BattleController PlayerBattleController { get; set; }
-        HealthBarController PlayerHealthBarController { get; set; }
-        BehaviorController BehaviorController;
-
 
         float normaltimescale;
 
@@ -24,12 +18,6 @@ namespace Controllers
         void Start()
         {
             normaltimescale = Time.timeScale;
-            PlayerBattleController = PlayerGameObject.GetComponent<BattleController>();
-            PlayerHealthBarController = PlayerGameObject.GetComponent<HealthBarController>();
-
-            PlayerBattleController.HealthChanged += HandlePlayerDeath;
-        
-            BehaviorController = GetComponent<BehaviorController>();
         }
 
         // Update is called once per frame
@@ -52,27 +40,9 @@ namespace Controllers
             Instantiate(gameObject);
         }
 
-        public void HandlePlayerDeath()
+        public Vector3 GetRespawnPosition()
         {
-            if (BehaviorController.CurrentHealth <= 0)
-            {
-                PauseGame();
-
-                PlayerHealthBarController.HealthBarTip.SetActive(false);
-                RespawnButton.gameObject.SetActive(true);
-            }
-        }
-
-        public void RespawnPlayer()
-        {
-            PlayerHealthBarController.HealthBarTip.SetActive(true);
-            PlayerBattleController.SetHealthToMax();
-
-            gameObject.transform.position = RespawnPoint.transform.position;
-
-            RespawnButton.gameObject.SetActive(false);
-
-            ResumeGame();
+            return RespawnPoint.transform.position;
         }
     }
 }

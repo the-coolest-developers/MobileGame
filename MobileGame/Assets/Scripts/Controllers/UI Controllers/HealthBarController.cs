@@ -13,7 +13,7 @@ namespace Controllers.UI_Controllers
         public GameObject HealthBarLine;
         public GameObject HealthBarTip;
 
-        public abstract BattleController EntityBattleController { get; protected set; }
+        public BattleController BattleController { get; protected set; }
 
         //Внутренние
         private Image HealthBarLineImage;
@@ -33,11 +33,12 @@ namespace Controllers.UI_Controllers
             HealthBarTipDefaultX = HealthBarTipRect.anchoredPosition.x;
             
             BehaviorController = GetComponent<BehaviorController>();
+            BattleController = GetComponent<BattleController>();
         }
 
         public void UpdateHealthBarLine()
         {
-            float healthPercent = BehaviorController.CurrentHealth / EntityBattleController.MaxHealth;
+            float healthPercent = BehaviorController.CurrentHealth / BattleController.MaxHealth;
 
             if (HealthBarLineImage != null)
             {

@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine; 
+using UnityEngine;
 using Assets.Scripts.Controllers.BehaviorControllers;
 
 namespace Controllers.EntityControllers
@@ -14,7 +14,7 @@ namespace Controllers.EntityControllers
         public HealthBarController HealthBarController { get; protected set; }
         public MovementController MovementController { get; protected set; }
         public AnimationController AnimationController { get; protected set; }
-        BehaviorController BehaviorController;
+        //BehaviorController BehaviorController;
 
         public event Action HealthChanged;
 
@@ -30,6 +30,13 @@ namespace Controllers.EntityControllers
         public float StrikePeriod;
         public string EnemyTag;
 
+        public bool CanStrike;
+
+        //Внутренние
+        public float CurrentHealth { get; set; }
+        public bool IsStriking { get; set; }
+
+
         public void SetHealthToMax()
         {
             SetHealth(MaxHealth);
@@ -40,15 +47,15 @@ namespace Controllers.EntityControllers
         }
         public void SetHealth(float value)
         {
-            BehaviorController.CurrentHealth = value > MaxHealth ? MaxHealth : value;
+            CurrentHealth = value > MaxHealth ? MaxHealth : value;
 
             HealthChanged();
         }
-        public void GetDamage(float damageAmount) => SetHealth(BehaviorController.CurrentHealth - damageAmount);
+        public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
 
         public void AOEStrike()
         {
-            if (BehaviorController.CanStrike && !BehaviorController.IsStriking && BehaviorController.IsOnTheGround)
+            if (CanStrike && !IsStriking) //&& IsOnTheGround)
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
@@ -60,7 +67,7 @@ namespace Controllers.EntityControllers
         }
         public void Strike()
         {
-            if (BehaviorController.CanStrike && ! BehaviorController.IsStriking && BehaviorController.IsOnTheGround)
+            if (CanStrike && !IsStriking) //&& BehaviorController.IsOnTheGround)
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
@@ -72,11 +79,11 @@ namespace Controllers.EntityControllers
         }
         protected IEnumerator StrikePeriodCoroutine()
         {
-            BehaviorController.IsStriking = true;
+            IsStriking = true;
 
             yield return new WaitForSeconds(StrikePeriod);
 
-            BehaviorController.IsStriking = false;
+            IsStriking = false;
         }
         protected IEnumerator HitEnemyCoroutine(Action hitAction)
         {
@@ -116,7 +123,7 @@ namespace Controllers.EntityControllers
 
         void Start()
         {
-            BehaviorController = GetComponent<BehaviorController>();
+            //BehaviorController = GetComponent<BehaviorController>();
             TriggeredEnemies = new List<GameObject>();
 
             AnimationController = GetComponent<AnimationController>();
@@ -132,7 +139,7 @@ namespace Controllers.EntityControllers
                 HealthChanged = new Action(() => { });
             }
 
-            BehaviorController.IsStriking = false;
+            IsStriking = false;
 
             SetHealth(MaxHealth);
         }

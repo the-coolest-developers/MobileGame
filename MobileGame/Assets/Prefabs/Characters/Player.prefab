@@ -83,12 +83,9 @@ GameObject:
   - component: {fileID: 8307259235387874327}
   - component: {fileID: 8307259235387874328}
   - component: {fileID: 8307259235387874330}
-  - component: {fileID: 8307259235387874333}
-  - component: {fileID: 8307259235387874332}
-  - component: {fileID: 8307259235387874331}
-  - component: {fileID: 8307259235387874329}
+  - component: {fileID: 6260731868312055976}
+  - component: {fileID: 2229875668795152394}
   - component: {fileID: 4370117225209581246}
-  - component: {fileID: 7175117622728681442}
   - component: {fileID: 7450236012979669622}
   m_Layer: 0
   m_Name: Player
@@ -228,7 +225,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8307259235387874333
+--- !u!114 &6260731868312055976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,12 +234,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8307259235387874334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afed60c5b862e2749be90851831cd3ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f106d836dd8f8a42a66db8b85b315ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBarLine: {fileID: 0}
-  HealthBarTip: {fileID: 0}
---- !u!114 &8307259235387874332
+  StrikeBoolName: 
+  RunningBoolName: 
+--- !u!114 &2229875668795152394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,47 +248,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8307259235387874334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e17eb274f8e1c546bd7ee0997a3ce67, type: 3}
+  m_Script: {fileID: 11500000, guid: 60395c73a0490f74b84be1e1f23198d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StrikeBoolName: Strike
-  RunningBoolName: IsRunning
---- !u!114 &8307259235387874331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8307259235387874334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfc64632300b45349887e9e3ffbe9059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanStrike: 1
-  CurrentHealth: 0
-  MaxHealth: 10
-  Damage: 5
-  AttackedEnemiesAmount: 2
-  SplashDamageLossPercent: 25
-  HitDelay: 0.35
-  StrikePeriod: 1
-  EnemyTag: Enemy
---- !u!114 &8307259235387874329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8307259235387874334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ede491bf387c2a478448f84b78d96f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JumpPower: 1500
-  RunningSpeed: 5
-  SpeedX: 0
+  JumpPower: 0
+  RunningSpeed: 0
+  CanMove: 0
 --- !u!114 &4370117225209581246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,23 +266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36c7a0caba2ba145aacf89d3adc9847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanMove: 0
   GameController: {fileID: 0}
---- !u!114 &7175117622728681442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8307259235387874334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60395c73a0490f74b84be1e1f23198d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JumpPower: 1500
-  RunningSpeed: 5
-  SpeedX: 0
+  RespawnButton: {fileID: 0}
 --- !u!114 &7450236012979669622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,8 +280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc61345df9326e4b8e16525a68a1bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanStrike: 1
-  CurrentHealth: 0
   MaxHealth: 10
   Damage: 5
   AttackedEnemiesAmount: 2
@@ -342,3 +287,4 @@ MonoBehaviour:
   HitDelay: 0.35
   StrikePeriod: 1
   EnemyTag: Enemy
+  CanStrike: 1

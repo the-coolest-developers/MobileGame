@@ -10,13 +10,18 @@ namespace Controllers.EntityControllers
         public float JumpPower;
         public float RunningSpeed;
 
+        public bool CanMove;
+
         //Внутренние переменные
-        protected BehaviorController BehaviorController;
-        protected Rigidbody2D rigidbody2d;
+        //protected BehaviorController BehaviorController;
+        public bool FaceRight { get; set; }
+        public bool IsOnTheGround { get; set; }
+
         public AnimationController AnimationController { get; set; }
-        
-        //protected float SpeedX { get; set; }
-        public float SpeedX;
+
+        Rigidbody2D rigidbody2d;
+
+        float SpeedX { get; set; }
 
         void Start()
         {
@@ -26,18 +31,18 @@ namespace Controllers.EntityControllers
             AnimationController = GetComponent<AnimationController>();
 
             AnimationController.SetIsNotRunning();
-            BehaviorController.FaceRight = true;
-            BehaviorController = GetComponent<BehaviorController>();
+            FaceRight = true;
+            //BehaviorController = GetComponent<BehaviorController>();
         }
 
         void Flip()
         {
-            BehaviorController.FaceRight = !BehaviorController.FaceRight;
+            FaceRight = !FaceRight;
             rigidbody2d.transform.Rotate(0f, 180f, 0f);
         }
         public void TurnRight()
         {
-            if (!BehaviorController.FaceRight)
+            if (!FaceRight)
             {
                 Flip();
             }
@@ -45,7 +50,7 @@ namespace Controllers.EntityControllers
         }
         public void TurnLeft()
         {
-            if (BehaviorController.FaceRight)
+            if (FaceRight)
             {
                 Flip();
             }
@@ -58,7 +63,7 @@ namespace Controllers.EntityControllers
         }
         public void Jump()
         {
-            if (BehaviorController.IsOnTheGround)
+            if (IsOnTheGround)
             {
                 rigidbody2d.AddForce(Vector2.up * JumpPower);
             }
@@ -66,8 +71,7 @@ namespace Controllers.EntityControllers
 
         public void MoveIfPossible()
         {
-            
-            if (BehaviorController.CanMove && !BehaviorController.IsStriking && SpeedX != 0)
+            if (CanMove && SpeedX != 0)// && !BehaviorController.IsStriking)
             {
                 if (SpeedX < 0)
                 {
@@ -89,7 +93,7 @@ namespace Controllers.EntityControllers
             switch (collision.gameObject.tag)
             {
                 case "Ground":
-                    BehaviorController.IsOnTheGround = true;
+                    IsOnTheGround = true;
                     break;
             }
         }
@@ -98,7 +102,7 @@ namespace Controllers.EntityControllers
             switch (collision.gameObject.tag)
             {
                 case "Ground":
-                    BehaviorController.IsOnTheGround = false;
+                    IsOnTheGround = false;
                     break;
             }
         }

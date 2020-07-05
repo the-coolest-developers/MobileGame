@@ -5,32 +5,49 @@ using Assets.Scripts.Controllers;
 using Controllers.UI_Controllers;
 using UnityEngine.UI;
 using UnityEngine;
+using Controllers;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
     public class PlayerBehaviourController : BehaviorController
     {
-        HealthBarController healthBarController;
-        // Start is called before the first frame update
+        public GameController GameController;
+        public GameObject RespawnButton;
+
+        HealthBarController HealthBarController;
+
         void Start()
         {
-            base.Start();
-            healthBarController = GetComponent<HealthBarController>();
+            InitializeControllers();
+            HealthBarController = GetComponent<HealthBarController>();
         }
 
-        // Update is called once per frame
-        protected override void Update()
+        void Update()
         {
             //base.Update();
-            if(CurrentHealth <= 0 )
-            {
-                GameController.PauseGame();
-                GameController.RespawnButton.gameObject.SetActive(true);
-            }
         }
         protected override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            if (CurrentHealth <= 0)
+            {
+                GameController.PauseGame();
+
+                HealthBarController.HealthBarTip.SetActive(false);
+                RespawnButton.gameObject.SetActive(true);
+            }
+        }
+
+        public void Respawn()
+        {
+            HealthBarController.HealthBarTip.SetActive(true);
+            BattleController.SetHealthToMax();
+
+            gameObject.transform.position = GameController.RespawnPoint.transform.position;
+
+            RespawnButton.gameObject.SetActive(false);
+            GameController.ResumeGame();
         }
     }
 }
