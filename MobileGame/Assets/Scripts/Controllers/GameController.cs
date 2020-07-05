@@ -3,7 +3,6 @@ using Controllers.UI_Controllers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.Scripts.Controllers.BehaviorControllers;
 
 namespace Controllers
 {

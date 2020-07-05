@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using Assets.Scripts.Controllers;
-using Assets.Scripts.Controllers.BehaviorControllers;
 
 namespace Controllers.EntityControllers
 {
