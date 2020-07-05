@@ -12,12 +12,11 @@ namespace Controllers
         public GameObject PlayerGameObject;
         public GameObject RespawnPoint;
 
-        float normaltimescale;
 
         // Start is called before the first frame update
         void Start()
         {
-            normaltimescale = Time.timeScale;
+            Time.timeScale = 1;
         }
 
         // Update is called once per frame
@@ -28,11 +27,11 @@ namespace Controllers
 
         public void PauseGame()
         {
-            Time.timeScale = 0f;
+            Time.timeScale = 0;
         }
         public void ResumeGame()
         {
-            Time.timeScale = normaltimescale;
+            Time.timeScale = 1;
         }
 
         public void SpawnObject(GameObject gameObject)
