@@ -15,12 +15,10 @@ namespace Controllers
         BattleController PlayerBattleController { get; set; }
         HealthBarController PlayerHealthBarController { get; set; }
 
-        float normaltimescale;
-
         // Start is called before the first frame update
         void Start()
         {
-            normaltimescale = Time.timeScale;
+            Time.timeScale = 1;
             PlayerBattleController = PlayerGameObject.GetComponent<BattleController>();
             PlayerHealthBarController = PlayerGameObject.GetComponent<HealthBarController>();
 
@@ -35,11 +33,11 @@ namespace Controllers
 
         public void PauseGame()
         {
-            Time.timeScale = 0f;
+            Time.timeScale = 0;
         }
         public void ResumeGame()
         {
-            Time.timeScale = normaltimescale;
+            Time.timeScale = 1;
         }
 
         public void SpawnObject(GameObject gameObject)
