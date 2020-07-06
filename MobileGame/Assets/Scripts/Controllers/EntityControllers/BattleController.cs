@@ -11,7 +11,6 @@ namespace Controllers.EntityControllers
     public class BattleController : MonoBehaviour
     {
         public HealthBarController HealthBarController { get; protected set; }
-        public MovementController MovementController { get; protected set; }
         public AnimationController AnimationController { get; protected set; }
 
         public event Action HealthChanged;
@@ -57,7 +56,6 @@ namespace Controllers.EntityControllers
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
-                MovementController.StopRunning();
                 AnimationController.PlayStrikeAnimation();
 
                 StartCoroutine(HitEnemyCoroutine(hitAction));
@@ -113,7 +111,6 @@ namespace Controllers.EntityControllers
 
             AnimationController = GetComponent<AnimationController>();
             HealthBarController = GetComponent<HealthBarController>();
-            MovementController = GetComponent<MovementController>();
 
             if (HealthBarController != null)
             {

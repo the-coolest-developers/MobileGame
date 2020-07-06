@@ -19,7 +19,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         Rigidbody2D PlayerRb;
         Rigidbody2D rigidbody2d;
 
-        // Start is called before the first frame update
         void Start()
         {
             InitializeControllers();
@@ -28,7 +27,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             rigidbody2d = GetComponent<Rigidbody2D>();
         }
 
-        // Update is called once per frame
         void Update()
         {
             if(CurrentHealth <= 0)
@@ -49,7 +47,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 {
                     MovementController.SpeedX = RunningSpeed;
 
-                    MovementController.RunToGameObjetc(Player); //RunToGameObjetc(Player);
+                    MovementController.RunToGameObjetc(Player);
                 }
                 else
                 {

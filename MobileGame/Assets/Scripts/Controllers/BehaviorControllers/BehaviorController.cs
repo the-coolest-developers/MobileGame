@@ -41,6 +41,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             if (IsOnTheGround)
             {
+                MovementController.StopRunning();
                 BattleController.Strike(strikeAction);
             }
         }
