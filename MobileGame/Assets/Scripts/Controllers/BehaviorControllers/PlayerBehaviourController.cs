@@ -37,7 +37,10 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 RespawnButton.gameObject.SetActive(true);
             }
 
-            MovementController.MoveIfPossible();
+            if (!IsStriking)
+            {
+                MovementController.MoveIfPossible();
+            }
         }
 
         public void Respawn()
@@ -49,6 +52,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
             RespawnButton.gameObject.SetActive(false);
             GameController.ResumeGame();
+        }
+
+        public void Attack()
+        {
+            Strike(BattleController.SingleEnemyStrike);
         }
     }
 }

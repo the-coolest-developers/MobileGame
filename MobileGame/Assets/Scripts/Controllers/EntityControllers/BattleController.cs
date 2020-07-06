@@ -51,28 +51,16 @@ namespace Controllers.EntityControllers
         }
         public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
 
-        public void AOEStrike()
+        public void Strike(Action hitAction)
         {
-            if (CanStrike && !IsStriking) //&& IsOnTheGround)
+            if (CanStrike && !IsStriking)
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
                 MovementController.StopRunning();
                 AnimationController.PlayStrikeAnimation();
 
-                StartCoroutine(HitEnemyCoroutine(AOEHit));
-            }
-        }
-        public void Strike()
-        {
-            if (CanStrike && !IsStriking) //&& BehaviorController.IsOnTheGround)
-            {
-                StartCoroutine(StrikePeriodCoroutine());
-
-                MovementController.StopRunning();
-                AnimationController.PlayStrikeAnimation();
-
-                StartCoroutine(HitEnemyCoroutine(HitEnemy));
+                StartCoroutine(HitEnemyCoroutine(hitAction));
             }
         }
         protected IEnumerator StrikePeriodCoroutine()
@@ -89,7 +77,7 @@ namespace Controllers.EntityControllers
 
             hitAction.Invoke();
         }
-        void HitEnemy()
+        public void SingleEnemyStrike()
         {
             var attackedEnemies = TriggeredEnemies.Take(AttackedEnemiesAmount).ToList();
 
@@ -107,7 +95,7 @@ namespace Controllers.EntityControllers
                 enemyBattleController.GetDamage(finalDamage);
             }
         }
-        void AOEHit()
+        public void AOEStrike()
         {
             foreach (var enemy in TriggeredEnemies)
             {

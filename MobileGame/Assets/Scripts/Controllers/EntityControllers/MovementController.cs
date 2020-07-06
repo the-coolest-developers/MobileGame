@@ -11,7 +11,6 @@ namespace Controllers.EntityControllers
         public bool CanMove;
 
         //Внутренние переменные
-        //protected BehaviorController BehaviorController;
         public bool FaceRight { get; set; }
         public bool IsOnTheGround { get; set; }
 
@@ -68,7 +67,7 @@ namespace Controllers.EntityControllers
 
         public void MoveIfPossible()
         {
-            if (CanMove && SpeedX != 0)// && !BehaviorController.IsStriking)
+            if (CanMove && SpeedX != 0)
             {
                 if (SpeedX < 0)
                 {

@@ -35,5 +35,13 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             Destroy(gameObject);
             //Анимация смерти
         }
+
+        public void Strike(Action strikeAction)
+        {
+            if (IsOnTheGround)
+            {
+                BattleController.Strike(strikeAction);
+            }
+        }
     }
 }
