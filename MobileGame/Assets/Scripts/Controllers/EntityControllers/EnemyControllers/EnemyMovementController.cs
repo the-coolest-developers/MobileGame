@@ -1,20 +1,13 @@
 ﻿using UnityEngine;
-using Unity.Mathematics;
+
 
 namespace Controllers.EntityControllers.EnemyControllers
 {
     public class EnemyMovementController : MovementController
     {
-        //Переменные из Unity Editor
-        public float MinDistance;
-        public float StrikeDistance;
 
-        public GameObject Player;
-
-        Rigidbody2D PlayerRb;
         //Внутренние переменные
-        public double PlayerDistance { get; set; }
-
+        
         // Update is called once per frame
        /* protected override void Start()
         {

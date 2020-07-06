@@ -25,10 +25,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         void Update()
         {
-            //base.Update();
-        }
-        void FixedUpdate()
-        {
             if (CurrentHealth <= 0)
             {
                 GameController.PauseGame();
@@ -36,7 +32,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 HealthBarController.HealthBarTip.SetActive(false);
                 RespawnButton.gameObject.SetActive(true);
             }
-
+        }
+        void FixedUpdate()
+        {
             if (!IsStriking)
             {
                 MovementController.MoveIfPossible();

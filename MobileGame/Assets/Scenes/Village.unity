@@ -10932,16 +10932,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60395c73a0490f74b84be1e1f23198d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1871109606 stripped
+--- !u!114 &1871109604 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7450236012979669622, guid: 4e9ece4a46ceace45bb163d117b72589,
+  m_CorrespondingSourceObject: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
     type: 3}
   m_PrefabInstance: {fileID: 8307259234910093823}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871109601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abc61345df9326e4b8e16525a68a1bc5, type: 3}
+  m_Script: {fileID: 11500000, guid: f36c7a0caba2ba145aacf89d3adc9847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1893631015
@@ -12726,11 +12726,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1871109606}
+      objectReference: {fileID: 1871109604}
     - target: {fileID: 4798280050834799865, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Strike
+      value: Attack
       objectReference: {fileID: 0}
     - target: {fileID: 4798280050854136617, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
@@ -12956,6 +12956,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3555867137819937240, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555867137819937240, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: Damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555867137819937240, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: AttackedEnemiesAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555867137819937240, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: SplashDamageLossPercent
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555867137819937240, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: HitDelay
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555867137819937240, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: StrikePeriod
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555867137819937240, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: EnemyTag
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555867137819937240, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: CanStrike
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5166078315885113632, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13035,6 +13075,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871841418815498110, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: MinDistance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871841418815498110, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: StrikeDistance
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7871841418815498110, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1871109601}
+    - target: {fileID: 8137434035412473918, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: StrikeBoolName
+      value: EnemyHammerStrike
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137434035412473918, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: RunningBoolName
+      value: IsRunning
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872655738828971267, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: JumpPower
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872655738828971267, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: RunningSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8872655738828971267, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: CanMove
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d1a8b08f68e99940b60c5a27dd850c8, type: 3}

@@ -18,6 +18,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public bool FaceRight => MovementController.FaceRight;
         public bool IsOnTheGround => MovementController.IsOnTheGround;
         public bool CanMove => MovementController.CanMove;
+        public float RunningSpeed => MovementController.RunningSpeed;
 
         public bool IsStriking => BattleController.IsStriking;
         public bool CanStrike => BattleController.CanStrike;

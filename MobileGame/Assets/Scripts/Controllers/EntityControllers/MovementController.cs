@@ -18,7 +18,7 @@ namespace Controllers.EntityControllers
 
         Rigidbody2D rigidbody2d;
 
-        float SpeedX { get; set; }
+        public float SpeedX { get; set; }
 
         void Start()
         {
@@ -103,7 +103,7 @@ namespace Controllers.EntityControllers
             }
         }
 
-        protected void RunToGameObjetc(GameObject targetObject)
+        public void RunToGameObjetc(GameObject targetObject)
         {
             Rigidbody2D targetObjectRB = targetObject.GetComponent<Rigidbody2D>();
             float distance = rigidbody2d.transform.position.x - targetObjectRB.transform.position.x;
