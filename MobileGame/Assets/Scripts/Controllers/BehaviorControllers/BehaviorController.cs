@@ -24,15 +24,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public float CurrentHealth => BattleController.CurrentHealth;
         public float MaxHealth => BattleController.MaxHealth;
 
-        protected virtual void FixedUpdate()
-        {
-            MovementController.MoveIfPossible();
-        }
-
-        public void SetHealthbarValue()
-        {
-
-        }
         public void InitializeControllers()
         {
             BattleController = GetComponent<BattleController>();
