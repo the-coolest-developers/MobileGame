@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Ground
   - TextN
+  - ExitGame
+  - ExitToMenu
   layers:
   - Default
   - TransparentFX

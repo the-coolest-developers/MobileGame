@@ -5,28 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
-    public GameObject gameMenu;
-    public GameObject gameSettings;
-    public GameObject ExitMenu;
-    public GameObject SettingsCamera;
+    GameObject Obj;
+
     // Start is called before the first frame update
     void Start()
     {
-        gameMenu.gameObject.SetActive(false);
-        gameSettings.gameObject.SetActive(false);
-        ExitMenu.gameObject.SetActive(false);
-        SettingsCamera.gameObject.SetActive(false);
+        Obj = GameObject.Find("GameMenu");
+        Obj.SetActive(false);
+        Obj = GameObject.Find("SettingsCanvas");
+        Obj.SetActive(false);
+        Obj = GameObject.FindWithTag("ExitToMenu");
+        Obj.SetActive(false);
+        Obj = GameObject.Find("SettingsCamera");
+        Obj.SetActive(false);
     }
 
     // Update is called once per frame
     public void SetActive(GameObject obj)
     {
-        obj.gameObject.SetActive(true);
+        obj.SetActive(true);
     }
 
     public void SetNotActive(GameObject obj)
     {
-        obj.gameObject.SetActive(false);
+        obj.SetActive(false);
     }
 
     public void OpenScene(int index)

@@ -6,26 +6,28 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    public GameObject NewGame;
-    public GameObject MainCamera;
-    public GameObject SecondCamera;
-    public GameObject SecondCanvas;
-    public GameObject ThirdCamera;
-    public GameObject SettingsCanvas;
-    public GameObject FourthCamera;
-    public GameObject AutorsCanvas;
-    public GameObject ExitGame;
+    //GameObject MainCamera;
+    GameObject Obj;
+
 
     void Start()
     {
-        NewGame.gameObject.SetActive(false);
-        SecondCamera.gameObject.SetActive(false);
-        SecondCanvas.gameObject.SetActive(false);
-        ThirdCamera.gameObject.SetActive(false);
-        SettingsCanvas.gameObject.SetActive(false);
-        FourthCamera.gameObject.SetActive(false);
-        AutorsCanvas.gameObject.SetActive(false);
-        ExitGame.gameObject.SetActive(false);
+        Obj = GameObject.Find("NGText");
+        Obj.SetActive(false);
+        Obj = GameObject.Find("SecondCamera");
+        Obj.SetActive(false);
+        Obj = GameObject.Find("NGCanvas");
+        Obj.SetActive(false);
+        Obj = GameObject.Find("ThirdCamera");
+        Obj.SetActive(false);
+        Obj = GameObject.Find("SettingsCanvas");
+        Obj.SetActive(false);
+        Obj = GameObject.Find("FourthCamera");
+        Obj.SetActive(false);
+        Obj = GameObject.Find("AutorsCanvas");
+        Obj.SetActive(false);
+        Obj = GameObject.FindWithTag("ExitGame");
+        Obj.SetActive(false);
     }
     
     public void doExitGame()
@@ -40,11 +42,11 @@ public class Menu : MonoBehaviour
 
     public void SetActive(GameObject NewGame)
     {
-        NewGame.gameObject.SetActive(true);
+        NewGame.SetActive(true);
     }
 
     public void SetNotActive(GameObject NewGame)
     {
-        NewGame.gameObject.SetActive(false);
+        NewGame.SetActive(false);
     }
 }
