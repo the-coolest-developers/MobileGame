@@ -8,11 +8,14 @@ namespace Controllers
 {
     public class GameController : MonoBehaviour
     {
-        public GameObject PlayerGameObject;
-        public GameObject RespawnPoint;
+        public GameObject PlayerGameObject { get; set; }
+        public GameObject RespawnPoint { get; set; }
 
         void Start()
         {
+            PlayerGameObject = GameObject.Find("Player");
+            RespawnPoint = GameObject.Find("RespawnPoint");
+
             Time.timeScale = 1;
         }
 

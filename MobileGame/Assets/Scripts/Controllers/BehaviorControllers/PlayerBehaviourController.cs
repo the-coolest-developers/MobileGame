@@ -12,8 +12,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 {
     public class PlayerBehaviourController : BehaviorController
     {
-        public GameController GameController;
-        public GameObject RespawnButton;
+        public GameController GameController { get; set; }
+        public GameObject RespawnButton { get; set; }
 
         HealthBarController HealthBarController;
 
@@ -21,6 +21,10 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             InitializeControllers();
             HealthBarController = GetComponent<HealthBarController>();
+
+            GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
+            RespawnButton = GameObject.Find("RespawnButton");
+            RespawnButton.gameObject.SetActive(false);
         }
 
         void Update()

@@ -9,8 +9,8 @@ namespace Controllers.UI_Controllers
     public class HealthBarController : MonoBehaviour
     {
         //Те, которые указываются в редакторе Unity
-        public GameObject HealthBarLine;
-        public GameObject HealthBarTip;
+        public GameObject HealthBarLine { get; set; }
+        public GameObject HealthBarTip { get; set; }
 
         //Внутренние
         private Image HealthBarLineImage;
@@ -21,6 +21,9 @@ namespace Controllers.UI_Controllers
 
         protected virtual void Start()
         {
+            HealthBarLine = GameObject.Find("PlayerHealthBarLine");
+            HealthBarTip = GameObject.Find("PlayerHealthBarTip");
+
             HealthBarLineImage = HealthBarLine.GetComponent<Image>();
             HealthBarRect = HealthBarLine.GetComponent<RectTransform>();
             HealthBarMaxWidth = HealthBarRect.rect.width;

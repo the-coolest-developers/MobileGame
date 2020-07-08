@@ -103,7 +103,7 @@ namespace Controllers.EntityControllers
             }
         }
 
-        public void RunToGameObjetc(GameObject targetObject)
+        public void RunToGameObject(GameObject targetObject)
         {
             Rigidbody2D targetObjectRB = targetObject.GetComponent<Rigidbody2D>();
             float distance = rigidbody2d.transform.position.x - targetObjectRB.transform.position.x;

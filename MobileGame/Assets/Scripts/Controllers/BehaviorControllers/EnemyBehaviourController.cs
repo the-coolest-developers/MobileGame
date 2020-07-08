@@ -9,10 +9,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 {
     public class EnemyBehaviourController : BehaviorController
     {
+        public GameObject Player { get; set; }
+
         //Переменные из Unity Editor
         public float MinDistance;
         public float StrikeDistance;
-        public GameObject Player;
         
         //Внутренние переменные
         public double PlayerDistance { get; set; }
@@ -22,7 +23,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         void Start()
         {
             InitializeControllers();
-            
+
+            Player = GameObject.Find("Player");
+
             PlayerRb = Player.GetComponent<Rigidbody2D>();
             rigidbody2d = GetComponent<Rigidbody2D>();
         }
@@ -38,7 +41,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         void FixedUpdate()
         {
-            if (PlayerRb != null)
+            if (PlayerRb != null && !IsStriking)
             {
                 PlayerDistance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
                 var absoluteDistance = math.abs(PlayerDistance);
@@ -47,7 +50,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 {
                     MovementController.SpeedX = RunningSpeed;
 
-                    MovementController.RunToGameObjetc(Player);
+                    MovementController.RunToGameObject(Player);
                 }
                 else
                 {
