@@ -12769,6 +12769,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4798280050957201729, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798280050957201729, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1871109604}
@@ -12781,7 +12786,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1871109603}
+      objectReference: {fileID: 1871109604}
     - target: {fileID: 4798280050957201729, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -12800,12 +12805,17 @@ PrefabInstance:
     - target: {fileID: 4798280050957201729, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StopRunning
+      value: StopMoving
       objectReference: {fileID: 0}
     - target: {fileID: 4798280050957201729, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetIsNotRunning
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798280050957201729, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4798280050957201735, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
@@ -12839,6 +12849,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4798280051740956121, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798280051740956121, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1871109604}
@@ -12851,7 +12866,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1871109603}
+      objectReference: {fileID: 1871109604}
     - target: {fileID: 4798280051740956121, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -12870,7 +12885,7 @@ PrefabInstance:
     - target: {fileID: 4798280051740956121, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StopRunning
+      value: StopMoving
       objectReference: {fileID: 0}
     - target: {fileID: 4798280051740956121, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
