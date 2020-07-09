@@ -39,10 +39,12 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         public void Strike(Action strikeAction)
         {
-            if (IsOnTheGround)
+            if (IsOnTheGround && BattleController.Strike(strikeAction))
             {
                 MovementController.StopRunning();
-                BattleController.Strike(strikeAction);
+                AnimationController.SetIsNotRunning();
+
+                AnimationController.PlayStrikeAnimation();
             }
         }
 

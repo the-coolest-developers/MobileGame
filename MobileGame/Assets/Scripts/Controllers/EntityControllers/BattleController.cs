@@ -11,7 +11,6 @@ namespace Controllers.EntityControllers
     public class BattleController : MonoBehaviour
     {
         public HealthBarController HealthBarController { get; protected set; }
-        public AnimationController AnimationController { get; protected set; }
 
         public event Action HealthChanged;
 
@@ -50,16 +49,18 @@ namespace Controllers.EntityControllers
         }
         public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
 
-        public void Strike(Action hitAction)
+        public bool Strike(Action hitAction)
         {
             if (CanStrike && !IsStriking)
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
-                AnimationController.PlayStrikeAnimation();
-
                 StartCoroutine(HitEnemyCoroutine(hitAction));
+
+                return true;
             }
+
+            return false;
         }
         protected IEnumerator StrikePeriodCoroutine()
         {
@@ -109,7 +110,6 @@ namespace Controllers.EntityControllers
         {
             TriggeredEnemies = new List<GameObject>();
 
-            AnimationController = GetComponent<AnimationController>();
             HealthBarController = GetComponent<HealthBarController>();
 
             if (HealthBarController != null)
