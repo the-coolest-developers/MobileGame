@@ -42,7 +42,6 @@ namespace Controllers.EntityControllers
             {
                 Flip();
             }
-            SpeedX = RunningSpeed;
         }
         public void TurnLeft()
         {
@@ -50,8 +49,16 @@ namespace Controllers.EntityControllers
             {
                 Flip();
             }
+        }
+        public void SetSpeedXToRight()
+        {
+            SpeedX = RunningSpeed;
+        }
+        public void SetSpeedXToLeft()
+        {
             SpeedX = -RunningSpeed;
         }
+
         public void StopRunning()
         {
             AnimationController.SetIsNotRunning();

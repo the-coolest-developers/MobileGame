@@ -45,5 +45,16 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 BattleController.Strike(strikeAction);
             }
         }
+
+        public void MoveRight()
+        {
+            MovementController.TurnRight();
+            MovementController.SetSpeedXToRight();
+        }
+        public void MoveLeft()
+        {
+            MovementController.TurnLeft();
+            MovementController.SetSpeedXToLeft();
+        }
     }
 }
