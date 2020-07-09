@@ -14,8 +14,6 @@ namespace Controllers.EntityControllers
         public bool FaceRight { get; set; }
         public bool IsOnTheGround { get; set; }
 
-        public AnimationController AnimationController { get; set; }
-
         Rigidbody2D rigidbody2d;
 
         public float SpeedX { get; set; }
@@ -25,9 +23,6 @@ namespace Controllers.EntityControllers
             RunningSpeed = RunningSpeed / 100;
             rigidbody2d = GetComponent<Rigidbody2D>();
 
-            AnimationController = GetComponent<AnimationController>();
-
-            AnimationController.SetIsNotRunning();
             FaceRight = true;
         }
 
@@ -61,7 +56,6 @@ namespace Controllers.EntityControllers
 
         public void StopRunning()
         {
-            AnimationController.SetIsNotRunning();
             SpeedX = 0;
         }
         public void Jump()
@@ -72,7 +66,11 @@ namespace Controllers.EntityControllers
             }
         }
 
-        public void MoveIfPossible()
+        /// <summary>
+        /// Returns if it's moving
+        /// </summary>
+        /// <returns></returns>
+        public bool MoveIfPossible()
         {
             if (CanMove && SpeedX != 0)
             {
@@ -85,11 +83,10 @@ namespace Controllers.EntityControllers
                     rigidbody2d.transform.Translate(Vector2.right * SpeedX);
                 }
 
-                if (AnimationController != null)
-                {
-                    AnimationController.SetIsRunning();
-                }
+                return true;
             }
+
+            return false;
         }
         protected virtual void OnTriggerEnter2D(Collider2D collision)
         {

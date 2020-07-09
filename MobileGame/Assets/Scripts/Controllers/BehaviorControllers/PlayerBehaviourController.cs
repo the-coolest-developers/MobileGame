@@ -25,6 +25,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
             RespawnButton = GameObject.Find("RespawnButton");
             RespawnButton.gameObject.SetActive(false);
+
+            AnimationController.SetIsNotRunning();
         }
 
         void Update()
@@ -39,9 +41,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         }
         void FixedUpdate()
         {
-            if (!IsStriking)
+            if (!IsStriking && MovementController.MoveIfPossible())
             {
-                MovementController.MoveIfPossible();
+                AnimationController.SetIsRunning();
             }
         }
 
