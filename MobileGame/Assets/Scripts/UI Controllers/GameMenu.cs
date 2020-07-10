@@ -61,19 +61,4 @@ public class GameMenu : MonoBehaviour
     {
         ExitMenuObject.SetActive(false);
     }
-
-    // Update is called once per frame
-    public void SetActive(GameObject obj)
-    {
-        obj.SetActive(true);
-    }
-    public void SetNotActive(GameObject obj)
-    {
-        obj.SetActive(false);
-    }
-
-    public void OpenScene(int index)
-    {
-        SceneManager.LoadScene(index);
-    }
 }
