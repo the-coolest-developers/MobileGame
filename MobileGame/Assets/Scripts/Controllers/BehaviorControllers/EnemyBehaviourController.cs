@@ -56,6 +56,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 else
                 {
                     MovementController.StopRunning();
+                }
+                
+                if (absoluteDistance <= StrikeDistance)
+                {
+                    MovementController.StopRunning();
                     Strike(BattleController.AOEStrike);
                 }
             }
