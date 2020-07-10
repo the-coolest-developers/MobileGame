@@ -1,4 +1,5 @@
-﻿using Controllers.UI_Controllers;
+﻿using System.IO;
+using Controllers.UI_Controllers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,19 +8,14 @@ using UnityEngine;
 
 namespace Controllers.EntityControllers
 {
-    public abstract class BattleController : MonoBehaviour
+    public class BattleController : MonoBehaviour
     {
         public HealthBarController HealthBarController { get; protected set; }
-        public MovementController MovementController { get; protected set; }
-        public AnimationController AnimationController { get; protected set; }
 
         public event Action HealthChanged;
 
         protected List<GameObject> TriggeredEnemies { get; set; }
 
-        public bool CanStrike;
-        public bool IsStriking { get; set; }
-        public float CurrentHealth;
 
         //Переменные из Editor
         public int MaxHealth;
@@ -29,6 +25,13 @@ namespace Controllers.EntityControllers
         public float HitDelay;
         public float StrikePeriod;
         public string EnemyTag;
+
+        public bool CanStrike;
+
+        //Внутренние
+        public float CurrentHealth { get; set; }
+        public bool IsStriking { get; set; }
+
 
         public void SetHealthToMax()
         {
@@ -46,29 +49,18 @@ namespace Controllers.EntityControllers
         }
         public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
 
-        public void AOEStrike()
+        public bool Strike(Action hitAction)
         {
-            if (CanStrike && !IsStriking && MovementController.IsOnTheGround)
+            if (CanStrike && !IsStriking)
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
-                MovementController.StopRunning();
-                AnimationController.PlayStrikeAnimation();
+                StartCoroutine(HitEnemyCoroutine(hitAction));
 
-                StartCoroutine(HitEnemyCoroutine(AOEHit));
+                return true;
             }
-        }
-        public void Strike()
-        {
-            if (CanStrike && !IsStriking && MovementController.IsOnTheGround)
-            {
-                StartCoroutine(StrikePeriodCoroutine());
 
-                MovementController.StopRunning();
-                AnimationController.PlayStrikeAnimation();
-
-                StartCoroutine(HitEnemyCoroutine(HitEnemy));
-            }
+            return false;
         }
         protected IEnumerator StrikePeriodCoroutine()
         {
@@ -84,7 +76,7 @@ namespace Controllers.EntityControllers
 
             hitAction.Invoke();
         }
-        void HitEnemy()
+        public void SingleEnemyStrike()
         {
             var attackedEnemies = TriggeredEnemies.Take(AttackedEnemiesAmount).ToList();
 
@@ -102,7 +94,7 @@ namespace Controllers.EntityControllers
                 enemyBattleController.GetDamage(finalDamage);
             }
         }
-        void AOEHit()
+        public void AOEStrike()
         {
             foreach (var enemy in TriggeredEnemies)
             {
@@ -114,17 +106,18 @@ namespace Controllers.EntityControllers
         public void AddTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Add(enemy);
         public void RemoveTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Remove(enemy);
 
-        protected virtual void Start()
+        void Start()
         {
             TriggeredEnemies = new List<GameObject>();
 
-            AnimationController = GetComponent<AnimationController>();
             HealthBarController = GetComponent<HealthBarController>();
-            MovementController = GetComponent<MovementController>();
 
             if (HealthBarController != null)
             {
-                HealthChanged = new Action(HealthBarController.UpdateHealthBarLine);
+                HealthChanged = new Action(() =>
+                {
+                    HealthBarController.UpdateHealthBarLine(CurrentHealth, MaxHealth);
+                });
             }
             else
             {
@@ -134,13 +127,6 @@ namespace Controllers.EntityControllers
             IsStriking = false;
 
             SetHealth(MaxHealth);
-        }
-        protected virtual void FixedUpdate()
-        {
-            if (CurrentHealth <= 0)
-            {
-                Destroy(gameObject);
-            }
         }
     }
 }

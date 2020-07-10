@@ -2,39 +2,30 @@
 
 namespace Controllers.EntityControllers
 {
-    public abstract class MovementController : MonoBehaviour
+    public class MovementController : MonoBehaviour
     {
         //Внешние переменные
         public float JumpPower;
         public float RunningSpeed;
+
         public bool CanMove;
 
         //Внутренние переменные
-        protected Rigidbody2D rigidbody2d;
-        public AnimationController AnimationController { get; set; }
-        public BattleController BattleController { get; set; }
-
+        public bool FaceRight { get; set; }
         public bool IsOnTheGround { get; set; }
-        //protected float SpeedX { get; set; }
-        public float SpeedX;
-        protected bool FaceRight { get; set; }
 
+        Rigidbody2D rigidbody2d;
 
-        protected virtual void Start()
+        public float SpeedX { get; set; }
+
+        void Start()
         {
             RunningSpeed = RunningSpeed / 100;
             rigidbody2d = GetComponent<Rigidbody2D>();
 
-            BattleController = GetComponent<BattleController>();
-            AnimationController = GetComponent<AnimationController>();
-
-            AnimationController.SetIsNotRunning();
             FaceRight = true;
         }
-        protected virtual void FixedUpdate()
-        {
-            MoveIfPossible();
-        }
+
         void Flip()
         {
             FaceRight = !FaceRight;
@@ -46,7 +37,6 @@ namespace Controllers.EntityControllers
             {
                 Flip();
             }
-            SpeedX = RunningSpeed;
         }
         public void TurnLeft()
         {
@@ -54,11 +44,18 @@ namespace Controllers.EntityControllers
             {
                 Flip();
             }
+        }
+        public void SetSpeedXToRight()
+        {
+            SpeedX = RunningSpeed;
+        }
+        public void SetSpeedXToLeft()
+        {
             SpeedX = -RunningSpeed;
         }
+
         public void StopRunning()
         {
-            AnimationController.SetIsNotRunning();
             SpeedX = 0;
         }
         public void Jump()
@@ -69,9 +66,13 @@ namespace Controllers.EntityControllers
             }
         }
 
-        public void MoveIfPossible()
+        /// <summary>
+        /// Returns if it's moving
+        /// </summary>
+        /// <returns></returns>
+        public bool MoveIfPossible()
         {
-            if (CanMove && !BattleController.IsStriking && SpeedX != 0)
+            if (CanMove && SpeedX != 0)
             {
                 if (SpeedX < 0)
                 {
@@ -82,11 +83,10 @@ namespace Controllers.EntityControllers
                     rigidbody2d.transform.Translate(Vector2.right * SpeedX);
                 }
 
-                if (AnimationController != null)
-                {
-                    AnimationController.SetIsRunning();
-                }
+                return true;
             }
+
+            return false;
         }
         protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
@@ -107,7 +107,7 @@ namespace Controllers.EntityControllers
             }
         }
 
-        protected void RunToGameObjetc(GameObject targetObject)
+        public void RunToGameObject(GameObject targetObject)
         {
             Rigidbody2D targetObjectRB = targetObject.GetComponent<Rigidbody2D>();
             float distance = rigidbody2d.transform.position.x - targetObjectRB.transform.position.x;
