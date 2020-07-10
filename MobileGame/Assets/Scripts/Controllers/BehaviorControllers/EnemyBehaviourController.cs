@@ -51,6 +51,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                     MovementController.SpeedX = RunningSpeed;
 
                     MovementController.RunToGameObject(Player);
+                    AnimationController.SetIsRunning();
                 }
                 else
                 {
