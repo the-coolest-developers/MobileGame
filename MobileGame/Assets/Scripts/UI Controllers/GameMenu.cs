@@ -26,7 +26,6 @@ public class GameMenu : MonoBehaviour
         GameMenuObject.SetActive(false);
         SettingsCanvasObject.SetActive(false);
         ExitMenuObject.SetActive(false);
-        GameObject.Find("SettingsCamera").SetActive(false);
     }
 
     public void MenuButton_Click()
