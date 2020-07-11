@@ -12,27 +12,31 @@ public class Menu : MonoBehaviour
     GameObject ConfirmNewGameObject { get; set; }
     GameObject NewGameCanvas { get; set; }
     GameObject ExitMenuObject { get; set; }
+    GameObject MainMenuObject { get; set; }
 
 
     void Start()
     {
         MainCanvasObject = GameObject.Find("Canvas");
-        ExitMenuObject = GameObject.FindWithTag("ExitGame");
+        ExitMenuObject = GameObject.Find("ConfirmExitDialog");
         AutorsCanvasObject = GameObject.Find("AutorsCanvas");
         SettingsCanvasObject = GameObject.Find("SettingsCanvas");
         NewGameCanvas = GameObject.Find("NGCanvas");
-        ConfirmNewGameObject = GameObject.Find("ConfirmNewGame");
-        
+        ConfirmNewGameObject = GameObject.Find("ConfirmNewGameDialog");
+        MainMenuObject = GameObject.Find("MainMenu");
 
         NewGameCanvas.SetActive(false);
         ConfirmNewGameObject.SetActive(false);
         AutorsCanvasObject.SetActive(false);
         SettingsCanvasObject.SetActive(false);
         ExitMenuObject.SetActive(false);
+
+        MainMenuObject.SetActive(true);
     }
     public void NewGameButton_Click()
     {
         ConfirmNewGameObject.SetActive(true);
+        MainMenuObject.SetActive(false);
     }
     public void ConfirmNewGameButton_Click()
     {
@@ -43,11 +47,14 @@ public class Menu : MonoBehaviour
     public void CancelNewGameButton_Click()
     {
         ConfirmNewGameObject.SetActive(false);
+        MainMenuObject.SetActive(true);
     }
     public void NewGameCanvasBackButton()
     {
         MainCanvasObject.SetActive(true);
         NewGameCanvas.SetActive(false);
+
+        MainMenuObject.SetActive(true);
     }
     public void ExitSettingsButton_Click()
     {
@@ -73,6 +80,7 @@ public class Menu : MonoBehaviour
     public void ExitGameButton_Click()
     {
         ExitMenuObject.SetActive(true);
+        MainMenuObject.SetActive(false);
     }
     public void ConfirmExitGameButton_Click()
     {
@@ -81,9 +89,10 @@ public class Menu : MonoBehaviour
     public void CancelExitGameButton_Click()
     {
         ExitMenuObject.SetActive(false);
+        MainMenuObject.SetActive(true);
     }
-    public void ContinueButton_Click(int index)
+    public void ContinueButton_Click()
     {
-        SceneManager.LoadScene(index);
+        SceneManager.LoadScene("Village");
     }
 }
