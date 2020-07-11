@@ -14,6 +14,7 @@ public class GameMenu : MonoBehaviour
     GameObject ExitMenuObject { get; set; }
 
     GameObject MenuButtonObject { get; set; }
+    GameObject DimmedBackgroundObject { get; set; }
 
     void Start()
     {
@@ -26,7 +27,9 @@ public class GameMenu : MonoBehaviour
         ExitMenuObject = GameObject.Find("ConfirmExitMenu");
 
         MenuButtonObject = GameObject.Find("MenuButton");
+        DimmedBackgroundObject = GameObject.Find("DimmedBackground");
 
+        DimmedBackgroundObject.SetActive(false);
         GameMenuObject.SetActive(false);
         SettingsCanvasObject.SetActive(false);
         ExitMenuObject.SetActive(false);
@@ -34,15 +37,19 @@ public class GameMenu : MonoBehaviour
 
     public void MenuButton_Click()
     {
-        GameMenuObject.SetActive(true);
         GameController.PauseGame();
+
+        GameMenuObject.SetActive(true);
         MenuButtonObject.SetActive(false);
+        DimmedBackgroundObject.SetActive(true);
     }
     public void ResumeButton_Click()
     {
-        GameMenuObject.SetActive(false);
         GameController.ResumeGame();
+
+        GameMenuObject.SetActive(false);
         MenuButtonObject.SetActive(true);
+        DimmedBackgroundObject.SetActive(false);
     }
     public void SettingsButton_Click()
     {
@@ -52,6 +59,7 @@ public class GameMenu : MonoBehaviour
     public void ExitButton_Click()
     {
         ExitMenuObject.SetActive(true);
+        GameMenuObject.SetActive(false);
     }
     public void ExitSettingsButton_Click()
     {
@@ -65,5 +73,6 @@ public class GameMenu : MonoBehaviour
     public void CancelExitButton_Click()
     {
         ExitMenuObject.SetActive(false);
+        GameMenuObject.SetActive(true);
     }
 }
