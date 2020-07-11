@@ -6,47 +6,84 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    //GameObject MainCamera;
-    GameObject Obj;
+    GameObject MainCanvasObject { get; set; }
+    GameObject SettingsCanvasObject { get; set; }
+    GameObject AutorsCanvasObject { get; set; }
+    GameObject ConfirmNewGameObject { get; set; }
+    GameObject NewGameCanvas { get; set; }
+    GameObject ExitMenuObject { get; set; }
 
 
     void Start()
     {
-        Obj = GameObject.Find("NGText");
-        Obj.SetActive(false);
-        Obj = GameObject.Find("SecondCamera");
-        Obj.SetActive(false);
-        Obj = GameObject.Find("NGCanvas");
-        Obj.SetActive(false);
-        Obj = GameObject.Find("ThirdCamera");
-        Obj.SetActive(false);
-        Obj = GameObject.Find("SettingsCanvas");
-        Obj.SetActive(false);
-        Obj = GameObject.Find("FourthCamera");
-        Obj.SetActive(false);
-        Obj = GameObject.Find("AutorsCanvas");
-        Obj.SetActive(false);
-        Obj = GameObject.FindWithTag("ExitGame");
-        Obj.SetActive(false);
+        MainCanvasObject = GameObject.Find("Canvas");
+        ExitMenuObject = GameObject.FindWithTag("ExitGame");
+        AutorsCanvasObject = GameObject.Find("AutorsCanvas");
+        SettingsCanvasObject = GameObject.Find("SettingsCanvas");
+        NewGameCanvas = GameObject.Find("NGCanvas");
+        ConfirmNewGameObject = GameObject.Find("ConfirmNewGame");
+        
+
+        NewGameCanvas.SetActive(false);
+        ConfirmNewGameObject.SetActive(false);
+        AutorsCanvasObject.SetActive(false);
+        SettingsCanvasObject.SetActive(false);
+        ExitMenuObject.SetActive(false);
     }
-    
-    public void doExitGame()
+    public void NewGameButton_Click()
+    {
+        ConfirmNewGameObject.SetActive(true);
+    }
+    public void ConfirmNewGameButton_Click()
+    {
+        MainCanvasObject.SetActive(false);
+        NewGameCanvas.SetActive(true);
+        ConfirmNewGameObject.SetActive(false);
+    }
+    public void CancelNewGameButton_Click()
+    {
+        ConfirmNewGameObject.SetActive(false);
+    }
+    public void NewGameCanvasBackButton()
+    {
+        MainCanvasObject.SetActive(true);
+        NewGameCanvas.SetActive(false);
+    }
+    public void ExitSettingsButton_Click()
+    {
+        SettingsCanvasObject.SetActive(false);
+        MainCanvasObject.SetActive(true);
+    }
+    public void SettingsButton_Click()
+    {
+        SettingsCanvasObject.SetActive(true);
+        MainCanvasObject.SetActive(false);
+    }
+
+    public void AutorsButton_Click()
+    {
+        AutorsCanvasObject.SetActive(true);
+        MainCanvasObject.SetActive(false);
+    }
+    public void AutorsButtonBack_Click()
+    {
+        AutorsCanvasObject.SetActive(false);
+        MainCanvasObject.SetActive(true);
+    }
+    public void ExitGameButton_Click()
+    {
+        ExitMenuObject.SetActive(true);
+    }
+    public void ConfirmExitGameButton_Click()
     {
         Application.Quit();
     }
-    
-    public void OpenScene(int index)
+    public void CancelExitGameButton_Click()
+    {
+        ExitMenuObject.SetActive(false);
+    }
+    public void ContinueButton_Click(int index)
     {
         SceneManager.LoadScene(index);
-    }
-
-    public void SetActive(GameObject NewGame)
-    {
-        NewGame.SetActive(true);
-    }
-
-    public void SetNotActive(GameObject NewGame)
-    {
-        NewGame.SetActive(false);
     }
 }

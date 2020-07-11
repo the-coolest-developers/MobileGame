@@ -9,6 +9,7 @@ TagManager:
   - TextN
   - ExitGame
   - ExitToMenu
+  - SettingsCamera
   layers:
   - Default
   - TransparentFX
