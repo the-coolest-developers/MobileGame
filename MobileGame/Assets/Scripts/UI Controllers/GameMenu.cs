@@ -11,7 +11,7 @@ public class GameMenu : MonoBehaviour
     GameObject MainCanvasObject { get; set; }
     GameObject SettingsCanvasObject { get; set; }
     GameObject GameMenuObject { get; set; }
-    GameObject ExitMenuObject { get; set; }
+    GameObject ExitDialogObject { get; set; }
 
     GameObject MenuButtonObject { get; set; }
     GameObject DimmedBackgroundObject { get; set; }
@@ -24,7 +24,7 @@ public class GameMenu : MonoBehaviour
         MainCanvasObject = GameObject.Find("Canvas");
 
         GameMenuObject = GameObject.Find("GameMenu");
-        ExitMenuObject = GameObject.Find("ConfirmExitMenu");
+        ExitDialogObject = GameObject.Find("ConfirmExitDialog");
 
         MenuButtonObject = GameObject.Find("MenuButton");
         DimmedBackgroundObject = GameObject.Find("DimmedBackground");
@@ -32,7 +32,7 @@ public class GameMenu : MonoBehaviour
         DimmedBackgroundObject.SetActive(false);
         GameMenuObject.SetActive(false);
         SettingsCanvasObject.SetActive(false);
-        ExitMenuObject.SetActive(false);
+        ExitDialogObject.SetActive(false);
     }
 
     public void MenuButton_Click()
@@ -58,7 +58,7 @@ public class GameMenu : MonoBehaviour
     }
     public void ExitButton_Click()
     {
-        ExitMenuObject.SetActive(true);
+        ExitDialogObject.SetActive(true);
         GameMenuObject.SetActive(false);
     }
     public void ExitSettingsButton_Click()
@@ -72,7 +72,7 @@ public class GameMenu : MonoBehaviour
     }
     public void CancelExitButton_Click()
     {
-        ExitMenuObject.SetActive(false);
+        ExitDialogObject.SetActive(false);
         GameMenuObject.SetActive(true);
     }
 }
