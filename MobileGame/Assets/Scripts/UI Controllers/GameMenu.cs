@@ -13,6 +13,8 @@ public class GameMenu : MonoBehaviour
     GameObject GameMenuObject { get; set; }
     GameObject ExitMenuObject { get; set; }
 
+    GameObject MenuButtonObject { get; set; }
+
     void Start()
     {
         GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
@@ -23,6 +25,8 @@ public class GameMenu : MonoBehaviour
         GameMenuObject = GameObject.Find("GameMenu");
         ExitMenuObject = GameObject.Find("ConfirmExitMenu");
 
+        MenuButtonObject = GameObject.Find("MenuButton");
+
         GameMenuObject.SetActive(false);
         SettingsCanvasObject.SetActive(false);
         ExitMenuObject.SetActive(false);
@@ -32,11 +36,13 @@ public class GameMenu : MonoBehaviour
     {
         GameMenuObject.SetActive(true);
         GameController.PauseGame();
+        MenuButtonObject.SetActive(false);
     }
     public void ResumeButton_Click()
     {
         GameMenuObject.SetActive(false);
         GameController.ResumeGame();
+        MenuButtonObject.SetActive(true);
     }
     public void SettingsButton_Click()
     {
