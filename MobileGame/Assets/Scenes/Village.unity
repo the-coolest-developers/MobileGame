@@ -6865,12 +6865,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1183602248 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4798280052164557868, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
-    type: 3}
-  m_PrefabInstance: {fileID: 4798280051811238340}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1194913594
 GameObject:
   m_ObjectHideFlags: 0
@@ -8438,6 +8432,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 176560399}
     m_Modifications:
+    - target: {fileID: 3245531798577242637, guid: 6a471b9dba964214986a1f7bbd283a86,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245531798577242637, guid: 6a471b9dba964214986a1f7bbd283a86,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245531798577242637, guid: 6a471b9dba964214986a1f7bbd283a86,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245531798577242637, guid: 6a471b9dba964214986a1f7bbd283a86,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4526154896215761767}
+    - target: {fileID: 3245531798577242637, guid: 6a471b9dba964214986a1f7bbd283a86,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitSettingsButton_Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245531798577242637, guid: 6a471b9dba964214986a1f7bbd283a86,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557980589302553551, guid: 6a471b9dba964214986a1f7bbd283a86,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7873057185219598581, guid: 6a471b9dba964214986a1f7bbd283a86,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4526154896215761767}
+    - target: {fileID: 7873057185219598581, guid: 6a471b9dba964214986a1f7bbd283a86,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitSettingsButton_Click
+      objectReference: {fileID: 0}
     - target: {fileID: 8532191125844412946, guid: 6a471b9dba964214986a1f7bbd283a86,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -12847,7 +12886,7 @@ PrefabInstance:
         type: 3}
       propertyPath: RespawnButton
       value: 
-      objectReference: {fileID: 1183602248}
+      objectReference: {fileID: 0}
     - target: {fileID: -5283282768875910361, guid: a8d4deff63ca83d47af1ee1f423d29d8,
         type: 3}
       propertyPath: RespawnPoint
@@ -13008,6 +13047,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 176560399}
     m_Modifications:
+    - target: {fileID: 13391520606869005, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4526154896215761767}
+    - target: {fileID: 13391520606869005, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SettingsButton_Click
+      objectReference: {fileID: 0}
     - target: {fileID: 680323628163199850, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -13018,6 +13067,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4526154896215761767}
+    - target: {fileID: 879225606420022844, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4526154896215761767}
+    - target: {fileID: 879225606420022844, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitButton_Click
+      objectReference: {fileID: 0}
     - target: {fileID: 1666127275764427528, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -13390,7 +13449,7 @@ PrefabInstance:
         type: 3}
       propertyPath: RespawnButton
       value: 
-      objectReference: {fileID: 1183602248}
+      objectReference: {fileID: 0}
     - target: {fileID: 6260731868312055976, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}
       propertyPath: StrikeBoolName
