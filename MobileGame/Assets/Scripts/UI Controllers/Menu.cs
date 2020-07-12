@@ -10,7 +10,7 @@ public class Menu : MonoBehaviour
     GameObject SettingsCanvasObject { get; set; }
     GameObject AutorsCanvasObject { get; set; }
     GameObject ConfirmNewGameObject { get; set; }
-    GameObject NewGameCanvas { get; set; }
+    GameObject NewGameWindow { get; set; }
     GameObject ExitMenuObject { get; set; }
     GameObject MainMenuObject { get; set; }
 
@@ -21,11 +21,11 @@ public class Menu : MonoBehaviour
         ExitMenuObject = GameObject.Find("ConfirmExitDialog");
         AutorsCanvasObject = GameObject.Find("AutorsCanvas");
         SettingsCanvasObject = GameObject.Find("SettingsCanvas");
-        NewGameCanvas = GameObject.Find("NGCanvas");
+        NewGameWindow = GameObject.Find("NewGameWindow");
         ConfirmNewGameObject = GameObject.Find("ConfirmNewGameDialog");
         MainMenuObject = GameObject.Find("MainMenu");
 
-        NewGameCanvas.SetActive(false);
+        NewGameWindow.SetActive(false);
         ConfirmNewGameObject.SetActive(false);
         AutorsCanvasObject.SetActive(false);
         SettingsCanvasObject.SetActive(false);
@@ -40,8 +40,7 @@ public class Menu : MonoBehaviour
     }
     public void ConfirmNewGameButton_Click()
     {
-        MainCanvasObject.SetActive(false);
-        NewGameCanvas.SetActive(true);
+        NewGameWindow.SetActive(true);
         ConfirmNewGameObject.SetActive(false);
     }
     public void CancelNewGameButton_Click()
@@ -49,10 +48,9 @@ public class Menu : MonoBehaviour
         ConfirmNewGameObject.SetActive(false);
         MainMenuObject.SetActive(true);
     }
-    public void NewGameCanvasBackButton()
+    public void NewGameBackButton()
     {
-        MainCanvasObject.SetActive(true);
-        NewGameCanvas.SetActive(false);
+        NewGameWindow.SetActive(false);
 
         MainMenuObject.SetActive(true);
     }
