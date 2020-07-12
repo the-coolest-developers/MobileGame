@@ -1,16 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Controllers.UI_Controllers
 {
     public class Menu : MonoBehaviour
     {
-        GameObject MainCanvasObject { get; set; }
-        GameObject SettingsCanvasObject { get; set; }
-        GameObject AutorsCanvasObject { get; set; }
+        GameObject SettingsWindowObject { get; set; }
+        GameObject AuthorsWindowObject { get; set; }
         GameObject ConfirmNewGameObject { get; set; }
         GameObject NewGameWindow { get; set; }
         GameObject ExitMenuObject { get; set; }
@@ -19,18 +15,17 @@ namespace Controllers.UI_Controllers
 
         void Start()
         {
-            MainCanvasObject = GameObject.Find("Canvas");
             ExitMenuObject = GameObject.Find("ConfirmExitDialog");
-            AutorsCanvasObject = GameObject.Find("AutorsCanvas");
-            SettingsCanvasObject = GameObject.Find("SettingsCanvas");
+            AuthorsWindowObject = GameObject.Find("AuthorsWindow");
+            SettingsWindowObject = GameObject.Find("SettingsWindow");
             NewGameWindow = GameObject.Find("NewGameWindow");
             ConfirmNewGameObject = GameObject.Find("ConfirmNewGameDialog");
             MainMenuObject = GameObject.Find("MainMenu");
 
             NewGameWindow.SetActive(false);
             ConfirmNewGameObject.SetActive(false);
-            AutorsCanvasObject.SetActive(false);
-            SettingsCanvasObject.SetActive(false);
+            AuthorsWindowObject.SetActive(false);
+            SettingsWindowObject.SetActive(false);
             ExitMenuObject.SetActive(false);
 
             MainMenuObject.SetActive(true);
@@ -58,24 +53,24 @@ namespace Controllers.UI_Controllers
         }
         public void ExitSettingsButton_Click()
         {
-            SettingsCanvasObject.SetActive(false);
-            MainCanvasObject.SetActive(true);
+            SettingsWindowObject.SetActive(false);
+            MainMenuObject.SetActive(true);
         }
         public void SettingsButton_Click()
         {
-            SettingsCanvasObject.SetActive(true);
-            MainCanvasObject.SetActive(false);
+            SettingsWindowObject.SetActive(true);
+            MainMenuObject.SetActive(false);
         }
 
         public void AutorsButton_Click()
         {
-            AutorsCanvasObject.SetActive(true);
-            MainCanvasObject.SetActive(false);
+            AuthorsWindowObject.SetActive(true);
+            MainMenuObject.SetActive(false);
         }
         public void AutorsButtonBack_Click()
         {
-            AutorsCanvasObject.SetActive(false);
-            MainCanvasObject.SetActive(true);
+            AuthorsWindowObject.SetActive(false);
+            MainMenuObject.SetActive(false);
         }
         public void ExitGameButton_Click()
         {
