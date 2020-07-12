@@ -33,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 1623188933441373467}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -440, y: -286}
-  m_SizeDelta: {x: 784, y: 522.6}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 260, y: 64}
+  m_SizeDelta: {x: -616, y: 522}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &471076435
 CanvasRenderer:
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 1302195717}
   - component: {fileID: 1302195716}
   m_Layer: 5
-  m_Name: Text
+  m_Name: DifficultyDescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,10 +344,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1623188932860297420
 PrefabInstance:
@@ -360,6 +360,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HardButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 902586799855294810, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HardButton_Click
       objectReference: {fileID: 0}
     - target: {fileID: 2023454192145162776, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
         type: 3}
@@ -489,7 +494,7 @@ PrefabInstance:
     - target: {fileID: 34224692745534938, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
         type: 3}
       propertyPath: m_Name
-      value: BackButton
+      value: DoneButton
       objectReference: {fileID: 0}
     - target: {fileID: 2023454192145162776, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
         type: 3}
@@ -621,6 +626,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EasyButton
       objectReference: {fileID: 0}
+    - target: {fileID: 902586799855294810, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EasyButton_Click
+      objectReference: {fileID: 0}
     - target: {fileID: 2023454192145162776, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
         type: 3}
       propertyPath: m_Text
@@ -749,7 +759,12 @@ PrefabInstance:
     - target: {fileID: 34224692745534938, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
         type: 3}
       propertyPath: m_Name
-      value: BackButton (1)
+      value: BackButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 902586799855294810, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NewGameBackButton
       objectReference: {fileID: 0}
     - target: {fileID: 2023454192145162776, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
         type: 3}
@@ -895,6 +910,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MiddleButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 902586799855294810, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MediumButton_Click
       objectReference: {fileID: 0}
     - target: {fileID: 2023454192145162776, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
         type: 3}

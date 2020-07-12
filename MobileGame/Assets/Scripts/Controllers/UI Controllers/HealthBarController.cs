@@ -1,7 +1,4 @@
-﻿using Controllers.EntityControllers;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Controllers.UI_Controllers

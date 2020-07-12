@@ -1,12 +1,6 @@
-﻿using System.Net.NetworkInformation;
-using System.Collections;
-using System.Collections.Generic;
-using Assets.Scripts.Controllers;
-using Controllers.UI_Controllers;
-using UnityEngine.UI;
+﻿using Controllers.UI_Controllers;
 using UnityEngine;
 using Controllers;
-using System;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
