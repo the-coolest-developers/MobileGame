@@ -7,8 +7,7 @@ namespace Controllers.UI_Controllers
     {
         GameController GameController { get; set; }
 
-        GameObject MainCanvasObject { get; set; }
-        GameObject SettingsCanvasObject { get; set; }
+        GameObject SettingsWindowObject { get; set; }
         GameObject GameMenuObject { get; set; }
         GameObject ExitDialogObject { get; set; }
 
@@ -19,8 +18,7 @@ namespace Controllers.UI_Controllers
         {
             GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
 
-            SettingsCanvasObject = GameObject.Find("SettingsCanvas");
-            MainCanvasObject = GameObject.Find("Canvas");
+            SettingsWindowObject = GameObject.Find("SettingsWindow");
 
             GameMenuObject = GameObject.Find("GameMenu");
             ExitDialogObject = GameObject.Find("ConfirmExitDialog");
@@ -30,7 +28,7 @@ namespace Controllers.UI_Controllers
 
             DimmedBackgroundObject.SetActive(false);
             GameMenuObject.SetActive(false);
-            SettingsCanvasObject.SetActive(false);
+            SettingsWindowObject.SetActive(false);
             ExitDialogObject.SetActive(false);
         }
 
@@ -52,8 +50,8 @@ namespace Controllers.UI_Controllers
         }
         public void SettingsButton_Click()
         {
-            SettingsCanvasObject.SetActive(true);
-            MainCanvasObject.SetActive(false);
+            SettingsWindowObject.SetActive(true);
+            GameMenuObject.SetActive(false);
         }
         public void ExitButton_Click()
         {
@@ -62,8 +60,8 @@ namespace Controllers.UI_Controllers
         }
         public void ExitSettingsButton_Click()
         {
-            SettingsCanvasObject.SetActive(false);
-            MainCanvasObject.SetActive(true);
+            SettingsWindowObject.SetActive(false);
+            GameMenuObject.SetActive(true);
         }
         public void ConfirmExitButton_Click()
         {
