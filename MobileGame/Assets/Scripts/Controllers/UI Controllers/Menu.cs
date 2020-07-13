@@ -70,7 +70,7 @@ namespace Controllers.UI_Controllers
         public void AutorsButtonBack_Click()
         {
             AuthorsWindowObject.SetActive(false);
-            MainMenuObject.SetActive(false);
+            MainMenuObject.SetActive(true);
         }
         public void ExitGameButton_Click()
         {
