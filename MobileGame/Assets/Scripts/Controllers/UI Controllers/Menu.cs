@@ -15,7 +15,7 @@ namespace Controllers.UI_Controllers
 
         void Start()
         {
-            ExitMenuObject = GameObject.Find("ConfirmExitDialog");
+            ExitMenuObject = GameObject.Find("ConfirmExitGameDialog");
             AuthorsWindowObject = GameObject.Find("AuthorsWindow");
             SettingsWindowObject = GameObject.Find("SettingsWindow");
             NewGameWindow = GameObject.Find("NewGameWindow");
