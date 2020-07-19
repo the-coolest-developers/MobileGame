@@ -56,5 +56,32 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             Strike(BattleController.SingleEnemyStrike);
         }
+
+
+        //Buttons part
+        public void OnMoveRight_Click()
+        {
+            MoveRight();
+        }
+
+        public void OnMoveLeft_Click()
+        {
+            MoveLeft();
+        }
+
+        public void OnStopMoving_Click()
+        {
+            StopMoving();
+        }
+
+        public void OnStrike_Click()
+        {
+            Attack();
+        }
+
+        public void OnJump_Clicked()
+        {
+            MovementController.Jump();
+        }
     }
 }
