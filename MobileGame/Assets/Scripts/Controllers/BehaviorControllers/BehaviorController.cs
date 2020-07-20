@@ -48,21 +48,21 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             }
         }
 
-        protected void MoveRight()
+        public void MoveRight()
         {
             AnimationController.SetIsRunning();
 
             MovementController.TurnRight();
             MovementController.SetSpeedXToRight();
         }
-        protected void MoveLeft()
+        public void MoveLeft()
         {
             AnimationController.SetIsRunning();
 
             MovementController.TurnLeft();
             MovementController.SetSpeedXToLeft();
         }
-        protected void StopMoving()
+        public void StopMoving()
         {
             AnimationController.SetIsNotRunning();
 
