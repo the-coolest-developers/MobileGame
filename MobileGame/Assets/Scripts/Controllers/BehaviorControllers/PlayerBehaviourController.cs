@@ -52,29 +52,34 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             GameController.ResumeGame();
         }
 
-
-        //Buttons part
-        public void MoveRightButton_Click()
-        {
-            MoveRight();
-        }
-
-        public void MoveLeftButton_Click()
-        {
-            MoveLeft();
-        }
-
-        public void StopMovingButton_Click()
-        {
-            StopMoving();
-        }
-
-        public void StrikeButton_Click()
+        public void Attack()
         {
             Strike(BattleController.SingleEnemyStrike);
         }
 
-        public void JumpButton_Clicked()
+
+        //Buttons part
+        public void OnMoveRight_Click()
+        {
+            MoveRight();
+        }
+
+        public void OnMoveLeft_Click()
+        {
+            MoveLeft();
+        }
+
+        public void OnStopMoving_Click()
+        {
+            StopMoving();
+        }
+
+        public void OnStrike_Click()
+        {
+            Attack();
+        }
+
+        public void OnJump_Clicked()
         {
             MovementController.Jump();
         }
