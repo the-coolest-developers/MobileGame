@@ -41,7 +41,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             }
         }
 
-        public void Respawn()
+        public void RespawnButton_Click()
         {
             HealthBarController.HealthBarTip.SetActive(true);
             BattleController.SetHealthToMax();
@@ -52,9 +52,25 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             GameController.ResumeGame();
         }
 
-        public void Attack()
+        public void MoveRightButton_Click()
+        {
+            MoveRight();
+        }
+        public void MoveLeftButton_Click()
+        {
+            MoveLeft();
+        }
+        public void StopMovingButton_Click()
+        {
+            StopMoving();
+        }
+        public void StrikeButton_Click()
         {
             Strike(BattleController.SingleEnemyStrike);
+        }
+        public void JumpButton_Clicked()
+        {
+            MovementController.Jump();
         }
     }
 }
