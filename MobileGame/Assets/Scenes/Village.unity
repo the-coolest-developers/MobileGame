@@ -5372,6 +5372,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &938487231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4798280050834799870, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4798280051811238340}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &938487237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938487231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ca6f210dbac74b8ec1dacbe906fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RequiredHoldTime: 1
 --- !u!1 &953999407
 GameObject:
   m_ObjectHideFlags: 0
@@ -12867,6 +12886,11 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StopMovingButton_Click
       objectReference: {fileID: 0}
+    - target: {fileID: 4798280050957201730, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4798280051740956121, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -13155,6 +13179,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166078315885113657, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5166078315885113660, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
