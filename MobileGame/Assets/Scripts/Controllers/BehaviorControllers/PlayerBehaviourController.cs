@@ -24,9 +24,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             AnimationController.SetIsNotRunning();
 
             StrikeButtonController = GameObject.Find("PlayerStrikeButton").GetComponent<HoldButtonController>();
-
             StrikeButtonController.Button_Click += StrikeButton_Click;
-
             //Тестовая часть
             StrikeButtonController.Button_Hold += StrikeButton_Hold;
         }
@@ -72,23 +70,23 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             StopMoving();
         }
-        public void StrikeButton_Click()
-        {
-            Strike(BattleController.SingleEnemyStrike);
-            print(BattleController.Damage);
-        }
         public void JumpButton_Clicked()
         {
             MovementController.Jump();
         }
 
+        public void StrikeButton_Click()
+        {
+            Strike(BattleController.SingleEnemyStrike);
+            print(BattleController.Damage);
+        }
         //Это тестовый код. В будущем его обязательно нужно будет переделать. Только для проверки
         public void StrikeButton_Hold()
         {
-            BattleController.Damage += 2;
+            BattleController.Damage += 5;
             Strike(BattleController.SingleEnemyStrike);
             print(BattleController.Damage);
-            BattleController.Damage -=2;
+            BattleController.Damage -= 5;
         }
     }
 }

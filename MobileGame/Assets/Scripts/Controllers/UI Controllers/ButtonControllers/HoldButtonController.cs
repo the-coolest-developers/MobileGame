@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -19,6 +20,9 @@ namespace Assets.Scripts.Controllers.UI_Controllers.ButtonControllers
 
         //Из редактора
         public float RequiredHoldTime;
+        public float MaximumHoldTime;
+
+        public bool InfiniteHold;
 
         public void OnPointerDown(PointerEventData eventData)
         {
@@ -26,18 +30,19 @@ namespace Assets.Scripts.Controllers.UI_Controllers.ButtonControllers
         }
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (HoldTimer >= RequiredHoldTime)
+            if (PointerDown)
             {
-                Button_Hold();
-                print("hold");
-            }
-            else
-            {
-                Button_Click();
-                print("click");
-            }
+                if (HoldTimer >= RequiredHoldTime)
+                {
+                    Button_Hold();
+                }
+                else
+                {
+                    Button_Click();
+                }
 
-            Reset();
+                Reset();
+            }
         }
 
         void Reset()
@@ -60,7 +65,16 @@ namespace Assets.Scripts.Controllers.UI_Controllers.ButtonControllers
             if (PointerDown)
             {
                 HoldTimer += Time.deltaTime;
-                Button_Down(HoldTimer);
+
+                if (!InfiniteHold && HoldTimer >= MaximumHoldTime)
+                {
+                    Button_Hold();
+                    Reset();
+                }
+                else
+                {
+                    Button_Down(HoldTimer);
+                }
             }
         }
     }

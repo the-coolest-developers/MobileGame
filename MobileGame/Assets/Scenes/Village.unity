@@ -5391,6 +5391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredHoldTime: 1
+  MaximumHoldTime: 2
 --- !u!1 &953999407
 GameObject:
   m_ObjectHideFlags: 0
