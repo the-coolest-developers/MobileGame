@@ -1,4 +1,5 @@
 ﻿using Controllers.UI_Controllers;
+using Assets.Scripts.Controllers.UI_Controllers.ButtonControllers;
 using UnityEngine;
 using Controllers;
 
@@ -8,8 +9,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
     {
         public GameController GameController { get; set; }
         public GameObject RespawnButton { get; set; }
-
         HealthBarController HealthBarController;
+        HoldButtonController StrikeButtonController;
 
         void Start()
         {
@@ -21,6 +22,13 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             RespawnButton.gameObject.SetActive(false);
 
             AnimationController.SetIsNotRunning();
+
+            StrikeButtonController = GameObject.Find("PlayerStrikeButton").GetComponent<HoldButtonController>();
+
+            StrikeButtonController.Button_Click += StrikeButton_Click;
+
+            //Тестовая часть
+            StrikeButtonController.Button_Hold += StrikeButton_Hold;
         }
 
         void Update()
@@ -67,10 +75,20 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public void StrikeButton_Click()
         {
             Strike(BattleController.SingleEnemyStrike);
+            print(BattleController.Damage);
         }
         public void JumpButton_Clicked()
         {
             MovementController.Jump();
+        }
+
+        //Это тестовый код. В будущем его обязательно нужно будет переделать. Только для проверки
+        public void StrikeButton_Hold()
+        {
+            BattleController.Damage += 2;
+            Strike(BattleController.SingleEnemyStrike);
+            print(BattleController.Damage);
+            BattleController.Damage -=2;
         }
     }
 }
