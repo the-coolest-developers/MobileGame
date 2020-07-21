@@ -90,17 +90,21 @@ namespace Controllers.EntityControllers
 
                 multiplier++;
 
-                var enemyBattleController = enemy.GetComponent<BattleController>();
-                enemyBattleController.GetDamage(finalDamage);
+                DamageEnemy(enemy, finalDamage);
             }
         }
         public void AOEStrike()
         {
             foreach (var enemy in TriggeredEnemies)
             {
-                var enemyBattleController = enemy.GetComponent<BattleController>();
-                enemyBattleController.GetDamage(Damage);
+                DamageEnemy(enemy, Damage);
             }
+        }
+
+        private void DamageEnemy(GameObject enemy, float damage)
+        {
+            var enemyBattleController = enemy.GetComponent<BattleController>();
+            enemyBattleController.GetDamage(damage);
         }
 
         public void AddTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Add(enemy);

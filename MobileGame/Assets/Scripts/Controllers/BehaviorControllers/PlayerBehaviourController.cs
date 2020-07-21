@@ -86,7 +86,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             BattleController.Damage += 5;
             Strike(BattleController.SingleEnemyStrike);
             print(BattleController.Damage);
-            BattleController.Damage -= 5;
+            //BattleController.Damage -= 5;
         }
     }
 }
