@@ -13137,6 +13137,11 @@ PrefabInstance:
       propertyPath: CanStrike
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3555867137819937240, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: BaseDamage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5166078315885113632, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13310,6 +13315,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450236012979669622, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: BaseDamage
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8307259235387874325, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}

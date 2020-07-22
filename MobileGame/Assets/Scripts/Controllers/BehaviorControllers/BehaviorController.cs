@@ -37,9 +37,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             //Анимация смерти
         }
 
-        public void Strike(Action strikeAction)
+        public void Strike(Action<float> strikeAction, float additionalDamage = 0)
         {
-            if (IsOnTheGround && BattleController.Strike(strikeAction))
+            if (IsOnTheGround && BattleController.Strike(strikeAction, additionalDamage))
             {
                 MovementController.StopRunning();
                 AnimationController.SetIsNotRunning();

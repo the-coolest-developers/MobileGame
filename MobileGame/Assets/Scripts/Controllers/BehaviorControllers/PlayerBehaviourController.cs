@@ -78,15 +78,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public void StrikeButton_Click()
         {
             Strike(BattleController.SingleEnemyStrike);
-            print(BattleController.Damage);
         }
         //Это тестовый код. В будущем его обязательно нужно будет переделать. Только для проверки
         public void StrikeButton_Hold()
         {
-            BattleController.Damage += 5;
-            Strike(BattleController.SingleEnemyStrike);
-            print(BattleController.Damage);
-            //BattleController.Damage -= 5;
+            Strike(BattleController.SingleEnemyStrike, 5);
         }
     }
 }

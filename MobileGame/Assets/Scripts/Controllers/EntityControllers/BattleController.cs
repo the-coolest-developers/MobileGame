@@ -19,7 +19,7 @@ namespace Controllers.EntityControllers
 
         //Переменные из Editor
         public int MaxHealth;
-        public int Damage;
+        public int BaseDamage;
         public int AttackedEnemiesAmount;
         public float SplashDamageLossPercent;
         public float HitDelay;
@@ -49,13 +49,13 @@ namespace Controllers.EntityControllers
         }
         public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
 
-        public bool Strike(Action hitAction)
+        public bool Strike(Action<float> hitAction, float additionalDamage = 0)
         {
             if (CanStrike && !IsStriking)
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
-                StartCoroutine(HitEnemyCoroutine(hitAction));
+                StartCoroutine(HitEnemyCoroutine(hitAction, additionalDamage));
 
                 return true;
             }
@@ -70,13 +70,13 @@ namespace Controllers.EntityControllers
 
             IsStriking = false;
         }
-        protected IEnumerator HitEnemyCoroutine(Action hitAction)
+        protected IEnumerator HitEnemyCoroutine(Action<float> hitAction, float additionalDamage)
         {
             yield return new WaitForSeconds(HitDelay);
 
-            hitAction.Invoke();
+            hitAction.Invoke(BaseDamage + additionalDamage);
         }
-        public void SingleEnemyStrike()
+        public void SingleEnemyStrike(float damage)
         {
             var attackedEnemies = TriggeredEnemies.Take(AttackedEnemiesAmount).ToList();
 
@@ -85,19 +85,19 @@ namespace Controllers.EntityControllers
 
             foreach (var enemy in attackedEnemies)
             {
-                float lostDamage = Damage * damageLoss * multiplier / 100;
-                float finalDamage = Damage - lostDamage;
+                float lostDamage = damage * damageLoss * multiplier / 100;
+                float finalDamage = damage - lostDamage;
 
                 multiplier++;
 
                 DamageEnemy(enemy, finalDamage);
             }
         }
-        public void AOEStrike()
+        public void AOEStrike(float damage)
         {
             foreach (var enemy in TriggeredEnemies)
             {
-                DamageEnemy(enemy, Damage);
+                DamageEnemy(enemy, damage);
             }
         }
 
