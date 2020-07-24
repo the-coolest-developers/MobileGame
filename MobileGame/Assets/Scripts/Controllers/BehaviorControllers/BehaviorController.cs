@@ -14,7 +14,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         protected BattleController BattleController;
         protected AnimationController AnimationController;
         protected MovementController MovementController;
-
+        
         public bool FaceRight => MovementController.FaceRight;
         public bool IsOnTheGround => MovementController.IsOnTheGround;
         public bool CanMove => MovementController.CanMove;
@@ -30,6 +30,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             BattleController = GetComponent<BattleController>();
             AnimationController = GetComponent<AnimationController>();
             MovementController = GetComponent<MovementController>();
+        
         }
         public void Die()
         {

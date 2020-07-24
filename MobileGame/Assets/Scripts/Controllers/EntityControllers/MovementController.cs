@@ -42,7 +42,7 @@ namespace Controllers.EntityControllers
         {
             if (FaceRight)
             {
-                Flip();
+                Flip(); 
             }
         }
         public void SetSpeedXToRight()

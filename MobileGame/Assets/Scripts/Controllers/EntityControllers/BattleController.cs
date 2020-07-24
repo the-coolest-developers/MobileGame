@@ -19,7 +19,7 @@ namespace Controllers.EntityControllers
 
         //Переменные из Editor
         public int MaxHealth;
-        public int BaseDamage;
+        public float BaseDamage;
         public int AttackedEnemiesAmount;
         public float SplashDamageLossPercent;
         public float HitDelay;

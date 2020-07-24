@@ -27,6 +27,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             StrikeButtonController.Button_Click += StrikeButton_Click;
             //Тестовая часть
             StrikeButtonController.Button_Hold += StrikeButton_Hold;
+        
         }
 
         void Update()
