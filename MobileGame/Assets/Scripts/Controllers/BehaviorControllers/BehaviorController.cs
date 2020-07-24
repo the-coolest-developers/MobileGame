@@ -1,20 +1,17 @@
 ﻿using Controllers.EntityControllers;
-using Controllers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
+using Assets.Scripts.Models;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
     public class BehaviorController : MonoBehaviour
     {
-        protected BattleController BattleController;
-        protected AnimationController AnimationController;
-        protected MovementController MovementController;
-        
+        protected BattleController BattleController { get; set; }
+        protected AnimationController AnimationController { get; set; }
+        protected MovementController MovementController { get; set; }
+        protected EntityAttributes AttributeController { get; set; }
+
         public bool FaceRight => MovementController.FaceRight;
         public bool IsOnTheGround => MovementController.IsOnTheGround;
         public bool CanMove => MovementController.CanMove;
@@ -30,7 +27,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             BattleController = GetComponent<BattleController>();
             AnimationController = GetComponent<AnimationController>();
             MovementController = GetComponent<MovementController>();
-        
+            AttributeController = GetComponent<EntityAttributes>();
         }
         public void Die()
         {
@@ -38,9 +35,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             //Анимация смерти
         }
 
-        public void Strike(Action<float> strikeAction, float additionalDamage = 0)
+        public void Strike(Action<float> strikeAction, float damage)
         {
-            if (IsOnTheGround && BattleController.Strike(strikeAction, additionalDamage))
+            if (IsOnTheGround && BattleController.Strike(strikeAction, damage))
             {
                 MovementController.StopRunning();
                 AnimationController.SetIsNotRunning();

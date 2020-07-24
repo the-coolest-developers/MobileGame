@@ -27,7 +27,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             StrikeButtonController.Button_Click += StrikeButton_Click;
             //Тестовая часть
             StrikeButtonController.Button_Hold += StrikeButton_Hold;
-        
+
         }
 
         void Update()
@@ -78,12 +78,12 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         public void StrikeButton_Click()
         {
-            Strike(BattleController.SingleEnemyStrike);
+            Strike(BattleController.SingleEnemyStrike, AttributeController.BaseDamage);
         }
         //Это тестовый код. В будущем его обязательно нужно будет переделать. Только для проверки
         public void StrikeButton_Hold()
         {
-            Strike(BattleController.SingleEnemyStrike, 5);
+            Strike(BattleController.SingleEnemyStrike, AttributeController.BaseDamage + 5);
         }
     }
 }

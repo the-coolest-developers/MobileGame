@@ -49,13 +49,13 @@ namespace Controllers.EntityControllers
         }
         public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
 
-        public bool Strike(Action<float> hitAction, float additionalDamage = 0)
+        public bool Strike(Action<float> hitAction, float damage)
         {
             if (CanStrike && !IsStriking)
             {
                 StartCoroutine(StrikePeriodCoroutine());
 
-                StartCoroutine(HitEnemyCoroutine(hitAction, additionalDamage));
+                StartCoroutine(HitEnemyCoroutine(hitAction, damage));
 
                 return true;
             }
@@ -70,11 +70,11 @@ namespace Controllers.EntityControllers
 
             IsStriking = false;
         }
-        protected IEnumerator HitEnemyCoroutine(Action<float> hitAction, float additionalDamage)
+        protected IEnumerator HitEnemyCoroutine(Action<float> hitAction, float damage)
         {
             yield return new WaitForSeconds(HitDelay);
 
-            hitAction.Invoke(BaseDamage + additionalDamage);
+            hitAction.Invoke(damage);
         }
         public void SingleEnemyStrike(float damage)
         {

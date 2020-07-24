@@ -14,7 +14,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         //Переменные из Unity Editor
         public float MinDistance;
         public float StrikeDistance;
-        
+
         //Внутренние переменные
         public double PlayerDistance { get; set; }
         Rigidbody2D PlayerRb;
@@ -32,7 +32,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         void Update()
         {
-            if(CurrentHealth <= 0)
+            if (CurrentHealth <= 0)
             {
                 Destroy(gameObject);
                 //Анимация смэрти
@@ -57,11 +57,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 {
                     MovementController.StopRunning();
                 }
-                
+
                 if (absoluteDistance <= StrikeDistance)
                 {
                     MovementController.StopRunning();
-                    Strike(BattleController.AOEStrike);
+                    Strike(BattleController.AOEStrike, AttributeController.BaseDamage);
                 }
             }
         }
