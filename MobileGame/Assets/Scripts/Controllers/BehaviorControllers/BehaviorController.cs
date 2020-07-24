@@ -10,15 +10,15 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         protected BattleController BattleController { get; set; }
         protected AnimationController AnimationController { get; set; }
         protected MovementController MovementController { get; set; }
-        protected EntityAttributes AttributeController { get; set; }
+        protected EntityAttributes EntityAttributes { get; set; }
 
         public bool FaceRight => MovementController.FaceRight;
         public bool IsOnTheGround => MovementController.IsOnTheGround;
-        public bool CanMove => MovementController.CanMove;
+        public bool CanMove => EntityAttributes.MovementAttributes.CanMove;
         public float RunningSpeed => MovementController.RunningSpeed;
 
         public bool IsStriking => BattleController.IsStriking;
-        public bool CanStrike => BattleController.CanStrike;
+        public bool CanStrike => EntityAttributes.BattleAttributes.CanStrike;
         public float CurrentHealth => BattleController.CurrentHealth;
         public float MaxHealth => BattleController.MaxHealth;
 
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             BattleController = GetComponent<BattleController>();
             AnimationController = GetComponent<AnimationController>();
             MovementController = GetComponent<MovementController>();
-            AttributeController = GetComponent<EntityAttributes>();
+            EntityAttributes = GetComponent<EntityAttributes>();
         }
         public void Die()
         {

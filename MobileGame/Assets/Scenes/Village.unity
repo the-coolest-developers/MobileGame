@@ -2756,14 +2756,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f50f159cfcf2a23be6e8947cc63b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 1000
-  RunningSpeed: 4
-  MaxHealth: 10
-  StrikePeriod: 2
-  BaseDamage: 2
-  AttackedEnemiesAmount: 2
-  SplashDamageLossPercent: 25
-  CanStrike: 1
+  BattleAttributes:
+    MaxHealth: 10
+    AttackedEnemiesAmount: 2
+    SplashDamageLossPercent: 25
+    StrikePeriod: 2
+    BaseDamage: 2
+    CanStrike: 1
+  MovementAttributes:
+    JumpPower: 1000
+    RunningSpeed: 4
+    CanMove: 1
 --- !u!1 &680627857
 GameObject:
   m_ObjectHideFlags: 0
@@ -11043,14 +11046,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f50f159cfcf2a23be6e8947cc63b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 1000
-  RunningSpeed: 5
-  MaxHealth: 10
-  StrikePeriod: 1
-  BaseDamage: 5
-  AttackedEnemiesAmount: 2
-  SplashDamageLossPercent: 25
-  CanStrike: 1
+  BattleAttributes:
+    MaxHealth: 10
+    AttackedEnemiesAmount: 2
+    SplashDamageLossPercent: 25
+    StrikePeriod: 1
+    BaseDamage: 5
+    CanStrike: 1
+  MovementAttributes:
+    JumpPower: 1000
+    RunningSpeed: 5
+    CanMove: 1
 --- !u!114 &1871109604 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
@@ -13301,7 +13307,7 @@ PrefabInstance:
     - target: {fileID: 8872655738828971267, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
       propertyPath: JumpPower
-      value: 1500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8872655738828971267, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
