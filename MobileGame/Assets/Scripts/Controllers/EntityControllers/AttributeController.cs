@@ -10,14 +10,16 @@ using Assets.Scripts.Models;
 
 namespace Controllers.EntityControllers
 {
-    public class CharacteristicController
+    public class AttributeController : MonoBehaviour
     {
         //Основные переменные
-        public Characteristic JumpPower;
-        public Characteristic RunningSpeed;
-        public Characteristic MaxHealth;
-        public Characteristic BaseDamage;
-        public Characteristic StrikePeriod;
-        public Characteristic CurrentHealth;
+        public EntityAttribute JumpPower;
+        public EntityAttribute RunningSpeed;
+
+        public EntityAttribute Damage;
+        public EntityAttribute StrikePeriod;
+
+        public EntityAttribute Health;
+        public EntityAttribute MaxHealth;
     }
 } 
