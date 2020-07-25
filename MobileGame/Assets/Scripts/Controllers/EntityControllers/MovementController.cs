@@ -4,23 +4,15 @@ namespace Controllers.EntityControllers
 {
     public class MovementController : MonoBehaviour
     {
-        //Внешние переменные
-        public float JumpPower;
-        public float RunningSpeed;
-
-        public bool CanMove;
-
         //Внутренние переменные
         public bool FaceRight { get; set; }
         public bool IsOnTheGround { get; set; }
 
         Rigidbody2D rigidbody2d;
 
-        public float SpeedX { get; set; }
 
         void Start()
         {
-            RunningSpeed = RunningSpeed / 100;
             rigidbody2d = GetComponent<Rigidbody2D>();
 
             FaceRight = true;
@@ -42,27 +34,15 @@ namespace Controllers.EntityControllers
         {
             if (FaceRight)
             {
-                Flip(); 
+                Flip();
             }
         }
-        public void SetSpeedXToRight()
-        {
-            SpeedX = RunningSpeed;
-        }
-        public void SetSpeedXToLeft()
-        {
-            SpeedX = -RunningSpeed;
-        }
 
-        public void StopRunning()
-        {
-            SpeedX = 0;
-        }
-        public void Jump()
+        public void Jump(float jumpPower)
         {
             if (IsOnTheGround)
             {
-                rigidbody2d.AddForce(Vector2.up * JumpPower);
+                rigidbody2d.AddForce(Vector2.up * jumpPower);
             }
         }
 
@@ -70,17 +50,17 @@ namespace Controllers.EntityControllers
         /// Returns if it's moving
         /// </summary>
         /// <returns></returns>
-        public bool MoveIfPossible()
+        public bool MoveIfPossible(bool canMove, float speedX)
         {
-            if (CanMove && SpeedX != 0)
+            if (canMove && speedX != 0)
             {
-                if (SpeedX < 0)
+                if (speedX < 0)
                 {
-                    rigidbody2d.transform.Translate(Vector2.left * SpeedX);
+                    rigidbody2d.transform.Translate(Vector2.left * speedX);
                 }
                 else
                 {
-                    rigidbody2d.transform.Translate(Vector2.right * SpeedX);
+                    rigidbody2d.transform.Translate(Vector2.right * speedX);
                 }
 
                 return true;
@@ -88,6 +68,23 @@ namespace Controllers.EntityControllers
 
             return false;
         }
+
+        public void RunToGameObject(GameObject targetObject, bool canMove, float speedX)
+        {
+            Rigidbody2D targetObjectRB = targetObject.GetComponent<Rigidbody2D>();
+            float distance = rigidbody2d.transform.position.x - targetObjectRB.transform.position.x;
+            if (distance > 0)
+            {
+                TurnLeft();
+            }
+            else
+            {
+                TurnRight();
+            }
+
+            MoveIfPossible(canMove, speedX);
+        }
+
         protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
             switch (collision.gameObject.tag)
@@ -106,22 +103,5 @@ namespace Controllers.EntityControllers
                     break;
             }
         }
-
-        public void RunToGameObject(GameObject targetObject)
-        {
-            Rigidbody2D targetObjectRB = targetObject.GetComponent<Rigidbody2D>();
-            float distance = rigidbody2d.transform.position.x - targetObjectRB.transform.position.x;
-            if (distance > 0)
-            {
-                TurnLeft();
-            }
-            else
-            {
-                TurnRight();
-            }
-
-            MoveIfPossible();
-        }
-
     }
 }

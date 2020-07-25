@@ -42,7 +42,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         }
         void FixedUpdate()
         {
-            if (!IsStriking && MovementController.MoveIfPossible())
+            if (!IsStriking && MovementController.MoveIfPossible(CanMove, CurrentRunningSpeed))
             {
                 AnimationController.SetIsRunning();
             }
@@ -69,11 +69,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         }
         public void StopMovingButton_Click()
         {
-            StopMoving();
+            StopRunning();
         }
         public void JumpButton_Clicked()
         {
-            MovementController.Jump();
+            MovementController.Jump(JumpPower);
         }
 
         public void StrikeButton_Click()

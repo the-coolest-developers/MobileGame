@@ -15,7 +15,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public bool FaceRight => MovementController.FaceRight;
         public bool IsOnTheGround => MovementController.IsOnTheGround;
         public bool CanMove => EntityAttributes.MovementAttributes.CanMove;
-        public float RunningSpeed => MovementController.RunningSpeed;
+        public float RunningSpeed => EntityAttributes.MovementAttributes.RunningSpeed;
+        public float JumpPower => EntityAttributes.MovementAttributes.JumpPower;
 
         public bool IsStriking => BattleController.IsStriking;
         public bool CanStrike => EntityAttributes.BattleAttributes.CanStrike;
@@ -23,6 +24,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public float MaxHealth => BattleController.MaxHealth;
 
         public float BaseDamage => EntityAttributes.BattleAttributes.BaseDamage;
+
+        public float CurrentRunningSpeed { get; set; }
 
         public void InitializeControllers()
         {
@@ -41,7 +44,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             if (IsOnTheGround && BattleController.Strike(strikeAction, damage))
             {
-                MovementController.StopRunning();
+                StopRunning();
                 AnimationController.SetIsNotRunning();
 
                 AnimationController.PlayStrikeAnimation();
@@ -50,23 +53,24 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         public void MoveRight()
         {
-            AnimationController.SetIsRunning();
-
+            SetIsRunning();
             MovementController.TurnRight();
-            MovementController.SetSpeedXToRight();
         }
         public void MoveLeft()
         {
-            AnimationController.SetIsRunning();
-
+            SetIsRunning();
             MovementController.TurnLeft();
-            MovementController.SetSpeedXToLeft();
         }
-        public void StopMoving()
+        public void SetIsRunning()
+        {
+            AnimationController.SetIsRunning();
+            CurrentRunningSpeed = EntityAttributes.MovementAttributes.RunningSpeed / 100;
+        }
+        public void StopRunning()
         {
             AnimationController.SetIsNotRunning();
 
-            MovementController.StopRunning();
+            CurrentRunningSpeed = 0;
         }
     }
 }

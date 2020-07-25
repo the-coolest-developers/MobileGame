@@ -48,19 +48,19 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
                 if (absoluteDistance <= MinDistance && absoluteDistance >= StrikeDistance)
                 {
-                    MovementController.SpeedX = RunningSpeed;
+                    SetIsRunning();
 
-                    MovementController.RunToGameObject(Player);
+                    MovementController.RunToGameObject(Player, CanMove, CurrentRunningSpeed);
                     AnimationController.SetIsRunning();
                 }
                 else
                 {
-                    MovementController.StopRunning();
+                    StopRunning();
                 }
 
                 if (absoluteDistance <= StrikeDistance)
                 {
-                    MovementController.StopRunning();
+                    StopRunning();
                     Strike(BattleController.AOEStrike, EntityAttributes.BattleAttributes.BaseDamage);
                 }
             }
