@@ -5420,7 +5420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RequiredHoldTime: 1
-  MaximumHoldTime: 2
+  MaximumHoldTime: 1.5
   InfiniteHold: 0
 --- !u!1 &953999407
 GameObject:

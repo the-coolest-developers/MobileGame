@@ -22,6 +22,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public float CurrentHealth => BattleController.CurrentHealth;
         public float MaxHealth => BattleController.MaxHealth;
 
+        public float BaseDamage => EntityAttributes.BattleAttributes.BaseDamage;
+
         public void InitializeControllers()
         {
             BattleController = GetComponent<BattleController>();
