@@ -13,12 +13,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         public GameController GameController { get; set; }
         public GameObject RespawnButton { get; set; }
-        //HealthBarController HealthBarController;
         HoldButtonController StrikeButtonController;
 
         ProgressBarController HealthBarController { get; set; }
-
-        public float val;
 
         void Start()
         {
@@ -27,7 +24,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
             SetHealthToMax();
 
-            //HealthBarController = GetComponent<HealthBarController>();
             HealthBarController = GetComponent<ProgressBarController>();
 
             GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
@@ -43,14 +39,12 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
             BattleController.Damaged += GetDamage;
 
-
             LevelController = GetComponent<LevelController>();
             LevelController.OnExperienceChanged += HandleExperienceChanged;
             LevelController.OnLevelChanged += HandleLevelChanged;
 
-
-            HealthBarController.TipGameObject.SetActive(true);
-            HealthBarController.UpdateLine(105, 100);
+            //HealthBarController.TipGameObject.SetActive(true);
+            //HealthBarController.UpdateLine(105, 100);
         }
 
         void Update()
@@ -69,8 +63,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             {
                 AnimationController.SetIsRunning();
             }
-
-            //LevelController.AddExperience(105);
         }
 
         public void RespawnButton_Click()
@@ -100,6 +92,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             MovementController.Jump(JumpPower);
         }
+
 
         public void StrikeButton_Click()
         {

@@ -116,7 +116,7 @@ namespace Controllers.EntityControllers
             {
                 HealthChanged = new Action(() =>
                 {
-                    //HealthBarController.UpdateLine(CurrentHealth, MaxHealth);
+                    HealthBarController.UpdateLine(CurrentHealth, MaxHealth);
                 });
             }
             else
