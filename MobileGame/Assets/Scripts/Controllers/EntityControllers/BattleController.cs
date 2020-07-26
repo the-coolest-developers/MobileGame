@@ -13,25 +13,20 @@ namespace Controllers.EntityControllers
 {
     public class BattleController : MonoBehaviour
     {
-        public ProgressBarController HealthBarController { get; protected set; }
-
-        public event Action HealthChanged;
+        /// <summary>
+        /// Вызывается при получении уронаПо умолчанию вызывает и событие OnHealthChanged
+        /// </summary>
+        public event Action<float> OnDamaged;
 
         protected List<GameObject> TriggeredEnemies { get; set; }
 
-
         //Переменные из Editor
-        public int MaxHealth;
         public float HitDelay;
         public string EnemyTag;
 
         //Внутренние
-        public float CurrentHealth { get; set; }
         public bool IsStriking { get; set; }
         public float StrikePeriod { get; set; }
-
-        //Для делегата с GetDamage
-        public event Action<float> Damaged;
 
         public bool Strike(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
@@ -98,8 +93,7 @@ namespace Controllers.EntityControllers
 
         private void GetDamage(float damage)
         {
-            Damaged(damage);
-            HealthChanged();
+            OnDamaged(damage);
         }
 
         public void AddTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Add(enemy);
@@ -107,27 +101,11 @@ namespace Controllers.EntityControllers
 
         void Start()
         {
-            CurrentHealth = MaxHealth;
             TriggeredEnemies = new List<GameObject>();
 
-            HealthBarController = GetComponent<ProgressBarController>();
-
-            if (HealthBarController != null)
-            {
-                HealthChanged = new Action(() =>
-                {
-                    HealthBarController.UpdateLine(CurrentHealth, MaxHealth);
-                });
-            }
-            else
-            {
-                HealthChanged = new Action(() => { });
-            }
-
-            Damaged = new Action<float>((float damage) => { });
+            OnDamaged = new Action<float>((float damage) => { });
 
             IsStriking = false;
-            HealthChanged();
         }
     }
 }

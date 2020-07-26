@@ -11099,6 +11099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LineGameObjectName: PlayerHealthBarLine
   BarTipGameObjectName: PlayerHealthBarTip
+  LineScale: 0.795522
 --- !u!4 &1871109611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8307259235387874325, guid: 4e9ece4a46ceace45bb163d117b72589,
@@ -13297,7 +13298,7 @@ PrefabInstance:
     - target: {fileID: 5166078315885113657, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5166078315885113660, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}

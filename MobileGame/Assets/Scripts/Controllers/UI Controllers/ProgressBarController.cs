@@ -10,10 +10,14 @@ namespace Assets.Scripts.Controllers.UI_Controllers
 {
     public class ProgressBarController : MonoBehaviour
     {
+        //Из редактора
         public string LineGameObjectName;
         public string BarTipGameObjectName;
+        /// <summary>
+        /// Масштаб обьекта в редакторе. Необходимо для правильных вычислений
+        /// </summary>
+        public float LineScale;
 
-        //Те, которые указываются в редакторе Unity
         public GameObject LineGameObject { get; set; }
         public GameObject TipGameObject { get; set; }
 
@@ -50,7 +54,7 @@ namespace Assets.Scripts.Controllers.UI_Controllers
 
                 if (valuePercent > 0)
                 {
-                    var tipPosX = valuePercent * MaxWidth * 0.795522f;
+                    var tipPosX = valuePercent * MaxWidth * LineScale;
                     TipRect.anchoredPosition = new Vector2(DefaultX + tipPosX, TipRect.anchoredPosition.y);
                 }
                 else

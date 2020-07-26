@@ -23,9 +23,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         void Start()
         {
             InitializeControllers();
-
+            InitializeAttributes();
+            SubscribeToEvents();
             SetHealthToMax();
-            print(EntityAttributes.BattleAttributes.CurrentHealth);
 
             Player = GameObject.Find("Player");
 
