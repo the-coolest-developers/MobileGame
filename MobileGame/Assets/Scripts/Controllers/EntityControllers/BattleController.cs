@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Assets.Scripts.Models.Attributes;
+using Assets.Scripts.Controllers.UI_Controllers;
+using UnityEditor.UIElements;
 
 namespace Controllers.EntityControllers
 {
     public class BattleController : MonoBehaviour
     {
-        public HealthBarController HealthBarController { get; protected set; }
+        public ProgressBarController HealthBarController { get; protected set; }
 
         public event Action HealthChanged;
 
@@ -108,13 +110,13 @@ namespace Controllers.EntityControllers
             CurrentHealth = MaxHealth;
             TriggeredEnemies = new List<GameObject>();
 
-            HealthBarController = GetComponent<HealthBarController>();
+            HealthBarController = GetComponent<ProgressBarController>();
 
             if (HealthBarController != null)
             {
                 HealthChanged = new Action(() =>
                 {
-                    HealthBarController.UpdateHealthBarLine(CurrentHealth, MaxHealth);
+                    //HealthBarController.UpdateLine(CurrentHealth, MaxHealth);
                 });
             }
             else

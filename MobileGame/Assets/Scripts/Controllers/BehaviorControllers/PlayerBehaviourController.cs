@@ -3,6 +3,7 @@ using Assets.Scripts.Controllers.UI_Controllers.ButtonControllers;
 using UnityEngine;
 using Controllers;
 using Assets.Scripts.Models.Attributes;
+using Assets.Scripts.Controllers.UI_Controllers;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
@@ -12,8 +13,12 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         public GameController GameController { get; set; }
         public GameObject RespawnButton { get; set; }
-        HealthBarController HealthBarController;
+        //HealthBarController HealthBarController;
         HoldButtonController StrikeButtonController;
+
+        ProgressBarController HealthBarController { get; set; }
+
+        public float val;
 
         void Start()
         {
@@ -22,7 +27,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
             SetHealthToMax();
 
-            HealthBarController = GetComponent<HealthBarController>();
+            //HealthBarController = GetComponent<HealthBarController>();
+            HealthBarController = GetComponent<ProgressBarController>();
 
             GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
             RespawnButton = GameObject.Find("RespawnButton");
@@ -41,6 +47,10 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             LevelController = GetComponent<LevelController>();
             LevelController.OnExperienceChanged += HandleExperienceChanged;
             LevelController.OnLevelChanged += HandleLevelChanged;
+
+
+            HealthBarController.TipGameObject.SetActive(true);
+            HealthBarController.UpdateLine(105, 100);
         }
 
         void Update()
@@ -49,7 +59,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             {
                 GameController.PauseGame();
 
-                HealthBarController.HealthBarTip.SetActive(false);
+                HealthBarController.TipGameObject.SetActive(false);
                 RespawnButton.gameObject.SetActive(true);
             }
         }
@@ -60,12 +70,12 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 AnimationController.SetIsRunning();
             }
 
-            LevelController.AddExperience(105);
+            //LevelController.AddExperience(105);
         }
 
         public void RespawnButton_Click()
         {
-            HealthBarController.HealthBarTip.SetActive(true);
+            HealthBarController.TipGameObject.SetActive(true);
             SetHealthToMax();
 
             gameObject.transform.position = GameController.RespawnPoint.transform.position;
@@ -106,7 +116,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         void HandleLevelChanged(int level)
         {
-            print(level);
+            //print(level);
         }
         void HandleExperienceChanged(int experience)
         {

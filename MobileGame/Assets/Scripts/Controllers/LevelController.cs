@@ -16,9 +16,6 @@ namespace Assets.Scripts.Controllers
         public event Action<int> OnExperienceChanged;
         public event Action<int> OnLevelChanged;
 
-        public event EventHandler ExperienceChanged;
-        public event EventHandler LevelChanged;
-
         public void Start()
         {
             OnExperienceChanged = new Action<int>((int experience) => { });
