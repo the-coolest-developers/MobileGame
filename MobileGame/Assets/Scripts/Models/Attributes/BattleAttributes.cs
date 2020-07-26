@@ -10,7 +10,7 @@ namespace Assets.Scripts.Models.Attributes
     public struct BattleAttributes
     {
         public int MaxHealth;
-        public float CurrentHealth ;//{ get; set; }
+        public float CurrentHealth { get; set; }
 
         public int AttackedEnemiesAmount;
         public float SplashDamageLossPercent;
