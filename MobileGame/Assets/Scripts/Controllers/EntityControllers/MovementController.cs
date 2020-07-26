@@ -3,7 +3,7 @@
 namespace Controllers.EntityControllers
 {
     public class MovementController : MonoBehaviour
-    {
+    { 
         //Внутренние переменные
         public bool FaceRight { get; set; }
         public bool IsOnTheGround { get; set; }

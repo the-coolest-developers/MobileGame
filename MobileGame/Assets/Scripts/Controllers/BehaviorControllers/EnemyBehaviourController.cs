@@ -61,7 +61,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 if (absoluteDistance <= StrikeDistance)
                 {
                     StopRunning();
-                    Strike(BattleController.AOEStrike, EntityAttributes.BattleAttributes.BaseDamage);
+                    Strike(BattleController.AOEStrike, EntityAttributes.BattleAttributes);
                 }
             }
         }

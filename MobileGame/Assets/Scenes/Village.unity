@@ -2761,7 +2761,7 @@ MonoBehaviour:
     AttackedEnemiesAmount: 2
     SplashDamageLossPercent: 25
     StrikePeriod: 2
-    BaseDamage: 2
+    Damage: 2
     CanStrike: 1
   MovementAttributes:
     JumpPower: 1000
@@ -11051,7 +11051,7 @@ MonoBehaviour:
     AttackedEnemiesAmount: 2
     SplashDamageLossPercent: 25
     StrikePeriod: 1
-    BaseDamage: 5
+    Damage: 5
     CanStrike: 1
   MovementAttributes:
     JumpPower: 1000

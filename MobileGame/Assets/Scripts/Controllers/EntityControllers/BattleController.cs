@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Assets.Scripts.Models.Attributes;
 
 namespace Controllers.EntityControllers
 {
@@ -19,18 +20,13 @@ namespace Controllers.EntityControllers
 
         //Переменные из Editor
         public int MaxHealth;
-        public int AttackedEnemiesAmount;
-        public float SplashDamageLossPercent;
         public float HitDelay;
-        public float StrikePeriod;
         public string EnemyTag;
-
-        public bool CanStrike;
 
         //Внутренние
         public float CurrentHealth { get; set; }
         public bool IsStriking { get; set; }
-
+        public float StrikePeriod { get; set; }
 
         public void SetHealthToMax()
         {
@@ -48,13 +44,15 @@ namespace Controllers.EntityControllers
         }
         public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
 
-        public bool Strike(Action<float> hitAction, float damage)
+        public bool Strike(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
-            if (CanStrike && !IsStriking)
+            if (battleAttributes.CanStrike && !IsStriking)
             {
+                StrikePeriod = battleAttributes.StrikePeriod;
+
                 StartCoroutine(StrikePeriodCoroutine());
 
-                StartCoroutine(HitEnemyCoroutine(hitAction, damage));
+                StartCoroutine(HitEnemyCoroutine(hitAction, battleAttributes));
 
                 return true;
             }
@@ -69,17 +67,19 @@ namespace Controllers.EntityControllers
 
             IsStriking = false;
         }
-        protected IEnumerator HitEnemyCoroutine(Action<float> hitAction, float damage)
+        protected IEnumerator HitEnemyCoroutine(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
             yield return new WaitForSeconds(HitDelay);
 
-            hitAction.Invoke(damage);
+            hitAction.Invoke(battleAttributes);
         }
-        public void SingleEnemyStrike(float damage)
+        public void SingleEnemyStrike(BattleAttributes battleAttributes)
         {
-            var attackedEnemies = TriggeredEnemies.Take(AttackedEnemiesAmount).ToList();
+            var damage = battleAttributes.Damage;
 
-            float damageLoss = SplashDamageLossPercent;
+            var attackedEnemies = TriggeredEnemies.Take(battleAttributes.AttackedEnemiesAmount).ToList();
+
+            float damageLoss = battleAttributes.SplashDamageLossPercent;
             float multiplier = 0;
 
             foreach (var enemy in attackedEnemies)
@@ -92,11 +92,11 @@ namespace Controllers.EntityControllers
                 DamageEnemy(enemy, finalDamage);
             }
         }
-        public void AOEStrike(float damage)
+        public void AOEStrike(BattleAttributes battleAttributes)
         {
             foreach (var enemy in TriggeredEnemies)
             {
-                DamageEnemy(enemy, damage);
+                DamageEnemy(enemy, battleAttributes.Damage);
             }
         }
 

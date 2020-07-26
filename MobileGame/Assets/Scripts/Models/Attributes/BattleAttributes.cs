@@ -16,7 +16,7 @@ namespace Assets.Scripts.Models.Attributes
         public float SplashDamageLossPercent;
         public float StrikePeriod;
 
-        public float BaseDamage;
+        public float Damage;
 
         public bool CanStrike;
     }

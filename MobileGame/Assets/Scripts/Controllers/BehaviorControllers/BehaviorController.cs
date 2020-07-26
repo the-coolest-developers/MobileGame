@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using Assets.Scripts.Models;
+using Assets.Scripts.Models.Attributes;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
@@ -23,7 +24,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public float CurrentHealth => BattleController.CurrentHealth;
         public float MaxHealth => BattleController.MaxHealth;
 
-        public float BaseDamage => EntityAttributes.BattleAttributes.BaseDamage;
+        public float BaseDamage => EntityAttributes.BattleAttributes.Damage;
 
         public float CurrentRunningSpeed { get; set; }
 
@@ -40,9 +41,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             //Анимация смерти
         }
 
-        public void Strike(Action<float> strikeAction, float damage)
+        public void Strike(Action<BattleAttributes> strikeAction, BattleAttributes battleAttributes)
         {
-            if (IsOnTheGround && BattleController.Strike(strikeAction, damage))
+            if (IsOnTheGround && BattleController.Strike(strikeAction, battleAttributes))
             {
                 StopRunning();
                 AnimationController.SetIsNotRunning();
