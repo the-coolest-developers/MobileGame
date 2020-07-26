@@ -73,5 +73,36 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
             CurrentRunningSpeed = 0;
         }
+
+        public void GetDamage(float damageAmount)
+        {
+            print(EntityAttributes.BattleAttributes.CurrentHealth);
+            float newHealth = EntityAttributes.BattleAttributes.CurrentHealth - damageAmount;
+            print(newHealth);
+            SetHealth(newHealth);
+        }
+     
+    
+        protected void InitializeAttributes()
+        {
+            EntityAttributes.BattleAttributes.CurrentHealth = EntityAttributes.BattleAttributes.MaxHealth;
+        }
+
+        public void SetHealth(float value)
+        {
+            float MaxHealth = EntityAttributes.BattleAttributes.MaxHealth;
+            EntityAttributes.BattleAttributes.CurrentHealth = value > MaxHealth ? MaxHealth : value;
+        
+            print(EntityAttributes.BattleAttributes.CurrentHealth);
+            //BattleController.HealthChanged();
+        }
+       public void SetHealthToMax()
+        {
+            SetHealth(EntityAttributes.BattleAttributes.MaxHealth);
+        }
+        public void SetHealthToZero()
+        {
+            SetHealth(0);
+        }
     }
 }

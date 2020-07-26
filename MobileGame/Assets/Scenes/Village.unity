@@ -2758,6 +2758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BattleAttributes:
     MaxHealth: 10
+    CurrentHealth: 0
     AttackedEnemiesAmount: 2
     SplashDamageLossPercent: 25
     StrikePeriod: 2
@@ -11048,10 +11049,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BattleAttributes:
     MaxHealth: 10
+    CurrentHealth: 0
     AttackedEnemiesAmount: 2
     SplashDamageLossPercent: 25
     StrikePeriod: 1
-    Damage: 5
+    Damage: 0
     CanStrike: 1
   MovementAttributes:
     JumpPower: 1000
@@ -12900,6 +12902,11 @@ PrefabInstance:
       value: "\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E
         \u0445\u043E\u0442\u0438\u0442\u0435 \u0432\u044B\u0439\u0442\u0438?"
       objectReference: {fileID: 0}
+    - target: {fileID: 4798280050182052945, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4798280050834799865, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -13079,6 +13086,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798280052022339015, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4882286295150676246, guid: f430d5501f3d1894ab4ac5cfe2bbd9c9,
         type: 3}

@@ -24,6 +24,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             InitializeControllers();
 
+            SetHealthToMax();
+            print(EntityAttributes.BattleAttributes.CurrentHealth);
+
             Player = GameObject.Find("Player");
 
             PlayerRb = Player.GetComponent<Rigidbody2D>();

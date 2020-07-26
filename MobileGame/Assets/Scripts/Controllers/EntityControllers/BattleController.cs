@@ -28,21 +28,10 @@ namespace Controllers.EntityControllers
         public bool IsStriking { get; set; }
         public float StrikePeriod { get; set; }
 
-        public void SetHealthToMax()
-        {
-            SetHealth(MaxHealth);
-        }
-        public void SetHealthToZero()
-        {
-            SetHealth(0);
-        }
-        public void SetHealth(float value)
-        {
-            CurrentHealth = value > MaxHealth ? MaxHealth : value;
-
-            HealthChanged();
-        }
-        public void GetDamage(float damageAmount) => SetHealth(CurrentHealth - damageAmount);
+        //Для делегата с GetDamage
+        public event Action<float> GetDamage;
+ 
+        
 
         public bool Strike(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
@@ -102,8 +91,12 @@ namespace Controllers.EntityControllers
 
         private void DamageEnemy(GameObject enemy, float damage)
         {
+            
             var enemyBattleController = enemy.GetComponent<BattleController>();
+
             enemyBattleController.GetDamage(damage);
+            enemyBattleController.HealthChanged();
+            //enemyBattleController.GetDamage(damage);
         }
 
         public void AddTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Add(enemy);
@@ -111,6 +104,7 @@ namespace Controllers.EntityControllers
 
         void Start()
         {
+            CurrentHealth = MaxHealth;
             TriggeredEnemies = new List<GameObject>();
 
             HealthBarController = GetComponent<HealthBarController>();
@@ -127,9 +121,11 @@ namespace Controllers.EntityControllers
                 HealthChanged = new Action(() => { });
             }
 
-            IsStriking = false;
+            GetDamage = new Action<float>((float damage) => {});
 
-            SetHealth(MaxHealth);
+            IsStriking = false;
+            HealthChanged();
+
         }
     }
 }

@@ -15,7 +15,14 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         void Start()
         {
             InitializeControllers();
+
+            InitializeAttributes();
+
+            SetHealthToMax();
+           
             HealthBarController = GetComponent<HealthBarController>();
+
+            
 
             GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
             RespawnButton = GameObject.Find("RespawnButton");
@@ -27,6 +34,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             StrikeButtonController.Button_Click += StrikeButton_Click;
             //Тестовая часть
             StrikeButtonController.Button_Hold += StrikeButton_Hold;
+
+
+            BattleController.GetDamage += GetDamage;
 
         }
 
@@ -51,7 +61,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public void RespawnButton_Click()
         {
             HealthBarController.HealthBarTip.SetActive(true);
-            BattleController.SetHealthToMax();
+            SetHealthToMax();
 
             gameObject.transform.position = GameController.RespawnPoint.transform.position;
 
