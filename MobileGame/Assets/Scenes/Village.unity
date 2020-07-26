@@ -2758,7 +2758,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BattleAttributes:
     MaxHealth: 10
-    CurrentHealth: 0
     AttackedEnemiesAmount: 2
     SplashDamageLossPercent: 25
     StrikePeriod: 2
@@ -11049,16 +11048,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BattleAttributes:
     MaxHealth: 10
-    CurrentHealth: 0
     AttackedEnemiesAmount: 2
     SplashDamageLossPercent: 25
     StrikePeriod: 1
-    Damage: 0
+    Damage: 5
     CanStrike: 1
   MovementAttributes:
     JumpPower: 1000
     RunningSpeed: 5
     CanMove: 1
+--- !u!114 &1871109603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871109601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ad789a929cae74ea4e5872ea24ca2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelAttributes:
+    CurrentLevel: 1
+    SkillPoints: 0
+    ExperiencePoints: 0
 --- !u!114 &1871109604 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
@@ -13364,6 +13378,21 @@ PrefabInstance:
         type: 3}
       propertyPath: RespawnButton
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: LevelAttributes.CurrentLevel
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: LevelAttributes.SkillPoints
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: LevelAttributes.ExperiencePoints
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6260731868312055976, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}

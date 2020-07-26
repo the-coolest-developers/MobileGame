@@ -2,11 +2,14 @@
 using Assets.Scripts.Controllers.UI_Controllers.ButtonControllers;
 using UnityEngine;
 using Controllers;
+using Assets.Scripts.Models.Attributes;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
     public class PlayerBehaviourController : BehaviorController
     {
+        public LevelController LevelController { get; set; }
+
         public GameController GameController { get; set; }
         public GameObject RespawnButton { get; set; }
         HealthBarController HealthBarController;
@@ -15,14 +18,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         void Start()
         {
             InitializeControllers();
-
             InitializeAttributes();
 
             SetHealthToMax();
-           
-            HealthBarController = GetComponent<HealthBarController>();
 
-            
+            HealthBarController = GetComponent<HealthBarController>();
 
             GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
             RespawnButton = GameObject.Find("RespawnButton");
@@ -35,9 +35,12 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             //Тестовая часть
             StrikeButtonController.Button_Hold += StrikeButton_Hold;
 
-
             BattleController.Damaged += GetDamage;
 
+
+            LevelController = GetComponent<LevelController>();
+            LevelController.OnExperienceChanged += HandleExperienceChanged;
+            LevelController.OnLevelChanged += HandleLevelChanged;
         }
 
         void Update()
@@ -56,6 +59,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             {
                 AnimationController.SetIsRunning();
             }
+
+            LevelController.AddExperience(105);
         }
 
         public void RespawnButton_Click()
@@ -97,6 +102,15 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             attributes.Damage += 5;
 
             Strike(BattleController.SingleEnemyStrike, attributes);
+        }
+
+        void HandleLevelChanged(int level)
+        {
+            print(level);
+        }
+        void HandleExperienceChanged(int experience)
+        {
+            //print(experience);
         }
     }
 }

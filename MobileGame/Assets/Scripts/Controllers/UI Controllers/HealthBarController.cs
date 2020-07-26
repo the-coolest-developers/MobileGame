@@ -16,7 +16,7 @@ namespace Controllers.UI_Controllers
         private float HealthBarMaxWidth;
         private float HealthBarTipDefaultX;
 
-        protected virtual void Start()
+        protected void Start()
         {
             HealthBarLine = GameObject.Find("PlayerHealthBarLine");
             HealthBarTip = GameObject.Find("PlayerHealthBarTip");

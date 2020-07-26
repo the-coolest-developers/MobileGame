@@ -6,7 +6,7 @@ using Assets.Scripts.Models.Attributes;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
-    public class BehaviorController : MonoBehaviour
+    public abstract class BehaviorController : MonoBehaviour
     {
         protected BattleController BattleController { get; set; }
         protected AnimationController AnimationController { get; set; }
@@ -21,8 +21,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         public bool IsStriking => BattleController.IsStriking;
         public bool CanStrike => EntityAttributes.BattleAttributes.CanStrike;
-        public float CurrentHealth => BattleController.CurrentHealth;
-        public float MaxHealth => BattleController.MaxHealth;
+        public float CurrentHealth => EntityAttributes.BattleAttributes.CurrentHealth;
+        public float MaxHealth => EntityAttributes.BattleAttributes.MaxHealth;
 
         public float BaseDamage => EntityAttributes.BattleAttributes.Damage;
 
@@ -74,15 +74,12 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             CurrentRunningSpeed = 0;
         }
 
-        public void GetDamage(float damageAmount)
+        public void GetDamage(float damage)
         {
-            print(EntityAttributes.BattleAttributes.CurrentHealth);
-            float newHealth = EntityAttributes.BattleAttributes.CurrentHealth - damageAmount;
-            print(newHealth);
-            SetHealth(newHealth);
+            SetHealth(CurrentHealth - damage);
         }
-     
-    
+
+
         protected void InitializeAttributes()
         {
             EntityAttributes.BattleAttributes.CurrentHealth = EntityAttributes.BattleAttributes.MaxHealth;
@@ -90,13 +87,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         public void SetHealth(float value)
         {
-            float MaxHealth = EntityAttributes.BattleAttributes.MaxHealth;
             EntityAttributes.BattleAttributes.CurrentHealth = value > MaxHealth ? MaxHealth : value;
-        
-            print(EntityAttributes.BattleAttributes.CurrentHealth);
-            //BattleController.HealthChanged();
+
+            print(CurrentHealth);
         }
-       public void SetHealthToMax()
+        public void SetHealthToMax()
         {
             SetHealth(EntityAttributes.BattleAttributes.MaxHealth);
         }
