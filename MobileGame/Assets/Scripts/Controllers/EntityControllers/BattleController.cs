@@ -29,9 +29,7 @@ namespace Controllers.EntityControllers
         public float StrikePeriod { get; set; }
 
         //Для делегата с GetDamage
-        public event Action<float> GetDamage;
- 
-        
+        public event Action<float> Damaged;
 
         public bool Strike(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
@@ -91,12 +89,15 @@ namespace Controllers.EntityControllers
 
         private void DamageEnemy(GameObject enemy, float damage)
         {
-            
             var enemyBattleController = enemy.GetComponent<BattleController>();
 
             enemyBattleController.GetDamage(damage);
-            enemyBattleController.HealthChanged();
-            //enemyBattleController.GetDamage(damage);
+        }
+
+        private void GetDamage(float damage)
+        {
+            Damaged(damage);
+            HealthChanged();
         }
 
         public void AddTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Add(enemy);
@@ -121,11 +122,10 @@ namespace Controllers.EntityControllers
                 HealthChanged = new Action(() => { });
             }
 
-            GetDamage = new Action<float>((float damage) => {});
+            Damaged = new Action<float>((float damage) => { });
 
             IsStriking = false;
             HealthChanged();
-
         }
     }
 }

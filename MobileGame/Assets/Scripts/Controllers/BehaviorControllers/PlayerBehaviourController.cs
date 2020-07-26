@@ -36,7 +36,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             StrikeButtonController.Button_Hold += StrikeButton_Hold;
 
 
-            BattleController.GetDamage += GetDamage;
+            BattleController.Damaged += GetDamage;
 
         }
 
