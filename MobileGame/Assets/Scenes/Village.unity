@@ -2761,6 +2761,7 @@ MonoBehaviour:
     AttackedEnemiesAmount: 2
     SplashDamageLossPercent: 25
     StrikePeriod: 2
+    HitDelay: 0.65
     Damage: 2
     CanStrike: 1
   MovementAttributes:
@@ -11051,6 +11052,7 @@ MonoBehaviour:
     AttackedEnemiesAmount: 2
     SplashDamageLossPercent: 25
     StrikePeriod: 1
+    HitDelay: 0.3
     Damage: 5
     CanStrike: 1
   MovementAttributes:

@@ -9,9 +9,8 @@
         public int AttackedEnemiesAmount;
         public float SplashDamageLossPercent;
         public float StrikePeriod;
-
+        public float HitDelay;
         public float Damage;
-
         public bool CanStrike;
     }
 }

@@ -21,7 +21,6 @@ namespace Controllers.EntityControllers
         protected List<GameObject> TriggeredEnemies { get; set; }
 
         //Переменные из Editor
-        public float HitDelay;
         public string EnemyTag;
 
         //Внутренние
@@ -53,7 +52,7 @@ namespace Controllers.EntityControllers
         }
         protected IEnumerator HitEnemyCoroutine(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
-            yield return new WaitForSeconds(HitDelay);
+            yield return new WaitForSeconds(battleAttributes.HitDelay);
 
             hitAction.Invoke(battleAttributes);
         }
