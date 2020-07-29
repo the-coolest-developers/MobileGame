@@ -27,20 +27,13 @@ namespace Controllers.EntityControllers
         public bool IsStriking { get; set; }
         public float StrikePeriod { get; set; }
 
-        public bool Strike(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
+        public void Strike(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
-            if (battleAttributes.CanStrike && !IsStriking)
-            {
-                StrikePeriod = battleAttributes.StrikePeriod;
+            StrikePeriod = battleAttributes.StrikePeriod;
 
-                StartCoroutine(StrikePeriodCoroutine());
+            StartCoroutine(StrikePeriodCoroutine());
 
-                StartCoroutine(HitEnemyCoroutine(hitAction, battleAttributes));
-
-                return true;
-            }
-
-            return false;
+            StartCoroutine(HitEnemyCoroutine(hitAction, battleAttributes));
         }
         protected IEnumerator StrikePeriodCoroutine()
         {
