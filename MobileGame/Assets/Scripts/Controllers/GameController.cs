@@ -1,8 +1,4 @@
 ﻿using Assets.Scripts.Singletones;
-using Controllers.EntityControllers;
-using Controllers.UI_Controllers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Controllers

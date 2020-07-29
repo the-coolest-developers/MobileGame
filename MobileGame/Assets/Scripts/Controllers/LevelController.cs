@@ -1,10 +1,6 @@
 ﻿using Assets.Scripts.Models.Attributes;
 using Assets.Scripts.Singletones;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Controllers
@@ -13,12 +9,18 @@ namespace Assets.Scripts.Controllers
     {
         public LevelAttributes LevelAttributes;
 
-        public event Action<int> OnExperienceChanged;
+        /// <summary>
+        ///Вызывается при начислении опыта. Параметры - текущий опыт и опыт для следующего уровня
+        /// </summary>
+        public event Action<int, int> OnExperienceChanged;
+        /// <summary>
+        ///Вызывается при получении нового уровня
+        /// </summary>
         public event Action<int> OnLevelChanged;
 
         public void Start()
         {
-            OnExperienceChanged = new Action<int>((int experience) => { });
+            OnExperienceChanged = new Action<int, int>((int experience, int newLevelExperience) => { });
             OnLevelChanged = new Action<int>((int level) => { });
         }
 
@@ -54,7 +56,7 @@ namespace Assets.Scripts.Controllers
                 OnLevelChanged(LevelAttributes.CurrentLevel);
             }
 
-            OnExperienceChanged(LevelAttributes.ExperiencePoints);
+            OnExperienceChanged(LevelAttributes.ExperiencePoints, LevelAttributes.NextLevelExperiencePoints);
         }
     }
 }

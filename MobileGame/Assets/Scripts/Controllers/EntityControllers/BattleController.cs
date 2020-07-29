@@ -1,13 +1,9 @@
-﻿using System.IO;
-using Controllers.UI_Controllers;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Assets.Scripts.Models.Attributes;
-using Assets.Scripts.Controllers.UI_Controllers;
-using UnityEditor.UIElements;
 
 namespace Controllers.EntityControllers
 {

@@ -1,6 +1,8 @@
 ﻿using Assets.Scripts.Controllers.UI_Controllers.ButtonControllers;
 using UnityEngine;
 using Controllers;
+using Assets.Scripts.Controllers.UI_Controllers;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
@@ -10,6 +12,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         LevelController LevelController { get; set; }
         HoldButtonController StrikeButtonController;
+
+        ProgressBarController ExperienceBarController => ProgressBarControllers["ExperienceBar"];
 
         void Start()
         {
@@ -45,6 +49,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         }
         void FixedUpdate()
         {
+            LevelController.AddExperience(1);
+
             if (!IsStriking && MovementController.MoveIfPossible(CanMove, CurrentRunningSpeed))
             {
                 AnimationController.SetIsRunning();
@@ -95,11 +101,12 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         void HandleLevelChanged(int level)
         {
-            //print(level);
+            print(level);
+            GameObject.Find("LevelText").GetComponent<Text>().text = $"Level {level}";
         }
-        void HandleExperienceChanged(int experience)
+        void HandleExperienceChanged(int experience, int newLevelExperience)
         {
-            //print(experience);
+            ExperienceBarController.UpdateLine(experience, newLevelExperience);
         }
     }
 }

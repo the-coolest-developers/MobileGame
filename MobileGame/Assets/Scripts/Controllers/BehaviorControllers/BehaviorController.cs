@@ -5,6 +5,8 @@ using Assets.Scripts.Models;
 using Assets.Scripts.Models.Attributes;
 using Assets.Scripts.Controllers.UI_Controllers;
 using Controllers;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
@@ -14,6 +16,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         protected AnimationController AnimationController { get; set; }
         protected MovementController MovementController { get; set; }
         protected EntityAttributes EntityAttributes { get; set; }
+
+        protected Dictionary<string, ProgressBarController> ProgressBarControllers { get; set; }
 
         protected ProgressBarController HealthBarController { get; set; }
 
@@ -41,7 +45,14 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             AnimationController = GetComponent<AnimationController>();
             MovementController = GetComponent<MovementController>();
             EntityAttributes = GetComponent<EntityAttributes>();
-            HealthBarController = GetComponent<ProgressBarController>();
+
+            ProgressBarControllers = GetComponents<ProgressBarController>().ToDictionary(b => b.ProgressBarName, b => b);
+
+            if (ProgressBarControllers != null && ProgressBarControllers.ContainsKey("HealthBar"))
+            {
+                HealthBarController = ProgressBarControllers["HealthBar"];
+            }
+
             GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
         }
         protected void InitializeAttributes()

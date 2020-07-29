@@ -6,6 +6,8 @@ namespace Assets.Scripts.Controllers.UI_Controllers
     public class ProgressBarController : MonoBehaviour
     {
         //Из редактора
+        public string ProgressBarName;
+
         public string LineGameObjectName;
         public string BarTipGameObjectName;
         /// <summary>
