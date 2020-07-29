@@ -1,4 +1,5 @@
-﻿using Controllers.EntityControllers;
+﻿using Assets.Scripts.Singletones;
+using Controllers.EntityControllers;
 using Controllers.UI_Controllers;
 using System.Collections;
 using System.Collections.Generic;
@@ -35,6 +36,16 @@ namespace Controllers
         public Vector3 GetRespawnPosition()
         {
             return RespawnPoint.transform.position;
+        }
+
+
+        public float GetDistanceToPlayer(GameObject self)
+        {
+            return Tools.GetHorizontalDistance(self, PlayerGameObject);
+        }
+        public float GetAbsoluteHorizontalDistanceToPlayer(GameObject self)
+        {
+            return Tools.GetHorizontalAbsoluteDistance(self, PlayerGameObject);
         }
     }
 }

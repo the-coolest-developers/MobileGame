@@ -13,8 +13,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         //Внутренние переменные
         public double PlayerDistance { get; set; }
-        Rigidbody2D PlayerRb;
-        Rigidbody2D rigidbody2d;
 
         void Start()
         {
@@ -24,9 +22,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             SetHealthToMax();
 
             Player = GameController.PlayerGameObject;
-
-            PlayerRb = Player.GetComponent<Rigidbody2D>();
-            rigidbody2d = GetComponent<Rigidbody2D>();
         }
 
         void Update()
@@ -40,9 +35,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         void FixedUpdate()
         {
-            if (PlayerRb != null && !IsStriking)
+            if (!IsStriking)
             {
-                PlayerDistance = rigidbody2d.transform.position.x - PlayerRb.transform.position.x;
+                PlayerDistance = GameController.GetDistanceToPlayer(gameObject);
                 var absoluteDistance = math.abs(PlayerDistance);
 
                 if (absoluteDistance <= MinDistance && absoluteDistance >= StrikeDistance)
