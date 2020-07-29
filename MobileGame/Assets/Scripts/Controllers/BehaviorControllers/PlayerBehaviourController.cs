@@ -1,18 +1,14 @@
-﻿using Controllers.UI_Controllers;
-using Assets.Scripts.Controllers.UI_Controllers.ButtonControllers;
+﻿using Assets.Scripts.Controllers.UI_Controllers.ButtonControllers;
 using UnityEngine;
 using Controllers;
-using Assets.Scripts.Models.Attributes;
-using Assets.Scripts.Controllers.UI_Controllers;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
     public class PlayerBehaviourController : BehaviorController
     {
-        public LevelController LevelController { get; set; }
-
-        public GameController GameController { get; set; }
         public GameObject RespawnButton { get; set; }
+
+        LevelController LevelController { get; set; }
         HoldButtonController StrikeButtonController;
 
         void Start()
@@ -22,7 +18,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             SubscribeToEvents();
             SetHealthToMax();
 
-            GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
             RespawnButton = GameObject.Find("RespawnButton");
             RespawnButton.gameObject.SetActive(false);
 

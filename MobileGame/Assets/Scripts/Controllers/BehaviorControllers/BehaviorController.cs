@@ -4,6 +4,7 @@ using UnityEngine;
 using Assets.Scripts.Models;
 using Assets.Scripts.Models.Attributes;
 using Assets.Scripts.Controllers.UI_Controllers;
+using Controllers;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
@@ -15,6 +16,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         protected EntityAttributes EntityAttributes { get; set; }
 
         protected ProgressBarController HealthBarController { get; set; }
+
+        protected GameController GameController { get; set; }
 
 
         public bool FaceRight => MovementController.FaceRight;
@@ -39,6 +42,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             MovementController = GetComponent<MovementController>();
             EntityAttributes = GetComponent<EntityAttributes>();
             HealthBarController = GetComponent<ProgressBarController>();
+            GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
         }
         protected void InitializeAttributes()
         {

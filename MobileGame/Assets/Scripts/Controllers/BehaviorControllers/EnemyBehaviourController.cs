@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Unity.Mathematics;
-using Assets.Scripts.Controllers;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
