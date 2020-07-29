@@ -11,9 +11,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public float MinDistance;
         public float StrikeDistance;
 
-        //Внутренние переменные
-        public double PlayerDistance { get; set; }
-
         void Start()
         {
             InitializeControllers();
@@ -37,7 +34,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             if (!IsStriking)
             {
-                PlayerDistance = GameController.GetDistanceToPlayer(gameObject);
+                var PlayerDistance = GameController.GetDistanceToPlayer(gameObject);
                 var absoluteDistance = math.abs(PlayerDistance);
 
                 if (absoluteDistance <= MinDistance && absoluteDistance >= StrikeDistance)
