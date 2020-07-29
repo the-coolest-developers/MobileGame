@@ -55,14 +55,7 @@ namespace Controllers.EntityControllers
         {
             if (canMove && speedX != 0)
             {
-                if (speedX < 0)
-                {
-                    rigidbody2d.transform.Translate(Vector2.left * speedX);
-                }
-                else
-                {
-                    rigidbody2d.transform.Translate(Vector2.right * speedX);
-                }
+                rigidbody2d.transform.Translate(Vector2.right * speedX);
 
                 return true;
             }
