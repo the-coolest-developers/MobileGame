@@ -23,7 +23,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             SubscribeToEvents();
             SetHealthToMax();
 
-            Player = GameObject.Find("Player");
+            Player = GameController.PlayerGameObject;
 
             PlayerRb = Player.GetComponent<Rigidbody2D>();
             rigidbody2d = GetComponent<Rigidbody2D>();

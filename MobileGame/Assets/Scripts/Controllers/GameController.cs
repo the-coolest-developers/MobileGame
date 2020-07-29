@@ -8,8 +8,8 @@ namespace Controllers
 {
     public class GameController : MonoBehaviour
     {
-        public GameObject PlayerGameObject { get; set; }
-        public GameObject RespawnPoint { get; set; }
+        public GameObject PlayerGameObject { get; private set; }
+        public GameObject RespawnPoint { get; private set; }
 
         void Start()
         {
