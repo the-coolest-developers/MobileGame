@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Linq;
+using Assets.Scripts.Singletones;
 using Unity.Mathematics;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
@@ -8,6 +10,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         //Переменные из Unity Editor
         public float MinDistance;
         public float StrikeDistance;
+        GameObject MainEnemy;
 
         void Start()
         {
@@ -15,6 +18,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             InitializeAttributes();
             SubscribeToEvents();
             SetHealthToMax();
+            MainEnemy = SearhEnemy();
         }
 
         void Update()
@@ -37,7 +41,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 {
                     SetIsRunning();
 
-                    MovementController.RunToGameObject(GameController.PlayerGameObject, CanMove, CurrentRunningSpeed);
+                    MovementController.RunToGameObject(MainEnemy, CanMove, CurrentRunningSpeed);
+                    print(MainEnemy.name);
                     AnimationController.SetIsRunning();
                 }
                 else
@@ -51,6 +56,30 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                     Strike(BattleController.AOEStrike, EntityAttributes.BattleAttributes);
                 }
             }
+        }
+
+        GameObject SearhEnemy()
+        {
+            var enemyes = GameObject.FindGameObjectsWithTag("Ally");
+
+            float MinimalDistance = 1000; 
+
+            GameObject Enemy = null;
+
+            foreach(GameObject e in enemyes)
+            {
+                float distance = Tools.GetHorizontalAbsoluteDistance(e, gameObject);
+
+                //print(e.name + "   " + distance);
+
+                if(distance <= MinimalDistance )
+                {
+                    Enemy = e;
+                    MinimalDistance = distance;
+                    MainEnemy = e;
+                }
+            }
+            return Enemy;
         }
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - ExitGame
   - ExitToMenu
   - SettingsCamera
+  - Ally
   layers:
   - Default
   - TransparentFX
