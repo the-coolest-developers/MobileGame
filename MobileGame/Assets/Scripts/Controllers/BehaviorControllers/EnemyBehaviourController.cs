@@ -5,8 +5,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 {
     public class EnemyBehaviourController : BehaviorController
     {
-        public GameObject Player { get; set; }
-
         //Переменные из Unity Editor
         public float MinDistance;
         public float StrikeDistance;
@@ -17,8 +15,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             InitializeAttributes();
             SubscribeToEvents();
             SetHealthToMax();
-
-            Player = GameController.PlayerGameObject;
         }
 
         void Update()
@@ -41,7 +37,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 {
                     SetIsRunning();
 
-                    MovementController.RunToGameObject(Player, CanMove, CurrentRunningSpeed);
+                    MovementController.RunToGameObject(GameController.PlayerGameObject, CanMove, CurrentRunningSpeed);
                     AnimationController.SetIsRunning();
                 }
                 else
