@@ -21,5 +21,10 @@ namespace Assets.Scripts.Singletones
         {
             return math.abs(GetHorizontalDistance(firstObject, secondObject));
         }
+
+        public static void FlipGameObject(GameObject gameObject)
+        {
+            gameObject.GetComponent<Rigidbody2D>().transform.Rotate(0f, 180f, 0f);
+        }
     }
 }

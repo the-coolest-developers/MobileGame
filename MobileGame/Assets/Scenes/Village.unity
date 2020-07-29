@@ -13246,7 +13246,7 @@ PrefabInstance:
     - target: {fileID: 3555867137819937240, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
       propertyPath: EnemyTag
-      value: Player
+      value: Ally
       objectReference: {fileID: 0}
     - target: {fileID: 3555867137819937240, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}

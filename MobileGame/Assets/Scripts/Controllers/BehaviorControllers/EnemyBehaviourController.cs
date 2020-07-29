@@ -42,7 +42,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                     SetIsRunning();
 
                     MovementController.RunToGameObject(MainEnemy, CanMove, CurrentRunningSpeed);
-                    print(MainEnemy.name);
                     AnimationController.SetIsRunning();
                 }
                 else
@@ -69,8 +68,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             foreach(GameObject e in enemyes)
             {
                 float distance = Tools.GetHorizontalAbsoluteDistance(e, gameObject);
-
-                //print(e.name + "   " + distance);
 
                 if(distance <= MinimalDistance )
                 {

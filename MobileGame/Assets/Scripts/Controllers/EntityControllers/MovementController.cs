@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Singletones;
+using UnityEngine;
 
 namespace Controllers.EntityControllers
 {
     public class MovementController : MonoBehaviour
-    { 
+    {
         //Внутренние переменные
         public bool FaceRight { get; set; }
         public bool IsOnTheGround { get; set; }
@@ -21,7 +22,7 @@ namespace Controllers.EntityControllers
         void Flip()
         {
             FaceRight = !FaceRight;
-            rigidbody2d.transform.Rotate(0f, 180f, 0f);
+            Tools.FlipGameObject(gameObject);
         }
         public void TurnRight()
         {
@@ -71,8 +72,7 @@ namespace Controllers.EntityControllers
 
         public void RunToGameObject(GameObject targetObject, bool canMove, float speedX)
         {
-            Rigidbody2D targetObjectRB = targetObject.GetComponent<Rigidbody2D>();
-            float distance = rigidbody2d.transform.position.x - targetObjectRB.transform.position.x;
+            float distance = Tools.GetHorizontalDistance(gameObject, targetObject);
             if (distance > 0)
             {
                 TurnLeft();

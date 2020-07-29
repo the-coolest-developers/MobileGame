@@ -48,6 +48,11 @@ namespace Assets.Scripts.Controllers
         public void AddExperience(int experience)
         {
             LevelAttributes.ExperiencePoints += experience;
+            if (LevelAttributes.CurrentLevel >= GlobalValues.MaxLevel)
+            {
+                LevelAttributes.ExperiencePoints = 0;
+            }
+
             while (LevelAttributes.ExperiencePoints > LevelAttributes.NextLevelExperiencePoints)
             {
                 LevelAttributes.ExperiencePoints -= LevelAttributes.NextLevelExperiencePoints;

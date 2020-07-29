@@ -48,7 +48,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         }
         void FixedUpdate()
         {
-            LevelController.AddExperience(1);
+            LevelController.AddExperience(10);
 
             if (!IsStriking && MovementController.MoveIfPossible(CanMove, CurrentRunningSpeed))
             {

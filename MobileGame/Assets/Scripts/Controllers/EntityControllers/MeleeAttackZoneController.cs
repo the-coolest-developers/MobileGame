@@ -8,7 +8,6 @@ namespace Controllers.EntityControllers
     {
         BattleController BattleController { get; set; }
 
-        // Start is called before the first frame update
         void Start()
         {
             BattleController = transform.parent.GetComponent<BattleController>();
