@@ -43,7 +43,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             {
                 GameController.PauseGame();
 
-                HealthBarController.TipGameObject.SetActive(false);
                 RespawnButton.gameObject.SetActive(true);
             }
         }
@@ -101,7 +100,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         void HandleLevelChanged(int level)
         {
-            print(level);
             GameObject.Find("LevelText").GetComponent<Text>().text = $"Level {level}";
         }
         void HandleExperienceChanged(int experience, int newLevelExperience)
