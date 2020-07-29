@@ -53,12 +53,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             BattleController.OnDamaged += HandleOnDamaged;
         }
 
-        public void Die()
-        {
-            Destroy(gameObject);
-            //Анимация смерти
-        }
-
         public void Strike(Action<BattleAttributes> strikeAction, BattleAttributes battleAttributes)
         {
             if (IsOnTheGround && BattleController.Strike(strikeAction, battleAttributes))

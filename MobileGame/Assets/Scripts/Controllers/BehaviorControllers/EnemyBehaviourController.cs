@@ -34,7 +34,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             if (CurrentHealth <= 0)
             {
                 Destroy(gameObject);
-                //Анимация смэрти
+                //Анимация смерти
             }
         }
 
