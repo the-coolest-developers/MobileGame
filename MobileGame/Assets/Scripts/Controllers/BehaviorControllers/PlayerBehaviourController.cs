@@ -61,7 +61,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             HealthBarController.TipGameObject.SetActive(true);
             SetHealthToMax();
 
-            gameObject.transform.position = GameController.RespawnPoint.transform.position;
+            gameObject.transform.position = GameController.GetRespawnPosition();
 
             RespawnButton.gameObject.SetActive(false);
             GameController.ResumeGame();

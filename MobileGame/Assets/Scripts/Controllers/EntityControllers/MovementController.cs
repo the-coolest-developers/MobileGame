@@ -8,10 +8,9 @@ namespace Controllers.EntityControllers
     {
         //Внутренние переменные
         public bool FaceRight { get; set; }
-        public bool IsOnTheGround => Physics2D.Raycast(transform.position, Vector3.down, 2.75f, 256);
+        public RaycastHit2D IsOnTheGround => Physics2D.Raycast(transform.position, Vector3.down, 2.75f, 256);
 
         Rigidbody2D rigidbody2d;
-
 
         void Start()
         {
@@ -20,13 +19,9 @@ namespace Controllers.EntityControllers
             FaceRight = true;
         }
 
-        private void Update()
-        {
-        }
-
         public bool IsGroundedWithRaycast()
         {
-            RaycastHit2D res = Physics2D.Raycast(transform.position, Vector3.down, 2.75f, 256);
+            RaycastHit2D res = IsOnTheGround;
 
             var color = (res) ? Color.green : Color.red;
             Debug.DrawRay(transform.position, Vector3.down * 2.75f, color);
