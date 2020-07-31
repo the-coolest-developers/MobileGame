@@ -3087,11 +3087,11 @@ MonoBehaviour:
     StrikePeriod: 2
     HitDelay: 0.65
     Damage: 2
-    CanStrike: 1
+    CanStrike: 0
   MovementAttributes:
     JumpPower: 1000
     RunningSpeed: 4
-    CanMove: 1
+    CanMove: 0
 --- !u!1 &680627857
 GameObject:
   m_ObjectHideFlags: 0
@@ -13321,7 +13321,7 @@ PrefabInstance:
     - target: {fileID: 5166078315885113657, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5166078315885113660, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
@@ -13397,6 +13397,11 @@ PrefabInstance:
       propertyPath: CanMove
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2229875668795152394, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: GroundLayerMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 3860756187577783763, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}
       propertyPath: HealthBarLine
@@ -13457,6 +13462,11 @@ PrefabInstance:
       propertyPath: BaseDamage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8307259234568383179, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8307259235387874325, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13465,7 +13475,7 @@ PrefabInstance:
     - target: {fileID: 8307259235387874325, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.36
+      value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 8307259235387874325, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}
@@ -13521,6 +13531,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Ally
+      objectReference: {fileID: 0}
+    - target: {fileID: 8307259235387874334, guid: 4e9ece4a46ceace45bb163d117b72589,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3860756187577783763, guid: 4e9ece4a46ceace45bb163d117b72589, type: 3}

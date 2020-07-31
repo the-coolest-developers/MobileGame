@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Singletones;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace Controllers.EntityControllers
@@ -7,7 +8,7 @@ namespace Controllers.EntityControllers
     {
         //Внутренние переменные
         public bool FaceRight { get; set; }
-        public bool IsOnTheGround { get; set; }
+        public bool IsOnTheGround => Physics2D.Raycast(transform.position, Vector3.down, 2.75f, 256);
 
         Rigidbody2D rigidbody2d;
 
@@ -17,6 +18,23 @@ namespace Controllers.EntityControllers
             rigidbody2d = GetComponent<Rigidbody2D>();
 
             FaceRight = true;
+        }
+
+        private void Update()
+        {
+            print(IsOnTheGround);
+        }
+
+        public bool IsGroundedWithRaycast()
+        {
+            RaycastHit2D res = Physics2D.Raycast(transform.position, Vector3.down, 2.75f, 256);
+
+            var color = (res) ? Color.green : Color.red;
+            Debug.DrawRay(transform.position, Vector3.down * 2.75f, color);
+
+            print(res.collider);
+
+            return res;
         }
 
         void Flip()
@@ -46,10 +64,11 @@ namespace Controllers.EntityControllers
                 rigidbody2d.AddForce(Vector2.up * jumpPower);
             }
         }
-
         /// <summary>
-        /// Returns if it's moving
+        /// Возвращает если двигается. В будущем надо переделать
         /// </summary>
+        /// <param name="canMove"></param>
+        /// <param name="speedX"></param>
         /// <returns></returns>
         public bool MoveIfPossible(bool canMove, float speedX)
         {
@@ -76,25 +95,6 @@ namespace Controllers.EntityControllers
             }
 
             MoveIfPossible(canMove, speedX);
-        }
-
-        protected virtual void OnTriggerEnter2D(Collider2D collision)
-        {
-            switch (collision.gameObject.tag)
-            {
-                case "Ground":
-                    IsOnTheGround = true;
-                    break;
-            }
-        }
-        protected virtual void OnTriggerExit2D(Collider2D collision)
-        {
-            switch (collision.gameObject.tag)
-            {
-                case "Ground":
-                    IsOnTheGround = false;
-                    break;
-            }
         }
     }
 }
