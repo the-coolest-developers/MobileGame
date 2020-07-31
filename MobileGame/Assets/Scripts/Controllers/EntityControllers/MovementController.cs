@@ -22,7 +22,6 @@ namespace Controllers.EntityControllers
 
         private void Update()
         {
-            print(IsOnTheGround);
         }
 
         public bool IsGroundedWithRaycast()
