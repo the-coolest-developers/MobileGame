@@ -90,13 +90,14 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public void SetIsRunning()
         {
             AnimationController.SetIsRunning();
-            CurrentRunningSpeed = EntityAttributes.MovementAttributes.RunningSpeed / 100;
+            //CurrentRunningSpeed = EntityAttributes.MovementAttributes.RunningSpeed / 100;
+            EntityAttributes.MovementAttributes.CurrentMovementSpeed = EntityAttributes.MovementAttributes.RunningSpeed / 100;
         }
         public void StopRunning()
         {
             AnimationController.SetIsNotRunning();
 
-            CurrentRunningSpeed = 0;
+            EntityAttributes.MovementAttributes.CurrentMovementSpeed = 0;
         }
 
         public void HandleOnDamaged(float damage)
@@ -119,5 +120,13 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public void SetHealthToMax() => SetHealth(EntityAttributes.BattleAttributes.MaxHealth);
 
         public void SetHealthToZero() => SetHealth(0);
+
+        public void Move(Action<EntityAttributes> RunningMethod, EntityAttributes entityAttributes)
+        {
+            if(entityAttributes.MovementAttributes.CurrentMovementSpeed != 0)
+            {
+                RunningMethod.Invoke(entityAttributes);
+            }
+        }
     }
 }

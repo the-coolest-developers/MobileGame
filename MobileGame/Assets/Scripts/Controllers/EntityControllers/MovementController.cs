@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Singletones;
 using UnityEditor.UIElements;
 using UnityEngine;
+using Assets.Scripts.Models;
 
 namespace Controllers.EntityControllers
 {
@@ -64,20 +65,10 @@ namespace Controllers.EntityControllers
         /// <param name="canMove"></param>
         /// <param name="speedX"></param>
         /// <returns></returns>
-        public bool MoveIfPossible(bool canMove, float speedX)
+    
+        public void RunToGameObject(EntityAttributes entityAttributes)
         {
-            if (canMove && speedX != 0)
-            {
-                rigidbody2d.transform.Translate(Vector2.right * speedX);
-
-                return true;
-            }
-
-            return false;
-        }
-
-        public void RunToGameObject(GameObject targetObject, bool canMove, float speedX)
-        {
+            GameObject targetObject = entityAttributes.BattleAttributes.MainEnemy;
             float distance = Tools.GetHorizontalDistance(gameObject, targetObject);
             if (distance > 0)
             {
@@ -88,7 +79,13 @@ namespace Controllers.EntityControllers
                 TurnRight();
             }
 
-            MoveIfPossible(canMove, speedX);
+            MoveHorizontal(entityAttributes);
+        }
+
+        public void MoveHorizontal(EntityAttributes entityAttributes)
+        {
+            float speed = entityAttributes.MovementAttributes.CurrentMovementSpeed;
+            rigidbody2d.transform.Translate(Vector2.right * speed);
         }
     }
 }

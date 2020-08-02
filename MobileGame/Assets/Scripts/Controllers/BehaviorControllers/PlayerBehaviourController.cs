@@ -50,8 +50,9 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             LevelController.AddExperience(10);
 
-            if (!IsStriking && MovementController.MoveIfPossible(CanMove, CurrentRunningSpeed))
+            if (!IsStriking && CanMove & EntityAttributes.MovementAttributes.CurrentMovementSpeed != 0)
             {
+                Move(MovementController.MoveHorizontal, EntityAttributes);
                 AnimationController.SetIsRunning();
             }
         }

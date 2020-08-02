@@ -18,7 +18,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             InitializeAttributes();
             SubscribeToEvents();
             SetHealthToMax();
-            MainEnemy = SearhEnemy();
+            EntityAttributes.BattleAttributes.MainEnemy = SearhEnemy();
         }
 
         void Update()
@@ -37,11 +37,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 var PlayerDistance = GameController.GetDistanceToPlayer(gameObject);
                 var absoluteDistance = math.abs(PlayerDistance);
 
-                if (absoluteDistance <= MinDistance && absoluteDistance >= StrikeDistance)
+                if (absoluteDistance <= MinDistance && absoluteDistance >= StrikeDistance & CanMove)
                 {
                     SetIsRunning();
 
-                    MovementController.RunToGameObject(MainEnemy, CanMove, CurrentRunningSpeed);
+                    Move(MovementController.RunToGameObject, EntityAttributes);
                     AnimationController.SetIsRunning();
                 }
                 else
