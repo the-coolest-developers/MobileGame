@@ -121,11 +121,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         public void SetHealthToZero() => SetHealth(0);
 
-        public void Move(Action<EntityAttributes> RunningMethod, EntityAttributes entityAttributes)
+        public void Move(Action<MovementAttributes> RunningMethod, MovementAttributes movementAttributes)
         {
-            if(entityAttributes.MovementAttributes.CurrentMovementSpeed != 0)
+            if(movementAttributes.CurrentMovementSpeed != 0)
             {
-                RunningMethod.Invoke(entityAttributes);
+                RunningMethod.Invoke(movementAttributes);
             }
         }
     }

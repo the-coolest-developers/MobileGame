@@ -2,6 +2,7 @@
 using UnityEditor.UIElements;
 using UnityEngine;
 using Assets.Scripts.Models;
+using Assets.Scripts.Models.Attributes;
 
 namespace Controllers.EntityControllers
 {
@@ -20,6 +21,10 @@ namespace Controllers.EntityControllers
             FaceRight = true;
         }
 
+        /// <summary>
+        /// Для дебага
+        /// </summary>
+        /// <returns></returns>
         public bool IsGroundedWithRaycast()
         {
             RaycastHit2D res = IsOnTheGround;
@@ -59,16 +64,14 @@ namespace Controllers.EntityControllers
                 rigidbody2d.AddForce(Vector2.up * jumpPower);
             }
         }
+
         /// <summary>
-        /// Возвращает если двигается. В будущем надо переделать
+        /// Движение к кокнкретному обьекту
         /// </summary>
-        /// <param name="canMove"></param>
-        /// <param name="speedX"></param>
-        /// <returns></returns>
-    
-        public void RunToGameObject(EntityAttributes entityAttributes)
+        /// <param name="movementAttributes"></param>
+        public void RunToGameObject(MovementAttributes movementAttributes)
         {
-            GameObject targetObject = entityAttributes.BattleAttributes.MainEnemy;
+            GameObject targetObject = movementAttributes.MovementTarget;
             float distance = Tools.GetHorizontalDistance(gameObject, targetObject);
             if (distance > 0)
             {
@@ -79,12 +82,16 @@ namespace Controllers.EntityControllers
                 TurnRight();
             }
 
-            MoveHorizontal(entityAttributes);
+            MoveHorizontal(movementAttributes);
         }
 
-        public void MoveHorizontal(EntityAttributes entityAttributes)
+        /// <summary>
+        /// Обычное движение
+        /// </summary>
+        /// <param name="movementAttributes"></param>
+        public void MoveHorizontal(MovementAttributes movementAttributes)
         {
-            float speed = entityAttributes.MovementAttributes.CurrentMovementSpeed;
+            float speed = movementAttributes.CurrentMovementSpeed;
             rigidbody2d.transform.Translate(Vector2.right * speed);
         }
     }

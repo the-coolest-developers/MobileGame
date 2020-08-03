@@ -10,7 +10,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         //Переменные из Unity Editor
         public float MinDistance;
         public float StrikeDistance;
-        GameObject MainEnemy;
 
         void Start()
         {
@@ -18,7 +17,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             InitializeAttributes();
             SubscribeToEvents();
             SetHealthToMax();
-            EntityAttributes.BattleAttributes.MainEnemy = SearhEnemy();
+            EntityAttributes.MovementAttributes.MovementTarget = SearhEnemy();
         }
 
         void Update()
@@ -41,7 +40,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                 {
                     SetIsRunning();
 
-                    Move(MovementController.RunToGameObject, EntityAttributes);
+                    Move(MovementController.RunToGameObject, EntityAttributes.MovementAttributes);
                     AnimationController.SetIsRunning();
                 }
                 else
@@ -59,24 +58,10 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         GameObject SearhEnemy()
         {
-            var enemyes = GameObject.FindGameObjectsWithTag("Ally");
+            var enemies = GameObject.FindGameObjectsWithTag("Ally");
+            var enemy = enemies.OrderBy(o => Tools.GetHorizontalAbsoluteDistance(o, gameObject)).First();
 
-            float MinimalDistance = 1000; 
-
-            GameObject Enemy = null;
-
-            foreach(GameObject e in enemyes)
-            {
-                float distance = Tools.GetHorizontalAbsoluteDistance(e, gameObject);
-
-                if(distance <= MinimalDistance )
-                {
-                    Enemy = e;
-                    MinimalDistance = distance;
-                    MainEnemy = e;
-                }
-            }
-            return Enemy;
+            return enemy;
         }
     }
 }

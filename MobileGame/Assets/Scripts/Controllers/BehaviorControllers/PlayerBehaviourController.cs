@@ -52,7 +52,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
             if (!IsStriking && CanMove & EntityAttributes.MovementAttributes.CurrentMovementSpeed != 0)
             {
-                Move(MovementController.MoveHorizontal, EntityAttributes);
+                Move(MovementController.MoveHorizontal, EntityAttributes.MovementAttributes);
                 AnimationController.SetIsRunning();
             }
         }

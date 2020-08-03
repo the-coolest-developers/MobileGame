@@ -1,9 +1,4 @@
-﻿using Assets.Scripts.Singletones;
-using UnityEditor.UIElements;
-using UnityEngine;
-using Assets.Scripts.Models;
-
-namespace Assets.Scripts.Models.Attributes
+﻿namespace Assets.Scripts.Models.Attributes
 {
     [System.Serializable]
     public struct BattleAttributes
@@ -17,7 +12,5 @@ namespace Assets.Scripts.Models.Attributes
         public float HitDelay;
         public float Damage;
         public bool CanStrike;
-    
-        public GameObject MainEnemy;
     }
 }
