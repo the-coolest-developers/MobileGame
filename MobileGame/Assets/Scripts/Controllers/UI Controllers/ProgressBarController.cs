@@ -51,6 +51,8 @@ namespace Assets.Scripts.Controllers.UI_Controllers
 
                 if (valuePercent > 0)
                 {
+                    TipGameObject.SetActive(true);
+
                     var tipPosX = valuePercent * MaxWidth * LineScale;
                     TipRect.anchoredPosition = new Vector2(DefaultX + tipPosX, TipRect.anchoredPosition.y);
                 }
