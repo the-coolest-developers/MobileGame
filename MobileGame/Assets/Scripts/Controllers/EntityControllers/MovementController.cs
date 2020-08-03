@@ -8,7 +8,7 @@ namespace Controllers.EntityControllers
     {
         //Внутренние переменные
         public bool FaceRight { get; set; }
-        public RaycastHit2D IsOnTheGround => Physics2D.Raycast(transform.position, Vector3.down, 2.75f, 256);
+        public RaycastHit2D IsOnTheGround => Physics2D.Raycast(transform.position, Vector2.down, 2.75f, 256);
 
         Rigidbody2D rigidbody2d;
 
@@ -18,17 +18,29 @@ namespace Controllers.EntityControllers
 
             FaceRight = true;
         }
-
-        /// <summary>
-        /// Для дебага
-        /// </summary>
-        /// <returns></returns>
-        public bool IsGroundedWithRaycast()
+        private void Update()
         {
-            RaycastHit2D res = IsOnTheGround;
+            var pos = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
+            DebugRaycastHit((Vector2)transform.position + new Vector2(pos, 0), Vector2.right, 1);
+        }
+
+        public bool DebugRaycastHit(Vector2 position, Vector2 direction, float distance)
+        {
+            RaycastHit2D res = Physics2D.Raycast(position, direction, distance);
 
             var color = (res) ? Color.green : Color.red;
-            Debug.DrawRay(transform.position, Vector3.down * 2.75f, color);
+            Debug.DrawRay(position, direction * distance, color);
+
+            print(res.collider);
+
+            return res;
+        }
+        public bool DebugRaycastHit(Vector2 position, Vector2 direction, float distance, int layerMask)
+        {
+            RaycastHit2D res = Physics2D.Raycast(position, direction, distance, layerMask);
+
+            var color = (res) ? Color.green : Color.red;
+            Debug.DrawRay(position, direction * distance, color);
 
             print(res.collider);
 
@@ -64,7 +76,7 @@ namespace Controllers.EntityControllers
         }
 
         /// <summary>
-        /// Движение к кокнкретному обьекту
+        /// Движение к конкретному обьекту
         /// </summary>
         /// <param name="movementAttributes"></param>
         public void RunToGameObject(MovementAttributes movementAttributes)
@@ -90,7 +102,7 @@ namespace Controllers.EntityControllers
         public void MoveHorizontal(MovementAttributes movementAttributes)
         {
             float speed = movementAttributes.CurrentMovementSpeed;
-            rigidbody2d.transform.Translate(Vector2.right * speed);
+            transform.Translate(Vector2.right * speed);
         }
     }
 }
