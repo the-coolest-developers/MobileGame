@@ -30,14 +30,16 @@ namespace Assets.Scripts.Controllers
             {
                 LevelAttributes.CurrentLevel = GlobalValues.MaxLevel;
             }
-            else if (newLevel < 0)
+            else if (newLevel < 1)
             {
-                LevelAttributes.CurrentLevel = 0;
+                LevelAttributes.CurrentLevel = 1;
             }
             else
             {
                 LevelAttributes.CurrentLevel = newLevel;
             }
+
+            OnLevelChanged(LevelAttributes.CurrentLevel);
         }
         public void LevelUp()
         {
@@ -45,6 +47,11 @@ namespace Assets.Scripts.Controllers
             LevelAttributes.SkillPoints++;
         }
 
+        public void SetExperience(int experience)
+        {
+            LevelAttributes.ExperiencePoints = experience;
+            OnExperienceChanged(experience, LevelAttributes.NextLevelExperiencePoints);
+        }
         public void AddExperience(int experience)
         {
             LevelAttributes.ExperiencePoints += experience;

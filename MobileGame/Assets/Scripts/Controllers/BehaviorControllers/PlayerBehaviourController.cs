@@ -35,12 +35,10 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             LevelController = GetComponent<LevelController>();
             LevelController.OnExperienceChanged += HandleExperienceChanged;
             LevelController.OnLevelChanged += HandleLevelChanged;
+            LevelController.SetExperience(0);
+            LevelController.SetLevel(0);
 
             BattleController.OnEnemyKilled += HandleOnEnemyKilled;
-        }
-
-        void Update()
-        {
         }
         void FixedUpdate()
         {
