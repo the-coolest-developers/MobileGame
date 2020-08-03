@@ -1,7 +1,5 @@
 ﻿using Assets.Scripts.Singletones;
-using UnityEditor.UIElements;
 using UnityEngine;
-using Assets.Scripts.Models;
 using Assets.Scripts.Models.Attributes;
 
 namespace Controllers.EntityControllers
