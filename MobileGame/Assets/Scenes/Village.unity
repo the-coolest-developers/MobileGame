@@ -1008,6 +1008,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5166078315885113634, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166078315885113634, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166078315885113634, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5166078315885113657, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
       propertyPath: m_Name
@@ -3272,7 +3287,7 @@ MonoBehaviour:
     StrikePeriod: 2
     HitDelay: 0.65
     Damage: 2
-    CanStrike: 0
+    CanStrike: 1
   MovementAttributes:
     JumpPower: 1000
     CurrentMovementSpeed: 0
@@ -6913,7 +6928,7 @@ MonoBehaviour:
     StrikePeriod: 2
     HitDelay: 0.65
     Damage: 2
-    CanStrike: 0
+    CanStrike: 1
   MovementAttributes:
     JumpPower: 1000
     CurrentMovementSpeed: 0
@@ -13540,6 +13555,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5166078315885113634, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166078315885113634, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166078315885113634, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166078315885113635, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5166078315885113657, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
       propertyPath: m_Name
@@ -13568,6 +13603,11 @@ PrefabInstance:
     - target: {fileID: 5166078315885113662, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5166078315885113663, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7871841418815498110, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
