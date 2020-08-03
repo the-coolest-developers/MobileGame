@@ -106,6 +106,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
             if (CurrentHealth <= 0)
             {
+                EntityAttributes.BattleAttributes.IsDead = true;
                 HandleDeath();
             }
         }

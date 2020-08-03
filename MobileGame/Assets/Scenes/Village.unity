@@ -13362,6 +13362,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1871109601}
+    - target: {fileID: 7871841418815498110, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
+        type: 3}
+      propertyPath: GivenExperience
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 8137434035412473918, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
       propertyPath: StrikeBoolName

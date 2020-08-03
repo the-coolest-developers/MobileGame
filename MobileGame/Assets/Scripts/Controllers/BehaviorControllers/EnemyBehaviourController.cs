@@ -11,6 +11,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public float MinDistance;
         public float StrikeDistance;
 
+        public int GivenExperience;
+
         void Start()
         {
             InitializeControllers();

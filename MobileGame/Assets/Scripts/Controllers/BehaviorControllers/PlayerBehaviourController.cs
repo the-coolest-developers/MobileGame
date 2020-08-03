@@ -35,6 +35,8 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             LevelController = GetComponent<LevelController>();
             LevelController.OnExperienceChanged += HandleExperienceChanged;
             LevelController.OnLevelChanged += HandleLevelChanged;
+
+            BattleController.OnEnemyKilled += HandleOnEnemyKilled;
         }
 
         void Update()
@@ -42,8 +44,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         }
         void FixedUpdate()
         {
-            LevelController.AddExperience(10);
-
             if (!IsStriking && CanMove & EntityAttributes.MovementAttributes.CurrentMovementSpeed != 0)
             {
                 Move(MovementController.MoveHorizontal, EntityAttributes.MovementAttributes);
@@ -100,6 +100,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         void HandleExperienceChanged(int experience, int newLevelExperience)
         {
             ExperienceBarController.UpdateLine(experience, newLevelExperience);
+        }
+
+        void HandleOnEnemyKilled(int givenExperience)
+        {
+            LevelController.AddExperience(givenExperience);
         }
 
         protected override void HandleDeath()

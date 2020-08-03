@@ -4,13 +4,15 @@
     public struct BattleAttributes
     {
         public int MaxHealth;
-        public float CurrentHealth { get; set; }
-
         public int AttackedEnemiesAmount;
+
+        public float CurrentHealth { get; set; }
         public float SplashDamageLossPercent;
         public float StrikePeriod;
         public float HitDelay;
         public float Damage;
+
         public bool CanStrike;
+        public bool IsDead { get; set; }
     }
 }

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Assets.Scripts.Models.Attributes;
+using Assets.Scripts.Models;
+using Assets.Scripts.Controllers.BehaviorControllers;
 
 namespace Controllers.EntityControllers
 {
@@ -13,6 +15,7 @@ namespace Controllers.EntityControllers
         /// Вызывается при получении уронаПо умолчанию вызывает и событие OnHealthChanged
         /// </summary>
         public event Action<float> OnDamaged;
+        public event Action<int> OnEnemyKilled;
 
         protected List<GameObject> TriggeredEnemies { get; set; }
 
@@ -74,9 +77,16 @@ namespace Controllers.EntityControllers
 
         private void DamageEnemy(GameObject enemy, float damage)
         {
+            var enemyBehaviorController = enemy.GetComponent<EnemyBehaviourController>();
             var enemyBattleController = enemy.GetComponent<BattleController>();
 
             enemyBattleController.GetDamage(damage);
+
+            var isDead = enemy.GetComponent<EntityAttributes>().BattleAttributes.IsDead;
+            if (isDead)
+            {
+                OnEnemyKilled(enemyBehaviorController.GivenExperience);
+            }
         }
 
         private void GetDamage(float damage)
