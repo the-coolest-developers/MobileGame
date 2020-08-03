@@ -22,11 +22,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         void Update()
         {
-            if (CurrentHealth <= 0)
-            {
-                Destroy(gameObject);
-                //Анимация смерти
-            }
         }
 
         void FixedUpdate()
@@ -54,6 +49,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                     Strike(BattleController.AOEStrike, EntityAttributes.BattleAttributes);
                 }
             }
+        }
+
+        protected override void HandleDeath()
+        {
+            Destroy(gameObject);
         }
     }
 }

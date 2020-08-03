@@ -91,7 +91,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public void SetIsRunning()
         {
             AnimationController.SetIsRunning();
-            //CurrentRunningSpeed = EntityAttributes.MovementAttributes.RunningSpeed / 100;
             EntityAttributes.MovementAttributes.CurrentMovementSpeed = EntityAttributes.MovementAttributes.RunningSpeed / 100;
         }
         public void StopRunning()
@@ -104,6 +103,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public void HandleOnDamaged(float damage)
         {
             SetHealth(CurrentHealth - damage);
+
+            if (CurrentHealth <= 0)
+            {
+                HandleDeath();
+            }
         }
         public void HealthChanged(float health)
         {
@@ -124,7 +128,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         public void Move(Action<MovementAttributes> RunningMethod, MovementAttributes movementAttributes)
         {
-            if(movementAttributes.CurrentMovementSpeed != 0)
+            if (movementAttributes.CurrentMovementSpeed != 0)
             {
                 RunningMethod.Invoke(movementAttributes);
             }
@@ -137,5 +141,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
             return NearestObject;
         }
+
+        protected abstract void HandleDeath();
     }
 }

@@ -39,12 +39,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         void Update()
         {
-            if (CurrentHealth <= 0)
-            {
-                GameController.PauseGame();
-
-                RespawnButton.gameObject.SetActive(true);
-            }
         }
         void FixedUpdate()
         {
@@ -106,6 +100,13 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         void HandleExperienceChanged(int experience, int newLevelExperience)
         {
             ExperienceBarController.UpdateLine(experience, newLevelExperience);
+        }
+
+        protected override void HandleDeath()
+        {
+            GameController.PauseGame();
+
+            RespawnButton.gameObject.SetActive(true);
         }
     }
 }
