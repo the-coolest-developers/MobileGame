@@ -17,7 +17,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             InitializeAttributes();
             SubscribeToEvents();
             SetHealthToMax();
-            EntityAttributes.MovementAttributes.MovementTarget = SearhEnemy();
+            EntityAttributes.MovementAttributes.MovementTarget = FindNearestObject("Ally");
         }
 
         void Update()
@@ -54,14 +54,6 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                     Strike(BattleController.AOEStrike, EntityAttributes.BattleAttributes);
                 }
             }
-        }
-
-        GameObject SearhEnemy()
-        {
-            var enemies = GameObject.FindGameObjectsWithTag("Ally");
-            var enemy = enemies.OrderBy(o => Tools.GetHorizontalAbsoluteDistance(o, gameObject)).First();
-
-            return enemy;
         }
     }
 }

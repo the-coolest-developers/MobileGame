@@ -5,6 +5,7 @@ using Assets.Scripts.Models;
 using Assets.Scripts.Models.Attributes;
 using Assets.Scripts.Controllers.UI_Controllers;
 using Controllers;
+using Assets.Scripts.Singletones;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -127,6 +128,14 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             {
                 RunningMethod.Invoke(movementAttributes);
             }
+        }
+
+        protected GameObject FindNearestObject(string Tag)
+        {
+            var Objects = GameObject.FindGameObjectsWithTag(Tag);
+            var NearestObject = Objects.OrderBy(o => Tools.GetHorizontalAbsoluteDistance(o, gameObject)).First();
+
+            return NearestObject;
         }
     }
 }
