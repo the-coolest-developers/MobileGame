@@ -24,6 +24,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         protected GameController GameController { get; set; }
 
+        protected GameObject MovementTarget => EntityAttributes.MovementAttributes.MovementTarget;
 
         public bool FaceRight => MovementController.FaceRight;
         public bool IsOnTheGround => MovementController.IsOnTheGround;

@@ -13,13 +13,14 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         public int GivenExperience;
 
+
+
         void Start()
         {
             InitializeControllers();
             InitializeAttributes();
             SubscribeToEvents();
             SetHealthToMax();
-            EntityAttributes.MovementAttributes.MovementTarget = FindNearestObject("Ally");
         }
 
         void Update()
@@ -28,10 +29,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         void FixedUpdate()
         {
+            EntityAttributes.MovementAttributes.MovementTarget = FindNearestObject("Ally");
+
             if (!IsStriking)
             {
-                var PlayerDistance = GameController.GetDistanceToPlayer(gameObject);
-                var absoluteDistance = math.abs(PlayerDistance);
+                var absoluteDistance = Tools.GetHorizontalAbsoluteDistance(gameObject, MovementTarget);
 
                 if (absoluteDistance <= MinDistance && absoluteDistance >= StrikeDistance & CanMove)
                 {
