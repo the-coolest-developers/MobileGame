@@ -1,116 +1,92 @@
-﻿using UnityEngine;
+﻿using Models.Attributes;
+using Singletones;
+using UnityEngine;
 
 namespace Controllers.EntityControllers
 {
-    public abstract class MovementController : MonoBehaviour
+    public class MovementController : MonoBehaviour
     {
-        //Внешние переменные
-        public float JumpPower;
-        public float RunningSpeed;
-        public bool CanMove;
-
         //Внутренние переменные
-        protected Rigidbody2D rigidbody2d;
-        public AnimationController AnimationController { get; set; }
-        public BattleController BattleController { get; set; }
+        public bool FaceRight { get; private set; }
+        public RaycastHit2D IsOnTheGround => Physics2D.Raycast(transform.position, Vector2.down, 2.75f, 256);
 
-        public bool IsOnTheGround { get; set; }
-        //protected float SpeedX { get; set; }
-        public float SpeedX;
-        protected bool FaceRight { get; set; }
+        private Rigidbody2D Rigidbody2d { get; set; }
 
-
-        protected virtual void Start()
+        private void Start()
         {
-            RunningSpeed = RunningSpeed / 100;
-            rigidbody2d = GetComponent<Rigidbody2D>();
+            Rigidbody2d = GetComponent<Rigidbody2D>();
 
-            BattleController = GetComponent<BattleController>();
-            AnimationController = GetComponent<AnimationController>();
-
-            AnimationController.SetIsNotRunning();
             FaceRight = true;
         }
-        protected virtual void FixedUpdate()
+
+        private void Update()
         {
-            MoveIfPossible();
+            //var pos = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
+            //DebugRaycastHit((Vector2)transform.position + new Vector2(pos, 0), Vector2.right, 1);
         }
-        void Flip()
+
+        public bool DebugRaycastHit(Vector2 position, Vector2 direction, float distance)
+        {
+            var res = Physics2D.Raycast(position, direction, distance);
+
+            var color = (res) ? Color.green : Color.red;
+            Debug.DrawRay(position, direction * distance, color);
+
+            print(res.collider);
+
+            return res;
+        }
+
+        public bool DebugRaycastHit(Vector2 position, Vector2 direction, float distance, int layerMask)
+        {
+            RaycastHit2D res = Physics2D.Raycast(position, direction, distance, layerMask);
+
+            var color = (res) ? Color.green : Color.red;
+            Debug.DrawRay(position, direction * distance, color);
+
+            print(res.collider);
+
+            return res;
+        }
+
+        private void Flip()
         {
             FaceRight = !FaceRight;
-            rigidbody2d.transform.Rotate(0f, 180f, 0f);
+            Tools.FlipGameObject(gameObject);
         }
+
         public void TurnRight()
         {
             if (!FaceRight)
             {
                 Flip();
             }
-            SpeedX = RunningSpeed;
         }
+
         public void TurnLeft()
         {
             if (FaceRight)
             {
                 Flip();
             }
-            SpeedX = -RunningSpeed;
         }
-        public void StopRunning()
-        {
-            AnimationController.SetIsNotRunning();
-            SpeedX = 0;
-        }
-        public void Jump()
+
+        public void Jump(float jumpPower)
         {
             if (IsOnTheGround)
             {
-                rigidbody2d.AddForce(Vector2.up * JumpPower);
+                Rigidbody2d.AddForce(Vector2.up * jumpPower);
             }
         }
 
-        public void MoveIfPossible()
+        /// <summary>
+        /// Движение к конкретному обьекту
+        /// </summary>
+        /// <param name="movementAttributes"></param>
+        public void RunToGameObject(MovementAttributes movementAttributes)
         {
-            if (CanMove && !BattleController.IsStriking && SpeedX != 0)
-            {
-                if (SpeedX < 0)
-                {
-                    rigidbody2d.transform.Translate(Vector2.left * SpeedX);
-                }
-                else
-                {
-                    rigidbody2d.transform.Translate(Vector2.right * SpeedX);
-                }
-
-                if (AnimationController != null)
-                {
-                    AnimationController.SetIsRunning();
-                }
-            }
-        }
-        protected virtual void OnTriggerEnter2D(Collider2D collision)
-        {
-            switch (collision.gameObject.tag)
-            {
-                case "Ground":
-                    IsOnTheGround = true;
-                    break;
-            }
-        }
-        protected virtual void OnTriggerExit2D(Collider2D collision)
-        {
-            switch (collision.gameObject.tag)
-            {
-                case "Ground":
-                    IsOnTheGround = false;
-                    break;
-            }
-        }
-
-        protected void RunToGameObjetc(GameObject targetObject)
-        {
-            Rigidbody2D targetObjectRB = targetObject.GetComponent<Rigidbody2D>();
-            float distance = rigidbody2d.transform.position.x - targetObjectRB.transform.position.x;
+            var targetObject = movementAttributes.MovementTarget;
+            float distance = Tools.GetHorizontalDistance(gameObject, targetObject);
             if (distance > 0)
             {
                 TurnLeft();
@@ -120,8 +96,17 @@ namespace Controllers.EntityControllers
                 TurnRight();
             }
 
-            MoveIfPossible();
+            MoveHorizontal(movementAttributes);
         }
 
+        /// <summary>
+        /// Обычное движение
+        /// </summary>
+        /// <param name="movementAttributes"></param>
+        public void MoveHorizontal(MovementAttributes movementAttributes)
+        {
+            float speed = movementAttributes.CurrentMovementSpeed;
+            transform.Translate(Vector2.right * speed);
+        }
     }
 }

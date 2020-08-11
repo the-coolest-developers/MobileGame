@@ -5,7 +5,7 @@ namespace Controllers.EntityControllers
     public class AnimationController : MonoBehaviour
     {
         //Внутренние переменные
-        protected Animator EntityAnimator { get; set; }
+        private Animator EntityAnimator { get; set; }
 
         //Внешние переменные
 
@@ -15,10 +15,11 @@ namespace Controllers.EntityControllers
 
 
         // Start is called before the first frame update
-        protected virtual void Start()
+        private void Start()
         {
             EntityAnimator = GetComponent<Animator>();
         }
+
         // Update is called once per frame
         public void SetIsRunning()
         {
@@ -27,6 +28,7 @@ namespace Controllers.EntityControllers
                 EntityAnimator.SetBool(RunningBoolName, true);
             }
         }
+
         public void SetIsNotRunning()
         {
             if (EntityAnimator != null)
@@ -34,6 +36,7 @@ namespace Controllers.EntityControllers
                 EntityAnimator.SetBool(RunningBoolName, false);
             }
         }
+
         public void PlayStrikeAnimation()
         {
             if (EntityAnimator != null)

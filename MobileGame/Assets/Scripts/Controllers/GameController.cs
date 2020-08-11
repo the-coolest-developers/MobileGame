@@ -1,71 +1,47 @@
-﻿using Controllers.EntityControllers;
-using Controllers.UI_Controllers;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Singletones;
 using UnityEngine;
 
 namespace Controllers
 {
     public class GameController : MonoBehaviour
     {
-        public GameObject PlayerGameObject;
-        public GameObject RespawnPoint;
-        public GameObject RespawnButton;
+        public GameObject PlayerGameObject { get; private set; }
+        public GameObject RespawnPoint { get; private set; }
 
-        BattleController PlayerBattleController { get; set; }
-        HealthBarController PlayerHealthBarController { get; set; }
-
-        // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
-            Time.timeScale = 1;
-            PlayerBattleController = PlayerGameObject.GetComponent<BattleController>();
-            PlayerHealthBarController = PlayerGameObject.GetComponent<HealthBarController>();
+            PlayerGameObject = GameObject.Find("Player");
+            RespawnPoint = GameObject.Find("RespawnPoint");
 
-            PlayerBattleController.HealthChanged += HandlePlayerDeath;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        public void PauseGame()
-        {
-            Time.timeScale = 0;
-        }
-        public void ResumeGame()
-        {
             Time.timeScale = 1;
         }
+
+        private void Update()
+        {
+
+        }
+
+        public void PauseGame() => Time.timeScale = 0;
+        public void ResumeGame() => Time.timeScale = 1;
 
         public void SpawnObject(GameObject gameObject)
         {
             Instantiate(gameObject);
         }
 
-        public void HandlePlayerDeath()
+        public Vector3 GetRespawnPosition()
         {
-            if (PlayerBattleController.CurrentHealth <= 0)
-            {
-                PauseGame();
-
-                PlayerHealthBarController.HealthBarTip.SetActive(false);
-                RespawnButton.gameObject.SetActive(true);
-            }
+            return RespawnPoint.transform.position;
         }
 
-        public void RespawnPlayer()
+
+        public float GetDistanceToPlayer(GameObject self)
         {
-            PlayerHealthBarController.HealthBarTip.SetActive(true);
-            PlayerBattleController.SetHealthToMax();
-
-            gameObject.transform.position = RespawnPoint.transform.position;
-
-            RespawnButton.gameObject.SetActive(false);
-
-            ResumeGame();
+            return Tools.GetHorizontalDistance(self, PlayerGameObject);
+        }
+        public float GetAbsoluteHorizontalDistanceToPlayer(GameObject self)
+        {
+            return Tools.GetHorizontalAbsoluteDistance(self, PlayerGameObject);
         }
     }
 }
