@@ -1,7 +1,7 @@
 ﻿using Unity.Mathematics;
 using UnityEngine;
 
-namespace Assets.Scripts.Singletones
+namespace Singletones
 {
     public static class Tools
     {

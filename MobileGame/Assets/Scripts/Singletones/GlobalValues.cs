@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assets.Scripts.Singletones
+﻿namespace Singletones
 {
-    static public class GlobalValues
+    public static class GlobalValues
     {
         public static int MaxLevel = 5;
 

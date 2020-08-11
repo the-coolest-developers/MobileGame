@@ -1,7 +1,6 @@
-﻿using Assets.Scripts.Models.Attributes;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.Scripts.Models
+namespace Models.Attributes
 {
     public class EntityAttributes : MonoBehaviour
     {

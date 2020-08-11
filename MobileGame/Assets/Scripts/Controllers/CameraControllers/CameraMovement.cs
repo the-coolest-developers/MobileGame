@@ -6,8 +6,7 @@ namespace Controllers.CameraControllers
 {
     public class CameraMovement : MonoBehaviour
     {
-        //Те, которые указываются в редакторе Unity
-        public GameObject Player { get; set; }
+        GameObject Player { get; set; }
 
         // Start is called before the first frame update
         void Start()
@@ -26,4 +25,3 @@ namespace Controllers.CameraControllers
         }
     }
 }
-

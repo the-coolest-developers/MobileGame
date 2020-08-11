@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Assets.Scripts.Models.Attributes;
-using Assets.Scripts.Models;
 using Assets.Scripts.Controllers.BehaviorControllers;
+using Models.Attributes;
 
 namespace Controllers.EntityControllers
 {

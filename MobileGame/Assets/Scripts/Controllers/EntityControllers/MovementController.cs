@@ -1,6 +1,6 @@
-﻿using Assets.Scripts.Singletones;
+﻿using Models.Attributes;
+using Singletones;
 using UnityEngine;
-using Assets.Scripts.Models.Attributes;
 
 namespace Controllers.EntityControllers
 {

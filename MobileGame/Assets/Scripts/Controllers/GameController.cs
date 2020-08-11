@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Singletones;
+﻿using Singletones;
 using UnityEngine;
 
 namespace Controllers

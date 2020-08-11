@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Models.Attributes
+﻿namespace Models.Attributes
 {
     [System.Serializable]
     public struct BattleAttributes

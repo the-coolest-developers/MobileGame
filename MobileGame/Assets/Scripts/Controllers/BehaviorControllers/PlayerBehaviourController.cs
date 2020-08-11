@@ -2,13 +2,14 @@
 using UnityEngine;
 using Controllers;
 using Assets.Scripts.Controllers.UI_Controllers;
+using Controllers.BehaviorControllers;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
     public class PlayerBehaviourController : BehaviorController
     {
-        public GameObject RespawnButton { get; set; }
+        GameObject RespawnButton { get; set; }
 
         LevelController LevelController { get; set; }
         HoldButtonController StrikeButtonController;
@@ -40,6 +41,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
             BattleController.OnEnemyKilled += HandleOnEnemyKilled;
         }
+
         void FixedUpdate()
         {
             if (!IsStriking && CanMove & EntityAttributes.MovementAttributes.CurrentMovementSpeed != 0)
@@ -63,14 +65,17 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             MoveRight();
         }
+
         public void MoveLeftButton_Click()
         {
             MoveLeft();
         }
+
         public void StopMovingButton_Click()
         {
             StopRunning();
         }
+
         public void JumpButton_Clicked()
         {
             MovementController.Jump(JumpPower);
@@ -81,6 +86,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             Strike(BattleController.SingleEnemyStrike, EntityAttributes.BattleAttributes);
         }
+
         //Это тестовый код. В будущем его обязательно нужно будет переделать. Только для проверки
         public void StrikeButton_Hold()
         {
@@ -94,6 +100,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         {
             GameObject.Find("LevelText").GetComponent<Text>().text = $"Level {level}";
         }
+
         void HandleExperienceChanged(int experience, int newLevelExperience)
         {
             ExperienceBarController.UpdateLine(experience, newLevelExperience);

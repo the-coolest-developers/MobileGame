@@ -1,15 +1,13 @@
-﻿using Controllers.EntityControllers;
-using System;
-using UnityEngine;
-using Assets.Scripts.Models;
-using Assets.Scripts.Models.Attributes;
-using Assets.Scripts.Controllers.UI_Controllers;
-using Controllers;
-using Assets.Scripts.Singletones;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Controllers.UI_Controllers;
+using Controllers.EntityControllers;
+using Models.Attributes;
+using Singletones;
+using UnityEngine;
 
-namespace Assets.Scripts.Controllers.BehaviorControllers
+namespace Controllers.BehaviorControllers
 {
     public abstract class BehaviorController : MonoBehaviour
     {

@@ -1,9 +1,9 @@
-﻿using Assets.Scripts.Models.Attributes;
-using Assets.Scripts.Singletones;
-using System;
+﻿using System;
+using Models.Attributes;
+using Singletones;
 using UnityEngine;
 
-namespace Assets.Scripts.Controllers
+namespace Controllers
 {
     public class LevelController : MonoBehaviour
     {

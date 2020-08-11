@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Linq;
-using Assets.Scripts.Singletones;
+using Controllers.BehaviorControllers;
+using Singletones;
 using Unity.Mathematics;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers

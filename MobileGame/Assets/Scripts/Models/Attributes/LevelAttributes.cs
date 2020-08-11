@@ -1,12 +1,7 @@
-﻿using Assets.Scripts.Singletones;
-using JetBrains.Annotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Singletones;
 
-namespace Assets.Scripts.Models.Attributes
+namespace Models.Attributes
 {
     [System.Serializable]
     public struct LevelAttributes
