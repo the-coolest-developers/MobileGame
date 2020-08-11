@@ -11,7 +11,7 @@ namespace Controllers.BehaviorControllers
 {
     public abstract class BehaviorController : MonoBehaviour
     {
-        protected Dictionary<string, ProgressBarController> ProgressBarControllers { get; set; }
+        protected Dictionary<string, ProgressBarController> ProgressBarControllers { get; private set; }
         private ProgressBarController HealthBarController { get; set; }
 
         protected BattleController BattleController { get; private set; }

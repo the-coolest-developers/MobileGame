@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using Assets.Scripts.Controllers.BehaviorControllers;
 using Models.Attributes;
+using UnityEngine.Serialization;
 
 namespace Controllers.EntityControllers
 {
@@ -20,11 +21,14 @@ namespace Controllers.EntityControllers
         private List<GameObject> TriggeredEnemies { get; set; }
 
         //Переменные из Editor
-        public string EnemyTag;
+        [SerializeField]
+        private string enemyTag;
+
+        public string EnemyTag => enemyTag;
 
         //Внутренние
         public bool IsStriking { get; private set; }
-        public float StrikePeriod { get; set; }
+        private float StrikePeriod { get; set; }
 
         public void Strike(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {

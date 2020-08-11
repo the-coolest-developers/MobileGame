@@ -6,6 +6,8 @@ namespace Controllers.CameraControllers
 {
     public class CameraMovement : MonoBehaviour
     {
+        private GameController GameController { get; set; }
+        
         private GameObject Player { get; set; }
 
         // Start is called before the first frame update
