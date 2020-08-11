@@ -45,7 +45,7 @@ namespace Assets.Scripts.Controllers.UI_Controllers.ButtonControllers
             }
         }
 
-        void Reset()
+        private void Reset()
         {
             PointerDown = false;
             HoldTimer = 0;

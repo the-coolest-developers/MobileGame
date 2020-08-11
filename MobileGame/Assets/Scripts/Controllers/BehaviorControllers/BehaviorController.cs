@@ -11,31 +11,30 @@ namespace Controllers.BehaviorControllers
 {
     public abstract class BehaviorController : MonoBehaviour
     {
-        protected BattleController BattleController { get; set; }
-        protected AnimationController AnimationController { get; set; }
-        protected MovementController MovementController { get; set; }
-        protected EntityAttributes EntityAttributes { get; set; }
-
         protected Dictionary<string, ProgressBarController> ProgressBarControllers { get; set; }
+        private ProgressBarController HealthBarController { get; set; }
 
-        protected ProgressBarController HealthBarController { get; set; }
+        protected BattleController BattleController { get; private set; }
+        protected AnimationController AnimationController { get; private set; }
+        protected MovementController MovementController { get; private set; }
+        protected GameController GameController { get; private set; }
 
-        protected GameController GameController { get; set; }
+        protected EntityAttributes EntityAttributes { get; private set; }
 
         protected GameObject MovementTarget => EntityAttributes.MovementAttributes.MovementTarget;
 
-        public bool FaceRight => MovementController.FaceRight;
-        public bool IsOnTheGround => MovementController.IsOnTheGround;
-        public bool CanMove => EntityAttributes.MovementAttributes.CanMove;
-        public float RunningSpeed => EntityAttributes.MovementAttributes.RunningSpeed;
-        public float JumpPower => EntityAttributes.MovementAttributes.JumpPower;
+        protected bool FaceRight => MovementController.FaceRight;
+        protected bool IsOnTheGround => MovementController.IsOnTheGround;
+        protected bool CanMove => EntityAttributes.MovementAttributes.CanMove;
+        protected float RunningSpeed => EntityAttributes.MovementAttributes.RunningSpeed;
+        protected float JumpPower => EntityAttributes.MovementAttributes.JumpPower;
 
-        public bool IsStriking => BattleController.IsStriking;
-        public bool CanStrike => EntityAttributes.BattleAttributes.CanStrike;
-        public float CurrentHealth => EntityAttributes.BattleAttributes.CurrentHealth;
-        public float MaxHealth => EntityAttributes.BattleAttributes.MaxHealth;
+        protected bool IsStriking => BattleController.IsStriking;
+        protected bool CanStrike => EntityAttributes.BattleAttributes.CanStrike;
+        protected float CurrentHealth => EntityAttributes.BattleAttributes.CurrentHealth;
+        protected float MaxHealth => EntityAttributes.BattleAttributes.MaxHealth;
 
-        public float BaseDamage => EntityAttributes.BattleAttributes.Damage;
+        protected float BaseDamage => EntityAttributes.BattleAttributes.Damage;
 
         public float CurrentRunningSpeed { get; set; }
 
@@ -46,7 +45,8 @@ namespace Controllers.BehaviorControllers
             MovementController = GetComponent<MovementController>();
             EntityAttributes = GetComponent<EntityAttributes>();
 
-            ProgressBarControllers = GetComponents<ProgressBarController>().ToDictionary(b => b.ProgressBarName, b => b);
+            ProgressBarControllers =
+                GetComponents<ProgressBarController>().ToDictionary(b => b.ProgressBarName, b => b);
 
             if (ProgressBarControllers != null && ProgressBarControllers.ContainsKey("HealthBar"))
             {
@@ -55,16 +55,18 @@ namespace Controllers.BehaviorControllers
 
             GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
         }
+
         protected void InitializeAttributes()
         {
             EntityAttributes.BattleAttributes.CurrentHealth = EntityAttributes.BattleAttributes.MaxHealth;
         }
+
         protected void SubscribeToEvents()
         {
             BattleController.OnDamaged += HandleOnDamaged;
         }
 
-        public void Strike(Action<BattleAttributes> strikeAction, BattleAttributes battleAttributes)
+        protected void Strike(Action<BattleAttributes> strikeAction, BattleAttributes battleAttributes)
         {
             if (IsOnTheGround && CanStrike && !IsStriking)
             {
@@ -77,29 +79,33 @@ namespace Controllers.BehaviorControllers
             }
         }
 
-        public void MoveRight()
+        protected void MoveRight()
         {
             SetIsRunning();
             MovementController.TurnRight();
         }
-        public void MoveLeft()
+
+        protected void MoveLeft()
         {
             SetIsRunning();
             MovementController.TurnLeft();
         }
-        public void SetIsRunning()
+
+        protected void SetIsRunning()
         {
             AnimationController.SetIsRunning();
-            EntityAttributes.MovementAttributes.CurrentMovementSpeed = EntityAttributes.MovementAttributes.RunningSpeed / 100;
+            EntityAttributes.MovementAttributes.CurrentMovementSpeed =
+                EntityAttributes.MovementAttributes.RunningSpeed / 100;
         }
-        public void StopRunning()
+
+        protected void StopRunning()
         {
             AnimationController.SetIsNotRunning();
 
             EntityAttributes.MovementAttributes.CurrentMovementSpeed = 0;
         }
 
-        public void HandleOnDamaged(float damage)
+        private void HandleOnDamaged(float damage)
         {
             SetHealth(CurrentHealth - damage);
 
@@ -109,7 +115,8 @@ namespace Controllers.BehaviorControllers
                 HandleDeath();
             }
         }
-        public void HealthChanged(float health)
+
+        private void HealthChanged(float health)
         {
             if (HealthBarController != null)
             {
@@ -117,29 +124,30 @@ namespace Controllers.BehaviorControllers
             }
         }
 
-        public void SetHealth(float value)
+        protected void SetHealth(float value)
         {
             EntityAttributes.BattleAttributes.CurrentHealth = value > MaxHealth ? MaxHealth : value;
             HealthChanged(value);
         }
-        public void SetHealthToMax() => SetHealth(EntityAttributes.BattleAttributes.MaxHealth);
+
+        protected void SetHealthToMax() => SetHealth(EntityAttributes.BattleAttributes.MaxHealth);
 
         public void SetHealthToZero() => SetHealth(0);
 
-        public void Move(Action<MovementAttributes> RunningMethod, MovementAttributes movementAttributes)
+        protected void Move(Action<MovementAttributes> runningMethod, MovementAttributes movementAttributes)
         {
             if (movementAttributes.CurrentMovementSpeed != 0)
             {
-                RunningMethod.Invoke(movementAttributes);
+                runningMethod.Invoke(movementAttributes);
             }
         }
 
-        protected GameObject FindNearestObject(string Tag)
+        protected GameObject FindNearestObject(string objectTag)
         {
-            var Objects = GameObject.FindGameObjectsWithTag(Tag);
-            var NearestObject = Objects.OrderBy(o => Tools.GetHorizontalAbsoluteDistance(o, gameObject)).First();
+            var objects = GameObject.FindGameObjectsWithTag(objectTag);
+            var nearestObject = objects.OrderBy(o => Tools.GetHorizontalAbsoluteDistance(o, gameObject)).First();
 
-            return NearestObject;
+            return nearestObject;
         }
 
         protected abstract void HandleDeath();

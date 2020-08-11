@@ -14,15 +14,16 @@ namespace Controllers.EntityControllers
         /// Вызывается при получении уронаПо умолчанию вызывает и событие OnHealthChanged
         /// </summary>
         public event Action<float> OnDamaged;
+
         public event Action<int> OnEnemyKilled;
 
-        protected List<GameObject> TriggeredEnemies { get; set; }
+        private List<GameObject> TriggeredEnemies { get; set; }
 
         //Переменные из Editor
         public string EnemyTag;
 
         //Внутренние
-        public bool IsStriking { get; set; }
+        public bool IsStriking { get; private set; }
         public float StrikePeriod { get; set; }
 
         public void Strike(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
@@ -33,7 +34,8 @@ namespace Controllers.EntityControllers
 
             StartCoroutine(HitEnemyCoroutine(hitAction, battleAttributes));
         }
-        protected IEnumerator StrikePeriodCoroutine()
+
+        private IEnumerator StrikePeriodCoroutine()
         {
             IsStriking = true;
 
@@ -41,12 +43,14 @@ namespace Controllers.EntityControllers
 
             IsStriking = false;
         }
-        protected IEnumerator HitEnemyCoroutine(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
+
+        private IEnumerator HitEnemyCoroutine(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
             yield return new WaitForSeconds(battleAttributes.HitDelay);
 
             hitAction.Invoke(battleAttributes);
         }
+
         public void SingleEnemyStrike(BattleAttributes battleAttributes)
         {
             var damage = battleAttributes.Damage;
@@ -66,6 +70,7 @@ namespace Controllers.EntityControllers
                 DamageEnemy(enemy, finalDamage);
             }
         }
+
         public void AOEStrike(BattleAttributes battleAttributes)
         {
             foreach (var enemy in TriggeredEnemies)
@@ -96,7 +101,7 @@ namespace Controllers.EntityControllers
         public void AddTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Add(enemy);
         public void RemoveTriggeredEnemy(GameObject enemy) => TriggeredEnemies.Remove(enemy);
 
-        void Start()
+        private void Start()
         {
             TriggeredEnemies = new List<GameObject>();
 

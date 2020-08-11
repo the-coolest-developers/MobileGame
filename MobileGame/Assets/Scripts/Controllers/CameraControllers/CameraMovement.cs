@@ -6,16 +6,16 @@ namespace Controllers.CameraControllers
 {
     public class CameraMovement : MonoBehaviour
     {
-        GameObject Player { get; set; }
+        private GameObject Player { get; set; }
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             Player = GameObject.Find("Player");
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (Player != null)
             {

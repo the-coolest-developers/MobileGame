@@ -1,22 +1,20 @@
-﻿using Assets.Scripts.Controllers.UI_Controllers.ButtonControllers;
+﻿using Assets.Scripts.Controllers.UI_Controllers;
+using Assets.Scripts.Controllers.UI_Controllers.ButtonControllers;
 using UnityEngine;
-using Controllers;
-using Assets.Scripts.Controllers.UI_Controllers;
-using Controllers.BehaviorControllers;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Controllers.BehaviorControllers
+namespace Controllers.BehaviorControllers
 {
     public class PlayerBehaviourController : BehaviorController
     {
-        GameObject RespawnButton { get; set; }
+        private GameObject RespawnButton { get; set; }
 
-        LevelController LevelController { get; set; }
-        HoldButtonController StrikeButtonController;
+        private LevelController LevelController { get; set; }
+        private HoldButtonController StrikeButtonController { get; set; }
 
-        ProgressBarController ExperienceBarController => ProgressBarControllers["ExperienceBar"];
+        private ProgressBarController ExperienceBarController => ProgressBarControllers["ExperienceBar"];
 
-        void Start()
+        private void Start()
         {
             InitializeControllers();
             InitializeAttributes();
@@ -42,7 +40,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             BattleController.OnEnemyKilled += HandleOnEnemyKilled;
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             if (!IsStriking && CanMove & EntityAttributes.MovementAttributes.CurrentMovementSpeed != 0)
             {
@@ -82,13 +80,13 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         }
 
 
-        public void StrikeButton_Click()
+        private void StrikeButton_Click()
         {
             Strike(BattleController.SingleEnemyStrike, EntityAttributes.BattleAttributes);
         }
 
         //Это тестовый код. В будущем его обязательно нужно будет переделать. Только для проверки
-        public void StrikeButton_Hold()
+        private void StrikeButton_Hold()
         {
             var attributes = EntityAttributes.BattleAttributes;
             attributes.Damage += 5;
@@ -96,17 +94,17 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             Strike(BattleController.SingleEnemyStrike, attributes);
         }
 
-        void HandleLevelChanged(int level)
+        private void HandleLevelChanged(int level)
         {
             GameObject.Find("LevelText").GetComponent<Text>().text = $"Level {level}";
         }
 
-        void HandleExperienceChanged(int experience, int newLevelExperience)
+        private void HandleExperienceChanged(int experience, int newLevelExperience)
         {
             ExperienceBarController.UpdateLine(experience, newLevelExperience);
         }
 
-        void HandleOnEnemyKilled(int givenExperience)
+        private void HandleOnEnemyKilled(int givenExperience)
         {
             LevelController.AddExperience(givenExperience);
         }

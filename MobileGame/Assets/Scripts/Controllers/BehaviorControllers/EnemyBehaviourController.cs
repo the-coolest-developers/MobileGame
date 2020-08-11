@@ -15,8 +15,7 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
         public int GivenExperience;
 
 
-
-        void Start()
+        private void Start()
         {
             InitializeControllers();
             InitializeAttributes();
@@ -24,11 +23,11 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
             SetHealthToMax();
         }
 
-        void Update()
+        private void Update()
         {
         }
 
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             EntityAttributes.MovementAttributes.MovementTarget = FindNearestObject("Ally");
 

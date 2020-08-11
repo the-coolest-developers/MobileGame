@@ -7,26 +7,27 @@ namespace Controllers.EntityControllers
     public class MovementController : MonoBehaviour
     {
         //Внутренние переменные
-        public bool FaceRight { get; set; }
+        public bool FaceRight { get; private set; }
         public RaycastHit2D IsOnTheGround => Physics2D.Raycast(transform.position, Vector2.down, 2.75f, 256);
 
-        Rigidbody2D rigidbody2d;
+        private Rigidbody2D Rigidbody2d { get; set; }
 
-        void Start()
+        private void Start()
         {
-            rigidbody2d = GetComponent<Rigidbody2D>();
+            Rigidbody2d = GetComponent<Rigidbody2D>();
 
             FaceRight = true;
         }
+
         private void Update()
         {
-            var pos = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
-            DebugRaycastHit((Vector2)transform.position + new Vector2(pos, 0), Vector2.right, 1);
+            //var pos = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
+            //DebugRaycastHit((Vector2)transform.position + new Vector2(pos, 0), Vector2.right, 1);
         }
 
         public bool DebugRaycastHit(Vector2 position, Vector2 direction, float distance)
         {
-            RaycastHit2D res = Physics2D.Raycast(position, direction, distance);
+            var res = Physics2D.Raycast(position, direction, distance);
 
             var color = (res) ? Color.green : Color.red;
             Debug.DrawRay(position, direction * distance, color);
@@ -35,6 +36,7 @@ namespace Controllers.EntityControllers
 
             return res;
         }
+
         public bool DebugRaycastHit(Vector2 position, Vector2 direction, float distance, int layerMask)
         {
             RaycastHit2D res = Physics2D.Raycast(position, direction, distance, layerMask);
@@ -47,11 +49,12 @@ namespace Controllers.EntityControllers
             return res;
         }
 
-        void Flip()
+        private void Flip()
         {
             FaceRight = !FaceRight;
             Tools.FlipGameObject(gameObject);
         }
+
         public void TurnRight()
         {
             if (!FaceRight)
@@ -59,6 +62,7 @@ namespace Controllers.EntityControllers
                 Flip();
             }
         }
+
         public void TurnLeft()
         {
             if (FaceRight)
@@ -71,7 +75,7 @@ namespace Controllers.EntityControllers
         {
             if (IsOnTheGround)
             {
-                rigidbody2d.AddForce(Vector2.up * jumpPower);
+                Rigidbody2d.AddForce(Vector2.up * jumpPower);
             }
         }
 
@@ -81,7 +85,7 @@ namespace Controllers.EntityControllers
         /// <param name="movementAttributes"></param>
         public void RunToGameObject(MovementAttributes movementAttributes)
         {
-            GameObject targetObject = movementAttributes.MovementTarget;
+            var targetObject = movementAttributes.MovementTarget;
             float distance = Tools.GetHorizontalDistance(gameObject, targetObject);
             if (distance > 0)
             {

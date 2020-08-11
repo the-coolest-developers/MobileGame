@@ -5,16 +5,16 @@ namespace Controllers.UI_Controllers
 {
     public class GameMenu : MonoBehaviour
     {
-        GameController GameController { get; set; }
+        private GameController GameController { get; set; }
 
-        GameObject SettingsWindowObject { get; set; }
-        GameObject GameMenuObject { get; set; }
-        GameObject ExitDialogObject { get; set; }
+        private GameObject SettingsWindowObject { get; set; }
+        private GameObject GameMenuObject { get; set; }
+        private GameObject ExitDialogObject { get; set; }
 
-        GameObject MenuButtonObject { get; set; }
-        GameObject DimmedBackgroundObject { get; set; }
+        private GameObject MenuButtonObject { get; set; }
+        private GameObject DimmedBackgroundObject { get; set; }
 
-        void Start()
+        private void Start()
         {
             GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
 

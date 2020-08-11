@@ -4,9 +4,9 @@ namespace Controllers.EntityControllers
 {
     public class MeleeAttackZoneController : MonoBehaviour
     {
-        BattleController BattleController { get; set; }
+        private BattleController BattleController { get; set; }
 
-        void Start()
+        private void Start()
         {
             BattleController = transform.parent.GetComponent<BattleController>();
         }

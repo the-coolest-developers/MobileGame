@@ -6,7 +6,7 @@ namespace Assets.Scripts.Controllers.UI_Controllers
 {
     public class ChooseDifficulty : MonoBehaviour
     {
-        Text DifficultyDescriptionText;
+        private Text DifficultyDescriptionText;
 
         public void Start()
         {

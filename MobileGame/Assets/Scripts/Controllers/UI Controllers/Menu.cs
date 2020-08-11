@@ -5,15 +5,15 @@ namespace Controllers.UI_Controllers
 {
     public class Menu : MonoBehaviour
     {
-        GameObject SettingsWindowObject { get; set; }
-        GameObject AuthorsWindowObject { get; set; }
-        GameObject ConfirmNewGameObject { get; set; }
-        GameObject NewGameWindow { get; set; }
-        GameObject ExitMenuObject { get; set; }
-        GameObject MainMenuObject { get; set; }
+        private GameObject SettingsWindowObject { get; set; }
+        private GameObject AuthorsWindowObject { get; set; }
+        private GameObject ConfirmNewGameObject { get; set; }
+        private GameObject NewGameWindow { get; set; }
+        private GameObject ExitMenuObject { get; set; }
+        private GameObject MainMenuObject { get; set; }
 
 
-        void Start()
+        private void Start()
         {
             ExitMenuObject = GameObject.Find("ConfirmExitGameDialog");
             AuthorsWindowObject = GameObject.Find("AuthorsWindow");

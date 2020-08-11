@@ -25,7 +25,7 @@ namespace Assets.Scripts.Controllers.UI_Controllers
         private float MaxWidth;
         private float DefaultX;
 
-        void Start()
+        private void Start()
         {
             LineGameObject = GameObject.Find(LineGameObjectName);
             TipGameObject = GameObject.Find(BarTipGameObjectName);

@@ -13185,6 +13185,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 413180869}
     m_Modifications:
+    - target: {fileID: 672558192, guid: 0d1a8b08f68e99940b60c5a27dd850c8, type: 3}
+      propertyPath: BattleAttributes.CanStrike
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5166078315885113632, guid: 0d1a8b08f68e99940b60c5a27dd850c8,
         type: 3}
       propertyPath: m_LocalPosition.x

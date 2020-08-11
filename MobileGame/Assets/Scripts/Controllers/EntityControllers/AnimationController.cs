@@ -5,7 +5,7 @@ namespace Controllers.EntityControllers
     public class AnimationController : MonoBehaviour
     {
         //Внутренние переменные
-        protected Animator EntityAnimator { get; set; }
+        private Animator EntityAnimator { get; set; }
 
         //Внешние переменные
 

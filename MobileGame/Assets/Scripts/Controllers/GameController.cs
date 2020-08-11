@@ -8,7 +8,7 @@ namespace Controllers
         public GameObject PlayerGameObject { get; private set; }
         public GameObject RespawnPoint { get; private set; }
 
-        void Start()
+        private void Start()
         {
             PlayerGameObject = GameObject.Find("Player");
             RespawnPoint = GameObject.Find("RespawnPoint");
@@ -16,7 +16,7 @@ namespace Controllers
             Time.timeScale = 1;
         }
 
-        void Update()
+        private void Update()
         {
 
         }
