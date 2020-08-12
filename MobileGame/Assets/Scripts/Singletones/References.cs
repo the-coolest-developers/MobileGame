@@ -1,7 +1,7 @@
 using Controllers.BehaviorControllers;
 using UnityEngine;
 
-namespace Controllers.BehaviorControllers
+namespace Singletones
 {
     public class References
     {
@@ -10,10 +10,13 @@ namespace Controllers.BehaviorControllers
 
         public static void SetPlayer(GameObject player)
         {
-            if(player.GetComponent<PlayerBehaviourController>() != null)
+            if (player.GetComponent<PlayerBehaviourController>() != null)
                 PlayerGameObject = player;
-            
         }
+
+        public static void SetSpawnPoint(GameObject spawnPoint) => RespawnPoint = spawnPoint;
+        
         public static GameObject GetPlayer() => PlayerGameObject;
+        public static GameObject GetRespawnPoint() => RespawnPoint;
     }
 }

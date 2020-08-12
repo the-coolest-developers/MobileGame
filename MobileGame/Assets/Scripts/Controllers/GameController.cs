@@ -5,13 +5,10 @@ namespace Controllers
 {
     public class GameController : MonoBehaviour
     {
-        public GameObject PlayerGameObject { get; private set; }
-        public GameObject RespawnPoint { get; private set; }
-
         private void Start()
         {
-            PlayerGameObject = GameObject.Find("Player");
-            RespawnPoint = GameObject.Find("RespawnPoint");
+            //PlayerGameObject = GameObject.Find("Player");
+            //RespawnPoint = GameObject.Find("RespawnPoint");
 
             Time.timeScale = 1;
         }
@@ -31,17 +28,17 @@ namespace Controllers
 
         public Vector3 GetRespawnPosition()
         {
-            return RespawnPoint.transform.position;
+            return References.GetRespawnPoint().transform.position;
         }
 
 
         public float GetDistanceToPlayer(GameObject self)
         {
-            return Tools.GetHorizontalDistance(self, PlayerGameObject);
+            return Tools.GetHorizontalDistance(self, References.GetPlayer());
         }
         public float GetAbsoluteHorizontalDistanceToPlayer(GameObject self)
         {
-            return Tools.GetHorizontalAbsoluteDistance(self, PlayerGameObject);
+            return Tools.GetHorizontalAbsoluteDistance(self, References.GetPlayer());
         }
     }
 }

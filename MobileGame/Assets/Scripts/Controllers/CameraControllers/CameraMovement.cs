@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Singletones;
 
 namespace Controllers.CameraControllers
 {
@@ -8,11 +9,14 @@ namespace Controllers.CameraControllers
     {
         private GameController GameController { get; set; }
 
-        private GameObject Player => GameController.PlayerGameObject;
+        //private GameObject Player => GameController.PlayerGameObject;
 
         // Start is called before the first frame update
+        private GameObject Player;
+        
         private void Start()
         {
+            ResearchPlayer();
             GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
         }
 
@@ -24,6 +28,11 @@ namespace Controllers.CameraControllers
                 transform.position = new Vector3(Player.transform.position.x, transform.position.y, -10f);
                 //transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, -10f);
             }
+        }
+
+        private void ResearchPlayer()
+        {
+            Player = References.GetPlayer();
         }
     }
 }
