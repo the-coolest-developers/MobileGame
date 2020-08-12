@@ -12,19 +12,20 @@ namespace Controllers.EntityControllers
     public class BattleController : MonoBehaviour
     {
         /// <summary>
-        /// Вызывается при получении уронаПо умолчанию вызывает и событие OnHealthChanged
+        /// Вызывается при получении урона
+        /// По умолчанию вызывает и событие OnHealthChanged
         /// </summary>
         public event Action<float> OnDamaged;
 
-        public event Action<int> OnEnemyKilled;
+        /// <summary>
+        /// Вызывается при убийстве врага
+        /// </summary>
+        public event Action<string> OnEnemyKilled;
 
         private List<GameObject> TriggeredEnemies { get; set; }
 
         //Переменные из Editor
-        [SerializeField]
-        private string enemyTag;
-
-        public string EnemyTag => enemyTag;
+        public string EnemyTag;
 
         //Внутренние
         public bool IsStriking { get; private set; }
@@ -85,15 +86,13 @@ namespace Controllers.EntityControllers
 
         private void DamageEnemy(GameObject enemy, float damage)
         {
-            var enemyBehaviorController = enemy.GetComponent<EnemyBehaviourController>();
             var enemyBattleController = enemy.GetComponent<BattleController>();
-
             enemyBattleController.GetDamage(damage);
 
             var isDead = enemy.GetComponent<EntityAttributes>().BattleAttributes.IsDead;
             if (isDead)
             {
-                OnEnemyKilled(enemyBehaviorController.GivenExperience);
+                OnEnemyKilled(enemy.name);
             }
         }
 
@@ -110,6 +109,7 @@ namespace Controllers.EntityControllers
             TriggeredEnemies = new List<GameObject>();
 
             OnDamaged = new Action<float>((float damage) => { });
+            OnEnemyKilled = new Action<string>(s => { });
 
             IsStriking = false;
         }

@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Controllers.UI_Controllers;
 using Assets.Scripts.Controllers.UI_Controllers.ButtonControllers;
+using Singletones;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -104,8 +105,9 @@ namespace Controllers.BehaviorControllers
             ExperienceBarController.UpdateLine(experience, newLevelExperience);
         }
 
-        private void HandleOnEnemyKilled(int givenExperience)
+        private void HandleOnEnemyKilled(string enemyName)
         {
+            var givenExperience = GlobalValues.GetEnemyExeprience(enemyName);
             LevelController.AddExperience(givenExperience);
         }
 
