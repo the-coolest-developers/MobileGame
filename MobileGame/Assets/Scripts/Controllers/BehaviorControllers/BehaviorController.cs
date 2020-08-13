@@ -17,7 +17,6 @@ namespace Controllers.BehaviorControllers
         protected BattleController BattleController { get; private set; }
         protected AnimationController AnimationController { get; private set; }
         protected MovementController MovementController { get; private set; }
-        protected GameController GameController { get; private set; }
 
         protected EntityAttributes EntityAttributes { get; private set; }
 
@@ -52,8 +51,6 @@ namespace Controllers.BehaviorControllers
             {
                 HealthBarController = ProgressBarControllers["HealthBar"];
             }
-
-            GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
         }
 
         protected void InitializeAttributes()
