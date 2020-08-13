@@ -5,36 +5,37 @@ namespace Controllers
 {
     public class GameController : MonoBehaviour
     {
+        private static GameObject PlayerGameObject { get; set; }
+        private static GameObject RespawnPoint { get; set; }
+
         private void Start()
         {
-            References.SetPlayer(GameObject.Find("Player"));
-            References.SetSpawnPoint(GameObject.Find("RespawnPoint"));
+            PlayerGameObject = GameObject.Find("Player");
+            RespawnPoint = GameObject.Find("RespawnPoint");
 
             Time.timeScale = 1;
         }
 
-        public void PauseGame() => Time.timeScale = 0;
-        public void ResumeGame() => Time.timeScale = 1;
+        public static void PauseGame() => Time.timeScale = 0;
+        public static void ResumeGame() => Time.timeScale = 1;
 
         public void SpawnObject(GameObject gameObject)
         {
             Instantiate(gameObject);
         }
 
-        public Vector3 GetRespawnPosition()
-        {
-            return References.GetRespawnPoint().transform.position;
-        }
-
-
         public float GetDistanceToPlayer(GameObject self)
         {
-            return Tools.GetHorizontalDistance(self, References.GetPlayer());
+            return Tools.GetHorizontalDistance(self, PlayerGameObject);
         }
 
         public float GetAbsoluteHorizontalDistanceToPlayer(GameObject self)
         {
-            return Tools.GetHorizontalAbsoluteDistance(self, References.GetPlayer());
+            return Tools.GetHorizontalAbsoluteDistance(self, PlayerGameObject);
         }
+
+        public static GameObject GetPlayer() => PlayerGameObject;
+        public static GameObject GetRespawnPoint() => RespawnPoint;
+        public static Vector2 GetRespawnPosition() => GetRespawnPoint().transform.position;
     }
 }

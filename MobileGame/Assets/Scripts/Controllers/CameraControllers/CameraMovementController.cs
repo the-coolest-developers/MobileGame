@@ -10,7 +10,7 @@ namespace Controllers.CameraControllers
         // Update is called once per frame
         private void Update()
         {
-            var player = References.GetPlayer();
+            var player = GameController.GetPlayer();
             if (player != null)
             {
                 transform.position = new Vector3(player.transform.position.x, transform.position.y, -10f);
