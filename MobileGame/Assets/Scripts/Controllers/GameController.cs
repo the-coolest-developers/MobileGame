@@ -7,15 +7,10 @@ namespace Controllers
     {
         private void Start()
         {
-            //PlayerGameObject = GameObject.Find("Player");
-            //RespawnPoint = GameObject.Find("RespawnPoint");
+            References.SetPlayer(GameObject.Find("Player"));
+            References.SetSpawnPoint(GameObject.Find("RespawnPoint"));
 
             Time.timeScale = 1;
-        }
-
-        private void Update()
-        {
-
         }
 
         public void PauseGame() => Time.timeScale = 0;
@@ -36,6 +31,7 @@ namespace Controllers
         {
             return Tools.GetHorizontalDistance(self, References.GetPlayer());
         }
+
         public float GetAbsoluteHorizontalDistanceToPlayer(GameObject self)
         {
             return Tools.GetHorizontalAbsoluteDistance(self, References.GetPlayer());
