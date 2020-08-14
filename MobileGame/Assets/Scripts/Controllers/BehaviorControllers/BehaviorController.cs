@@ -33,7 +33,7 @@ namespace Controllers.BehaviorControllers
         protected float CurrentHealth => EntityAttributes.battleAttributes.CurrentHealth;
         protected float MaxHealth => EntityAttributes.battleAttributes.maxHealth;
 
-        protected float BaseDamage => EntityAttributes.battleAttributes.damage;
+        protected float BaseDamage => EntityAttributes.battleAttributes.weaponAttributes.damage;
 
         public float CurrentRunningSpeed => EntityAttributes.movementAttributes.currentMovementSpeed;
 
