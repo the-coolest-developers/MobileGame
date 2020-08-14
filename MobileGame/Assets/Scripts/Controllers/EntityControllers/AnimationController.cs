@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Controllers.EntityControllers
 {
@@ -9,9 +10,11 @@ namespace Controllers.EntityControllers
 
         //Внешние переменные
 
-        public string StrikeBoolName;
+        [FormerlySerializedAs("StrikeBoolName")]
+        public string strikeBoolName;
 
-        public string RunningBoolName;
+        [FormerlySerializedAs("RunningBoolName")]
+        public string runningBoolName;
 
 
         // Start is called before the first frame update
@@ -25,7 +28,7 @@ namespace Controllers.EntityControllers
         {
             if (EntityAnimator != null)
             {
-                EntityAnimator.SetBool(RunningBoolName, true);
+                EntityAnimator.SetBool(runningBoolName, true);
             }
         }
 
@@ -33,7 +36,7 @@ namespace Controllers.EntityControllers
         {
             if (EntityAnimator != null)
             {
-                EntityAnimator.SetBool(RunningBoolName, false);
+                EntityAnimator.SetBool(runningBoolName, false);
             }
         }
 
@@ -41,7 +44,7 @@ namespace Controllers.EntityControllers
         {
             if (EntityAnimator != null)
             {
-                EntityAnimator.Play(StrikeBoolName);
+                EntityAnimator.Play(strikeBoolName);
             }
         }
     }

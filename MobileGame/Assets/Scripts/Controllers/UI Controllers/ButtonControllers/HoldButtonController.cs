@@ -6,23 +6,27 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace Assets.Scripts.Controllers.UI_Controllers.ButtonControllers
 {
     public class HoldButtonController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        public event Action Button_Click;
-        public event Action Button_Hold;
-        public event Action<float> Button_Down;
+        public event Action ButtonClick;
+        public event Action ButtonHold;
+        public event Action<float> ButtonDown;
 
         public bool PointerDown { get; set; }
         public float HoldTimer { get; set; }
 
         //Из редактора
-        public float RequiredHoldTime;
-        public float MaximumHoldTime;
+        [FormerlySerializedAs("RequiredHoldTime")]
+        public float requiredHoldTime;
+        [FormerlySerializedAs("MaximumHoldTime")]
+        public float maximumHoldTime;
 
-        public bool InfiniteHold;
+        [FormerlySerializedAs("InfiniteHold")]
+        public bool infiniteHold;
 
         public void OnPointerDown(PointerEventData eventData)
         {
@@ -32,13 +36,13 @@ namespace Assets.Scripts.Controllers.UI_Controllers.ButtonControllers
         {
             if (PointerDown)
             {
-                if (HoldTimer >= RequiredHoldTime)
+                if (HoldTimer >= requiredHoldTime)
                 {
-                    Button_Hold();
+                    ButtonHold();
                 }
                 else
                 {
-                    Button_Click();
+                    ButtonClick();
                 }
 
                 Reset();
@@ -55,9 +59,9 @@ namespace Assets.Scripts.Controllers.UI_Controllers.ButtonControllers
         {
             Reset();
 
-            Button_Click = new Action(() => { });
-            Button_Hold = new Action(() => { });
-            Button_Down = new Action<float>((f) => { });
+            ButtonClick = new Action(() => { });
+            ButtonHold = new Action(() => { });
+            ButtonDown = new Action<float>((f) => { });
         }
 
         public void Update()
@@ -66,14 +70,14 @@ namespace Assets.Scripts.Controllers.UI_Controllers.ButtonControllers
             {
                 HoldTimer += Time.deltaTime;
 
-                if (!InfiniteHold && HoldTimer >= MaximumHoldTime)
+                if (!infiniteHold && HoldTimer >= maximumHoldTime)
                 {
-                    Button_Hold();
+                    ButtonHold();
                     Reset();
                 }
                 else
                 {
-                    Button_Down(HoldTimer);
+                    ButtonDown(HoldTimer);
                 }
             }
         }

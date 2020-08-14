@@ -3,14 +3,17 @@ using System.Linq;
 using Controllers.BehaviorControllers;
 using Singletones;
 using Unity.Mathematics;
+using UnityEngine.Serialization;
 
 namespace Assets.Scripts.Controllers.BehaviorControllers
 {
     public class EnemyBehaviourController : BehaviorController
     {
         //Переменные из Unity Editor
-        public float MinDistance;
-        public float StrikeDistance;
+        [FormerlySerializedAs("MinDistance")]
+        public float minDistance;
+        [FormerlySerializedAs("StrikeDistance")]
+        public float strikeDistance;
 
         private void Start()
         {
@@ -26,17 +29,17 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
 
         private void FixedUpdate()
         {
-            EntityAttributes.MovementAttributes.MovementTarget = FindNearestObject("Ally");
+            EntityAttributes.movementAttributes.movementTarget = FindNearestObject("Ally");
 
             if (!IsStriking)
             {
                 var absoluteDistance = Tools.GetHorizontalAbsoluteDistance(gameObject, MovementTarget);
 
-                if (absoluteDistance <= MinDistance && absoluteDistance >= StrikeDistance & CanMove)
+                if (absoluteDistance <= minDistance && absoluteDistance >= strikeDistance & CanMove)
                 {
                     SetIsRunning();
 
-                    Move(MovementController.RunToGameObject, EntityAttributes.MovementAttributes);
+                    Move(MovementController.RunToGameObject, EntityAttributes.movementAttributes);
                     AnimationController.SetIsRunning();
                 }
                 else
@@ -44,10 +47,10 @@ namespace Assets.Scripts.Controllers.BehaviorControllers
                     StopRunning();
                 }
 
-                if (absoluteDistance <= StrikeDistance)
+                if (absoluteDistance <= strikeDistance)
                 {
                     StopRunning();
-                    Strike(BattleController.AOEStrike, EntityAttributes.BattleAttributes);
+                    Strike(BattleController.AoeStrike, EntityAttributes.battleAttributes);
                 }
             }
         }

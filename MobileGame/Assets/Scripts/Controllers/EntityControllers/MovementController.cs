@@ -85,7 +85,7 @@ namespace Controllers.EntityControllers
         /// <param name="movementAttributes"></param>
         public void RunToGameObject(MovementAttributes movementAttributes)
         {
-            var targetObject = movementAttributes.MovementTarget;
+            var targetObject = movementAttributes.movementTarget;
             float distance = Tools.GetHorizontalDistance(gameObject, targetObject);
             if (distance > 0)
             {
@@ -105,7 +105,7 @@ namespace Controllers.EntityControllers
         /// <param name="movementAttributes"></param>
         public void MoveHorizontal(MovementAttributes movementAttributes)
         {
-            float speed = movementAttributes.CurrentMovementSpeed;
+            float speed = movementAttributes.currentMovementSpeed;
             transform.Translate(Vector2.right * speed);
         }
     }

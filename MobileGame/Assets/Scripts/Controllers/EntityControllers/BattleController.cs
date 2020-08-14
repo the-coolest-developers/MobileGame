@@ -25,7 +25,8 @@ namespace Controllers.EntityControllers
         private List<GameObject> TriggeredEnemies { get; set; }
 
         //Переменные из Editor
-        public string EnemyTag;
+        [FormerlySerializedAs("EnemyTag")]
+        public string enemyTag;
 
         //Внутренние
         public bool IsStriking { get; private set; }
@@ -33,7 +34,7 @@ namespace Controllers.EntityControllers
 
         public void Strike(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
-            StrikePeriod = battleAttributes.StrikePeriod;
+            StrikePeriod = battleAttributes.strikePeriod;
 
             StartCoroutine(StrikePeriodCoroutine());
 
@@ -51,18 +52,18 @@ namespace Controllers.EntityControllers
 
         private IEnumerator HitEnemyCoroutine(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
-            yield return new WaitForSeconds(battleAttributes.HitDelay);
+            yield return new WaitForSeconds(battleAttributes.hitDelay);
 
             hitAction.Invoke(battleAttributes);
         }
 
         public void SingleEnemyStrike(BattleAttributes battleAttributes)
         {
-            var damage = battleAttributes.Damage;
+            var damage = battleAttributes.damage;
 
-            var attackedEnemies = TriggeredEnemies.Take(battleAttributes.AttackedEnemiesAmount).ToList();
+            var attackedEnemies = TriggeredEnemies.Take(battleAttributes.attackedEnemiesAmount).ToList();
 
-            float damageLoss = battleAttributes.SplashDamageLossPercent;
+            float damageLoss = battleAttributes.splashDamageLossPercent;
             float multiplier = 0;
 
             foreach (var enemy in attackedEnemies)
@@ -76,11 +77,11 @@ namespace Controllers.EntityControllers
             }
         }
 
-        public void AOEStrike(BattleAttributes battleAttributes)
+        public void AoeStrike(BattleAttributes battleAttributes)
         {
             foreach (var enemy in TriggeredEnemies)
             {
-                DamageEnemy(enemy, battleAttributes.Damage);
+                DamageEnemy(enemy, battleAttributes.damage);
             }
         }
 
@@ -89,7 +90,7 @@ namespace Controllers.EntityControllers
             var enemyBattleController = enemy.GetComponent<BattleController>();
             enemyBattleController.GetDamage(damage);
 
-            var isDead = enemy.GetComponent<EntityAttributes>().BattleAttributes.IsDead;
+            var isDead = enemy.GetComponent<EntityAttributes>().battleAttributes.IsDead;
             if (isDead)
             {
                 OnEnemyKilled(enemy.name);

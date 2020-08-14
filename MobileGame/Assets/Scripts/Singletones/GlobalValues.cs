@@ -10,7 +10,7 @@ namespace Singletones
 
         private static readonly Dictionary<string, int> EnemiesGivenExperience = new Dictionary<string, int>()
         {
-            {"Enemy", 90}
+            {"Enemy", 100}
         };
 
         public static int GetEnemyExeprience(string enemyName) => EnemiesGivenExperience[enemyName];

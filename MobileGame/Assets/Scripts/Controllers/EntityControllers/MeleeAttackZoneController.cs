@@ -13,7 +13,7 @@ namespace Controllers.EntityControllers
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == BattleController.EnemyTag)
+            if (collision.tag == BattleController.enemyTag)
             {
                 BattleController.AddTriggeredEnemy(collision.gameObject);
             }
@@ -21,7 +21,7 @@ namespace Controllers.EntityControllers
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.tag == BattleController.EnemyTag)
+            if (collision.tag == BattleController.enemyTag)
             {
                 BattleController.RemoveTriggeredEnemy(collision.gameObject);
             }

@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Models.Attributes
 {
     public class EntityAttributes : MonoBehaviour
     {
-        public BattleAttributes BattleAttributes;
+        [FormerlySerializedAs("BattleAttributes")]
+        public BattleAttributes battleAttributes;
 
-        public MovementAttributes MovementAttributes;
+        [FormerlySerializedAs("MovementAttributes")]
+        public MovementAttributes movementAttributes;
     }
 }

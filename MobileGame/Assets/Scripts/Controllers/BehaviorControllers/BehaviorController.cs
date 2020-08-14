@@ -20,22 +20,22 @@ namespace Controllers.BehaviorControllers
 
         protected EntityAttributes EntityAttributes { get; private set; }
 
-        protected GameObject MovementTarget => EntityAttributes.MovementAttributes.MovementTarget;
+        protected GameObject MovementTarget => EntityAttributes.movementAttributes.movementTarget;
 
         protected bool FaceRight => MovementController.FaceRight;
         protected bool IsOnTheGround => MovementController.IsOnTheGround;
-        protected bool CanMove => EntityAttributes.MovementAttributes.CanMove;
-        protected float RunningSpeed => EntityAttributes.MovementAttributes.RunningSpeed;
-        protected float JumpPower => EntityAttributes.MovementAttributes.JumpPower;
+        protected bool CanMove => EntityAttributes.movementAttributes.canMove;
+        protected float RunningSpeed => EntityAttributes.movementAttributes.runningSpeed;
+        protected float JumpPower => EntityAttributes.movementAttributes.jumpPower;
 
         protected bool IsStriking => BattleController.IsStriking;
-        protected bool CanStrike => EntityAttributes.BattleAttributes.CanStrike;
-        protected float CurrentHealth => EntityAttributes.BattleAttributes.CurrentHealth;
-        protected float MaxHealth => EntityAttributes.BattleAttributes.MaxHealth;
+        protected bool CanStrike => EntityAttributes.battleAttributes.canStrike;
+        protected float CurrentHealth => EntityAttributes.battleAttributes.CurrentHealth;
+        protected float MaxHealth => EntityAttributes.battleAttributes.maxHealth;
 
-        protected float BaseDamage => EntityAttributes.BattleAttributes.Damage;
+        protected float BaseDamage => EntityAttributes.battleAttributes.damage;
 
-        public float CurrentRunningSpeed => EntityAttributes.MovementAttributes.CurrentMovementSpeed;
+        public float CurrentRunningSpeed => EntityAttributes.movementAttributes.currentMovementSpeed;
 
         protected void InitializeControllers()
         {
@@ -45,7 +45,7 @@ namespace Controllers.BehaviorControllers
             EntityAttributes = GetComponent<EntityAttributes>();
 
             ProgressBarControllers =
-                GetComponents<ProgressBarController>().ToDictionary(b => b.ProgressBarName, b => b);
+                GetComponents<ProgressBarController>().ToDictionary(b => b.progressBarName, b => b);
 
             if (ProgressBarControllers != null && ProgressBarControllers.ContainsKey("HealthBar"))
             {
@@ -55,7 +55,7 @@ namespace Controllers.BehaviorControllers
 
         protected void InitializeAttributes()
         {
-            EntityAttributes.BattleAttributes.CurrentHealth = EntityAttributes.BattleAttributes.MaxHealth;
+            EntityAttributes.battleAttributes.CurrentHealth = EntityAttributes.battleAttributes.maxHealth;
         }
 
         protected void SubscribeToEvents()
@@ -91,15 +91,15 @@ namespace Controllers.BehaviorControllers
         protected void SetIsRunning()
         {
             AnimationController.SetIsRunning();
-            EntityAttributes.MovementAttributes.CurrentMovementSpeed =
-                EntityAttributes.MovementAttributes.RunningSpeed / 100;
+            EntityAttributes.movementAttributes.currentMovementSpeed =
+                EntityAttributes.movementAttributes.runningSpeed / 100;
         }
 
         protected void StopRunning()
         {
             AnimationController.SetIsNotRunning();
 
-            EntityAttributes.MovementAttributes.CurrentMovementSpeed = 0;
+            EntityAttributes.movementAttributes.currentMovementSpeed = 0;
         }
 
         private void HandleOnDamaged(float damage)
@@ -108,7 +108,7 @@ namespace Controllers.BehaviorControllers
 
             if (CurrentHealth <= 0)
             {
-                EntityAttributes.BattleAttributes.IsDead = true;
+                EntityAttributes.battleAttributes.IsDead = true;
                 HandleDeath();
             }
         }
@@ -123,17 +123,17 @@ namespace Controllers.BehaviorControllers
 
         protected void SetHealth(float value)
         {
-            EntityAttributes.BattleAttributes.CurrentHealth = value > MaxHealth ? MaxHealth : value;
+            EntityAttributes.battleAttributes.CurrentHealth = value > MaxHealth ? MaxHealth : value;
             HealthChanged(value);
         }
 
-        protected void SetHealthToMax() => SetHealth(EntityAttributes.BattleAttributes.MaxHealth);
+        protected void SetHealthToMax() => SetHealth(EntityAttributes.battleAttributes.maxHealth);
 
         public void SetHealthToZero() => SetHealth(0);
 
         protected void Move(Action<MovementAttributes> runningMethod, MovementAttributes movementAttributes)
         {
-            if (movementAttributes.CurrentMovementSpeed != 0)
+            if (movementAttributes.currentMovementSpeed != 0)
             {
                 runningMethod.Invoke(movementAttributes);
             }

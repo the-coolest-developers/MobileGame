@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Controllers.UI_Controllers
@@ -6,35 +7,39 @@ namespace Assets.Scripts.Controllers.UI_Controllers
     public class ProgressBarController : MonoBehaviour
     {
         //Из редактора
-        public string ProgressBarName;
+        [FormerlySerializedAs("ProgressBarName")]
+        public string progressBarName;
 
-        public string LineGameObjectName;
-        public string BarTipGameObjectName;
+        [FormerlySerializedAs("LineGameObjectName")]
+        public string lineGameObjectName;
+        [FormerlySerializedAs("BarTipGameObjectName")]
+        public string barTipGameObjectName;
         /// <summary>
         /// Масштаб обьекта в редакторе. Необходимо для правильных вычислений
         /// </summary>
-        public float LineScale;
+        [FormerlySerializedAs("LineScale")]
+        public float lineScale;
 
         public GameObject LineGameObject { get; set; }
         public GameObject TipGameObject { get; set; }
 
         //Внутренние
-        private Image LineImage;
-        private RectTransform Rect;
-        private RectTransform TipRect;
-        private float MaxWidth;
-        private float DefaultX;
+        private Image _lineImage;
+        private RectTransform _rect;
+        private RectTransform _tipRect;
+        private float _maxWidth;
+        private float _defaultX;
 
         private void Start()
         {
-            LineGameObject = GameObject.Find(LineGameObjectName);
-            TipGameObject = GameObject.Find(BarTipGameObjectName);
+            LineGameObject = GameObject.Find(lineGameObjectName);
+            TipGameObject = GameObject.Find(barTipGameObjectName);
 
-            LineImage = LineGameObject.GetComponent<Image>();
-            Rect = LineGameObject.GetComponent<RectTransform>();
-            MaxWidth = Rect.rect.width;
-            TipRect = TipGameObject.GetComponent<RectTransform>();
-            DefaultX = TipRect.anchoredPosition.x;
+            _lineImage = LineGameObject.GetComponent<Image>();
+            _rect = LineGameObject.GetComponent<RectTransform>();
+            _maxWidth = _rect.rect.width;
+            _tipRect = TipGameObject.GetComponent<RectTransform>();
+            _defaultX = _tipRect.anchoredPosition.x;
         }
 
         public void UpdateLine(float currentValue, float maxValue)
@@ -45,16 +50,16 @@ namespace Assets.Scripts.Controllers.UI_Controllers
                 valuePercent = 1;
             }
 
-            if (LineImage != null)
+            if (_lineImage != null)
             {
-                LineImage.fillAmount = valuePercent;
+                _lineImage.fillAmount = valuePercent;
 
                 if (valuePercent > 0)
                 {
                     TipGameObject.SetActive(true);
 
-                    var tipPosX = valuePercent * MaxWidth * LineScale;
-                    TipRect.anchoredPosition = new Vector2(DefaultX + tipPosX, TipRect.anchoredPosition.y);
+                    var tipPosX = valuePercent * _maxWidth * lineScale;
+                    _tipRect.anchoredPosition = new Vector2(_defaultX + tipPosX, _tipRect.anchoredPosition.y);
                 }
                 else
                 {
