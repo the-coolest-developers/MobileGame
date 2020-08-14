@@ -10,17 +10,6 @@ namespace Models.Attributes
 
         [FormerlySerializedAs("MaxHealth")]
         public int maxHealth;
-        //[FormerlySerializedAs("AttackedEnemiesAmount")]
-        //public int attackedEnemiesAmount;
-
-        //[FormerlySerializedAs("SplashDamageLossPercent")]
-        //public float splashDamageLossPercent;
-        //[FormerlySerializedAs("StrikePeriod")]
-        //public float strikePeriod;
-        //[FormerlySerializedAs("HitDelay")]
-        //public float hitDelay;
-        //[FormerlySerializedAs("Damage")]
-        //public float damage;
 
         [FormerlySerializedAs("CanStrike")]
         public bool canStrike;

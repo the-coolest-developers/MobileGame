@@ -256,33 +256,6 @@ MonoBehaviour:
     currentLevel: 0
     skillPoints: 0
     experiencePoints: 0
---- !u!114 &26044264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26044260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1f50f159cfcf2a23be6e8947cc63b37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleAttributes:
-    weaponAttributes:
-      attackedEnemiesAmount: 2
-      splashDamageLossPercent: 0
-      strikePeriod: 0
-      hitDelay: 0
-      damage: 0
-    maxHealth: 10
-    canStrike: 1
-  movementAttributes:
-    jumpPower: 1000
-    currentMovementSpeed: 0
-    runningSpeed: 5
-    canMove: 1
-    movementTarget: {fileID: 0}
 --- !u!114 &26044265 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
@@ -5821,16 +5794,6 @@ PrefabInstance:
       propertyPath: GroundLayerMask.m_Bits
       value: 256
       objectReference: {fileID: 0}
-    - target: {fileID: 3860756187577783763, guid: 4e9ece4a46ceace45bb163d117b72589,
-        type: 3}
-      propertyPath: HealthBarLine
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3860756187577783763, guid: 4e9ece4a46ceace45bb163d117b72589,
-        type: 3}
-      propertyPath: HealthBarTip
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}
       propertyPath: GameController
@@ -5956,8 +5919,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3860756187577783763, guid: 4e9ece4a46ceace45bb163d117b72589, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e9ece4a46ceace45bb163d117b72589, type: 3}
 --- !u!1 &735585052
 GameObject:
