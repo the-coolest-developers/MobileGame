@@ -35,7 +35,7 @@ namespace Controllers.BehaviorControllers
 
         protected float BaseDamage => EntityAttributes.BattleAttributes.Damage;
 
-        public float CurrentRunningSpeed { get; set; }
+        public float CurrentRunningSpeed => EntityAttributes.MovementAttributes.CurrentMovementSpeed;
 
         protected void InitializeControllers()
         {

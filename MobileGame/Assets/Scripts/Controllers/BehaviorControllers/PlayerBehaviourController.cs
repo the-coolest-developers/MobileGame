@@ -43,7 +43,7 @@ namespace Controllers.BehaviorControllers
 
         private void FixedUpdate()
         {
-            if (!IsStriking && CanMove & EntityAttributes.MovementAttributes.CurrentMovementSpeed != 0)
+            if (!IsStriking && CanMove & CurrentRunningSpeed != 0)
             {
                 Move(MovementController.MoveHorizontal, EntityAttributes.MovementAttributes);
                 AnimationController.SetIsRunning();
