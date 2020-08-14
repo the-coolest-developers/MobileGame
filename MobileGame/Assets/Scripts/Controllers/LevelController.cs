@@ -2,12 +2,13 @@
 using Models.Attributes;
 using Singletones;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Controllers
 {
     public class LevelController : MonoBehaviour
     {
-        public LevelAttributes LevelAttributes;
+        public LevelAttributes levelAttributes;
 
         /// <summary>
         ///Вызывается при начислении опыта. Параметры - текущий опыт и опыт для следующего уровня
@@ -28,47 +29,47 @@ namespace Controllers
         {
             if (newLevel > GlobalValues.MaxLevel)
             {
-                LevelAttributes.CurrentLevel = GlobalValues.MaxLevel;
+                levelAttributes.currentLevel = GlobalValues.MaxLevel;
             }
             else if (newLevel < 1)
             {
-                LevelAttributes.CurrentLevel = 1;
+                levelAttributes.currentLevel = 1;
             }
             else
             {
-                LevelAttributes.CurrentLevel = newLevel;
+                levelAttributes.currentLevel = newLevel;
             }
 
-            OnLevelChanged(LevelAttributes.CurrentLevel);
+            OnLevelChanged(levelAttributes.currentLevel);
         }
         public void LevelUp()
         {
-            SetLevel(LevelAttributes.CurrentLevel + 1);
-            LevelAttributes.SkillPoints++;
+            SetLevel(levelAttributes.currentLevel + 1);
+            levelAttributes.skillPoints++;
         }
 
         public void SetExperience(int experience)
         {
-            LevelAttributes.ExperiencePoints = experience;
-            OnExperienceChanged(experience, LevelAttributes.NextLevelExperiencePoints);
+            levelAttributes.experiencePoints = experience;
+            OnExperienceChanged(experience, levelAttributes.NextLevelExperiencePoints);
         }
         public void AddExperience(int experience)
         {
-            LevelAttributes.ExperiencePoints += experience;
-            if (LevelAttributes.CurrentLevel >= GlobalValues.MaxLevel)
+            levelAttributes.experiencePoints += experience;
+            if (levelAttributes.currentLevel >= GlobalValues.MaxLevel)
             {
-                LevelAttributes.ExperiencePoints = 0;
+                levelAttributes.experiencePoints = 0;
             }
 
-            while (LevelAttributes.ExperiencePoints > LevelAttributes.NextLevelExperiencePoints)
+            while (levelAttributes.experiencePoints >= levelAttributes.NextLevelExperiencePoints)
             {
-                LevelAttributes.ExperiencePoints -= LevelAttributes.NextLevelExperiencePoints;
+                levelAttributes.experiencePoints -= levelAttributes.NextLevelExperiencePoints;
                 LevelUp();
 
-                OnLevelChanged(LevelAttributes.CurrentLevel);
+                OnLevelChanged(levelAttributes.currentLevel);
             }
 
-            OnExperienceChanged(LevelAttributes.ExperiencePoints, LevelAttributes.NextLevelExperiencePoints);
+            OnExperienceChanged(levelAttributes.experiencePoints, levelAttributes.NextLevelExperiencePoints);
         }
     }
 }

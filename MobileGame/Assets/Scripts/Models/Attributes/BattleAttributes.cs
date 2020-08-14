@@ -1,17 +1,26 @@
-﻿namespace Models.Attributes
+﻿using UnityEngine.Serialization;
+
+namespace Models.Attributes
 {
     [System.Serializable]
     public struct BattleAttributes
     {
-        public int MaxHealth;
-        public int AttackedEnemiesAmount;
+        [FormerlySerializedAs("MaxHealth")]
+        public int maxHealth;
+        [FormerlySerializedAs("AttackedEnemiesAmount")]
+        public int attackedEnemiesAmount;
 
-        public float SplashDamageLossPercent;
-        public float StrikePeriod;
-        public float HitDelay;
-        public float Damage;
+        [FormerlySerializedAs("SplashDamageLossPercent")]
+        public float splashDamageLossPercent;
+        [FormerlySerializedAs("StrikePeriod")]
+        public float strikePeriod;
+        [FormerlySerializedAs("HitDelay")]
+        public float hitDelay;
+        [FormerlySerializedAs("Damage")]
+        public float damage;
 
-        public bool CanStrike;
+        [FormerlySerializedAs("CanStrike")]
+        public bool canStrike;
 
         public bool IsDead { get; set; }
         public float CurrentHealth { get; set; }

@@ -12,7 +12,6 @@ namespace Controllers.BehaviorControllers
 
         private LevelController LevelController { get; set; }
         private HoldButtonController StrikeButtonController { get; set; }
-
         private ProgressBarController ExperienceBarController => ProgressBarControllers["ExperienceBar"];
 
         private void Start()
@@ -28,9 +27,9 @@ namespace Controllers.BehaviorControllers
             AnimationController.SetIsNotRunning();
 
             StrikeButtonController = GameObject.Find("PlayerStrikeButton").GetComponent<HoldButtonController>();
-            StrikeButtonController.Button_Click += StrikeButton_Click;
+            StrikeButtonController.ButtonClick += StrikeButton_Click;
             //Тестовая часть
-            StrikeButtonController.Button_Hold += StrikeButton_Hold;
+            StrikeButtonController.ButtonHold += StrikeButton_Hold;
 
             LevelController = GetComponent<LevelController>();
             LevelController.OnExperienceChanged += HandleExperienceChanged;
@@ -43,9 +42,9 @@ namespace Controllers.BehaviorControllers
 
         private void FixedUpdate()
         {
-            if (!IsStriking && CanMove & EntityAttributes.MovementAttributes.CurrentMovementSpeed != 0)
+            if (!IsStriking && CanMove & CurrentRunningSpeed != 0)
             {
-                Move(MovementController.MoveHorizontal, EntityAttributes.MovementAttributes);
+                Move(MovementController.MoveHorizontal, EntityAttributes.movementAttributes);
                 AnimationController.SetIsRunning();
             }
         }
@@ -83,14 +82,14 @@ namespace Controllers.BehaviorControllers
 
         private void StrikeButton_Click()
         {
-            Strike(BattleController.SingleEnemyStrike, EntityAttributes.BattleAttributes);
+            Strike(BattleController.SingleEnemyStrike, EntityAttributes.battleAttributes);
         }
 
         //Это тестовый код. В будущем его обязательно нужно будет переделать. Только для проверки
         private void StrikeButton_Hold()
         {
-            var attributes = EntityAttributes.BattleAttributes;
-            attributes.Damage += 5;
+            var attributes = EntityAttributes.battleAttributes;
+            attributes.damage += 5;
 
             Strike(BattleController.SingleEnemyStrike, attributes);
         }

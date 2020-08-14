@@ -19,9 +19,9 @@ namespace Controllers
         public static void PauseGame() => Time.timeScale = 0;
         public static void ResumeGame() => Time.timeScale = 1;
 
-        public void SpawnObject(GameObject gameObject)
+        public void SpawnObject(GameObject spawnedObject)
         {
-            Instantiate(gameObject);
+            Instantiate(spawnedObject);
         }
 
         public float GetDistanceToPlayer(GameObject self)
