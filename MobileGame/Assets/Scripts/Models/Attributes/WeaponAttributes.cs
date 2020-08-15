@@ -1,6 +1,4 @@
-﻿using UnityEngine.Serialization;
-
-namespace Models.Attributes
+﻿namespace Models.Attributes
 {
     [System.Serializable]
     public struct WeaponAttributes

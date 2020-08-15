@@ -1,6 +1,5 @@
 ﻿using System;
 using Singletones;
-using UnityEngine.Serialization;
 
 namespace Models.Attributes
 {

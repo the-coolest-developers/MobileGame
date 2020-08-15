@@ -2,7 +2,7 @@
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Controllers.UI_Controllers
+namespace Controllers.UI_Controllers
 {
     public class ProgressBarController : MonoBehaviour
     {

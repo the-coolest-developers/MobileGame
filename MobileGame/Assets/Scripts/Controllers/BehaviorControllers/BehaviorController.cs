@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Controllers.UI_Controllers;
 using Controllers.EntityControllers;
+using Controllers.UI_Controllers;
 using Models.Attributes;
 using Singletones;
 using UnityEngine;

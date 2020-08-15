@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Controllers.UI_Controllers
+namespace Controllers.UI_Controllers
 {
     public class ChooseDifficulty : MonoBehaviour
     {

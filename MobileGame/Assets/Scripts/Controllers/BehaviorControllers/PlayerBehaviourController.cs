@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Controllers.UI_Controllers;
-using Assets.Scripts.Controllers.UI_Controllers.ButtonControllers;
+﻿using Controllers.UI_Controllers;
+using Controllers.UI_Controllers.ButtonControllers;
 using Singletones;
 using UnityEngine;
 using UnityEngine.UI;

@@ -5,8 +5,6 @@ namespace Controllers.UI_Controllers
 {
     public class GameMenu : MonoBehaviour
     {
-        private GameController GameController { get; set; }
-
         private GameObject SettingsWindowObject { get; set; }
         private GameObject GameMenuObject { get; set; }
         private GameObject ExitDialogObject { get; set; }
@@ -16,8 +14,6 @@ namespace Controllers.UI_Controllers
 
         private void Start()
         {
-            GameController = GameObject.Find("GameControllerObject").GetComponent<GameController>();
-
             SettingsWindowObject = GameObject.Find("SettingsWindow");
 
             GameMenuObject = GameObject.Find("GameMenu");

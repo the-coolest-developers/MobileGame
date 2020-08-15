@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Controllers.EntityControllers
 {
@@ -9,13 +8,8 @@ namespace Controllers.EntityControllers
         private Animator EntityAnimator { get; set; }
 
         //Внешние переменные
-
-        [FormerlySerializedAs("StrikeBoolName")]
         public string strikeBoolName;
-
-        [FormerlySerializedAs("RunningBoolName")]
         public string runningBoolName;
-
 
         // Start is called before the first frame update
         private void Start()

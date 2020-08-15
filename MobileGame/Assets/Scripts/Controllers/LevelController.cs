@@ -2,7 +2,6 @@
 using Models.Attributes;
 using Singletones;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Controllers
 {

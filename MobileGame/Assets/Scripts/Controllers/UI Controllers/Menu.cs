@@ -88,7 +88,7 @@ namespace Controllers.UI_Controllers
         }
         public void ContinueButton_Click()
         {
-            SceneManager.LoadScene("Village");
+            SceneManager.LoadScene("Test");
         }
     }
 }
