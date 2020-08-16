@@ -11308,22 +11308,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f50f159cfcf2a23be6e8947cc63b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleAttributes:
-    weaponAttributes:
-      canStrike: 1
-      attackedEnemiesAmount: 0
-      splashDamageLossPercent: 0
-      strikePeriod: 0
-      hitDelay: 0
-      damage: 0
-    armorAttributes:
-      maxHealth: 2
-  movementAttributes:
-    jumpPower: 0
-    currentMovementSpeed: 0
-    runningSpeed: 0
-    canMove: 0
-    movementTarget: {fileID: 0}
+  BattleAttributes:
+    MaxHealth: 10
+    AttackedEnemiesAmount: 2
+    SplashDamageLossPercent: 25
+    StrikePeriod: 1
+    HitDelay: 0.3
+    Damage: 5
+    CanStrike: 1
+  MovementAttributes:
+    JumpPower: 1000
+    CurrentMovementSpeed: 0
+    RunningSpeed: 5
+    CanMove: 1
+    MovementTarget: {fileID: 0}
 --- !u!114 &1871109603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11336,10 +11334,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ad789a929cae74ea4e5872ea24ca2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelAttributes:
-    currentLevel: 0
-    skillPoints: 0
-    experiencePoints: 0
+  LevelAttributes:
+    CurrentLevel: 1
+    SkillPoints: 0
+    ExperiencePoints: 0
 --- !u!114 &1871109604 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
@@ -11364,10 +11362,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20253b36215bdd34787405a42d2dc4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressBarName: HealthBar
-  lineGameObjectName: PlayerHealthBarLine
-  barTipGameObjectName: PlayerHealthBarTip
-  lineScale: 0.795522
+  ProgressBarName: HealthBar
+  LineGameObjectName: PlayerHealthBarLine
+  BarTipGameObjectName: PlayerHealthBarTip
+  LineScale: 0.795522
 --- !u!114 &1871109606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11380,10 +11378,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20253b36215bdd34787405a42d2dc4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressBarName: ExperienceBar
-  lineGameObjectName: ExperienceBarLine
-  barTipGameObjectName: ExperienceBarTip
-  lineScale: 6
+  ProgressBarName: ExperienceBar
+  LineGameObjectName: ExperienceBarLine
+  BarTipGameObjectName: ExperienceBarTip
+  LineScale: 6
 --- !u!114 &1871109608 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2229875668795152394, guid: 4e9ece4a46ceace45bb163d117b72589,
