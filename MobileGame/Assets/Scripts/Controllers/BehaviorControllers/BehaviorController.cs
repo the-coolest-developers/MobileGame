@@ -55,7 +55,7 @@ namespace Controllers.BehaviorControllers
 
         protected void InitializeAttributes()
         {
-            EntityAttributes.battleAttributes.CurrentHealth = EntityAttributes.battleAttributes.maxHealth;
+            EntityAttributes.battleAttributes.CurrentHealth = MaxHealth;
         }
 
         protected void SubscribeToEvents()
@@ -127,7 +127,7 @@ namespace Controllers.BehaviorControllers
             HealthChanged(value);
         }
 
-        protected void SetHealthToMax() => SetHealth(EntityAttributes.battleAttributes.maxHealth);
+        protected void SetHealthToMax() => SetHealth(MaxHealth);
 
         public void SetHealthToZero() => SetHealth(0);
 
