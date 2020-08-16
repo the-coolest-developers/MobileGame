@@ -220,10 +220,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20253b36215bdd34787405a42d2dc4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProgressBarName: ExperienceBar
-  LineGameObjectName: ExperienceBarLine
-  BarTipGameObjectName: ExperienceBarTip
-  LineScale: 6
+  progressBarName: ExperienceBar
+  lineGameObjectName: ExperienceBarLine
+  barTipGameObjectName: ExperienceBarTip
+  lineScale: 6
 --- !u!114 &26044262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,10 +236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20253b36215bdd34787405a42d2dc4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProgressBarName: HealthBar
-  LineGameObjectName: PlayerHealthBarLine
-  BarTipGameObjectName: PlayerHealthBarTip
-  LineScale: 0.795522
+  progressBarName: HealthBar
+  lineGameObjectName: PlayerHealthBarLine
+  barTipGameObjectName: PlayerHealthBarTip
+  lineScale: 0.795522
 --- !u!114 &26044263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,36 +252,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ad789a929cae74ea4e5872ea24ca2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelAttributes:
-    CurrentLevel: 1
-    SkillPoints: 0
-    ExperiencePoints: 0
---- !u!114 &26044264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26044260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1f50f159cfcf2a23be6e8947cc63b37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BattleAttributes:
-    MaxHealth: 10
-    AttackedEnemiesAmount: 2
-    SplashDamageLossPercent: 25
-    StrikePeriod: 1
-    HitDelay: 0.3
-    Damage: 5
-    CanStrike: 1
-  MovementAttributes:
-    JumpPower: 1000
-    CurrentMovementSpeed: 0
-    RunningSpeed: 5
-    CanMove: 1
-    MovementTarget: {fileID: 0}
+  levelAttributes:
+    currentLevel: 0
+    skillPoints: 0
+    experiencePoints: 0
 --- !u!114 &26044265 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
@@ -5820,16 +5794,6 @@ PrefabInstance:
       propertyPath: GroundLayerMask.m_Bits
       value: 256
       objectReference: {fileID: 0}
-    - target: {fileID: 3860756187577783763, guid: 4e9ece4a46ceace45bb163d117b72589,
-        type: 3}
-      propertyPath: HealthBarLine
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3860756187577783763, guid: 4e9ece4a46ceace45bb163d117b72589,
-        type: 3}
-      propertyPath: HealthBarTip
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4370117225209581246, guid: 4e9ece4a46ceace45bb163d117b72589,
         type: 3}
       propertyPath: GameController
@@ -5955,8 +5919,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3860756187577783763, guid: 4e9ece4a46ceace45bb163d117b72589, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e9ece4a46ceace45bb163d117b72589, type: 3}
 --- !u!1 &735585052
 GameObject:
@@ -12864,6 +12827,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 672558192, guid: 0d1a8b08f68e99940b60c5a27dd850c8, type: 3}
       propertyPath: BattleAttributes.CanStrike
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 672558192, guid: 0d1a8b08f68e99940b60c5a27dd850c8, type: 3}
+      propertyPath: battleAttributes.canStrike
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5166078315885113632, guid: 0d1a8b08f68e99940b60c5a27dd850c8,

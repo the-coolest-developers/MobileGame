@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.Controllers.UI_Controllers;
-using Assets.Scripts.Controllers.UI_Controllers.ButtonControllers;
+﻿using Controllers.UI_Controllers;
+using Controllers.UI_Controllers.ButtonControllers;
 using Singletones;
 using UnityEngine;
 using UnityEngine.UI;
@@ -89,7 +89,7 @@ namespace Controllers.BehaviorControllers
         private void StrikeButton_Hold()
         {
             var attributes = EntityAttributes.battleAttributes;
-            attributes.damage += 5;
+            attributes.weaponAttributes.damage += 5;
 
             Strike(BattleController.SingleEnemyStrike, attributes);
         }

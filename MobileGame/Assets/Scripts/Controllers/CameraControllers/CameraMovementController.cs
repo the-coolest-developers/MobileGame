@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Singletones;
+﻿using UnityEngine;
 
 namespace Controllers.CameraControllers
 {

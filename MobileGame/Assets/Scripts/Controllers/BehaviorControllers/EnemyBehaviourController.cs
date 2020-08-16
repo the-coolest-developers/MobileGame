@@ -1,18 +1,11 @@
-﻿using UnityEngine;
-using System.Linq;
-using Controllers.BehaviorControllers;
-using Singletones;
-using Unity.Mathematics;
-using UnityEngine.Serialization;
+﻿using Singletones;
 
-namespace Assets.Scripts.Controllers.BehaviorControllers
+namespace Controllers.BehaviorControllers
 {
     public class EnemyBehaviourController : BehaviorController
     {
         //Переменные из Unity Editor
-        [FormerlySerializedAs("MinDistance")]
         public float minDistance;
-        [FormerlySerializedAs("StrikeDistance")]
         public float strikeDistance;
 
         private void Start()

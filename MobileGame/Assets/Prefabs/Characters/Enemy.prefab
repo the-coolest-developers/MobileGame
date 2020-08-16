@@ -265,8 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f106d836dd8f8a42a66db8b85b315ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StrikeBoolName: EnemyHammerStrike
-  RunningBoolName: IsRunning
+  strikeBoolName: EnemyHammerStrike
+  runningBoolName: IsRunning
 --- !u!114 &8872655738828971267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc61345df9326e4b8e16525a68a1bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTag: Ally
+  enemyTag: Ally
 --- !u!114 &7871841418815498110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,9 +304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf5e6a338b526b257bf80c940bcc55a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinDistance: 7
-  StrikeDistance: 1.1
-  GivenExperience: 90
+  minDistance: 7
+  strikeDistance: 1.1
 --- !u!114 &672558192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,17 +318,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f50f159cfcf2a23be6e8947cc63b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BattleAttributes:
-    MaxHealth: 10
-    AttackedEnemiesAmount: 2
-    SplashDamageLossPercent: 25
-    StrikePeriod: 2
-    HitDelay: 0.65
-    Damage: 2
-    CanStrike: 0
-  MovementAttributes:
-    JumpPower: 1000
-    CurrentMovementSpeed: 0
-    RunningSpeed: 4
-    CanMove: 1
-    MovementTarget: {fileID: 0}
+  battleAttributes:
+    weaponAttributes:
+      canStrike: 1
+      attackedEnemiesAmount: 2
+      splashDamageLossPercent: 25
+      strikePeriod: 2
+      hitDelay: 0.65
+      damage: 2
+    armorAttributes:
+      maxHealth: 10
+  movementAttributes:
+    jumpPower: 1000
+    currentMovementSpeed: 0
+    runningSpeed: 4
+    canMove: 1
+    movementTarget: {fileID: 0}

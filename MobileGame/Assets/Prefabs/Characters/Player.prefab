@@ -86,8 +86,8 @@ GameObject:
   - component: {fileID: 6260731868312055976}
   - component: {fileID: 2229875668795152394}
   - component: {fileID: 7450236012979669622}
-  - component: {fileID: 3860756187577783763}
   - component: {fileID: 4370117225209581246}
+  - component: {fileID: 1027966782465727521}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -238,8 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f106d836dd8f8a42a66db8b85b315ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StrikeBoolName: Strike
-  RunningBoolName: IsRunning
+  strikeBoolName: Strike
+  runningBoolName: IsRunning
 --- !u!114 &2229875668795152394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,9 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60395c73a0490f74b84be1e1f23198d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPower: 1500
-  RunningSpeed: 5
-  CanMove: 1
 --- !u!114 &7450236012979669622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,28 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc61345df9326e4b8e16525a68a1bc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 10
-  Damage: 5
-  AttackedEnemiesAmount: 2
-  SplashDamageLossPercent: 25
-  HitDelay: 0.35
-  StrikePeriod: 1
-  EnemyTag: Enemy
-  CanStrike: 1
---- !u!114 &3860756187577783763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8307259235387874334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 998d194555059e74192556fcc61c6e6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HealthBarLine: {fileID: 0}
-  HealthBarTip: {fileID: 0}
+  enemyTag: Enemy
 --- !u!114 &4370117225209581246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,5 +277,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36c7a0caba2ba145aacf89d3adc9847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameController: {fileID: 0}
-  RespawnButton: {fileID: 0}
+--- !u!114 &1027966782465727521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307259235387874334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f50f159cfcf2a23be6e8947cc63b37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleAttributes:
+    weaponAttributes:
+      canStrike: 1
+      attackedEnemiesAmount: 2
+      splashDamageLossPercent: 25
+      strikePeriod: 1
+      hitDelay: 0.3
+      damage: 5
+    armorAttributes:
+      maxHealth: 10
+  movementAttributes:
+    jumpPower: 1000
+    currentMovementSpeed: 0
+    runningSpeed: 5
+    canMove: 1
+    movementTarget: {fileID: 0}

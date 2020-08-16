@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Assets.Scripts.Controllers.BehaviorControllers;
 using Models.Attributes;
 using UnityEngine.Serialization;
 
@@ -34,7 +33,7 @@ namespace Controllers.EntityControllers
 
         public void Strike(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
-            StrikePeriod = battleAttributes.strikePeriod;
+            StrikePeriod = battleAttributes.weaponAttributes.strikePeriod;
 
             StartCoroutine(StrikePeriodCoroutine());
 
@@ -52,18 +51,18 @@ namespace Controllers.EntityControllers
 
         private IEnumerator HitEnemyCoroutine(Action<BattleAttributes> hitAction, BattleAttributes battleAttributes)
         {
-            yield return new WaitForSeconds(battleAttributes.hitDelay);
+            yield return new WaitForSeconds(battleAttributes.weaponAttributes.hitDelay);
 
             hitAction.Invoke(battleAttributes);
         }
 
         public void SingleEnemyStrike(BattleAttributes battleAttributes)
         {
-            var damage = battleAttributes.damage;
+            var damage = battleAttributes.weaponAttributes.damage;
 
-            var attackedEnemies = TriggeredEnemies.Take(battleAttributes.attackedEnemiesAmount).ToList();
+            var attackedEnemies = TriggeredEnemies.Take(battleAttributes.weaponAttributes.attackedEnemiesAmount).ToList();
 
-            float damageLoss = battleAttributes.splashDamageLossPercent;
+            float damageLoss = battleAttributes.weaponAttributes.splashDamageLossPercent;
             float multiplier = 0;
 
             foreach (var enemy in attackedEnemies)
@@ -81,7 +80,7 @@ namespace Controllers.EntityControllers
         {
             foreach (var enemy in TriggeredEnemies)
             {
-                DamageEnemy(enemy, battleAttributes.damage);
+                DamageEnemy(enemy, battleAttributes.weaponAttributes.damage);
             }
         }
 
