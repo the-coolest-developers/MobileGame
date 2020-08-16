@@ -3,6 +3,9 @@
     [System.Serializable]
     public struct WeaponAttributes
     {
+
+        public bool canStrike;
+
         public int attackedEnemiesAmount;
         public float splashDamageLossPercent;
         public float strikePeriod;

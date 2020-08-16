@@ -29,9 +29,9 @@ namespace Controllers.BehaviorControllers
         protected float JumpPower => EntityAttributes.movementAttributes.jumpPower;
 
         protected bool IsStriking => BattleController.IsStriking;
-        protected bool CanStrike => EntityAttributes.battleAttributes.canStrike;
+        protected bool CanStrike => EntityAttributes.battleAttributes.weaponAttributes.canStrike;
         protected float CurrentHealth => EntityAttributes.battleAttributes.CurrentHealth;
-        protected float MaxHealth => EntityAttributes.battleAttributes.maxHealth;
+        protected float MaxHealth => EntityAttributes.battleAttributes.armorAttributes.maxHealth;
 
         protected float BaseDamage => EntityAttributes.battleAttributes.weaponAttributes.damage;
 
@@ -55,7 +55,7 @@ namespace Controllers.BehaviorControllers
 
         protected void InitializeAttributes()
         {
-            EntityAttributes.battleAttributes.CurrentHealth = EntityAttributes.battleAttributes.maxHealth;
+            EntityAttributes.battleAttributes.CurrentHealth = EntityAttributes.battleAttributes.armorAttributes.maxHealth;
         }
 
         protected void SubscribeToEvents()
@@ -127,7 +127,7 @@ namespace Controllers.BehaviorControllers
             HealthChanged(value);
         }
 
-        protected void SetHealthToMax() => SetHealth(EntityAttributes.battleAttributes.maxHealth);
+        protected void SetHealthToMax() => SetHealth(EntityAttributes.battleAttributes.armorAttributes.maxHealth);
 
         public void SetHealthToZero() => SetHealth(0);
 

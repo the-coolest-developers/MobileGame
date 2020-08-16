@@ -320,13 +320,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleAttributes:
     weaponAttributes:
+      canStrike: 1
       attackedEnemiesAmount: 2
       splashDamageLossPercent: 25
       strikePeriod: 2
       hitDelay: 0.65
       damage: 2
-    maxHealth: 10
-    canStrike: 1
+    armorAttributes:
+      maxHealth: 10
   movementAttributes:
     jumpPower: 1000
     currentMovementSpeed: 0
