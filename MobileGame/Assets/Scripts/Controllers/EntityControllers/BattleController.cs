@@ -87,6 +87,12 @@ namespace Controllers.EntityControllers
         private void DamageEnemy(GameObject enemy, float damage)
         {
             var enemyBattleController = enemy.GetComponent<BattleController>();
+            var armor = enemy.GetComponent<EntityAttributes>().battleAttributes.armorAttributes.armorPoints;
+            damage -= armor;
+            if(damage < 1)
+            {
+                damage = 1;
+            }
             enemyBattleController.GetDamage(damage);
 
             var isDead = enemy.GetComponent<EntityAttributes>().battleAttributes.IsDead;
