@@ -296,6 +296,8 @@ MonoBehaviour:
       strikePeriod: 1
       hitDelay: 0.3
       damage: 5
+    armorAttributes:
+      armorPoints: 3
     maxHealth: 10
     canStrike: 1
   movementAttributes:
