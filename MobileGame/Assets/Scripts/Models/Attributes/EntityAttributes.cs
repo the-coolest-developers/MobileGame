@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Models.Attributes
 {
@@ -7,5 +8,7 @@ namespace Models.Attributes
         public BattleAttributes battleAttributes;
 
         public MovementAttributes movementAttributes;
+
+        public GameObject movementTarget;
     }
 }

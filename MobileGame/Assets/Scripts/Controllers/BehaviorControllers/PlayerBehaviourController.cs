@@ -1,5 +1,7 @@
 ﻿using Controllers.UI_Controllers;
 using Controllers.UI_Controllers.ButtonControllers;
+using Data;
+using Models.Attributes;
 using Singletones;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +16,33 @@ namespace Controllers.BehaviorControllers
         private HoldButtonController StrikeButtonController { get; set; }
         private ProgressBarController ExperienceBarController => ProgressBarControllers["ExperienceBar"];
 
+        public void SavePlayer() => SaveSystem.SavePlayer(gameObject);
+        public void LoadPlayer() => SaveSystem.LoadPlayer(gameObject);
+
+
         private void Start()
+        {
+            NewGame();
+            //SavePlayer();
+            //LoadPlayer();
+        }
+
+        private void Update()
+        {
+            if(EntityAttributes.battleAttributes.CurrentHealth < 9)
+                EntityAttributes.battleAttributes.CurrentHealth++;
+        }
+
+        private void FixedUpdate()
+        {
+            if (!IsStriking && CanMove & CurrentRunningSpeed != 0)
+            {
+                Move(MovementController.MoveHorizontal, EntityAttributes.movementAttributes);
+                AnimationController.SetIsRunning();
+            }
+        }
+
+        public void NewGame()
         {
             InitializeControllers();
             InitializeAttributes();
@@ -38,15 +66,6 @@ namespace Controllers.BehaviorControllers
             LevelController.SetLevel(0);
 
             BattleController.OnEnemyKilled += HandleOnEnemyKilled;
-        }
-
-        private void FixedUpdate()
-        {
-            if (!IsStriking && CanMove & CurrentRunningSpeed != 0)
-            {
-                Move(MovementController.MoveHorizontal, EntityAttributes.movementAttributes);
-                AnimationController.SetIsRunning();
-            }
         }
 
         public void RespawnButton_Click()
