@@ -9,6 +9,5 @@ namespace Models.Attributes
 
         public MovementAttributes movementAttributes;
 
-        public GameObject movementTarget;
     }
 }
