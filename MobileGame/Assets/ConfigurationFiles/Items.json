@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "type": 1,
+    "name": "MinorHealthPotion",
+    "value": 1,
+    "activeTime": 5
+  },
+  {
+    "id": 2,
+    "type": 1,
+    "name": "MediumHealthPotion",
+    "value": 2,
+    "activeTime": 10
+  },
+  {
+    "id": 3,
+    "type": 1,
+    "name": "MajorHealthPotion",
+    "value": 3,
+    "activeTime": 15
+  },
+  {
+    "id": 4,
+    "type": 1,
+    "name": "MinorStrengthPotion",
+    "value": 2,
+    "activeTime": 5
+  },
+  {
+    "id": 5,
+    "type": 1,
+    "name": "MediumStrengthPotion",
+    "value": 4,
+    "activeTime": 5
+  },
+  {
+    "id": 6,
+    "type": 1,
+    "name": "MajorStrengthPotion",
+    "value": 6,
+    "activeTime": 10
+  }
+]
