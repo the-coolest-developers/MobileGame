@@ -2,10 +2,10 @@ namespace Models.Inventory.Items
 {
     public interface IInventoryItem
     {
-        int Id { get; set; }
-        string Name { get; set; }
-        InventoryItemType Type { get; set; }
-        string ImageFolderPath { get; set; }
+        int Id { get; }
+        string Name { get; }
+        InventoryItemType Type { get; }
+        string ImageFolderPath { get; }
 
         void Use();
     }
