@@ -6,9 +6,9 @@ namespace Models.Inventory.Items
     {
         public int Id { get; private set; }
         public string Name { get; private set; }
+        public string ImageFolderPath => $".../{Type.ToString()}/"; //Прописать правильный путь
 
         public abstract InventoryItemType Type { get; }
-        public abstract string ImageFolderPath { get; }
 
         public abstract void Use();
 

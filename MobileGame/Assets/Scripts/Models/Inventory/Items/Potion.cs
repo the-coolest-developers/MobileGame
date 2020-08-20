@@ -5,7 +5,6 @@ namespace Models.Inventory.Items
     public class Potion : InventoryItem
     {
         public override InventoryItemType Type => InventoryItemType.Consumable;
-        public override string ImageFolderPath => "../Potions/";
 
         public override void Use()
         {

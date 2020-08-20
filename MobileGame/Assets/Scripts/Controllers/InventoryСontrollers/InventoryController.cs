@@ -6,19 +6,19 @@ namespace Controllers.InventoryСontrollers
 {
     public class InventoryController : MonoBehaviour
     {
-        private List<IInventoryItem> Items { get; set; }
+        private List<GameObject> Items { get; set; }
 
         void Start()
         {
-            Items = new List<IInventoryItem>();
+            Items = GetUserItems();
         }
 
-        List<IInventoryItem> GetUserItems()
+        List<GameObject> GetUserItems()
         {
-            return new List<IInventoryItem>()
+            return new List<GameObject>()
             {
-                new Potion(1, "SomePotion"),
-                new Potion(2, "SomePotion")
+                //new Potion(1, "SomePotion"),
+                //new Potion(2, "SomePotion")
             };
         }
     }
