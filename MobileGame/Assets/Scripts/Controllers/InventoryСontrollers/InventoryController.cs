@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Controllers.InventoryСontrollers.ItemControllers;
 using Models.Inventory.Items;
 using UnityEngine;
@@ -45,6 +46,28 @@ namespace Controllers.InventoryСontrollers
             itemController.SetItem(item);
 
             ItemUiObjects.Add(instantiatedItem);
+        }
+
+        public void RemoveItem(InventoryItem item)
+        {
+            var itemGameObject = ItemUiObjects.FirstOrDefault(i =>
+                i.GetComponent<InventoryItemController>().InventoryItem == item);
+
+            RemoveItemAndDestroy(itemGameObject);
+        }
+
+        public void RemoveItemById(int id)
+        {
+            var itemGameObject = ItemUiObjects.FirstOrDefault(i =>
+                i.GetComponent<InventoryItemController>().InventoryItem.Id == id);
+
+            RemoveItemAndDestroy(itemGameObject);
+        }
+
+        public void RemoveItemAndDestroy(GameObject itemGameObject)
+        {
+            ItemUiObjects.Remove(itemGameObject);
+            Destroy(itemGameObject);
         }
 
         public void SetItems(List<InventoryItem> items)
