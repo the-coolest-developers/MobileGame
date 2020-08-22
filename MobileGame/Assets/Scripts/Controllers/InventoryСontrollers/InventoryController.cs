@@ -41,6 +41,7 @@ namespace Controllers.InventoryСontrollers
         public void AddItem(InventoryItem item)
         {
             GameObject instantiatedItem = Instantiate(itemPrefab, ItemSpawnPosition.transform, true);
+            instantiatedItem.transform.position = _itemSpawnPosition.transform.position;
 
             var itemController = instantiatedItem.GetComponent<InventoryItemController>();
             itemController.SetItem(item);
@@ -53,7 +54,7 @@ namespace Controllers.InventoryСontrollers
             var itemGameObject = ItemUiObjects.FirstOrDefault(i =>
                 i.GetComponent<InventoryItemController>().InventoryItem == item);
 
-            RemoveItemAndDestroy(itemGameObject);
+            RemoveItem(itemGameObject);
         }
 
         public void RemoveItemById(int id)
@@ -61,10 +62,10 @@ namespace Controllers.InventoryСontrollers
             var itemGameObject = ItemUiObjects.FirstOrDefault(i =>
                 i.GetComponent<InventoryItemController>().InventoryItem.Id == id);
 
-            RemoveItemAndDestroy(itemGameObject);
+            RemoveItem(itemGameObject);
         }
 
-        public void RemoveItemAndDestroy(GameObject itemGameObject)
+        public void RemoveItem(GameObject itemGameObject)
         {
             ItemUiObjects.Remove(itemGameObject);
             Destroy(itemGameObject);
