@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Controllers.InventoryСontrollers.ItemControllers;
 using Models.Inventory.Items;
 using UnityEngine;
 
@@ -6,20 +7,49 @@ namespace Controllers.InventoryСontrollers
 {
     public class InventoryController : MonoBehaviour
     {
-        private List<GameObject> Items { get; set; }
+        private GameObject _itemSpawnPosition;
+
+        public GameObject ItemSpawnPosition
+        {
+            get
+            {
+                if (_itemSpawnPosition == null)
+                {
+                    _itemSpawnPosition = GameObject.Find("Inventory");
+                }
+
+                return _itemSpawnPosition;
+            }
+        }
+
+        public GameObject itemPrefab;
+
+        private List<GameObject> ItemUiObjects { get; set; }
 
         void Start()
         {
-            Items = GetUserItems();
+            ItemUiObjects = new List<GameObject>();
+
+            SetItems(new List<InventoryItem>()
+            {
+                new Potion(1, "SomePotion"),
+                new Potion(2, "AnotherPotion")
+            });
         }
 
-        List<GameObject> GetUserItems()
+        public void AddItem(InventoryItem item)
         {
-            return new List<GameObject>()
-            {
-                //new Potion(1, "SomePotion"),
-                //new Potion(2, "SomePotion")
-            };
+            GameObject instantiatedItem = Instantiate(itemPrefab, ItemSpawnPosition.transform, true);
+
+            var itemController = instantiatedItem.GetComponent<InventoryItemController>();
+            itemController.SetItem(item);
+
+            ItemUiObjects.Add(instantiatedItem);
+        }
+
+        public void SetItems(List<InventoryItem> items)
+        {
+            items.ForEach(AddItem);
         }
     }
 }

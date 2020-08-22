@@ -12,18 +12,33 @@ namespace Controllers.InventoryСontrollers.ItemControllers
         public InventoryItem InventoryItem
         {
             get => _inventoryItem;
-            set
+            private set
             {
                 _inventoryItem = value;
+                gameObject.name = value.Name;
+
                 ButtonComponent.onClick.AddListener(_inventoryItem.OnClicked);
             }
         }
 
-        private Button ButtonComponent { get; set; }
+        private Button _buttonComponent;
 
-        private void Start()
+        private Button ButtonComponent
         {
-            ButtonComponent = GetComponent<Button>();
+            get
+            {
+                if (_buttonComponent == null)
+                {
+                    _buttonComponent = GetComponent<Button>();
+                }
+
+                return _buttonComponent;
+            }
+        }
+        
+        public void SetItem(InventoryItem item)
+        {
+            InventoryItem = item;
         }
     }
 }
