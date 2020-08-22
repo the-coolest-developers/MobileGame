@@ -23,8 +23,8 @@ namespace Controllers.BehaviorControllers
         private void Start()
         {
             NewGame();
-            //SavePlayer();
-            //LoadPlayer();
+            SavePlayer();
+            LoadPlayer();
         }
 
         private void Update()

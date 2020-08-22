@@ -3,6 +3,10 @@ using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using Controllers.BehaviorControllers;
 using Models.Attributes;
+using Models.Items;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 namespace Data
 {
@@ -17,7 +21,12 @@ namespace Data
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Create);
 
-            PlayerData data = new PlayerData(player);
+            //PlayerData data = new PlayerData(player);
+            List<Item> data = new List<Item>();
+            for(int i = 0; i < 5; i++)
+            {
+                data.Add(new Item { Name = "Item", Cost = i, Id = i });
+            }
 
             formatter.Serialize(stream, data);
             stream.Close();
@@ -31,14 +40,16 @@ namespace Data
                 BinaryFormatter formatter = new BinaryFormatter();
                 FileStream stream = new FileStream(path, FileMode.Open);
 
-                PlayerData data = formatter.Deserialize(stream) as PlayerData;
-                var playerData = player.GetComponent<EntityAttributes>();
+                //PlayerData data = formatter.Deserialize(stream) as PlayerData;
+                //var playerData = player.GetComponent<EntityAttributes>();
 
 
-                playerData.battleAttributes = data.battleAttributes;
+                //playerData.battleAttributes = data.battleAttributes;
 
-                Vector2 newPos = new Vector2(data.pos_x, data.pos_y);
-                player.transform.position = newPos;
+                //Vector2 newPos = new Vector2(data.pos_x, data.pos_y);
+                //player.transform.position = newPos;
+
+                List<Item> items = (List<Item>)formatter.Deserialize(stream);
 
                 stream.Close();
 
