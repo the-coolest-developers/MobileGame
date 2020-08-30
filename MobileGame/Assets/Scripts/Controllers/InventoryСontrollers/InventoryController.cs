@@ -25,6 +25,22 @@ namespace Controllers.InventoryСontrollers
 
         public GameObject itemPrefab;
 
+        private float _itemPrefabHeight;
+
+        public float ItemPrefabHeight
+        {
+            get
+            {
+                if (_itemPrefabHeight == 0)
+                {
+                    var rectTransform = itemPrefab.GetComponent<RectTransform>();
+                    _itemPrefabHeight = rectTransform.sizeDelta.x;
+                }
+
+                return _itemPrefabHeight;
+            }
+        }
+
         private List<GameObject> ItemUiObjects { get; set; }
 
         void Start()
@@ -34,19 +50,21 @@ namespace Controllers.InventoryСontrollers
             SetItems(new List<InventoryItem>()
             {
                 new Potion(1, "SomePotion"),
-                new Potion(2, "AnotherPotion")
+                new Potion(2, "AnotherPotion"),
+                new Potion(3, "HealthPotion"),
             });
         }
 
         public void AddItem(InventoryItem item)
         {
             GameObject instantiatedItem = Instantiate(itemPrefab, ItemSpawnPosition.transform, true);
-            instantiatedItem.transform.position = _itemSpawnPosition.transform.position;
 
             var itemController = instantiatedItem.GetComponent<InventoryItemController>();
             itemController.SetItem(item);
 
             ItemUiObjects.Add(instantiatedItem);
+
+            ArrangeItems();
         }
 
         public void RemoveItem(InventoryItem item)
@@ -69,11 +87,24 @@ namespace Controllers.InventoryСontrollers
         {
             ItemUiObjects.Remove(itemGameObject);
             Destroy(itemGameObject);
+
+            ArrangeItems();
         }
 
         public void SetItems(List<InventoryItem> items)
         {
             items.ForEach(AddItem);
+        }
+
+        private void ArrangeItems()
+        {
+            for (int i = 0; i < ItemUiObjects.Count; i++)
+            {
+                var spawnPosition = ItemSpawnPosition.transform.position;
+                spawnPosition.y -= (10 + ItemPrefabHeight) * i;
+
+                ItemUiObjects[i].transform.position = spawnPosition;
+            }
         }
     }
 }

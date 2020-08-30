@@ -16,10 +16,6 @@ namespace Controllers.BehaviorControllers
             SetHealthToMax();
         }
 
-        private void Update()
-        {
-        }
-
         private void FixedUpdate()
         {
             EntityAttributes.movementAttributes.movementTarget = FindNearestObject("Ally");
