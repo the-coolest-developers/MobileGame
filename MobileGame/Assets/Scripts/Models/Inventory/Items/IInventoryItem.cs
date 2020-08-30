@@ -4,8 +4,11 @@ namespace Models.Inventory.Items
     {
         int Id { get; }
         string Name { get; }
-        InventoryItemType Type { get; }
         string ImageFolderPath { get; }
+        string ImageFileName { get; }
+        string ImagePathInFolder { get; }
+
+        InventoryItemType Type { get; }
 
         void Use();
     }

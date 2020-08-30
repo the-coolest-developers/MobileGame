@@ -3,29 +3,18 @@ using System.Linq;
 using Controllers.InventoryСontrollers.ItemControllers;
 using Models.Inventory.Items;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Controllers.InventoryСontrollers
 {
     public class InventoryController : MonoBehaviour
     {
-        private GameObject _itemSpawnPosition;
-
-        public GameObject ItemSpawnPosition
-        {
-            get
-            {
-                if (_itemSpawnPosition == null)
-                {
-                    _itemSpawnPosition = GameObject.Find("Inventory");
-                }
-
-                return _itemSpawnPosition;
-            }
-        }
-
         public GameObject itemPrefab;
-
+        public string itemAssetsPath;
         private float _itemPrefabHeight;
+
+
+        public GameObject ItemSpawnPosition => gameObject;
 
         public float ItemPrefabHeight
         {
@@ -49,20 +38,22 @@ namespace Controllers.InventoryСontrollers
 
             SetItems(new List<InventoryItem>()
             {
-                new Potion(1, "SomePotion"),
-                new Potion(2, "AnotherPotion"),
-                new Potion(3, "HealthPotion"),
+                new Potion(1, "HealthPotion"),
             });
         }
 
         public void AddItem(InventoryItem item)
         {
             GameObject instantiatedItem = Instantiate(itemPrefab, ItemSpawnPosition.transform, true);
-
             var itemController = instantiatedItem.GetComponent<InventoryItemController>();
             itemController.SetItem(item);
 
             ItemUiObjects.Add(instantiatedItem);
+
+            var imageComponent = instantiatedItem.transform.GetChild(0).GetComponent<Image>();
+            var path = GetImagePath(item);
+            var sprite = Resources.Load<Sprite>(path);
+            imageComponent.sprite = sprite;
 
             ArrangeItems();
         }
@@ -105,6 +96,11 @@ namespace Controllers.InventoryСontrollers
 
                 ItemUiObjects[i].transform.position = spawnPosition;
             }
+        }
+
+        private string GetImagePath(IInventoryItem item)
+        {
+            return $"{itemAssetsPath}/{item.ImagePathInFolder}";
         }
     }
 }

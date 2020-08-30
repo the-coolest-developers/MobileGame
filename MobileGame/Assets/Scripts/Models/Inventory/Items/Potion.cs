@@ -6,6 +6,8 @@ namespace Models.Inventory.Items
     {
         public override InventoryItemType Type => InventoryItemType.Consumable;
 
+        public override string ImageFolderPath => "Potions";
+
         public override void Use()
         {
             Debug.Log("A potion has been used!");

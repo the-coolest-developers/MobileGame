@@ -10253,6 +10253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 1437019504594679653, guid: b9c9851752c48094182e5627c30381ea,
     type: 3}
+  itemAssetsPath: Sprites/UI/Inventory/Items
 --- !u!1 &1719112562
 GameObject:
   m_ObjectHideFlags: 0

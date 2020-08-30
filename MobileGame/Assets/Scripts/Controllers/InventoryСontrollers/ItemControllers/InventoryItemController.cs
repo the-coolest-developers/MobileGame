@@ -35,7 +35,7 @@ namespace Controllers.InventoryСontrollers.ItemControllers
                 return _buttonComponent;
             }
         }
-        
+
         public void SetItem(InventoryItem item)
         {
             InventoryItem = item;
