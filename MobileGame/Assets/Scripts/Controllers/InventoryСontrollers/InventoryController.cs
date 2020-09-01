@@ -10,11 +10,11 @@ namespace Controllers.InventoryСontrollers
     public class InventoryController : MonoBehaviour
     {
         public GameObject itemPrefab;
+        public GameObject itemSpawnPosition;
         public string itemAssetsPath;
+        public float itemSpacing;
+
         private float _itemPrefabHeight;
-
-
-        public GameObject ItemSpawnPosition => gameObject;
 
         public float ItemPrefabHeight
         {
@@ -39,12 +39,14 @@ namespace Controllers.InventoryСontrollers
             SetItems(new List<InventoryItem>()
             {
                 new Potion(1, "HealthPotion"),
+                new Potion(1, "HealthPotion"),
+                new Potion(1, "HealthPotion"),
             });
         }
 
         public void AddItem(InventoryItem item)
         {
-            GameObject instantiatedItem = Instantiate(itemPrefab, ItemSpawnPosition.transform, true);
+            GameObject instantiatedItem = Instantiate(itemPrefab, itemSpawnPosition.transform, true);
             var itemController = instantiatedItem.GetComponent<InventoryItemController>();
             itemController.SetItem(item);
 
@@ -91,8 +93,8 @@ namespace Controllers.InventoryСontrollers
         {
             for (int i = 0; i < ItemUiObjects.Count; i++)
             {
-                var spawnPosition = ItemSpawnPosition.transform.position;
-                spawnPosition.y -= (10 + ItemPrefabHeight) * i;
+                var spawnPosition = itemSpawnPosition.transform.position;
+                spawnPosition.y -= (itemSpacing + ItemPrefabHeight) * i;
 
                 ItemUiObjects[i].transform.position = spawnPosition;
             }
