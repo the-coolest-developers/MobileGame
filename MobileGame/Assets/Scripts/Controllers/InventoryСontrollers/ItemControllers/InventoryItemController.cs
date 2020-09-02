@@ -12,12 +12,10 @@ namespace Controllers.InventoryСontrollers.ItemControllers
         public InventoryItem InventoryItem
         {
             get => _inventoryItem;
-            private set
+            set
             {
                 _inventoryItem = value;
                 gameObject.name = value.Name;
-
-                ButtonComponent.onClick.AddListener(_inventoryItem.OnClicked);
             }
         }
 
@@ -36,9 +34,26 @@ namespace Controllers.InventoryСontrollers.ItemControllers
             }
         }
 
-        public void SetItem(InventoryItem item)
+        private Image _imageComponent;
+
+        public Image ImageComponent
         {
-            InventoryItem = item;
+            get
+            {
+                if (_imageComponent == null)
+                {
+                    _imageComponent = transform.GetChild(0).GetComponent<Image>();
+                }
+
+                return _imageComponent;
+            }
+        }
+
+        public event Action<InventoryItemController> OnItemSelected = i => { };
+
+        public void OnClicked()
+        {
+            OnItemSelected?.Invoke(this);
         }
     }
 }

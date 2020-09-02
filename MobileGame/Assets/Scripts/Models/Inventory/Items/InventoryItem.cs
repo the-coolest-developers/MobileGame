@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Models.Inventory.Items
 {
@@ -6,19 +8,14 @@ namespace Models.Inventory.Items
     {
         public int Id { get; private set; }
         public string Name { get; private set; }
+        public abstract InventoryItemType Type { get; }
+
         public virtual string ImageFolderPath => Type.ToString();
         public virtual string ImageFileName => Name;
         public virtual string ImagePathInFolder => $"{ImageFolderPath}/{Name}";
 
-        public abstract InventoryItemType Type { get; }
 
         public abstract void Use();
-
-        public void OnClicked()
-        {
-            Debug.Log("It has been clicked!");
-            Use();
-        }
 
         protected InventoryItem(int id, string name)
         {
