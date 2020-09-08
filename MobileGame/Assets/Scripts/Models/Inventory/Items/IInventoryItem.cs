@@ -6,6 +6,7 @@ namespace Models.Inventory.Items
     {
         int Id { get; }
         string Name { get; }
+        string Description { get; }
         InventoryItemType Type { get; }
 
         string ImageFolderPath { get; }

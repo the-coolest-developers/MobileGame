@@ -23,7 +23,35 @@ namespace Controllers.UI_Controllers.Inventory
             }
         }
 
-        private GameObject ItemNameText { get; set; }
+        private Text _selecteditemNameText;
+
+        private Text SelectedItemNameText
+        {
+            get
+            {
+                if (_selecteditemNameText == null)
+                {
+                    _selecteditemNameText = GameObject.Find("ItemNameText").GetComponent<Text>();
+                }
+
+                return _selecteditemNameText;
+            }
+        }
+
+        private Text _selecteditemDescriptionText;
+
+        private Text SelectedItemDescriptionText
+        {
+            get
+            {
+                if (_selecteditemDescriptionText == null)
+                {
+                    _selecteditemDescriptionText = GameObject.Find("ItemDescriptionText").GetComponent<Text>();
+                }
+
+                return _selecteditemDescriptionText;
+            }
+        }
 
         public InventoryItemController SelectedItem { get; private set; }
 
@@ -53,17 +81,17 @@ namespace Controllers.UI_Controllers.Inventory
 
         private void HandleOnItemSelected(InventoryItemController itemController)
         {
-            Debug.Log("It has been triggered!");
-
             SetSelectedItem(itemController);
             UpdateSelectedItemUiInformation();
         }
 
-        void UpdateSelectedItemUiInformation()
+        private void UpdateSelectedItemUiInformation()
         {
             if (SelectedItem != null)
             {
                 SelectedItemImage.sprite = SelectedItem.ImageComponent.sprite;
+                SelectedItemNameText.text = SelectedItem.InventoryItem.Name;
+                SelectedItemDescriptionText.text = SelectedItem.InventoryItem.Description;
             }
         }
 

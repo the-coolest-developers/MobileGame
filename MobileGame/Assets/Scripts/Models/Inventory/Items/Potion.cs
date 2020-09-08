@@ -16,5 +16,9 @@ namespace Models.Inventory.Items
         public Potion(int id, string name) : base(id, name)
         {
         }
+
+        public Potion(int id, string name, string description) : base(id, name, description)
+        {
+        }
     }
 }

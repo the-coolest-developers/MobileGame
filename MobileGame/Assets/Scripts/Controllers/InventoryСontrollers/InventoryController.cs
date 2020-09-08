@@ -22,9 +22,9 @@ namespace Controllers.InventoryСontrollers
 
             SetItems(new List<InventoryItem>()
             {
-                new Potion(1, "HealthPotion"),
-                new Potion(2, "Test"),
-                new Potion(1, "HealthPotion"),
+                new Potion(1, "HealthPotion", "Супер крутое зелье здоровья"),
+                new Potion(2, "Test", "Тестовое зелье"),
+                new Potion(1, "HealthPotion", "Ещё более крутое зелье здоровья с очень очень очень длинным описанием"),
             });
 
             var first = ItemUiObjects.FirstOrDefault();
