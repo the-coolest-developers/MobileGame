@@ -7,9 +7,9 @@ namespace Controllers.InventoryСontrollers.ItemControllers
 {
     public class InventoryItemController : MonoBehaviour
     {
-        private InventoryItem _inventoryItem;
+        private IInventoryItem _inventoryItem;
 
-        public InventoryItem InventoryItem
+        public IInventoryItem InventoryItem
         {
             get => _inventoryItem;
             set

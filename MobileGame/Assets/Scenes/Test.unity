@@ -1714,6 +1714,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: InteractiveMenuButton_Click
       objectReference: {fileID: 0}
+    - target: {fileID: 4684695738096603003, guid: 7921685fd28f1594982ea108f0be2ddf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 280142585}
+    - target: {fileID: 4684695738096603003, guid: 7921685fd28f1594982ea108f0be2ddf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DropButton_Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684695739222643334, guid: 7921685fd28f1594982ea108f0be2ddf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 280142585}
+    - target: {fileID: 4684695739222643334, guid: 7921685fd28f1594982ea108f0be2ddf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UseButton_Click
+      objectReference: {fileID: 0}
     - target: {fileID: 4798280050854136618, guid: 7921685fd28f1594982ea108f0be2ddf,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1854,6 +1874,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4526154896215761767}
+    - target: {fileID: 5586082146088712047, guid: 7921685fd28f1594982ea108f0be2ddf,
+        type: 3}
+      propertyPath: m_Name
+      value: CharacterTab
+      objectReference: {fileID: 0}
     - target: {fileID: 5586082146782636383, guid: 7921685fd28f1594982ea108f0be2ddf,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1863,6 +1888,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586082146983399690, guid: 7921685fd28f1594982ea108f0be2ddf,
+        type: 3}
+      propertyPath: m_Name
+      value: SkillsTab
       objectReference: {fileID: 0}
     - target: {fileID: 5586082147154281587, guid: 7921685fd28f1594982ea108f0be2ddf,
         type: 3}
@@ -1945,7 +1975,9 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -4.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 899063001963502083, guid: 7921685fd28f1594982ea108f0be2ddf, type: 3}
+    - {fileID: 1973172261117671546, guid: 7921685fd28f1594982ea108f0be2ddf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7921685fd28f1594982ea108f0be2ddf, type: 3}
 --- !u!1 &280142583 stripped
 GameObject:

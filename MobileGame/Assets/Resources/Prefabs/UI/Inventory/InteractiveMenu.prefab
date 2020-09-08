@@ -1,5 +1,43 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4212651933715867332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7647033749602357938}
+  m_Layer: 5
+  m_Name: TabButtons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7647033749602357938
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4212651933715867332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5586082147757964567}
+  - {fileID: 5586082146857249020}
+  - {fileID: 5586082146215251611}
+  m_Father: {fileID: 5586082147135952451}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5586082145865899220
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +277,7 @@ GameObject:
   - component: {fileID: 5586082146215251613}
   - component: {fileID: 5586082146215251610}
   m_Layer: 5
-  m_Name: InventoryTab (2)
+  m_Name: CharactedTabButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,8 +295,8 @@ RectTransform:
   m_LocalScale: {x: 1.2, y: 1.5, z: 1}
   m_Children:
   - {fileID: 5586082146254934114}
-  m_Father: {fileID: 5586082147135952451}
-  m_RootOrder: 3
+  m_Father: {fileID: 7647033749602357938}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -493,7 +531,7 @@ RectTransform:
   - {fileID: 5586082145865899223}
   - {fileID: 5586082145883047815}
   m_Father: {fileID: 5586082147135952451}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -867,7 +905,7 @@ GameObject:
   - component: {fileID: 5586082146857249022}
   - component: {fileID: 5586082146857249023}
   m_Layer: 5
-  m_Name: InventoryTab (1)
+  m_Name: SkillsTabButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -885,8 +923,8 @@ RectTransform:
   m_LocalScale: {x: 1.2, y: 1.5, z: 1}
   m_Children:
   - {fileID: 5586082146462079896}
-  m_Father: {fileID: 5586082147135952451}
-  m_RootOrder: 2
+  m_Father: {fileID: 7647033749602357938}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1001,10 +1039,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5586082146048829703}
-  - {fileID: 5586082147757964567}
-  - {fileID: 5586082146857249020}
-  - {fileID: 5586082146215251611}
   - {fileID: 5586082146403047432}
+  - {fileID: 7647033749602357938}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1304,7 +1340,7 @@ GameObject:
   - component: {fileID: 5586082147757964569}
   - component: {fileID: 5586082147757964566}
   m_Layer: 5
-  m_Name: InventoryTab
+  m_Name: InventoryTabButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1322,8 +1358,8 @@ RectTransform:
   m_LocalScale: {x: 1.2, y: 1.5, z: 1}
   m_Children:
   - {fileID: 5586082146842592418}
-  m_Father: {fileID: 5586082147135952451}
-  m_RootOrder: 1
+  m_Father: {fileID: 7647033749602357938}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1640,6 +1676,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 902586799855294810, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 902586799855294810, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UseButton_Click
       objectReference: {fileID: 0}
     - target: {fileID: 2023454192145162776, guid: 3bee2dc7dcae9764781d5f21fc26fe1d,
         type: 3}

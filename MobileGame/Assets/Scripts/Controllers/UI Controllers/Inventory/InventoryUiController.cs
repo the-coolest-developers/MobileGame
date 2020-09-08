@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Controllers.InventoryСontrollers;
 using Controllers.InventoryСontrollers.ItemControllers;
 using Models.Inventory.Items;
 using UnityEngine;
@@ -53,7 +55,9 @@ namespace Controllers.UI_Controllers.Inventory
             }
         }
 
-        public InventoryItemController SelectedItem { get; private set; }
+        public event Action OnUseButtonClick = () => { };
+        public event Action OnDropButtonClick = () => { };
+        public event Action<InventoryItemController> OnItemSelected = itemController => { };
 
         //Из редактора
         public GameObject itemSpawnPosition;
@@ -79,25 +83,14 @@ namespace Controllers.UI_Controllers.Inventory
 
         private string GetImagePath(IInventoryItem item) => $"{itemAssetsPath}/{item.ImagePathInFolder}";
 
-        private void HandleOnItemSelected(InventoryItemController itemController)
+        public void UpdateSelectedItemUiInformation(InventoryItemController selectedItem)
         {
-            SetSelectedItem(itemController);
-            UpdateSelectedItemUiInformation();
-        }
-
-        private void UpdateSelectedItemUiInformation()
-        {
-            if (SelectedItem != null)
+            if (selectedItem != null)
             {
-                SelectedItemImage.sprite = SelectedItem.ImageComponent.sprite;
-                SelectedItemNameText.text = SelectedItem.InventoryItem.Name;
-                SelectedItemDescriptionText.text = SelectedItem.InventoryItem.Description;
+                SelectedItemImage.sprite = selectedItem.ImageComponent.sprite;
+                SelectedItemNameText.text = selectedItem.InventoryItem.Name;
+                SelectedItemDescriptionText.text = selectedItem.InventoryItem.Description;
             }
-        }
-
-        public void SetSelectedItem(InventoryItemController itemController)
-        {
-            SelectedItem = itemController;
         }
 
         /// <summary>
@@ -105,7 +98,7 @@ namespace Controllers.UI_Controllers.Inventory
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public GameObject InstantiateItem(InventoryItem item)
+        public GameObject InstantiateItem(IInventoryItem item)
         {
             var itemGameObject = Instantiate(itemPrefab, itemSpawnPosition.transform, true);
 
@@ -129,9 +122,19 @@ namespace Controllers.UI_Controllers.Inventory
             }
         }
 
-        public void OnEnable()
+        public void UseButton_Click()
         {
-            UpdateSelectedItemUiInformation();
+            OnUseButtonClick();
+        }
+
+        public void DropButton_Click()
+        {
+            OnDropButtonClick();
+        }
+
+        private void HandleOnItemSelected(InventoryItemController itemController)
+        {
+            OnItemSelected(itemController);
         }
     }
 }
